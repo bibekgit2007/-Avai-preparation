@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE/NEET Practice Portal Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+    <style>
+        .status-btn { width: 35px; height: 35px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #e2e8f0; font-weight: bold; font-size: 12px; transition: 0.2s; background: white; }
+        .answered { background: #10b981 !important; color: white; border: none; }
+        .marked { background: #8b5cf6 !important; color: white; border: none; }
+        .active-q { border: 2px solid #2563eb; transform: scale(1.1); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .subject-tab { cursor: pointer; border-bottom: 4px solid transparent; transition: 0.3s; opacity: 0.6; }
+        .subject-tab.active { border-bottom: 4px solid #2563eb; opacity: 1; color: #2563eb; background: #eff6ff; }
+        #explanationBox { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <header class="bg-slate-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div class="flex items-center gap-6">
+             <h1 class="text-xl font-black italic tracking-tight">
+    <span class="text-blue-400">AVAI</span> PREPARATION
+</h1>
+            <div id="timer" class="font-mono bg-slate-800 px-4 py-1 rounded border border-slate-700 text-yellow-400">03:00:00</div>
+        </div>
+        <div class="flex items-center gap-3">
+            <select id="examSelector" onchange="filterByExam()" class="bg-slate-800 border border-slate-700 rounded px-3 py-1 text-sm font-bold text-blue-400 outline-none">
+                <option value="JEE">JEE Main</option>
+                <option value="NEET">NEET</option>
+                <option value="WBJEE">WBJEE</option>
+                <option value="NDA">NDA</option>
+                <option value="CUET">CUET</option>
+                <option value="UPSC">UPSC (Prelims)</option>
+            </select>
+            <select id="langSwitch" class="bg-slate-800 border border-slate-700 rounded px-3 py-1 text-sm outline-none">
+                <option value="en">English</option>
+                <option value="bn">বাংলা</option>
+            </select>
+            <a href="calculator.html" target="_blank" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-sm font-bold px-3 py-1 rounded flex items-center gap-1 shadow-md transition">
+                <span>✦</span> Calculator
+            </a>
+            <button onclick="showFinalResult()" class="bg-red-600 hover:bg-red-700 px-5 py-1 rounded font-bold text-sm transition">FINISH TEST</button>
+        </div>
+    </header>
+
+    <main class="flex h-[calc(100vh-68px)]">
+        <div class="flex-1 flex flex-col bg-white overflow-hidden">
+            <div class="flex border-b bg-slate-50" id="subjectTabs">
+                <button onclick="switchSubject('Physics')" class="subject-tab px-8 py-4 text-xs font-black uppercase">Physics</button>
+                <button onclick="switchSubject('Chemistry')" class="subject-tab active px-8 py-4 text-xs font-black uppercase">Chemistry</button>
+                <button onclick="switchSubject('Math')" class="subject-tab px-8 py-4 text-xs font-black uppercase">Mathematics</button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-8" id="questionArea">
+                <div id="loading" class="flex flex-col items-center justify-center h-full space-y-4">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    <p class="text-slate-500 font-bold">Fetching Questions from Google Sheets...</p>
+                </div>
+            </div>
+             <div id="loader" class="fixed inset-0 flex items-center justify-center bg-slate-900 z-50">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    <p class="ml-4 text-white font-bold">Loading Avai Prep...</p>
+</div>
+            <div class="p-6 border-t flex justify-between items-center bg-slate-50">
+                <div class="flex gap-3">
+                    <button onclick="toggleExplanation()" id="checkAnsBtn" class="px-6 py-2 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 shadow-sm transition">Check Answer</button>
+                    <button onclick="markForReview()" class="px-6 py-2 bg-purple-100 text-purple-700 rounded-lg font-bold hover:bg-purple-200">Mark for Review</button>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="prevQ()" class="px-6 py-2 border rounded-lg font-bold bg-white hover:bg-slate-100">Previous</button>
+                    <button onclick="nextQ()" class="px-10 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 shadow-lg">Save & Next</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="w-80 bg-white border-l p-6 flex flex-col shadow-inner">
+            <div class="mb-8 flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-black">AJ</div>
+                <div>
+                    <p class="text-sm font-bold">Candidate</p>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-black">JEE Practice Mode</p>
+                </div>
+            </div>
+
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Question Navigator</p>
+            <div id="palette" class="grid grid-cols-4 gap-3"></div>
+
+            <div class="mt-auto pt-6 border-t space-y-2">
+                <div class="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase">
+                    <span class="status-btn answered w-5 h-5"></span> Answered
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase">
+                    <span class="status-btn marked w-5 h-5"></span> For Review
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <div id="resultModal" class="fixed inset-0 bg-slate-900/95 z-[100] hidden flex flex-col items-center justify-center text-white text-center p-6">
+        <h2 class="text-4xl font-black mb-8">TEST COMPLETE</h2>
+        <div class="grid grid-cols-2 gap-6 w-full max-w-md mb-12">
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/10">
+                <p class="text-xs text-blue-300 font-bold uppercase mb-1">Total Score</p>
+                <p class="text-6xl font-black" id="finalScoreDisplay">0</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/10">
+                <p class="text-xs text-green-300 font-bold uppercase mb-1">Accuracy</p>
+                <p class="text-6xl font-black" id="accuracyDisplay">0%</p>
+            </div>
+        </div>
+        <button onclick="location.reload()" class="bg-white text-slate-900 px-12 py-4 rounded-full font-black text-lg hover:bg-blue-400 transition transform hover:scale-105">RESTART PRACTICE</button>
+    </div>
+
+    <script>
+        // CONFIG: Replace this with your Google Sheet CSV URL
+        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR2d2cT2h-sVPSX9PiAQG503jm-bPfHp7uTi2YVo2BN3wbCzl6peJdsZBHkMVBinrvciJnDXfYMqO1C/pub?output=csv';
+
+        let questionBank = [];
+        let currentSubject = "Chemistry";
+        let currentIdx = 0; // Index within the filtered subject list
+        let responses = []; // Stores selected option for each question (indexed by originalBank index)
+        let statuses = []; // 'not-visited', 'answered', 'marked'
+        let currentLang = 'en';
+
+        // 1. FETCH DATA FROM GOOGLE SHEETS
+        async function loadData() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const csvData = await response.text();
+                // At the very end of your data fetching function:
+                const loader = document.getElementById('loader');
+                if (loader) loader.classList.add('hidden');
+
+                Papa.parse(csvData, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: (results) => {
+               
+questionBank = results.data.map((row, i) => ({
+    ...row,
+    orig: i,
+    exam: row.Exam_Type,      // New Column 1
+    subject: row.Subject,      // New Column 2
+    topic: row.Topic,          // New Column 3
+    en: row.Question_EN,
+    bn: row.Question_BN,
+    opts: {
+        en: [row.Opt1, row.Opt2, row.Opt3, row.Opt4],
+        bn: [row.Opt1, row.Opt2, row.Opt3, row.Opt4]
+    },
+    image: row.Image_URL,      // Position: After Opt4
+    correct: parseInt(row.Correct), // Position: After Image_URL
+    expl_en: row.Expl_EN,
+    expl_bn: row.Expl_BN
+}));
+                        responses = new Array(questionBank.length).fill(null);
+                        statuses = new Array(questionBank.length).fill('not-visited');
+                        switchSubject('Chemistry');
+                    }
+                });
+            } catch (e) {
+                document.getElementById('questionArea').innerHTML = `<p class="text-red-500 font-bold">Error loading sheet. Please check the URL and your connection.</p>`;
+            }
+        }
+
+        function getFiltered() {
+            return questionBank.filter(q => q.Subject === currentSubject);
+        }
+
+        // 2. RENDER QUESTION
+        function render() {
+            const filtered = getFiltered();
+            if (filtered.length === 0) return;
+            const q = filtered[currentIdx];
+            const area = document.getElementById('questionArea');
+            const imgHtml = q.image ? `<img src="${q.image}" class="max-h-64 mx-auto mb-8 rounded-xl border bg-white p-4 shadow-sm">` : '';
+           
+            area.innerHTML = `
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-blue-600 font-black text-xl">${currentLang === 'en' ? 'Question' : 'প্রশ্ন'} ${currentIdx + 1}</span>
+                    <span class="text-[10px] font-bold bg-slate-100 px-3 py-1 rounded-full uppercase text-slate-500">${q.Topic}</span>
+                </div>
+                ${imgHtml}
+                <h2 class="text-2xl font-semibold mb-10 leading-relaxed">${currentLang === 'en' ? q.Question_EN : q.Question_BN}</h2>
+                <div class="grid gap-4 max-w-3xl">
+                    ${q.opts[currentLang].map((opt, i) => `
+                        <label class="flex items-center p-5 border-2 rounded-2xl cursor-pointer hover:bg-blue-50 transition ${responses[q.orig] === i ? 'border-blue-600 bg-blue-50' : 'border-slate-100'}">
+                            <input type="radio" name="quiz_opt" value="${i}" class="w-5 h-5 accent-blue-600" ${responses[q.orig] === i ? 'checked' : ''} onchange="saveAns(${q.orig}, ${i})">
+                            <span class="ml-4 font-bold text-slate-700">${opt}</span>
+                        </label>
+                    `).join('')}
+                </div>
+                <div id="explanationBox" class="mt-8 p-6 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl">
+                    <p class="font-black text-emerald-800 text-sm uppercase mb-2">Solution Logic:</p>
+                    <p class="text-emerald-900 leading-relaxed">${currentLang === 'en' ? q.Expl_EN : q.Expl_BN}</p>
+                </div>
+            `;
+            renderPalette();
+            document.getElementById('explanationBox').style.display = 'none'; // Hide explanation when moving to next Q
+        }
+
+        // 3. CORE LOGIC FUNCTIONS
+        function saveAns(origIdx, val) {
+            responses[origIdx] = val;
+            statuses[origIdx] = 'answered';
+            renderPalette();
+        }
+
+        function toggleExplanation() {
+            const box = document.getElementById('explanationBox');
+            if (responses[getFiltered()[currentIdx].orig] === null) {
+                alert("Please select an answer first!");
+                return;
+            }
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function switchSubject(s) {
+            currentSubject = s; currentIdx = 0;
+            document.querySelectorAll('.subject-tab').forEach(t => t.innerText.includes(s) ? t.classList.add('active') : t.classList.remove('active'));
+            render();
+        }
+
+        function renderPalette() {
+            const filtered = getFiltered();
+            const palette = document.getElementById('palette');
+            palette.innerHTML = filtered.map((q, i) => `
+                <div onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}">${i + 1}</div>
+            `).join('');
+        }
+
+        function nextQ() { if(currentIdx < getFiltered().length - 1) { currentIdx++; render(); } }
+        function prevQ() { if(currentIdx > 0) { currentIdx--; render(); } }
+        function jumpTo(i) { currentIdx = i; render(); }
+        function markForReview() { statuses[getFiltered()[currentIdx].orig] = 'marked'; renderPalette(); nextQ(); }
+
+        function showFinalResult() {
+            let score = 0, correctCount = 0, attempted = 0;
+            responses.forEach((resp, i) => {
+                if(resp !== null) {
+                    attempted++;
+                    if(resp === questionBank[i].correct) { score += 4; correctCount++; }
+                    else { score -= 1; }
+                }
+            });
+            document.getElementById('finalScoreDisplay').innerText = score;
+            document.getElementById('accuracyDisplay').innerText = attempted > 0 ? Math.round((correctCount/attempted)*100)+'%' : '0%';
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+
+        // Language Switcher
+        document.getElementById('langSwitch').addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            render();
+        });
+
+        // 4. TIMER LOGIC
+        let timeInSecs = 10800; // 3 hours
+        setInterval(() => {
+            timeInSecs--;
+            let h = Math.floor(timeInSecs / 3600), m = Math.floor((timeInSecs % 3600) / 60), s = timeInSecs % 60;
+            document.getElementById('timer').innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+        }, 1000);
+
+        // START INITIALIZATION
+        loadData();
+    </script>
+    <footer class="bg-slate-900 text-slate-400 p-8 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <p>© 2026 Avai Preparation. All rights reserved.</p>
+        <div class="flex gap-6">
+            <a href="calculator.html" target="_blank" class="text-purple-400 hover:text-purple-300 font-bold transition">✦ Scientific Calculator</a>
+            <a href="about.html" class="hover:text-white transition">About Us</a>
+            <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+            <a href="https://github.com/nayekdhananjoy1973-lab" class="hover:text-white transition">GitHub</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,958 @@
+/* ==========================================================================
+   GLAMOUR CALCULATOR DESIGN SYSTEM
+   Styles for the Ultimate Standard & Scientific Glamour Calculator
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+    /* DEFAULT THEME: Midnight Cyber Lux */
+    --bg-gradient: radial-gradient(circle at 15% 15%, #1e1035 0%, #0d0714 50%, #05020a 100%);
+    --calc-bg: rgba(22, 14, 38, 0.75);
+    --calc-border: rgba(168, 85, 247, 0.25);
+    --calc-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.2);
+    --calc-glow: 0 0 30px rgba(139, 92, 246, 0.3);
+    
+    --display-bg: rgba(10, 6, 20, 0.85);
+    --display-border: rgba(147, 51, 234, 0.3);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-accent: #c084fc;
+    
+    --btn-num-bg: rgba(30, 20, 50, 0.65);
+    --btn-num-text: #f1f5f9;
+    --btn-num-hover: rgba(55, 35, 90, 0.85);
+    --btn-num-border: rgba(168, 85, 247, 0.15);
+    
+    --btn-op-bg: rgba(124, 58, 237, 0.2);
+    --btn-op-text: #a78bfa;
+    --btn-op-hover: rgba(124, 58, 237, 0.45);
+    --btn-op-border: rgba(139, 92, 246, 0.35);
+    
+    --btn-fn-bg: rgba(15, 23, 42, 0.6);
+    --btn-fn-text: #38bdf8;
+    --btn-fn-hover: rgba(56, 189, 248, 0.2);
+    --btn-fn-border: rgba(56, 189, 248, 0.25);
+    
+    --btn-danger-bg: rgba(239, 68, 68, 0.15);
+    --btn-danger-text: #f87171;
+    --btn-danger-hover: rgba(239, 68, 68, 0.35);
+    --btn-danger-border: rgba(239, 68, 68, 0.3);
+    
+    --btn-equals-bg: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #3b82f6 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-hover: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #60a5fa 100%);
+    --btn-equals-glow: 0 0 25px rgba(168, 85, 247, 0.6);
+    
+    --glass-blur: blur(20px);
+    --card-radius: 28px;
+    --btn-radius: 16px;
+    --accent-glow-rgb: 168, 85, 247;
+}
+
+/* THEME: Aurora Glass */
+[data-theme="aurora"] {
+    --bg-gradient: radial-gradient(circle at 80% 20%, #0c2d48 0%, #145da0 40%, #0e1e2d 100%);
+    --calc-bg: rgba(255, 255, 255, 0.08);
+    --calc-border: rgba(255, 255, 255, 0.25);
+    --calc-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 50px rgba(56, 189, 248, 0.25);
+    --calc-glow: 0 0 40px rgba(45, 212, 191, 0.3);
+    
+    --display-bg: rgba(15, 23, 42, 0.7);
+    --display-border: rgba(56, 189, 248, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-accent: #38bdf8;
+    
+    --btn-num-bg: rgba(255, 255, 255, 0.07);
+    --btn-num-text: #f8fafc;
+    --btn-num-hover: rgba(255, 255, 255, 0.18);
+    --btn-num-border: rgba(255, 255, 255, 0.12);
+    
+    --btn-op-bg: rgba(45, 212, 191, 0.18);
+    --btn-op-text: #2dd4bf;
+    --btn-op-hover: rgba(45, 212, 191, 0.35);
+    --btn-op-border: rgba(45, 212, 191, 0.3);
+    
+    --btn-fn-bg: rgba(56, 189, 248, 0.15);
+    --btn-fn-text: #7dd3fc;
+    --btn-fn-hover: rgba(56, 189, 248, 0.3);
+    --btn-fn-border: rgba(56, 189, 248, 0.25);
+    
+    --btn-danger-bg: rgba(244, 63, 94, 0.18);
+    --btn-danger-text: #fb7185;
+    --btn-danger-hover: rgba(244, 63, 94, 0.35);
+    --btn-danger-border: rgba(244, 63, 94, 0.3);
+    
+    --btn-equals-bg: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-hover: linear-gradient(135deg, #22d3ee 0%, #60a5fa 50%, #818cf8 100%);
+    --btn-equals-glow: 0 0 30px rgba(6, 182, 212, 0.6);
+    --accent-glow-rgb: 45, 212, 191;
+}
+
+/* THEME: Rose Gold Luxe */
+[data-theme="rosegold"] {
+    --bg-gradient: radial-gradient(circle at 50% 10%, #2b181e 0%, #190e12 50%, #0d0507 100%);
+    --calc-bg: rgba(38, 20, 26, 0.8);
+    --calc-border: rgba(244, 114, 182, 0.3);
+    --calc-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 45px rgba(251, 146, 60, 0.2);
+    --calc-glow: 0 0 35px rgba(244, 114, 182, 0.3);
+    
+    --display-bg: rgba(20, 10, 14, 0.9);
+    --display-border: rgba(244, 114, 182, 0.35);
+    --text-primary: #fff1f2;
+    --text-secondary: #fecdd3;
+    --text-muted: #9f737e;
+    --text-accent: #fb7185;
+    
+    --btn-num-bg: rgba(50, 25, 35, 0.65);
+    --btn-num-text: #fff1f2;
+    --btn-num-hover: rgba(85, 40, 58, 0.85);
+    --btn-num-border: rgba(244, 114, 182, 0.18);
+    
+    --btn-op-bg: rgba(251, 113, 133, 0.2);
+    --btn-op-text: #fda4af;
+    --btn-op-hover: rgba(251, 113, 133, 0.4);
+    --btn-op-border: rgba(251, 113, 133, 0.35);
+    
+    --btn-fn-bg: rgba(251, 146, 60, 0.15);
+    --btn-fn-text: #fdba74;
+    --btn-fn-hover: rgba(251, 146, 60, 0.3);
+    --btn-fn-border: rgba(251, 146, 60, 0.25);
+    
+    --btn-danger-bg: rgba(225, 29, 72, 0.2);
+    --btn-danger-text: #fda4af;
+    --btn-danger-hover: rgba(225, 29, 72, 0.4);
+    --btn-danger-border: rgba(225, 29, 72, 0.35);
+    
+    --btn-equals-bg: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb923c 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-hover: linear-gradient(135deg, #f43f5e 0%, #fb7185 50%, #fed7aa 100%);
+    --btn-equals-glow: 0 0 30px rgba(244, 63, 94, 0.6);
+    --accent-glow-rgb: 244, 114, 182;
+}
+
+/* THEME: Quantum Matrix Neon */
+[data-theme="matrix"] {
+    --bg-gradient: radial-gradient(circle at 50% 50%, #031c12 0%, #020f09 60%, #000503 100%);
+    --calc-bg: rgba(6, 26, 17, 0.85);
+    --calc-border: rgba(16, 185, 129, 0.3);
+    --calc-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 45px rgba(16, 185, 129, 0.25);
+    --calc-glow: 0 0 40px rgba(16, 185, 129, 0.35);
+    
+    --display-bg: rgba(2, 15, 9, 0.92);
+    --display-border: rgba(16, 185, 129, 0.4);
+    --text-primary: #ecfdf5;
+    --text-secondary: #6ee7b7;
+    --text-muted: #059669;
+    --text-accent: #34d399;
+    
+    --btn-num-bg: rgba(6, 40, 25, 0.6);
+    --btn-num-text: #ecfdf5;
+    --btn-num-hover: rgba(13, 70, 45, 0.85);
+    --btn-num-border: rgba(16, 185, 129, 0.18);
+    
+    --btn-op-bg: rgba(16, 185, 129, 0.2);
+    --btn-op-text: #6ee7b7;
+    --btn-op-hover: rgba(16, 185, 129, 0.4);
+    --btn-op-border: rgba(16, 185, 129, 0.35);
+    
+    --btn-fn-bg: rgba(20, 184, 166, 0.18);
+    --btn-fn-text: #5eead4;
+    --btn-fn-hover: rgba(20, 184, 166, 0.35);
+    --btn-fn-border: rgba(20, 184, 166, 0.3);
+    
+    --btn-danger-bg: rgba(239, 68, 68, 0.2);
+    --btn-danger-text: #fca5a5;
+    --btn-danger-hover: rgba(239, 68, 68, 0.4);
+    --btn-danger-border: rgba(239, 68, 68, 0.35);
+    
+    --btn-equals-bg: linear-gradient(135deg, #059669 0%, #10b981 50%, #14b8a6 100%);
+    --btn-equals-text: #022c22;
+    --btn-equals-hover: linear-gradient(135deg, #10b981 0%, #34d399 50%, #2dd4bf 100%);
+    --btn-equals-glow: 0 0 30px rgba(16, 185, 129, 0.7);
+    --accent-glow-rgb: 16, 185, 129;
+}
+
+/* ==========================================================================
+   BASE & AMBIENT BACKGROUND
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    overflow-x: hidden;
+    position: relative;
+    transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animated Ambient Glow Spheres */
+.ambient-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: floatAmbient 18s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+    width: 450px;
+    height: 450px;
+    background: rgba(var(--accent-glow-rgb), 0.35);
+    top: -100px;
+    left: -100px;
+}
+
+.glow-2 {
+    width: 400px;
+    height: 400px;
+    background: rgba(99, 102, 241, 0.3);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -9s;
+}
+
+@keyframes floatAmbient {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.15); }
+    100% { transform: translate(-40px, 60px) scale(0.9); }
+}
+
+/* ==========================================================================
+   HEADER & CONTROLS NAV
+   ========================================================================== */
+
+.app-container {
+    width: 100%;
+    max-width: 520px;
+    z-index: 10;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.app-container.scientific-mode {
+    max-width: 760px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(var(--accent-glow-rgb), 0.8), rgba(99, 102, 241, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(var(--accent-glow-rgb), 0.5);
+}
+
+.brand-title {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #ffffff, var(--text-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: var(--btn-num-bg);
+    border: 1px solid var(--btn-num-border);
+    color: var(--text-secondary);
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: var(--glass-blur);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.icon-btn:hover {
+    background: var(--btn-num-hover);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.icon-btn.active {
+    background: rgba(var(--accent-glow-rgb), 0.25);
+    border-color: rgba(var(--accent-glow-rgb), 0.6);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(var(--accent-glow-rgb), 0.4);
+}
+
+/* Theme Dropdown */
+.theme-picker {
+    position: relative;
+}
+
+.theme-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--display-bg);
+    border: 1px solid var(--calc-border);
+    border-radius: 16px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 170px;
+    z-index: 100;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    animation: fadeInScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-dropdown.show {
+    display: flex;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: left;
+    width: 100%;
+}
+
+.theme-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.theme-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* Tab Selector */
+.mode-tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px;
+    border-radius: 16px;
+    border: 1px solid var(--btn-num-border);
+    backdrop-filter: blur(10px);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.tab-btn.active {
+    background: rgba(var(--accent-glow-rgb), 0.25);
+    color: #ffffff;
+    border: 1px solid rgba(var(--accent-glow-rgb), 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   CALCULATOR CARD
+   ========================================================================== */
+
+.calculator-card {
+    background: var(--calc-bg);
+    border: 1px solid var(--calc-border);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    box-shadow: var(--calc-shadow);
+    backdrop-filter: var(--glass-blur);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+/* ==========================================================================
+   DISPLAY SCREEN
+   ========================================================================== */
+
+.display-panel {
+    background: var(--display-bg);
+    border: 1px solid var(--display-border);
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.display-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.angle-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(var(--accent-glow-rgb), 0.15);
+    color: var(--text-accent);
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid rgba(var(--accent-glow-rgb), 0.3);
+}
+
+.angle-badge:hover {
+    background: rgba(var(--accent-glow-rgb), 0.3);
+}
+
+.memory-badges {
+    display: flex;
+    gap: 6px;
+}
+
+.mem-indicator {
+    opacity: 0.3;
+    transition: 0.2s;
+}
+
+.mem-indicator.active {
+    opacity: 1;
+    color: #10b981;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.display-tape {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-height: 22px;
+    text-align: right;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    margin-top: 4px;
+}
+.display-tape::-webkit-scrollbar { display: none; }
+
+.display-main {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: right;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    transition: font-size 0.2s ease;
+}
+.display-main::-webkit-scrollbar { display: none; }
+
+.display-live-preview {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-accent);
+    text-align: right;
+    min-height: 20px;
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   BUTTON KEYPADS
+   ========================================================================== */
+
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.scientific-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+    animation: fadeInDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scientific-grid.hidden {
+    display: none;
+}
+
+/* Glamour Calculator Buttons */
+.calc-btn {
+    height: 58px;
+    border-radius: var(--btn-radius);
+    border: 1px solid transparent;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.2s ease, 
+                background 0.2s ease, 
+                border-color 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.calc-btn:active, .calc-btn.pressed {
+    transform: scale(0.92) translateY(2px);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.calc-btn.num-btn {
+    background: var(--btn-num-bg);
+    color: var(--btn-num-text);
+    border-color: var(--btn-num-border);
+}
+
+.calc-btn.num-btn:hover {
+    background: var(--btn-num-hover);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.calc-btn.op-btn {
+    background: var(--btn-op-bg);
+    color: var(--btn-op-text);
+    border-color: var(--btn-op-border);
+    font-size: 21px;
+}
+
+.calc-btn.op-btn:hover {
+    background: var(--btn-op-hover);
+    box-shadow: 0 0 15px rgba(var(--accent-glow-rgb), 0.35);
+}
+
+.calc-btn.fn-btn {
+    background: var(--btn-fn-bg);
+    color: var(--btn-fn-text);
+    border-color: var(--btn-fn-border);
+    font-size: 15px;
+    font-weight: 600;
+    height: 48px;
+}
+
+.calc-btn.fn-btn:hover {
+    background: var(--btn-fn-hover);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.calc-btn.danger-btn {
+    background: var(--btn-danger-bg);
+    color: var(--btn-danger-text);
+    border-color: var(--btn-danger-border);
+    font-weight: 800;
+}
+
+.calc-btn.danger-btn:hover {
+    background: var(--btn-danger-hover);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.calc-btn.equals-btn {
+    background: var(--btn-equals-bg);
+    color: var(--btn-equals-text);
+    border: none;
+    box-shadow: var(--btn-equals-glow);
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.calc-btn.equals-btn:hover {
+    background: var(--btn-equals-hover);
+    box-shadow: 0 0 35px rgba(var(--accent-glow-rgb), 0.85);
+    transform: translateY(-2px);
+}
+
+.calc-btn.span-2 {
+    grid-column: span 2;
+}
+
+/* Touch Ripple Effect */
+.calc-btn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.calc-btn:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+/* ==========================================================================
+   CONVERTER PANEL
+   ========================================================================== */
+
+.converter-panel {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.3s ease;
+}
+
+.converter-panel.active {
+    display: flex;
+}
+
+.converter-select-row {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-select {
+    flex: 1;
+    background: var(--display-bg);
+    border: 1px solid var(--calc-border);
+    border-radius: 14px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.custom-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.converter-card-box {
+    background: var(--display-bg);
+    border: 1px solid var(--display-border);
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.converter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.converter-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.converter-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    outline: none;
+}
+
+/* ==========================================================================
+   HISTORY DRAWER MODAL
+   ========================================================================== */
+
+.history-drawer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    background: var(--display-bg);
+    border-left: 1px solid var(--calc-border);
+    backdrop-filter: blur(30px);
+    z-index: 50;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.history-drawer.open {
+    transform: translateX(0);
+}
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--calc-border);
+    margin-bottom: 14px;
+}
+
+.history-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--calc-border) transparent;
+}
+
+.history-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: right;
+}
+
+.history-item:hover {
+    background: rgba(var(--accent-glow-rgb), 0.15);
+    border-color: rgba(var(--accent-glow-rgb), 0.4);
+    transform: translateY(-2px);
+}
+
+.hist-expr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.hist-res {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-accent);
+}
+
+.history-empty {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+.clear-hist-btn {
+    margin-top: 14px;
+    padding: 10px;
+    background: var(--btn-danger-bg);
+    border: 1px solid var(--btn-danger-border);
+    color: var(--btn-danger-text);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.clear-hist-btn:hover {
+    background: var(--btn-danger-hover);
+}
+
+/* ==========================================================================
+   FOOTER / SHORTCUTS HELPER
+   ========================================================================== */
+
+.shortcuts-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.kbd-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95) translateY(-5px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Pulse animation on calculate */
+@keyframes glamPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); filter: brightness(1.2); }
+    100% { transform: scale(1); }
+}
+
+.pulse-anim {
+    animation: glamPulse 0.25s ease-out;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px 8px;
+    }
+    
+    .calculator-card {
+        padding: 18px 14px;
+        border-radius: 22px;
+    }
+    
+    .display-main {
+        font-size: 32px;
+    }
+    
+    .calc-btn {
+        height: 52px;
+        font-size: 17px;
+    }
+    
+    .calc-btn.fn-btn {
+        height: 42px;
+        font-size: 13px;
+    }
+    
+    .scientific-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .history-drawer {
+        width: 100%;
+    }
+}

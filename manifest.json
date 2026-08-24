@@ -1,0 +1,16 @@
+ {
+  "name": "Avai Preparation",
+  "short_name": "AvaiPrep",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "description": "Premium JEE/NEET Practice Portal",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/5606/5606131.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

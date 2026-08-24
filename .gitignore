@@ -1,0 +1,9 @@
+# Operating System Files
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# IDE / Logs
+*.log
+.vscode/
+.idea/

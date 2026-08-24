@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Glamour Calculator | Standard & Scientific</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5606/5606131.png" type="image/png">
+</head>
+<body data-theme="midnight">
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="app-container" id="appContainer">
+        
+        <!-- Top Bar Navigation & Tools -->
+        <header class="top-bar">
+            <a href="index.html" class="brand-badge" title="Back to Portal">
+                <div class="brand-icon">✦</div>
+                <div>
+                    <h1 class="brand-title">AURA GLAM</h1>
+                </div>
+            </a>
+
+            <div class="top-actions">
+                <!-- Sound Synthesizer Toggle -->
+                <button id="soundToggleBtn" class="icon-btn active" onclick="toggleSound()" title="Toggle Synthesizer Audio Feedback">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </button>
+
+                <!-- Theme Selector Dropdown -->
+                <div class="theme-picker" id="themePickerContainer">
+                    <button id="themeToggleBtn" class="icon-btn" onclick="toggleThemeDropdown()" title="Switch Luxury Theme">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button class="theme-option" onclick="setTheme('midnight')">
+                            <span class="theme-dot" style="background: #a855f7;"></span> Midnight Luxe
+                        </button>
+                        <button class="theme-option" onclick="setTheme('aurora')">
+                            <span class="theme-dot" style="background: #38bdf8;"></span> Aurora Glass
+                        </button>
+                        <button class="theme-option" onclick="setTheme('rosegold')">
+                            <span class="theme-dot" style="background: #fb7185;"></span> Rose Gold Luxe
+                        </button>
+                        <button class="theme-option" onclick="setTheme('matrix')">
+                            <span class="theme-dot" style="background: #10b981;"></span> Quantum Matrix
+                        </button>
+                    </div>
+                </div>
+
+                <!-- History Drawer Toggle -->
+                <button id="historyToggleBtn" class="icon-btn" onclick="toggleHistoryDrawer()" title="Calculation History">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mode Selector Tabs -->
+        <nav class="mode-tabs">
+            <button id="tabStandard" class="tab-btn active" onclick="switchMode('standard')">Standard</button>
+            <button id="tabScientific" class="tab-btn" onclick="switchMode('scientific')">Scientific</button>
+            <button id="tabConverter" class="tab-btn" onclick="switchMode('converter')">Unit Converter</button>
+        </nav>
+
+        <!-- Calculator Main Glass Card -->
+        <main class="calculator-card">
+            
+            <!-- LCD/OLED Display Screen -->
+            <section class="display-panel" aria-label="Calculator Display">
+                <div class="display-meta">
+                    <button id="angleBadge" class="angle-badge" onclick="toggleAngleMode()">DEG</button>
+                    <div class="memory-badges">
+                        <span id="memIndicator" class="mem-indicator">M</span>
+                    </div>
+                </div>
+                
+                <div id="displayTape" class="display-tape"></div>
+                <div id="displayMain" class="display-main" aria-live="polite">0</div>
+                <div id="displayPreview" class="display-live-preview"></div>
+            </section>
+
+            <!-- Scientific Keypad (Expandable) -->
+            <div id="scientificGrid" class="scientific-grid hidden">
+                <button class="calc-btn fn-btn" onclick="appendFunction('sin')">sin</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('cos')">cos</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('tan')">tan</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('log')">log</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('ln')">ln</button>
+
+                <button class="calc-btn fn-btn" onclick="appendFunction('sqrt')">√x</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('sqr')">x²</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('power')">xʸ</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('pi')">π</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('e')">e</button>
+
+                <button class="calc-btn fn-btn" onclick="appendValue('(')">(</button>
+                <button class="calc-btn fn-btn" onclick="appendValue(')')">)</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('fact')">n!</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('abs')">|x|</button>
+                <button class="calc-btn fn-btn" onclick="appendFunction('inv')">1/x</button>
+
+                <button class="calc-btn fn-btn" onclick="handleMemory('MC')">MC</button>
+                <button class="calc-btn fn-btn" onclick="handleMemory('MR')">MR</button>
+                <button class="calc-btn fn-btn" onclick="handleMemory('M+')">M+</button>
+                <button class="calc-btn fn-btn" onclick="handleMemory('M-')">M-</button>
+                <button class="calc-btn fn-btn" onclick="handleMemory('MS')">MS</button>
+            </div>
+
+            <!-- Standard Keypad -->
+            <div id="standardGrid" class="keypad-grid">
+                <button id="btn-ac" class="calc-btn danger-btn" onclick="clearAll()">AC</button>
+                <button id="btn-del" class="calc-btn danger-btn" onclick="deleteLast()">DEL</button>
+                <button id="btn-mod" class="calc-btn op-btn" onclick="appendValue('%')">%</button>
+                <button id="btn-div" class="calc-btn op-btn" onclick="appendValue('/')">÷</button>
+
+                <button id="btn-7" class="calc-btn num-btn" onclick="appendValue('7')">7</button>
+                <button id="btn-8" class="calc-btn num-btn" onclick="appendValue('8')">8</button>
+                <button id="btn-9" class="calc-btn num-btn" onclick="appendValue('9')">9</button>
+                <button id="btn-mult" class="calc-btn op-btn" onclick="appendValue('*')">×</button>
+
+                <button id="btn-4" class="calc-btn num-btn" onclick="appendValue('4')">4</button>
+                <button id="btn-5" class="calc-btn num-btn" onclick="appendValue('5')">5</button>
+                <button id="btn-6" class="calc-btn num-btn" onclick="appendValue('6')">6</button>
+                <button id="btn-minus" class="calc-btn op-btn" onclick="appendValue('-')">−</button>
+
+                <button id="btn-1" class="calc-btn num-btn" onclick="appendValue('1')">1</button>
+                <button id="btn-2" class="calc-btn num-btn" onclick="appendValue('2')">2</button>
+                <button id="btn-3" class="calc-btn num-btn" onclick="appendValue('3')">3</button>
+                <button id="btn-plus" class="calc-btn op-btn" onclick="appendValue('+')">+</button>
+
+                <button id="btn-sign" class="calc-btn num-btn" onclick="toggleSign()">±</button>
+                <button id="btn-0" class="calc-btn num-btn" onclick="appendValue('0')">0</button>
+                <button id="btn-dot" class="calc-btn num-btn" onclick="appendValue('.')">.</button>
+                <button id="btn-equals" class="calc-btn equals-btn" onclick="calculate()">=</button>
+            </div>
+
+            <!-- Unit Converter Panel -->
+            <div id="converterPanel" class="converter-panel">
+                <div class="converter-select-row">
+                    <select id="convType" class="custom-select" onchange="updateConverterUnits(); runConversion('from');">
+                        <option value="length">📏 Length</option>
+                        <option value="weight">⚖️ Weight & Mass</option>
+                        <option value="temperature">🌡️ Temperature</option>
+                        <option value="data">💾 Digital Storage</option>
+                        <option value="speed">🚀 Speed</option>
+                    </select>
+                </div>
+
+                <div class="converter-card-box">
+                    <label class="converter-label" for="convInputFrom">From</label>
+                    <select id="convUnitFrom" class="custom-select" onchange="runConversion('from')"></select>
+                    <div class="converter-input-wrap">
+                        <input type="number" id="convInputFrom" class="converter-input" value="1" oninput="runConversion('from')" placeholder="0">
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: var(--text-accent); font-size: 20px;">⇅</div>
+
+                <div class="converter-card-box">
+                    <label class="converter-label" for="convInputTo">To</label>
+                    <select id="convUnitTo" class="custom-select" onchange="runConversion('from')"></select>
+                    <div class="converter-input-wrap">
+                        <input type="number" id="convInputTo" class="converter-input" value="1000" oninput="runConversion('to')" placeholder="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculation History Slide-out Drawer -->
+            <aside id="historyDrawer" class="history-drawer" aria-label="Calculation History">
+                <div class="history-header">
+                    <div class="history-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        History
+                    </div>
+                    <button class="icon-btn" onclick="toggleHistoryDrawer(false)" title="Close History">✕</button>
+                </div>
+                <div id="historyList" class="history-list"></div>
+                <button class="clear-hist-btn" onclick="clearHistory()">Clear History</button>
+            </aside>
+
+        </main>
+
+        <!-- Keyboard Shortcuts Hint Footer -->
+        <footer class="shortcuts-bar">
+            <span><span class="kbd-badge">Enter</span> = Calculate</span>
+            <span><span class="kbd-badge">Esc</span> = Clear</span>
+            <span><span class="kbd-badge">Backspace</span> = Delete</span>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
