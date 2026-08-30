@@ -7,3 +7,9 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Local PDF Reference Sources (Prevent GitHub 50MB/100MB limit errors)
+*.pdf
+physics for you/
+pdf_sources/
+raw_pdfs/

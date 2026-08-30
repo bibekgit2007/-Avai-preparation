@@ -3,288 +3,1564 @@
 <head>
     <meta charset="UTF-8">
     <link rel="manifest" href="manifest.json">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEE/NEET Practice Portal Pro</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AVAI Preparation - Premier Multi-Subject Examination & Mock Test Portal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS & Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    
+    <!-- Master Question Bank -->
+    <script src="data/physics_questions.js"></script>
+    
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
+    
     <style>
-        .status-btn { width: 35px; height: 35px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #e2e8f0; font-weight: bold; font-size: 12px; transition: 0.2s; background: white; }
-        .answered { background: #10b981 !important; color: white; border: none; }
-        .marked { background: #8b5cf6 !important; color: white; border: none; }
-        .active-q { border: 2px solid #2563eb; transform: scale(1.1); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
-        .subject-tab { cursor: pointer; border-bottom: 4px solid transparent; transition: 0.3s; opacity: 0.6; }
-        .subject-tab.active { border-bottom: 4px solid #2563eb; opacity: 1; color: #2563eb; background: #eff6ff; }
-        #explanationBox { display: none; }
+        :root {
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-display { font-family: var(--font-display); }
+        .font-mono { font-family: var(--font-mono); }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.6); }
+
+        /* Glassmorphism Styles */
+        .glass-header {
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .glass-modal {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Palette Button Styling */
+        .status-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1.5px solid #e2e8f0;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            color: #334155;
+            user-select: none;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .status-btn:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px -2px rgba(59, 130, 246, 0.25);
+        }
+
+        .status-btn.answered {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            color: #ffffff !important;
+            border-color: #059669 !important;
+            box-shadow: 0 3px 10px -2px rgba(16, 185, 129, 0.4) !important;
+        }
+
+        .status-btn.not-answered {
+            background: linear-gradient(135deg, #f87171 0%, #dc2626 100%) !important;
+            color: #ffffff !important;
+            border-color: #b91c1c !important;
+            box-shadow: 0 3px 10px -2px rgba(220, 38, 38, 0.4) !important;
+        }
+
+        .status-btn.marked {
+            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%) !important;
+            color: #ffffff !important;
+            border-color: #6d28d9 !important;
+            box-shadow: 0 3px 10px -2px rgba(124, 58, 237, 0.4) !important;
+        }
+
+        .status-btn.answered-marked {
+            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%) !important;
+            color: #ffffff !important;
+            border: 2px solid #10b981 !important;
+            position: relative;
+            box-shadow: 0 3px 10px -2px rgba(124, 58, 237, 0.4) !important;
+        }
+
+        .status-btn.answered-marked::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+        }
+
+        .status-btn.active-q {
+            outline: 3px solid #3b82f6 !important;
+            outline-offset: 2px;
+            transform: scale(1.12);
+            z-index: 10;
+            box-shadow: 0 0 16px rgba(59, 130, 246, 0.5) !important;
+        }
+
+        /* Subject Tab Styling */
+        .subject-tab {
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #64748b;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subject-tab:hover {
+            color: #1e293b;
+            background: #f1f5f9;
+        }
+
+        .subject-tab.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border-color: #1d4ed8;
+            box-shadow: 0 4px 14px -2px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Option Card Styles */
+        .option-card {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 18px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .option-card:hover {
+            border-color: #93c5fd;
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.12);
+        }
+
+        .option-card.selected {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .option-badge {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 14px;
+            border: 1.5px solid #cbd5e1;
+            background: #f8fafc;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+
+        .option-card.selected .option-badge {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Floating Calculator Window */
+        #calcModal {
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 35px rgba(168, 85, 247, 0.25);
+            transition: transform 0.2s ease, opacity 0.2s ease, width 0.25s ease, height 0.25s ease;
+        }
+        #calcModal.hidden { display: none; opacity: 0; transform: scale(0.95) translateY(10px); }
+        #calcModal.is-docked {
+            top: 64px !important; right: 0px !important; left: auto !important;
+            height: calc(100vh - 64px) !important; border-radius: 0px !important;
+            border-top: none; border-right: none; border-bottom: none;
+        }
+
+        /* Micro-Animations */
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeInSlide 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .pulse-glow { animation: pulseGlow 2s infinite ease-in-out; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body class="bg-slate-900 text-slate-900 min-h-screen flex flex-col relative selection:bg-blue-600 selection:text-white antialiased">
 
-    <header class="bg-slate-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        <div class="flex items-center gap-6">
-             <h1 class="text-xl font-black italic tracking-tight">
-    <span class="text-blue-400">AVAI</span> PREPARATION
-</h1>
-            <div id="timer" class="font-mono bg-slate-800 px-4 py-1 rounded border border-slate-700 text-yellow-400">03:00:00</div>
+    <!-- Top Navigation Header -->
+    <header class="glass-header text-white px-3.5 py-2.5 md:px-6 md:py-3.5 flex justify-between items-center sticky top-0 z-40 gap-2 select-none shadow-lg">
+        <div class="flex items-center gap-3 md:gap-5 flex-wrap">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-2 cursor-pointer" onclick="location.reload()">
+                <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-600 flex items-center justify-center font-display font-black text-white text-base shadow-md shadow-blue-500/30">
+                    A
+                </div>
+                <h1 class="text-base md:text-xl font-display font-black tracking-tight flex items-center gap-1.5">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">AVAI</span>
+                    <span class="text-slate-200">PREP</span>
+                </h1>
+            </div>
+            
+            <!-- Live Exam Countdown Timer -->
+            <div id="timer" class="font-mono bg-slate-950/80 px-3 py-1 rounded-xl border border-slate-800 text-amber-400 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner">
+                <svg class="w-3.5 h-3.5 text-amber-400 pulse-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2.2"/><path stroke-width="2.2" stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+                <span id="timerText">03:00:00</span>
+            </div>
+
+            <!-- Active Data Source Status -->
+            <div id="syncBadge" class="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-800/60 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="syncBadgeText">Multi-Subject Live Bank</span>
+            </div>
         </div>
-        <div class="flex items-center gap-3">
-            <select id="examSelector" onchange="filterByExam()" class="bg-slate-800 border border-slate-700 rounded px-3 py-1 text-sm font-bold text-blue-400 outline-none">
-                <option value="JEE">JEE Main</option>
-                <option value="NEET">NEET</option>
-                <option value="WBJEE">WBJEE</option>
-                <option value="NDA">NDA</option>
-                <option value="CUET">CUET</option>
-                <option value="UPSC">UPSC (Prelims)</option>
-            </select>
-            <select id="langSwitch" class="bg-slate-800 border border-slate-700 rounded px-3 py-1 text-sm outline-none">
-                <option value="en">English</option>
-                <option value="bn">বাংলা</option>
-            </select>
-            <a href="calculator.html" target="_blank" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-sm font-bold px-3 py-1 rounded flex items-center gap-1 shadow-md transition">
-                <span>✦</span> Calculator
-            </a>
-            <button onclick="showFinalResult()" class="bg-red-600 hover:bg-red-700 px-5 py-1 rounded font-bold text-sm transition">FINISH TEST</button>
+
+        <!-- Top Right Control Buttons -->
+        <div class="flex items-center gap-2 md:gap-2.5">
+            <!-- Custom Mock Test Button -->
+            <button onclick="openMockModal()" class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-display font-black text-xs md:text-sm px-3 md:px-4 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-amber-500/20 transition-all transform active:scale-95 cursor-pointer">
+                <span>🎯</span>
+                <span class="hidden sm:inline">Custom Mock</span>
+            </button>
+
+            <!-- Exam Target Selector -->
+            <div class="relative">
+                <select id="examSelector" onchange="filterByExam()" class="bg-slate-800/90 border border-slate-700/80 hover:border-blue-500/80 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-bold text-blue-300 outline-none transition cursor-pointer appearance-none pr-7">
+                    <option value="ALL">All Exams</option>
+                    <option value="NEET">NEET</option>
+                    <option value="JEE">JEE Main</option>
+                    <option value="WBJEE">WBJEE</option>
+                    <option value="UPSC">UPSC</option>
+                    <option value="SSC">SSC (CGL/CHSL)</option>
+                    <option value="CUET">CUET</option>
+                    <option value="NDA">NDA</option>
+                </select>
+                <span class="absolute right-2 top-2.5 text-[10px] pointer-events-none text-slate-400">▼</span>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="relative">
+                <select id="langSwitch" class="bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-semibold outline-none text-slate-200 transition cursor-pointer appearance-none pr-7">
+                    <option value="en">EN</option>
+                    <option value="bn">বাংলা</option>
+                </select>
+                <span class="absolute right-2 top-2.5 text-[10px] pointer-events-none text-slate-400">▼</span>
+            </div>
+
+            <!-- Virtual Scientific Calculator Toggle Button -->
+            <button onclick="toggleCalculator()" id="headerCalcBtn" class="bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-purple-600/20 transition transform active:scale-95 cursor-pointer" title="Toggle Virtual Calculator (Press 'C')">
+                <span>✦</span>
+                <span class="hidden md:inline">Calculator</span>
+                <span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-mono">C</span>
+            </button>
+
+            <!-- Mobile Palette Toggle Button (Visible only on mobile) -->
+            <button onclick="toggleMobilePalette()" class="md:hidden bg-slate-800 text-slate-200 hover:text-white p-2 rounded-xl border border-slate-700 text-xs font-bold flex items-center gap-1">
+                <span>📊</span>
+            </button>
+
+            <!-- Finish Test Button -->
+            <button onclick="showFinalResult()" class="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white px-3.5 md:px-4 py-1.5 rounded-xl font-display font-black text-xs md:text-sm transition-all shadow-md shadow-red-600/30 transform active:scale-95 cursor-pointer">
+                FINISH
+            </button>
         </div>
     </header>
 
-    <main class="flex h-[calc(100vh-68px)]">
-        <div class="flex-1 flex flex-col bg-white overflow-hidden">
-            <div class="flex border-b bg-slate-50" id="subjectTabs">
-                <button onclick="switchSubject('Physics')" class="subject-tab px-8 py-4 text-xs font-black uppercase">Physics</button>
-                <button onclick="switchSubject('Chemistry')" class="subject-tab active px-8 py-4 text-xs font-black uppercase">Chemistry</button>
-                <button onclick="switchSubject('Math')" class="subject-tab px-8 py-4 text-xs font-black uppercase">Mathematics</button>
+    <!-- Main Practice & Examination Portal Layout -->
+    <main class="flex flex-1 flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden bg-slate-100">
+        
+        <!-- Left Question & Action Workspace -->
+        <div class="flex-1 flex flex-col bg-white overflow-hidden shadow-sm">
+            <!-- Dynamic Multi-Subject Toolbar -->
+            <div class="flex flex-wrap items-center justify-between border-b border-slate-200 bg-slate-50/90 px-3 md:px-5 py-2.5 gap-2 select-none" id="toolbarArea">
+                <!-- Subject Tabs Strip -->
+                <div class="flex overflow-x-auto gap-1.5 max-w-full pb-0.5 no-scrollbar" id="subjectTabs">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Topic & Search Bar -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <!-- Chapter/Topic Filter Dropdown -->
+                    <select id="topicFilter" onchange="filterByTopic()" class="bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 outline-none hover:border-blue-500 focus:border-blue-500 transition cursor-pointer shadow-sm max-w-[160px] md:max-w-[220px] truncate">
+                        <option value="ALL">All Topics</option>
+                    </select>
+
+                    <!-- Instant Search Input -->
+                    <div class="relative">
+                        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search questions..." class="bg-white border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs outline-none focus:border-blue-500 w-28 sm:w-44 transition shadow-sm font-medium">
+                        <svg class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex-1 overflow-y-auto p-8" id="questionArea">
-                <div id="loading" class="flex flex-col items-center justify-center h-full space-y-4">
-                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                    <p class="text-slate-500 font-bold">Fetching Questions from Google Sheets...</p>
+            <!-- Dynamic Question Content Display Container -->
+            <div class="flex-1 overflow-y-auto p-4 md:p-8" id="questionArea">
+                <div id="loading" class="flex flex-col items-center justify-center h-full space-y-4 py-20">
+                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-200 border-t-blue-600"></div>
+                    <p class="text-slate-600 font-display font-bold text-sm">Loading multi-subject question bank...</p>
                 </div>
             </div>
-             <div id="loader" class="fixed inset-0 flex items-center justify-center bg-slate-900 z-50">
-    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-    <p class="ml-4 text-white font-bold">Loading Avai Prep...</p>
-</div>
-            <div class="p-6 border-t flex justify-between items-center bg-slate-50">
-                <div class="flex gap-3">
-                    <button onclick="toggleExplanation()" id="checkAnsBtn" class="px-6 py-2 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 shadow-sm transition">Check Answer</button>
-                    <button onclick="markForReview()" class="px-6 py-2 bg-purple-100 text-purple-700 rounded-lg font-bold hover:bg-purple-200">Mark for Review</button>
+
+            <!-- Question Bottom Actions Bar -->
+            <div class="p-3.5 md:p-5 border-t border-slate-200 flex flex-wrap gap-2.5 justify-between items-center bg-slate-50/90 select-none">
+                <div class="flex gap-2 flex-wrap">
+                    <button onclick="toggleExplanation()" id="checkAnsBtn" class="px-3.5 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white rounded-xl font-display font-bold shadow-sm transition text-xs md:text-sm flex items-center gap-1.5 active:scale-95 cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        <span>Solution</span>
+                    </button>
+                    <button onclick="markForReview()" class="px-3.5 py-2 bg-purple-100 hover:bg-purple-200 text-purple-800 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1">
+                        <span>🏷️</span>
+                        <span>Mark for Review</span>
+                    </button>
+                    <button onclick="clearCurrentResponse()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer">
+                        Clear
+                    </button>
                 </div>
-                <div class="flex gap-3">
-                    <button onclick="prevQ()" class="px-6 py-2 border rounded-lg font-bold bg-white hover:bg-slate-100">Previous</button>
-                    <button onclick="nextQ()" class="px-10 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 shadow-lg">Save & Next</button>
+                <div class="flex gap-2">
+                    <button onclick="prevQ()" class="px-4 py-2 border border-slate-300 rounded-xl font-display font-bold bg-white hover:bg-slate-100 text-slate-700 transition text-xs md:text-sm shadow-sm active:scale-95 cursor-pointer">
+                        ← Prev
+                    </button>
+                    <button onclick="nextQ()" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl font-display font-black shadow-md shadow-blue-600/20 transition text-xs md:text-sm flex items-center gap-1.5 active:scale-95 cursor-pointer">
+                        <span>Save & Next</span>
+                        <span>→</span>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <aside class="w-80 bg-white border-l p-6 flex flex-col shadow-inner">
-            <div class="mb-8 flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-black">AJ</div>
-                <div>
-                    <p class="text-sm font-bold">Candidate</p>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-black">JEE Practice Mode</p>
+        <!-- Right Side Candidate & NTA Question Palette Sidebar -->
+        <aside id="paletteSidebar" class="w-full md:w-80 bg-white border-l border-slate-200 p-4 md:p-6 flex flex-col shadow-inner overflow-y-auto max-h-[40vh] md:max-h-full transition-all duration-300">
+            <!-- Candidate Profile Card -->
+            <div class="mb-4 flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-200/80 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-display font-black text-xs shadow-sm">
+                        AV
+                    </div>
+                    <div>
+                        <p class="text-xs font-black text-slate-800">Aspirant Candidate</p>
+                        <p id="examBadgeText" class="text-[10px] text-blue-600 uppercase tracking-wider font-bold">Online Practice</p>
+                    </div>
+                </div>
+                <span id="markingSchemeBadge" class="text-[10px] font-mono font-bold bg-blue-100/80 text-blue-800 px-2.5 py-1 rounded-lg border border-blue-200">+4 / -1</span>
+            </div>
+
+            <!-- Subject Progress Bar -->
+            <div class="mb-4 bg-gradient-to-br from-blue-50/80 to-indigo-50/50 p-3 rounded-2xl border border-blue-100">
+                <div class="flex justify-between text-xs font-bold text-slate-600 mb-1.5">
+                    <span id="currentSubjectTitle" class="font-display">Subject Progress</span>
+                    <span id="subjectProgressText" class="font-mono text-blue-700">0 / 0</span>
+                </div>
+                <div class="w-full bg-slate-200/80 rounded-full h-2 overflow-hidden shadow-inner">
+                    <div id="subjectProgressBar" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                 </div>
             </div>
 
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Question Navigator</p>
-            <div id="palette" class="grid grid-cols-4 gap-3"></div>
-
-            <div class="mt-auto pt-6 border-t space-y-2">
-                <div class="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase">
-                    <span class="status-btn answered w-5 h-5"></span> Answered
+            <!-- NTA Question Palette Counters (Mini KPI Grid) -->
+            <div class="grid grid-cols-2 gap-2 mb-4 text-[11px] font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-200/80">
+                <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-[10px] font-mono font-black" id="countAnswered">0</span>
+                    <span>Answered</span>
                 </div>
-                <div class="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase">
-                    <span class="status-btn marked w-5 h-5"></span> For Review
+                <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-lg bg-red-500 text-white flex items-center justify-center text-[10px] font-mono font-black" id="countNotAnswered">0</span>
+                    <span>Not Answered</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-lg bg-purple-500 text-white flex items-center justify-center text-[10px] font-mono font-black" id="countMarked">0</span>
+                    <span>Marked</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-mono font-black" id="countNotVisited">0</span>
+                    <span>Not Visited</span>
                 </div>
             </div>
+
+            <!-- Palette Grid -->
+            <div class="flex items-center justify-between mb-2">
+                <p class="text-[11px] font-display font-black text-slate-400 uppercase tracking-wider">Question Palette</p>
+                <span class="text-[10px] font-mono text-slate-400">Total: <span id="paletteTotalCount">0</span></span>
+            </div>
+            <div id="palette" class="grid grid-cols-5 gap-2 mb-4"></div>
         </aside>
     </main>
 
-    <div id="resultModal" class="fixed inset-0 bg-slate-900/95 z-[100] hidden flex flex-col items-center justify-center text-white text-center p-6">
-        <h2 class="text-4xl font-black mb-8">TEST COMPLETE</h2>
-        <div class="grid grid-cols-2 gap-6 w-full max-w-md mb-12">
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/10">
-                <p class="text-xs text-blue-300 font-bold uppercase mb-1">Total Score</p>
-                <p class="text-6xl font-black" id="finalScoreDisplay">0</p>
+    <!-- ==========================================================================
+         CUSTOM MOCK TEST SETUP MODAL
+         ========================================================================== -->
+    <div id="mockModal" class="fixed inset-0 glass-modal z-[95] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 md:p-8 border border-slate-200 animate-fade-in">
+            <div class="flex items-center justify-between mb-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-display font-black text-xl shadow-sm">
+                        🎯
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-black text-slate-900">Custom Mock Exam Setup</h3>
+                        <p class="text-xs text-slate-500">Configure real exam duration, subjects & negative marking</p>
+                    </div>
+                </div>
+                <button onclick="closeMockModal()" class="w-8 h-8 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition">✕</button>
             </div>
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/10">
-                <p class="text-xs text-green-300 font-bold uppercase mb-1">Accuracy</p>
-                <p class="text-6xl font-black" id="accuracyDisplay">0%</p>
+
+            <div class="space-y-4 mb-6">
+                <!-- Preset Buttons -->
+                <div>
+                    <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-2">Preset Exam Formats:</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setMockPreset('NEET')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">NEET (180m)</button>
+                        <button onclick="setMockPreset('JEE')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">JEE Main (180m)</button>
+                        <button onclick="setMockPreset('UPSC')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">UPSC (120m)</button>
+                        <button onclick="setMockPreset('SSC')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">SSC (60m)</button>
+                        <button onclick="setMockPreset('CUET')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">CUET (45m)</button>
+                        <button onclick="setMockPreset('QUICK')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">⚡ 15m Sprint</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Time (Minutes):</label>
+                        <input type="number" id="mockDurationInput" value="60" min="5" max="360" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-xs font-bold outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Marking Scheme:</label>
+                        <select id="mockMarkingSelect" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-bold outline-none focus:border-blue-500 bg-white">
+                            <option value="4,-1">+4 Correct / -1 Wrong (NEET/JEE)</option>
+                            <option value="2,-0.66">+2 Correct / -0.66 Wrong (UPSC)</option>
+                            <option value="2,-0.50">+2 Correct / -0.50 Wrong (SSC)</option>
+                            <option value="1,-0.25">+1 Correct / -0.25 Wrong (Bank/Govt)</option>
+                            <option value="1,0">+1 Correct / No Negative Marking</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Include Subject Sections:</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-700 bg-slate-50 p-3 rounded-2xl border border-slate-200 max-h-36 overflow-y-auto" id="mockSubjectCheckboxes">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-3 justify-end">
+                <button onclick="closeMockModal()" class="px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition">Cancel</button>
+                <button onclick="startCustomMockTest()" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-display font-black rounded-xl text-xs shadow-md transition transform active:scale-95 cursor-pointer">
+                    Start Mock Test 🚀
+                </button>
             </div>
         </div>
-        <button onclick="location.reload()" class="bg-white text-slate-900 px-12 py-4 rounded-full font-black text-lg hover:bg-blue-400 transition transform hover:scale-105">RESTART PRACTICE</button>
     </div>
 
-    <script>
-        // CONFIG: Replace this with your Google Sheet CSV URL
-        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR2d2cT2h-sVPSX9PiAQG503jm-bPfHp7uTi2YVo2BN3wbCzl6peJdsZBHkMVBinrvciJnDXfYMqO1C/pub?output=csv';
+    <!-- ==========================================================================
+         SECURE ADMIN / QUESTION BANK SYNC MODAL
+         ========================================================================== -->
+    <div id="adminSheetModal" class="fixed inset-0 glass-modal z-[95] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 md:p-8 border border-slate-200 animate-fade-in">
+            <div class="flex items-center justify-between mb-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-display font-black text-xl shadow-sm">
+                        ⚙️
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-black text-slate-900">Admin Question Bank Center</h3>
+                        <p class="text-xs text-slate-500">Live Google Sheet Sync & Direct File Uploader</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition">✕</button>
+            </div>
 
+            <div class="space-y-4 mb-6">
+                <div>
+                    <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-1.5">Google Sheet URL (Viewer link):</label>
+                    <input type="url" id="adminSheetUrlInput" placeholder="https://docs.google.com/spreadsheets/d/..." class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-xs md:text-sm outline-none focus:border-emerald-500 transition font-mono bg-slate-50">
+                    <p class="text-[11px] text-slate-500 mt-1">Accepts standard share links, edit links, or published CSV URLs (Auto-converted!).</p>
+                </div>
+
+                <div class="border-t border-slate-200 pt-3">
+                    <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-1.5">Or Upload CSV / TSV / JSON Directly:</label>
+                    <input type="file" id="localFileInput" accept=".csv,.tsv,.json,.txt" onchange="handleLocalFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer">
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200/80 rounded-2xl p-3.5 text-xs text-emerald-900 space-y-1">
+                    <p class="font-bold">🔒 Security & Permissions:</p>
+                    <p>Keep your Google Sheet permission set to <strong>"Viewer"</strong>. Nobody can edit or delete your original questions.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2.5 justify-between items-center">
+                <a href="data/physics_for_you_master_questions.csv" download class="px-3.5 py-2 border border-slate-200 hover:bg-slate-100 rounded-xl text-xs font-bold text-slate-700 transition flex items-center gap-1.5">
+                    📥 Download CSV Template
+                </a>
+                <div class="flex gap-2">
+                    <button onclick="closeAdminModal()" class="px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition">Cancel</button>
+                    <button onclick="saveAndSyncSheet()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-display font-black shadow-md transition flex items-center gap-1.5 active:scale-95 cursor-pointer">
+                        Sync Live Bank 🔄
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         FLOATING DRAGGABLE ON-SCREEN SCIENTIFIC CALCULATOR
+         ========================================================================== -->
+    <div id="calcModal" class="fixed top-16 right-6 w-[440px] h-[660px] max-w-[94vw] max-h-[88vh] z-50 rounded-2xl shadow-2xl flex flex-col bg-slate-950 border border-purple-500/40 overflow-hidden hidden" style="resize: both;">
+        <div id="calcHeader" class="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 px-4 py-2.5 border-b border-purple-500/30 flex items-center justify-between cursor-move select-none">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse"></span>
+                <span class="text-xs font-display font-black tracking-wider text-purple-200 uppercase flex items-center gap-1">
+                    <span>✦</span> AURA SCIENTIFIC CALCULATOR
+                </span>
+            </div>
+            <div class="flex items-center gap-1">
+                <a href="calculator.html" target="_blank" title="Open in separate tab" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition text-xs">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+                <button onclick="toggleCalcDock()" title="Dock to side / Float freely" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition text-xs">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/><path d="M15 3v18" stroke-width="2"/></svg>
+                </button>
+                <button onclick="toggleCalculator(false)" title="Close Calculator (C)" class="p-1 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/20 transition text-xs">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 w-full h-full relative bg-slate-950 overflow-hidden">
+            <iframe src="calculator.html" id="calcIframe" class="w-full h-full border-none" title="Virtual Scientific Calculator"></iframe>
+        </div>
+    </div>
+
+    <!-- Floating Quick Launch Calculator FAB -->
+    <button id="calcFabBtn" onclick="toggleCalculator()" class="fixed bottom-5 right-5 z-40 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold px-4 py-2.5 rounded-full shadow-2xl hover:shadow-purple-500/40 flex items-center gap-2 transition-all transform hover:scale-105 border border-purple-400/40 backdrop-blur-md cursor-pointer select-none active:scale-95" title="Toggle Calculator (Press 'C')">
+        <span class="text-sm text-purple-200">✦</span>
+        <span class="text-xs font-display font-black tracking-wide">Calculator</span>
+        <span class="text-[10px] bg-black/40 text-purple-200 px-1.5 py-0.5 rounded font-mono font-bold">C</span>
+    </button>
+
+    <!-- Initial App Loader -->
+    <div id="loader" class="fixed inset-0 flex flex-col items-center justify-center glass-modal z-50 transition-opacity duration-300">
+        <div class="animate-spin rounded-full h-14 w-14 border-4 border-slate-700 border-t-blue-500 mb-4"></div>
+        <p class="text-white font-display font-bold tracking-wide text-sm">Initializing AVAI Examination Portal...</p>
+    </div>
+
+    <!-- ==========================================================================
+         TEST SCORECARD & PERFORMANCE ANALYTICS MODAL
+         ========================================================================== -->
+    <div id="resultModal" class="fixed inset-0 glass-modal z-[100] hidden flex flex-col items-center justify-center text-white text-center p-4 md:p-6 overflow-y-auto">
+        <div class="max-w-2xl w-full bg-slate-900/95 border border-slate-800 p-6 md:p-8 rounded-3xl shadow-2xl backdrop-blur-xl my-auto animate-fade-in">
+            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3 border border-emerald-500/30 text-2xl font-black">
+                ✓
+            </div>
+            <h2 class="text-2xl md:text-3xl font-display font-black mb-1 text-white">TEST SCORECARD</h2>
+            <p id="resultExamTitle" class="text-xs font-display font-bold text-blue-400 uppercase tracking-widest mb-6">Performance Report</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <p class="text-[10px] text-blue-300 font-bold uppercase mb-1">Score</p>
+                    <p class="text-2xl md:text-3xl font-display font-black text-white" id="finalScoreDisplay">0</p>
+                </div>
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <p class="text-[10px] text-emerald-300 font-bold uppercase mb-1">Accuracy</p>
+                    <p class="text-2xl md:text-3xl font-display font-black text-emerald-400" id="accuracyDisplay">0%</p>
+                </div>
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <p class="text-[10px] text-purple-300 font-bold uppercase mb-1">Attempted</p>
+                    <p class="text-2xl md:text-3xl font-display font-black text-purple-400" id="attemptedCount">0</p>
+                </div>
+                <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <p class="text-[10px] text-amber-300 font-bold uppercase mb-1">Max Marks</p>
+                    <p class="text-2xl md:text-3xl font-display font-black text-amber-400" id="totalPossibleMarks">0</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-center mb-6 bg-slate-950/60 p-3 rounded-2xl border border-slate-800 text-xs">
+                <div>
+                    <span class="block text-emerald-400 font-semibold">Correct (+<span id="correctScoreAdd">4</span>)</span>
+                    <span id="correctCount" class="font-display font-black text-emerald-400 text-lg">0</span>
+                </div>
+                <div>
+                    <span class="block text-red-400 font-semibold">Wrong (-<span id="wrongScoreDed">1</span>)</span>
+                    <span id="incorrectCount" class="font-display font-black text-red-400 text-lg">0</span>
+                </div>
+                <div>
+                    <span class="block text-slate-400 font-semibold">Unattempted</span>
+                    <span id="unattemptedCount" class="font-display font-black text-slate-300 text-lg">0</span>
+                </div>
+            </div>
+
+            <!-- Subject-wise Breakdown Table -->
+            <div class="mb-6 bg-slate-950/80 rounded-2xl p-4 border border-slate-800 text-left max-h-48 overflow-y-auto">
+                <p class="text-[10px] font-display font-black uppercase tracking-wider text-slate-400 mb-2.5">Subject-wise Analytics</p>
+                <div id="subjectBreakdownTable" class="space-y-2 text-xs"></div>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="location.reload()" class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white py-3 rounded-xl font-display font-black text-xs md:text-sm transition shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer">
+                    RESTART PRACTICE
+                </button>
+                <button onclick="document.getElementById('resultModal').classList.add('hidden')" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 py-3 rounded-xl font-bold text-xs md:text-sm transition active:scale-95 cursor-pointer">
+                    Review Solutions
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 px-4 md:px-6 py-3 border-t border-slate-800/80 text-xs select-none">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2.5">
+            <p class="text-[11px]">© 2026 AVAI Preparation. Premier Multi-Subject Examination & Mock Test Portal.</p>
+            <div class="flex items-center gap-4 flex-wrap text-[11px]">
+                <button onclick="openMockModal()" class="text-amber-400 hover:text-amber-300 font-bold transition flex items-center gap-1 cursor-pointer">🎯 Custom Mock</button>
+                <button onclick="toggleCalculator()" class="text-purple-400 hover:text-purple-300 font-bold transition flex items-center gap-1 cursor-pointer">✦ Calculator</button>
+                <button onclick="openAdminModal()" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1 cursor-pointer" title="Admin Question Bank Sync (Ctrl+Shift+A)">⚙️ Admin Sync</button>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         APPLICATION SCRIPT & TEST ENGINE LOGIC
+         ========================================================================== -->
+    <script>
+        // Master Subject Registry
+        const ALL_AVAILABLE_SUBJECTS = [
+            'Physics', 'Chemistry', 'Mathematics', 'Biology',
+            'General Knowledge', 'General Science', 'History',
+            'Geography', 'Political Science', 'English', 'Reasoning'
+        ];
+
+        // Subject Mapping for Various Exams
+        const SUBJECTS_BY_EXAM = {
+            'ALL': ALL_AVAILABLE_SUBJECTS,
+            'NEET': ['Physics', 'Chemistry', 'Biology'],
+            'JEE': ['Physics', 'Chemistry', 'Mathematics'],
+            'WBJEE': ['Physics', 'Chemistry', 'Mathematics'],
+            'UPSC': ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge'],
+            'SSC': ['General Knowledge', 'General Science', 'English', 'Mathematics', 'Reasoning'],
+            'CUET': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'],
+            'NDA': ['Mathematics', 'General Science', 'English', 'General Knowledge']
+        };
+
+        // State Variables
+        let masterDataset = [];
         let questionBank = [];
-        let currentSubject = "Chemistry";
-        let currentIdx = 0; // Index within the filtered subject list
-        let responses = []; // Stores selected option for each question (indexed by originalBank index)
-        let statuses = []; // 'not-visited', 'answered', 'marked'
+        let currentExam = "ALL";
+        let currentSubject = "Physics";
+        let currentTopic = "ALL";
+        let searchQuery = "";
+        let currentIdx = 0;
+        let responses = [];
+        let statuses = []; // 'not-visited', 'not-answered', 'answered', 'marked', 'answered-marked'
         let currentLang = 'en';
 
-        // 1. FETCH DATA FROM GOOGLE SHEETS
-        async function loadData() {
-            try {
-                const response = await fetch(SHEET_CSV_URL);
-                const csvData = await response.text();
-                // At the very end of your data fetching function:
-                const loader = document.getElementById('loader');
-                if (loader) loader.classList.add('hidden');
+        // Marking Scheme Settings (Default +4 / -1)
+        let positiveMark = 4;
+        let negativeMark = 1;
+        let isMockMode = false;
 
-                Papa.parse(csvData, {
+        // 1. SMART GOOGLE SHEET URL CONVERTER
+        function sanitizeGoogleSheetUrl(rawUrl) {
+            if (!rawUrl) return '';
+            rawUrl = rawUrl.trim();
+
+            if (rawUrl.includes('/pub?') && rawUrl.includes('output=csv')) return rawUrl;
+
+            if (rawUrl.includes('/d/e/')) {
+                return rawUrl.replace(/\/pubhtml.*$/, '/pub?output=csv').replace(/\/pub(\?.*)?$/, '/pub?output=csv');
+            }
+
+            const match = rawUrl.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+            if (match && match[1]) {
+                const sheetId = match[1];
+                const gidMatch = rawUrl.match(/gid=([0-9]+)/);
+                const gidParam = gidMatch ? `&gid=${gidMatch[1]}` : '';
+                return `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv${gidParam}`;
+            }
+
+            return rawUrl;
+        }
+
+        // 2. DATA NORMALIZER
+        function normalizeQuestion(q, i) {
+            const examVal = (q.exam || q.Exam || q.Exam_Type || 'ALL').toString().trim();
+            const subjectVal = (q.subject || q.Subject || 'Physics').toString().trim();
+            const topicVal = (q.topic || q.Topic || 'General').toString().trim();
+            const qEn = (q.en || q.Question_EN || q.Question || q.question || '').toString().trim();
+            const qBn = (q.bn || q.Question_BN || qEn).toString().trim();
+
+            let optsEn = [];
+            let optsBn = [];
+
+            if (q.opts && q.opts.en) {
+                optsEn = q.opts.en;
+                optsBn = q.opts.bn || q.opts.en;
+            } else {
+                const o1 = q.Opt1_EN || q.Opt1 || q.opt1 || q.Option1 || q.Option_A || q['Option A'] || 'Option A';
+                const o2 = q.Opt2_EN || q.Opt2 || q.opt2 || q.Option2 || q.Option_B || q['Option B'] || 'Option B';
+                const o3 = q.Opt3_EN || q.Opt3 || q.opt3 || q.Option3 || q.Option_C || q['Option C'] || 'Option C';
+                const o4 = q.Opt4_EN || q.Opt4 || q.opt4 || q.Option4 || q.Option_D || q['Option D'] || 'Option D';
+                optsEn = [o1, o2, o3, o4];
+                optsBn = [q.Opt1_BN || o1, q.Opt2_BN || o2, q.Opt3_BN || o3, q.Opt4_BN || o4];
+            }
+
+            let correctVal = 0;
+            const rawCorr = (q.correct !== undefined ? q.correct : (q.Correct !== undefined ? q.Correct : (q.Ans || q.Answer || 0))).toString().trim();
+            if (/^[1-4]$/.test(rawCorr)) {
+                correctVal = parseInt(rawCorr, 10) - 1;
+            } else if (/^[0-3]$/.test(rawCorr)) {
+                correctVal = parseInt(rawCorr, 10);
+            } else if (/^[A-Da-d]$/.test(rawCorr)) {
+                correctVal = rawCorr.toUpperCase().charCodeAt(0) - 65;
+            }
+
+            return {
+                orig: i,
+                id: q.id || `Q-${i+1}`,
+                exam: examVal,
+                subject: subjectVal,
+                topic: topicVal,
+                difficulty: q.difficulty || q.Difficulty || 'Medium',
+                en: qEn || 'Sample Question',
+                bn: qBn || qEn || 'নমুনা প্রশ্ন',
+                opts: { en: optsEn, bn: optsBn },
+                image: q.image || q.Image_URL || '',
+                correct: correctVal,
+                expl_en: q.expl_en || q.Expl_EN || q.Explanation || 'Step-by-step logic, derivation, and fundamental concepts provided.',
+                expl_bn: q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।'
+            };
+        }
+
+        // Hide full screen loader
+        function hideAppLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.classList.add('hidden'); }, 250);
+            }
+        }
+
+        // Update Sync Status Badge
+        function setSyncStatus(text) {
+            const badgeText = document.getElementById('syncBadgeText');
+            if (badgeText) badgeText.innerText = text;
+        }
+
+        // 3. INITIALIZATION & DATA LOADING
+        async function loadData() {
+            const savedSheetUrl = localStorage.getItem('avai_google_sheet_url');
+            if (savedSheetUrl) {
+                const sheetInput = document.getElementById('adminSheetUrlInput');
+                if (sheetInput) sheetInput.value = savedSheetUrl;
+                
+                try {
+                    const sheetSuccess = await fetchGoogleSheetCSV(savedSheetUrl);
+                    if (sheetSuccess) return;
+                } catch (e) {
+                    console.warn("Could not load Google Sheet CSV:", e);
+                }
+            }
+
+            // Fallback to built-in bundled master bank
+            const sourceQuestions = (window.PHYSICS_QUESTIONS_DATA && window.PHYSICS_QUESTIONS_DATA.length > 0)
+                ? window.PHYSICS_QUESTIONS_DATA
+                : [];
+
+            masterDataset = sourceQuestions.map((q, i) => normalizeQuestion(q, i));
+            questionBank = [...masterDataset];
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+
+            setSyncStatus(`Multi-Subject Bank (${questionBank.length} Qs)`);
+            hideAppLoader();
+            filterByExam();
+        }
+
+        // Fetch & parse Google Sheet CSV
+        function fetchGoogleSheetCSV(rawUrl) {
+            return new Promise((resolve) => {
+                if (!rawUrl) return resolve(false);
+
+                const cleanUrl = sanitizeGoogleSheetUrl(rawUrl);
+                const liveUrl = cleanUrl + (cleanUrl.includes('?') ? '&' : '?') + '_ts=' + Date.now();
+
+                Papa.parse(liveUrl, {
+                    download: true,
                     header: true,
                     skipEmptyLines: true,
-                    complete: (results) => {
-               
-questionBank = results.data.map((row, i) => ({
-    ...row,
-    orig: i,
-    exam: row.Exam_Type,      // New Column 1
-    subject: row.Subject,      // New Column 2
-    topic: row.Topic,          // New Column 3
-    en: row.Question_EN,
-    bn: row.Question_BN,
-    opts: {
-        en: [row.Opt1, row.Opt2, row.Opt3, row.Opt4],
-        bn: [row.Opt1, row.Opt2, row.Opt3, row.Opt4]
-    },
-    image: row.Image_URL,      // Position: After Opt4
-    correct: parseInt(row.Correct), // Position: After Image_URL
-    expl_en: row.Expl_EN,
-    expl_bn: row.Expl_BN
-}));
-                        responses = new Array(questionBank.length).fill(null);
-                        statuses = new Array(questionBank.length).fill('not-visited');
-                        switchSubject('Chemistry');
+                    complete: function(results) {
+                        if (results.data && results.data.length > 0) {
+                            const validRows = results.data.filter(r => (r.Question_EN || r.en || r.Question || r.question || '').toString().trim().length > 0);
+                            if (validRows.length > 0) {
+                                masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
+                                questionBank = [...masterDataset];
+                                responses = new Array(questionBank.length).fill(null);
+                                statuses = new Array(questionBank.length).fill('not-visited');
+                                setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
+                                hideAppLoader();
+                                filterByExam();
+                                return resolve(true);
+                            }
+                        }
+                        resolve(false);
+                    },
+                    error: function(err) {
+                        console.warn("PapaParse error:", err);
+                        resolve(false);
                     }
                 });
-            } catch (e) {
-                document.getElementById('questionArea').innerHTML = `<p class="text-red-500 font-bold">Error loading sheet. Please check the URL and your connection.</p>`;
+            });
+        }
+
+        // Local Direct File Upload Handler (.csv, .tsv, .json)
+        function handleLocalFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                if (file.name.endsWith('.json')) {
+                    try {
+                        const parsed = JSON.parse(content);
+                        if (Array.isArray(parsed)) {
+                            masterDataset = parsed.map((q, i) => normalizeQuestion(q, i));
+                            questionBank = [...masterDataset];
+                            responses = new Array(questionBank.length).fill(null);
+                            statuses = new Array(questionBank.length).fill('not-visited');
+                            closeAdminModal();
+                            setSyncStatus(`Uploaded JSON (${questionBank.length} Qs)`);
+                            filterByExam();
+                            alert(`Successfully loaded ${questionBank.length} questions from ${file.name}!`);
+                        }
+                    } catch (err) { alert("Invalid JSON file format."); }
+                } else {
+                    Papa.parse(content, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            const validRows = results.data.filter(r => (r.Question_EN || r.en || r.Question || r.question || '').toString().trim().length > 0);
+                            if (validRows.length > 0) {
+                                masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
+                                questionBank = [...masterDataset];
+                                responses = new Array(questionBank.length).fill(null);
+                                statuses = new Array(questionBank.length).fill('not-visited');
+                                closeAdminModal();
+                                setSyncStatus(`Uploaded CSV (${questionBank.length} Qs)`);
+                                filterByExam();
+                                alert(`Successfully loaded ${questionBank.length} questions from ${file.name}!`);
+                            } else {
+                                alert("No valid questions found in uploaded file.");
+                            }
+                        }
+                    });
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // 4. ADMIN MODAL CONTROLS
+        function openAdminModal() {
+            const modal = document.getElementById('adminSheetModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('adminSheetModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        async function saveAndSyncSheet() {
+            const urlInput = document.getElementById('adminSheetUrlInput');
+            const url = urlInput ? urlInput.value.trim() : '';
+
+            if (!url) {
+                localStorage.removeItem('avai_google_sheet_url');
+                alert("Google Sheet URL cleared. Using built-in question bank.");
+                closeAdminModal();
+                loadData();
+                return;
             }
+
+            localStorage.setItem('avai_google_sheet_url', url);
+            closeAdminModal();
+
+            const loader = document.getElementById('loader');
+            if (loader) loader.classList.remove('hidden');
+
+            const ok = await fetchGoogleSheetCSV(url);
+            hideAppLoader();
+
+            if (ok) {
+                alert(`Successfully synced ${questionBank.length} questions from Google Sheet!`);
+            } else {
+                alert("Could not load from Google Sheet. If your sheet is private, make sure to set File -> Share -> Anyone with the link can view, or use the direct Upload File button.");
+                loadData();
+            }
+        }
+
+        // 5. CUSTOM MOCK TEST CONTROLS
+        function openMockModal() {
+            const container = document.getElementById('mockSubjectCheckboxes');
+            if (container) {
+                const uniqueSubjects = Array.from(new Set(masterDataset.map(q => q.subject))).filter(Boolean);
+                container.innerHTML = uniqueSubjects.map(sub => `
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" name="mock_subject" value="${sub}" checked class="accent-blue-600 rounded">
+                        <span class="font-medium">${sub}</span>
+                    </label>
+                `).join('');
+            }
+            const modal = document.getElementById('mockModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeMockModal() {
+            const modal = document.getElementById('mockModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function setMockPreset(preset) {
+            const dur = document.getElementById('mockDurationInput');
+            const mark = document.getElementById('mockMarkingSelect');
+            if (preset === 'NEET' || preset === 'JEE') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "4,-1";
+            } else if (preset === 'UPSC') {
+                if (dur) dur.value = 120;
+                if (mark) mark.value = "2,-0.66";
+            } else if (preset === 'SSC') {
+                if (dur) dur.value = 60;
+                if (mark) mark.value = "2,-0.50";
+            } else if (preset === 'CUET') {
+                if (dur) dur.value = 45;
+                if (mark) mark.value = "5,-1";
+            } else if (preset === 'QUICK') {
+                if (dur) dur.value = 15;
+                if (mark) mark.value = "4,-1";
+            }
+        }
+
+        function startCustomMockTest() {
+            const durVal = parseInt(document.getElementById('mockDurationInput').value, 10) || 60;
+            const markVal = document.getElementById('mockMarkingSelect').value.split(',');
+            positiveMark = parseFloat(markVal[0]) || 4;
+            negativeMark = Math.abs(parseFloat(markVal[1])) || 1;
+
+            const checkedSubjects = Array.from(document.querySelectorAll('input[name="mock_subject"]:checked')).map(cb => cb.value);
+            if (checkedSubjects.length === 0) {
+                alert("Please select at least one subject section.");
+                return;
+            }
+
+            questionBank = masterDataset.filter(q => checkedSubjects.includes(q.subject));
+            if (questionBank.length === 0) questionBank = [...masterDataset];
+
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+            currentIdx = 0;
+            isMockMode = true;
+            timeInSecs = durVal * 60;
+
+            const markingBadge = document.getElementById('markingSchemeBadge');
+            if (markingBadge) markingBadge.innerText = `+${positiveMark} / -${negativeMark}`;
+
+            closeMockModal();
+            filterByExam();
+            alert(`🎯 Custom Mock Test Started!\nDuration: ${durVal} minutes\nMarking: +${positiveMark} / -${negativeMark}\nTotal Questions: ${questionBank.length}`);
+        }
+
+        // 6. EXAM & SUBJECT NAVIGATION
+        function filterByExam() {
+            const selector = document.getElementById('examSelector');
+            currentExam = selector ? selector.value : 'ALL';
+            
+            const examBadge = document.getElementById('examBadgeText');
+            if (examBadge) examBadge.innerText = `${currentExam === 'ALL' ? 'Multi-Subject' : currentExam} Mock Test`;
+
+            const availableSubjectsInBank = Array.from(new Set(questionBank.map(q => q.subject))).filter(Boolean);
+            const examSubjects = SUBJECTS_BY_EXAM[currentExam] || availableSubjectsInBank;
+            const finalSubjects = availableSubjectsInBank.length > 0 
+                ? (currentExam === 'ALL' ? availableSubjectsInBank : examSubjects.filter(s => availableSubjectsInBank.includes(s)))
+                : examSubjects;
+
+            const tabsContainer = document.getElementById('subjectTabs');
+            if (tabsContainer) {
+                currentSubject = finalSubjects.includes(currentSubject) ? currentSubject : (finalSubjects[0] || 'Physics');
+                tabsContainer.innerHTML = finalSubjects.map(sub => `
+                    <button onclick="switchSubject('${sub}')" class="subject-tab ${sub === currentSubject ? 'active' : ''}">${sub}</button>
+                `).join('');
+            }
+
+            populateTopicFilter();
+            render();
+        }
+
+        function switchSubject(subjectName) {
+            currentSubject = subjectName;
+            currentIdx = 0;
+            currentTopic = "ALL";
+            document.querySelectorAll('.subject-tab').forEach(tab => {
+                if (tab.innerText.trim().toUpperCase() === subjectName.toUpperCase()) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            populateTopicFilter();
+            render();
+        }
+
+        function populateTopicFilter() {
+            const topicSelect = document.getElementById('topicFilter');
+            if (!topicSelect) return;
+
+            const subjectQuestions = questionBank.filter(q => q.subject.toUpperCase() === currentSubject.toUpperCase());
+            const topics = Array.from(new Set(subjectQuestions.map(q => q.topic))).filter(Boolean);
+
+            topicSelect.innerHTML = '<option value="ALL">All Topics (' + subjectQuestions.length + ' Qs)</option>' +
+                topics.map(t => `<option value="${t}">${t}</option>`).join('');
+        }
+
+        function filterByTopic() {
+            const topicSelect = document.getElementById('topicFilter');
+            currentTopic = topicSelect ? topicSelect.value : "ALL";
+            currentIdx = 0;
+            render();
+        }
+
+        function handleSearch(query) {
+            searchQuery = query.trim().toLowerCase();
+            currentIdx = 0;
+            render();
         }
 
         function getFiltered() {
-            return questionBank.filter(q => q.Subject === currentSubject);
+            let filtered = questionBank.filter(q => {
+                const subjectMatch = q.subject.toUpperCase() === currentSubject.toUpperCase();
+                if (!subjectMatch) return false;
+
+                const examMatch = (currentExam === 'ALL' || q.exam.toUpperCase() === currentExam.toUpperCase() || q.exam === 'ALL');
+                const topicMatch = (currentTopic === "ALL" || q.topic === currentTopic);
+
+                let searchMatch = true;
+                if (searchQuery) {
+                    searchMatch = q.en.toLowerCase().includes(searchQuery) || 
+                                  q.bn.toLowerCase().includes(searchQuery) || 
+                                  q.topic.toLowerCase().includes(searchQuery);
+                }
+
+                return examMatch && topicMatch && searchMatch;
+            });
+
+            if (filtered.length === 0 && currentTopic === "ALL" && !searchQuery) {
+                filtered = questionBank.filter(q => q.subject.toUpperCase() === currentSubject.toUpperCase());
+            }
+
+            return filtered;
         }
 
-        // 2. RENDER QUESTION
+        // 7. RENDER QUESTION & OPTIONS (HERO COMPONENT)
         function render() {
+            const filtered = getFiltered();
+            const area = document.getElementById('questionArea');
+            if (!area) return;
+
+            if (filtered.length === 0) {
+                area.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-center p-8 space-y-4 my-12 animate-fade-in">
+                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black shadow-inner">
+                            📚
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-slate-800">No Questions in this Section</h3>
+                        <p class="text-slate-500 max-w-md text-sm">No questions match '${currentSubject}' for the selected exam. Switch subject tab above or choose 'All Exams'.</p>
+                    </div>
+                `;
+                renderPalette();
+                updateProgress();
+                return;
+            }
+
+            if (currentIdx >= filtered.length) currentIdx = filtered.length - 1;
+            if (currentIdx < 0) currentIdx = 0;
+
+            const q = filtered[currentIdx];
+            if (statuses[q.orig] === 'not-visited') {
+                statuses[q.orig] = 'not-answered';
+            }
+
+            const currentSelected = responses[q.orig];
+            const imgHtml = q.image ? `<div class="my-5 p-3 bg-white rounded-2xl border border-slate-200 shadow-sm max-w-md mx-auto"><img src="${q.image}" class="max-h-64 mx-auto rounded-xl object-contain" alt="Question Diagram"></div>` : '';
+            const questionTitle = currentLang === 'en' ? (q.en || q.bn) : (q.bn || q.en);
+            const explanationText = currentLang === 'en' ? (q.expl_en || q.expl_bn) : (q.expl_bn || q.expl_en);
+
+            const diffBadgeColor = q.difficulty === 'Easy' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                                   q.difficulty === 'Hard' ? 'bg-purple-50 text-purple-700 border-purple-200' :
+                                   'bg-amber-50 text-amber-700 border-amber-200';
+
+            const optionLetters = ['A', 'B', 'C', 'D'];
+
+            area.innerHTML = `
+                <div class="max-w-4xl mx-auto animate-fade-in">
+                    <!-- Question Header Meta Bar -->
+                    <div class="flex flex-wrap justify-between items-center mb-6 gap-2.5 pb-4 border-b border-slate-100">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <span class="text-blue-600 font-display font-black text-xl md:text-2xl flex items-center gap-2">
+                                <span>${currentLang === 'en' ? 'Question' : 'প্রশ্ন'} ${currentIdx + 1}</span>
+                                <span class="text-xs text-slate-400 font-mono font-bold">/ ${filtered.length}</span>
+                            </span>
+                            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${diffBadgeColor}">${q.difficulty}</span>
+                            <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">${q.exam}</span>
+                            <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">+${positiveMark} / -${negativeMark}</span>
+                        </div>
+                        <span class="text-[11px] font-display font-bold bg-blue-50 text-blue-700 px-3.5 py-1 rounded-full uppercase tracking-wider border border-blue-200/80">${q.topic}</span>
+                    </div>
+
+                    ${imgHtml}
+
+                    <!-- Question Prompt Text -->
+                    <h2 class="text-base md:text-xl font-semibold mb-8 leading-relaxed text-slate-900 tracking-tight">${questionTitle}</h2>
+
+                    <!-- Modern Interactive Option Cards -->
+                    <div class="grid gap-3.5 mb-8">
+                        ${q.opts[currentLang].map((opt, i) => `
+                            <div class="option-card ${currentSelected === i ? 'selected' : ''}" onclick="saveAns(${q.orig}, ${i})">
+                                <div class="option-badge">
+                                    ${optionLetters[i]}
+                                </div>
+                                <div class="flex-1 pt-1">
+                                    <p class="font-medium text-slate-800 text-sm md:text-base leading-snug">${opt}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="hidden sm:inline-block font-mono text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded font-bold">Key ${i + 1}</span>
+                                    <div class="w-5 h-5 rounded-full border-2 ${currentSelected === i ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300'} flex items-center justify-center text-xs font-bold transition">
+                                        ${currentSelected === i ? '✓' : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Accordion Solution Box -->
+                    <div id="explanationBox" class="hidden p-6 bg-gradient-to-br from-emerald-50/90 to-teal-50/60 border-l-4 border-emerald-500 rounded-r-3xl shadow-sm animate-fade-in mb-8">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-emerald-800 font-display font-black text-xs uppercase tracking-wider flex items-center gap-1.5">
+                                <span>💡</span> Solution Logic & Derivation:
+                            </span>
+                        </div>
+                        <p class="text-emerald-950 text-sm md:text-base leading-relaxed font-medium">${explanationText}</p>
+                    </div>
+                </div>
+            `;
+
+            renderPalette();
+            updateProgress();
+        }
+
+        // 8. USER ACTIONS & INTERACTION HANDLERS
+        function saveAns(origIdx, val) {
+            responses[origIdx] = val;
+            if (statuses[origIdx] === 'marked') {
+                statuses[origIdx] = 'answered-marked';
+            } else {
+                statuses[origIdx] = 'answered';
+            }
+            render();
+        }
+
+        function clearCurrentResponse() {
             const filtered = getFiltered();
             if (filtered.length === 0) return;
             const q = filtered[currentIdx];
-            const area = document.getElementById('questionArea');
-            const imgHtml = q.image ? `<img src="${q.image}" class="max-h-64 mx-auto mb-8 rounded-xl border bg-white p-4 shadow-sm">` : '';
-           
-            area.innerHTML = `
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-blue-600 font-black text-xl">${currentLang === 'en' ? 'Question' : 'প্রশ্ন'} ${currentIdx + 1}</span>
-                    <span class="text-[10px] font-bold bg-slate-100 px-3 py-1 rounded-full uppercase text-slate-500">${q.Topic}</span>
-                </div>
-                ${imgHtml}
-                <h2 class="text-2xl font-semibold mb-10 leading-relaxed">${currentLang === 'en' ? q.Question_EN : q.Question_BN}</h2>
-                <div class="grid gap-4 max-w-3xl">
-                    ${q.opts[currentLang].map((opt, i) => `
-                        <label class="flex items-center p-5 border-2 rounded-2xl cursor-pointer hover:bg-blue-50 transition ${responses[q.orig] === i ? 'border-blue-600 bg-blue-50' : 'border-slate-100'}">
-                            <input type="radio" name="quiz_opt" value="${i}" class="w-5 h-5 accent-blue-600" ${responses[q.orig] === i ? 'checked' : ''} onchange="saveAns(${q.orig}, ${i})">
-                            <span class="ml-4 font-bold text-slate-700">${opt}</span>
-                        </label>
-                    `).join('')}
-                </div>
-                <div id="explanationBox" class="mt-8 p-6 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl">
-                    <p class="font-black text-emerald-800 text-sm uppercase mb-2">Solution Logic:</p>
-                    <p class="text-emerald-900 leading-relaxed">${currentLang === 'en' ? q.Expl_EN : q.Expl_BN}</p>
-                </div>
-            `;
-            renderPalette();
-            document.getElementById('explanationBox').style.display = 'none'; // Hide explanation when moving to next Q
-        }
-
-        // 3. CORE LOGIC FUNCTIONS
-        function saveAns(origIdx, val) {
-            responses[origIdx] = val;
-            statuses[origIdx] = 'answered';
-            renderPalette();
+            responses[q.orig] = null;
+            statuses[q.orig] = 'not-answered';
+            render();
         }
 
         function toggleExplanation() {
+            const filtered = getFiltered();
+            if (filtered.length === 0) return;
+            const q = filtered[currentIdx];
             const box = document.getElementById('explanationBox');
-            if (responses[getFiltered()[currentIdx].orig] === null) {
-                alert("Please select an answer first!");
+            if (!box) return;
+
+            if (responses[q.orig] === null && !confirm("You haven't attempted this question yet. Do you want to view the solution now?")) {
                 return;
             }
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function switchSubject(s) {
-            currentSubject = s; currentIdx = 0;
-            document.querySelectorAll('.subject-tab').forEach(t => t.innerText.includes(s) ? t.classList.add('active') : t.classList.remove('active'));
-            render();
+            box.classList.toggle('hidden');
         }
 
         function renderPalette() {
             const filtered = getFiltered();
             const palette = document.getElementById('palette');
+            const totalBadge = document.getElementById('paletteTotalCount');
+            if (!palette) return;
+
+            if (totalBadge) totalBadge.innerText = filtered.length;
+
             palette.innerHTML = filtered.map((q, i) => `
-                <div onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}">${i + 1}</div>
+                <button onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}" title="Question ${i + 1} (${q.topic})">
+                    ${i + 1}
+                </button>
             `).join('');
+
+            // Update KPI Counters
+            let countAns = 0, countNotAns = 0, countMark = 0, countNotVis = 0;
+            questionBank.forEach(q => {
+                const st = statuses[q.orig];
+                if (st === 'answered' || st === 'answered-marked') countAns++;
+                else if (st === 'not-answered') countNotAns++;
+                else if (st === 'marked') countMark++;
+                else countNotVis++;
+            });
+
+            document.getElementById('countAnswered').innerText = countAns;
+            document.getElementById('countNotAnswered').innerText = countNotAns;
+            document.getElementById('countMarked').innerText = countMark;
+            document.getElementById('countNotVisited').innerText = countNotVis;
         }
 
-        function nextQ() { if(currentIdx < getFiltered().length - 1) { currentIdx++; render(); } }
-        function prevQ() { if(currentIdx > 0) { currentIdx--; render(); } }
-        function jumpTo(i) { currentIdx = i; render(); }
-        function markForReview() { statuses[getFiltered()[currentIdx].orig] = 'marked'; renderPalette(); nextQ(); }
+        function updateProgress() {
+            const filtered = getFiltered();
+            const progText = document.getElementById('subjectProgressText');
+            const progBar = document.getElementById('subjectProgressBar');
+            const subTitle = document.getElementById('currentSubjectTitle');
+            if (!progText || !progBar) return;
 
+            if (subTitle) subTitle.innerText = `${currentSubject} Progress`;
+
+            if (filtered.length === 0) {
+                progText.innerText = '0 / 0';
+                progBar.style.width = '0%';
+                return;
+            }
+
+            const answeredInSubject = filtered.filter(q => responses[q.orig] !== null).length;
+            progText.innerText = `${answeredInSubject} / ${filtered.length} Done`;
+            const pct = Math.round((answeredInSubject / filtered.length) * 100);
+            progBar.style.width = `${pct}%`;
+        }
+
+        function nextQ() { 
+            const filtered = getFiltered();
+            if (currentIdx < filtered.length - 1) { 
+                currentIdx++; 
+                render(); 
+            } 
+        }
+
+        function prevQ() { 
+            if (currentIdx > 0) { 
+                currentIdx--; 
+                render(); 
+            } 
+        }
+
+        function jumpTo(i) { 
+            currentIdx = i; 
+            render(); 
+            if (window.innerWidth < 768) {
+                const sidebar = document.getElementById('paletteSidebar');
+                if (sidebar) sidebar.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function markForReview() { 
+            const filtered = getFiltered();
+            if (filtered.length === 0) return;
+            const orig = filtered[currentIdx].orig;
+            if (responses[orig] !== null) {
+                statuses[orig] = 'answered-marked';
+            } else {
+                statuses[orig] = 'marked';
+            }
+            renderPalette(); 
+            nextQ(); 
+        }
+
+        function toggleMobilePalette() {
+            const sidebar = document.getElementById('paletteSidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('hidden');
+                sidebar.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 9. SCORECARD & PERFORMANCE ANALYTICS
         function showFinalResult() {
-            let score = 0, correctCount = 0, attempted = 0;
-            responses.forEach((resp, i) => {
-                if(resp !== null) {
+            let score = 0;
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let attempted = 0;
+
+            const subjectStats = {};
+
+            questionBank.forEach((q, i) => {
+                const sub = q.subject || 'General';
+                if (!subjectStats[sub]) {
+                    subjectStats[sub] = { total: 0, attempted: 0, correct: 0, incorrect: 0, score: 0 };
+                }
+                subjectStats[sub].total++;
+
+                const resp = responses[i];
+                if (resp !== null) {
                     attempted++;
-                    if(resp === questionBank[i].correct) { score += 4; correctCount++; }
-                    else { score -= 1; }
+                    subjectStats[sub].attempted++;
+                    if (resp === q.correct) {
+                        score += positiveMark;
+                        correctCount++;
+                        subjectStats[sub].correct++;
+                        subjectStats[sub].score += positiveMark;
+                    } else {
+                        score -= negativeMark;
+                        incorrectCount++;
+                        subjectStats[sub].incorrect++;
+                        subjectStats[sub].score -= negativeMark;
+                    }
                 }
             });
-            document.getElementById('finalScoreDisplay').innerText = score;
-            document.getElementById('accuracyDisplay').innerText = attempted > 0 ? Math.round((correctCount/attempted)*100)+'%' : '0%';
-            document.getElementById('resultModal').classList.remove('hidden');
+
+            const unattempted = questionBank.length - attempted;
+            const accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
+            const maxMarks = questionBank.length * positiveMark;
+
+            document.getElementById('finalScoreDisplay').innerText = `${score > 0 ? '+' : ''}${score} / ${maxMarks}`;
+            document.getElementById('accuracyDisplay').innerText = `${accuracy}%`;
+            document.getElementById('attemptedCount').innerText = `${attempted} / ${questionBank.length}`;
+            document.getElementById('totalPossibleMarks').innerText = maxMarks;
+
+            document.getElementById('correctCount').innerText = correctCount;
+            document.getElementById('incorrectCount').innerText = incorrectCount;
+            document.getElementById('unattemptedCount').innerText = unattempted;
+
+            document.getElementById('correctScoreAdd').innerText = positiveMark;
+            document.getElementById('wrongScoreDed').innerText = negativeMark;
+            document.getElementById('resultExamTitle').innerText = `${currentExam === 'ALL' ? 'Multi-Subject' : currentExam} Examination Scorecard`;
+
+            // Subject Breakdown Table with Visual Meter
+            const breakdownContainer = document.getElementById('subjectBreakdownTable');
+            if (breakdownContainer) {
+                breakdownContainer.innerHTML = Object.keys(subjectStats).map(sub => {
+                    const st = subjectStats[sub];
+                    const subAcc = st.attempted > 0 ? Math.round((st.correct / st.attempted) * 100) : 0;
+                    return `
+                        <div class="py-2 border-b border-slate-800/80 text-xs">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-slate-200 font-display">${sub}</span>
+                                <span class="text-blue-400 font-mono font-bold">${st.score > 0 ? '+' : ''}${st.score} pts (${subAcc}% Acc)</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1.5">
+                                <span>Attempted: ${st.attempted}/${st.total}</span>
+                                <span><span class="text-emerald-400 font-bold">${st.correct} ✓</span> &nbsp; <span class="text-red-400 font-bold">${st.incorrect} ✗</span></span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-1.5 rounded-full" style="width: ${subAcc}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const modal = document.getElementById('resultModal');
+            if (modal) modal.classList.remove('hidden');
         }
 
-        // Language Switcher
+        // Language Switcher Event
         document.getElementById('langSwitch').addEventListener('change', (e) => {
             currentLang = e.target.value;
             render();
         });
 
-        // 4. TIMER LOGIC
+        // 10. COUNTDOWN TIMER
         let timeInSecs = 10800; // 3 hours
         setInterval(() => {
-            timeInSecs--;
-            let h = Math.floor(timeInSecs / 3600), m = Math.floor((timeInSecs % 3600) / 60), s = timeInSecs % 60;
-            document.getElementById('timer').innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            if (timeInSecs > 0) {
+                timeInSecs--;
+                const h = Math.floor(timeInSecs / 3600);
+                const m = Math.floor((timeInSecs % 3600) / 60);
+                const s = timeInSecs % 60;
+                const timerElem = document.getElementById('timerText');
+                if (timerElem) {
+                    timerElem.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                    if (timeInSecs < 600) timerElem.className = 'text-red-400 font-bold animate-pulse';
+                    else if (timeInSecs < 1800) timerElem.className = 'text-amber-400 font-bold';
+                }
+            }
         }, 1000);
+
+        // 11. SCIENTIFIC CALCULATOR CONTROLS
+        function toggleCalculator(forceState) {
+            const modal = document.getElementById('calcModal');
+            if (!modal) return;
+            const isCurrentlyHidden = modal.classList.contains('hidden');
+            const shouldShow = forceState !== undefined ? forceState : isCurrentlyHidden;
+            if (shouldShow) modal.classList.remove('hidden');
+            else modal.classList.add('hidden');
+        }
+
+        let isCalcDocked = false;
+        function toggleCalcDock() {
+            const modal = document.getElementById('calcModal');
+            if (!modal) return;
+            isCalcDocked = !isCalcDocked;
+            if (isCalcDocked) {
+                modal.classList.add('is-docked');
+                modal.style.left = '';
+                modal.style.top = '';
+            } else {
+                modal.classList.remove('is-docked');
+                modal.style.left = '';
+                modal.style.top = '';
+            }
+        }
+
+        // Draggable Titlebar Logic
+        let isDraggingCalc = false;
+        let dragStartX, dragStartY, dragInitialLeft, dragInitialTop;
+        const calcModal = document.getElementById('calcModal');
+        const calcHeader = document.getElementById('calcHeader');
+
+        if (calcHeader && calcModal) {
+            calcHeader.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button') || e.target.closest('a') || isCalcDocked) return;
+                isDraggingCalc = true;
+                dragStartX = e.clientX;
+                dragStartY = e.clientY;
+                const rect = calcModal.getBoundingClientRect();
+                dragInitialLeft = rect.left;
+                dragInitialTop = rect.top;
+
+                calcModal.style.right = 'auto';
+                calcModal.style.left = `${dragInitialLeft}px`;
+                calcModal.style.top = `${dragInitialTop}px`;
+                document.body.style.userSelect = 'none';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDraggingCalc || isCalcDocked) return;
+                const dx = e.clientX - dragStartX;
+                const dy = e.clientY - dragStartY;
+                let newLeft = dragInitialLeft + dx;
+                let newTop = dragInitialTop + dy;
+                const maxLeft = window.innerWidth - calcModal.offsetWidth - 10;
+                const maxTop = window.innerHeight - calcModal.offsetHeight - 10;
+                calcModal.style.left = `${Math.max(10, Math.min(newLeft, maxLeft))}px`;
+                calcModal.style.top = `${Math.max(10, Math.min(newTop, maxTop))}px`;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isDraggingCalc) {
+                    isDraggingCalc = false;
+                    document.body.style.userSelect = '';
+                }
+            });
+        }
+
+        // 12. KEYBOARD SHORTCUTS
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+
+            // Admin Shortcut Ctrl+Shift+A
+            if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                e.preventDefault();
+                openAdminModal();
+                return;
+            }
+
+            if (e.key === 'c' || e.key === 'C') {
+                e.preventDefault();
+                toggleCalculator();
+                return;
+            }
+
+            if (e.key === 'ArrowRight' || e.key === 'Enter') {
+                nextQ();
+            } else if (e.key === 'ArrowLeft') {
+                prevQ();
+            } else if (['1', '2', '3', '4'].includes(e.key)) {
+                const filtered = getFiltered();
+                if (filtered.length > 0) {
+                    saveAns(filtered[currentIdx].orig, parseInt(e.key, 10) - 1);
+                }
+            } else if (e.key === 's' || e.key === 'S') {
+                toggleExplanation();
+            } else if (e.key === 'm' || e.key === 'M') {
+                markForReview();
+            }
+        });
 
         // START INITIALIZATION
         loadData();
     </script>
-    <footer class="bg-slate-900 text-slate-400 p-8 mt-12 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>© 2026 Avai Preparation. All rights reserved.</p>
-        <div class="flex gap-6">
-            <a href="calculator.html" target="_blank" class="text-purple-400 hover:text-purple-300 font-bold transition">✦ Scientific Calculator</a>
-            <a href="about.html" class="hover:text-white transition">About Us</a>
-            <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
-            <a href="https://github.com/nayekdhananjoy1973-lab" class="hover:text-white transition">GitHub</a>
-        </div>
-    </div>
-</footer>
 </body>
 </html>

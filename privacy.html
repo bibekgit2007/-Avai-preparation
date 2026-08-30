@@ -1,10 +1,74 @@
-<div class="p-8 max-w-4xl mx-auto font-sans text-gray-800">
-    <h1 class="text-3xl font-bold mb-4">Privacy Policy</h1>
-    <p class="mb-4">Welcome to <strong>Avai Preparation</strong>. Your privacy is important to us.</p>
-    <h2 class="text-xl font-bold mt-6">1. Data Collection</h2>
-    <p>We do not collect personal identification information. We use local browser storage to save your test progress and Google Sheets API to fetch questions.</p>
-    <h2 class="text-xl font-bold mt-6">2. Cookies</h2>
-    <p>We may use cookies to analyze site traffic and provide a better user experience. Third-party vendors, including Google, use cookies to serve ads based on your prior visits.</p>
-    <h2 class="text-xl font-bold mt-6">3. Contact</h2>
-    <p>For questions regarding this policy, contact us at: [Your Email Here]</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AVAI Preparation Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-display { font-family: 'Outfit', sans-serif; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+    <!-- Header -->
+    <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur-md px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+        <a href="index.html" class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-display font-black text-white text-base shadow-md shadow-blue-500/30">
+                A
+            </div>
+            <h1 class="text-lg font-display font-black tracking-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">AVAI</span>
+                <span class="text-slate-200">PREP</span>
+            </h1>
+        </a>
+        <a href="index.html" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-display font-bold transition shadow-md shadow-blue-600/30 flex items-center gap-1.5">
+            ← Back to Practice Portal
+        </a>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-12">
+        <div class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-800 space-y-6">
+            <h2 class="text-3xl font-display font-black text-white mb-2">Privacy Policy</h2>
+            <p class="text-slate-400 text-xs">Last updated: August 2026</p>
+
+            <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                <h3 class="text-lg font-display font-bold text-white">1. Data Storage & Privacy</h3>
+                <p>
+                    AVAI Preparation respects your privacy. All mock test responses, chosen options, timer states, and calculator history are stored entirely locally on your device via your browser's Local Storage. We do not collect or transmit your personal identifiable test data to external third parties.
+                </p>
+
+                <h3 class="text-lg font-display font-bold text-white">2. Progressive Web App & Offline Caching</h3>
+                <p>
+                    This application utilizes standard Service Workers and Progressive Web App (PWA) caching mechanisms to allow offline exam practice and fast load times.
+                </p>
+
+                <h3 class="text-lg font-display font-bold text-white">3. Third-Party CDN Resources</h3>
+                <p>
+                    Our portal uses high-reliability Content Delivery Networks (CDNs) including Google Fonts, Tailwind CSS, and PapaParse for script delivery.
+                </p>
+
+                <h3 class="text-lg font-display font-bold text-white">4. Contact</h3>
+                <p>
+                    For inquiries, feedback, or suggestions regarding AVAI Preparation, feel free to reach out to the developer and educator team.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 px-6 py-4 text-center text-xs text-slate-500">
+        © 2026 AVAI Preparation. All rights reserved.
+    </footer>
+</body>
+</html>

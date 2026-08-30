@@ -1,0 +1,5005 @@
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 1 ====================
+Whitevox
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 3 ====================
+Disclaimer : The content available in MTG digital/physical books is intellectual 
+property of MTG Learning Media Pvt Ltd. Paid content on this website after purchase 
+is not entitled for free distribution on whatsapp, telegram, twitter, facebook, and all 
+other social media and digital channels. The registered owner/admin/ individual of 
+any  digital channel will be liable for an infringement of the copyright for illegally 
+using the material / copyrighted content of MTG Learning Media Pvt Ltd.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 8 ====================
+7
+PHYSICS FOR YOU | JUNE ‘26
+Competition Edge
+ 
+NEET Solved Paper 2026 
+9
+ 
+JEE Main Solved Paper 2026 
+18
+ 
+[Session 2, 2nd April (Morning Shift)]
+ 
+Karnataka CET Solved Paper 2026 
+24
+ 
+KEAM Engineering Solved Paper 2026 
+34
+ 
+Quiz Club 
+46
+ 
+GK Corner 
+90
+ 
+Word Grid 
+92
+Class 11
+ 
+Get Set Go for JEE 
+40
+ 
+Physics in Focus 
+47
+ 
+Kinematics / Laws of Motion
+ 
+Brain Map 
+50
+ 
+Units and Measurement
+ 
+CBSE Warm-up! 
+55
+ 
+Units and Measurement / Kinematics
+Class 12
+ 
+Brush up for NEET/JEE 
+63
+ 
+Electrostatics
+ 
+Get Set Go for NEET 
+75
+ 
+CBSE Warm-up! 
+81
+ 
+Electric Charges and Fields/Electrostatic 
+ 
+Potential and Capacitance
+VOLUME 34  No. 6  June 2026
+SUBSCRIPTION PLAN
+SUBSCRIPTION PLAN
+Subject
+ Format
+1 Year
+2 Years
+3 Years
+Individual
+ Physics 
+ Chemistry
+ Mathematics 
+ Biology
+Print issue
+`749/-
+`1349/-
+`1799/-
+Print + Digital
+`1150/-
+`1850/-
+`2400/-
+Combo of 3 Magazines
+ Physics, Chemistry, Biology
+ Physics, Chemistry, Mathematics
+Print issue
+`2200/-
+`4000/-
+`5400/-
+Print + Digital
+`3000/-
+`5000/-
+`6600/-
+Combo of 4 Magazines
+  
+Physics, Chemistry, Mathematics, 
+Biology
+Print issue
+`2800/-
+`5200/-
+`6300/-
+Print + Digital
+`3800/-
+`6399/-
+`7800/-
+Courier Charges
+Add to your subscription amount for quicker & traceable delivery
+`800/-
+`960/-
+`1440/-
+Subscribe online at www.mtg.in
+Printed and Published by Mahabir Singh on behalf of MTG Learning Media Pvt. 
+Ltd. Printed at HT Media Ltd., B-2, Sector-63, Noida, UP-201307 and published at 
+406, Taj Apartment, Ring Road, Near  Safdarjung Hospital, New Delhi - 110029. 
+Editor : Anil Ahlawat 
+Readers are advised to make appropriate thorough enquiries before acting 
+upon any advertisement published in this magazine. Focus/ Infocus features 
+are marketing incentives. MTG does not vouch or subscribe to the claims 
+and representations made by advertisers. All disputes are subject to Delhi 
+jurisdiction only. 
+Copyright© MTG Learning Media (P) Ltd. 
+All rights reserved. Reproduction in any form is prohibited.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 9 ====================
+8
+PHYSICS FOR YOU | JUNE ‘26
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 10 ====================
+9
+PHYSICS FOR YOU | JUNE ‘26
+1.
+A 100-turn closely wound circular coil of radius
+5 cm has a magnetic field of 3⋅14 × 10–3 T at its
+centre. The current flowing through the coil, and
+the magnitude of the magnetic moment of this coil
+are, respectively  
+(Take m0 = 4p × 10–7 T m/A)
+(a) 2 ⋅ 5 A, 2 A m2
+(b) 2 ⋅ 5 A, 20 A m2
+(c) 2 A, 4 A m2
+(d) 2 A, 10 A m2
+2.
+Match List I with List II :
+List I 
+List II
+A.
+E = hu 
+I. 
+de Broglie wavelength
+B.
+Diffraction and
+II.
+Particle nature of
+ 
+interference 
+light
+C.
+l = h/p
+III. Wave nature of light
+D.
+Compton effect
+IV. Energy of photon
+Solved Paper
+2026
+Exam 
+Held on 
+3rd May
+Here, the references of some questions are given :
+and many more …
+We are happy to inform our readers that out of the 45 questions asked in NEET 2026, 
+more than 85% questions were either exactly same or of similar type from the MTG Books.
+(a) A-IV, B-III, C-I, D-II (b) A-I, B-IV, C-III, D-II
+(c) A-IV, B-I, C-II, D-III (d) A-IV, B-III, C-II, D-I
+3.
+The current I in the circuit 
+shown below is
+(All diodes are ideal and
+identical)
+(a) 5
+3 A
+(b) 15
+2 A
+(c) 1
+3 A
+(d) 5
+9 A
+4 W
+3 W
+2 W
+5 W
+10 V
++
+–
+I
+Q. No.
+MTG Books
+Q. No. of 
+Books
+P. No.
+5
+NEET Guide (XI)
+27
+49
+6
+39 Years Neet (XII)
+5
+167
+9
+NEET Guide (XII)
+143
+86
+15
+39 Years Neet (XII)
+55
+14
+16
+NEET Guide (XII)
+153
+69
+17
+NCERT Fingertips (XI)
+73
+134
+20
+NEET Guide (XI)
+83
+173
+21
+NEET Guide (XI)
+53
+17
+22
+39 Years Neet (XI)
+3
+140
+23
+NCERT Fingertips 
+(XII)
+74
+217
+25
+39 Years Neet (XI)
+58
+133
+26
+NEET Guide (XII)
+106, 107, 113
+66
+29
+NEET Guide (XII)
+181
+71
+30
+NEET Guide (XI)
+50
+51
+31
+NEET Guide (XII)
+200
+26
+32
+NEET Guide (XI)
+66
+332
+35
+NEET Guide (XI)
+28
+106
+38
+NEET Guide (XI)
+98
+174
+45
+NEET Guide (XI)
+4
+298
+
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 11 ====================
+10
+PHYSICS FOR YOU | JUNE ‘26
+4. 
+The speed of light in vacuum is taken as unity. If 
+light takes 6 min 40 s to reach the Earth from the 
+Sun, the distance between the Sun and the Earth in 
+new unit is
+(a) 3 × 108 
+(b) 3 × 1010
+(c) 400 
+(d) 500
+5. 
+The following plots show variation of velocity (v) 
+with time (t), of a ball thrown vertically upward, 
+and falling back. Which of the following plots is/
+are correct?
+A. 
+t
+v
+0
+ 
+B. 
+t
+v
+0
+C. 
+t
+v
+0
+ 
+D. 
+t
+v
+0
+E. 
+t
+v
+0
+(a) C only 
+(b) A and E only
+(c) D only 
+(d) B only
+6. 
+In a Vernier callipers, 20 VSD coincide with 
+16 MSD (each division of length 1 mm). The least 
+count of the Vernier callipers is
+(a) 0.01 cm 
+(b) 0.1 cm
+(c) 0.02 cm 
+(d) 0.2 cm
+7. 
+An ac circuit contains a resistance of 1 kW, a 
+capacitor of 0.1 mF and an inductor of 1 mH 
+connected in series. The resonance frequency of 
+the circuit is approximately
+(a) 10.1 kHz 
+ 
+(b) 20.7 kHz 
+(c) 15.9 kHz 
+ 
+(d) 13.5 kHz
+8. 
+The figure given below shows a long straight solid 
+wire of circular cross-section of radius ‘a’ carrying 
+steady current I. The current I is uniformly 
+distributed across its cross-section. The plot which 
+correctly represents the variation of magnetic field 
+(B) with distance (r) from the axis of the conductor 
+in the region is
+ 
+a
+I
+(a) 
+B
+a
+r
+ 
+(b) 
+B
+a
+r
+ 
+(c) 
+B
+a
+r
+ 
+(d) 
+B
+a
+r
+ 
+(2026)
+9. 
+A uniform metallic wire having resistance 4 W is 
+bent to form a square loop (ABCD) (see figure). 
+A resistance of 2 W is connected between points 
+B and D and a battery of  2V is connected across 
+points A and C as shown in the figure. Now the 
+value of current (I) is
+ 
+A
+B
+I
+D
+C
+I
+E = 2V
+2 W
++
+–
+(a) 2 A 
+(b) 4 A 
+(c) 8 A 
+(d) 4.5 A
+10. An unknown nucleus has a nuclear density of 
+2.29 × 1017 kg/m3 and mass of 19.926 × 10–27 kg. 
+Its mass number A is approximately
+ 
+ (Take R0 = 1.2 × 10–15 m, 4p = 12.56)
+(a) 12 
+(b) 19 
+(c) 20 
+(d) 16
+11. A rectangular wire loop of sides 8 cm and 3 cm with 
+a small cut, is moving out of a region of uniform 
+magnetic field of magnitude 0.3 T directed normal 
+to the plane of the loop. The emf developed across 
+the cut, if the velocity of the loop is 2 cm s–1, in 
+a direction normal to the shorter side of the loop, 
+will be
+(a) 1.8 × 10–4 volt 
+(b) 1.2 × 10–4 volt
+(c) 1.3 × 10–4 volt 
+(d) 4.8 × 10–4 volt
+12. A galvanometer of resistance 100 W gives full scale 
+deflection for a current of 1 mA. It is converted into 
+an ammeter of range 0 – 10 A. The shunt required is
+(a) 0.01 W 
+(b) 0.10 W 
+(c) 0.001 W 
+(d) 1.0 W
+13. In 
+Young’s 
+double 
+slit 
+experiment, 
+using 
+monochromatic light of wavelength l, the intensity 
+of light at a point on the screen where the path 
+difference is l, is K units. The intensity of light at a 
+point where the path difference is λ
+3 will be 
+(a) K
+4 
+(b) K 
+(c) K
+2 
+(d) 2 K
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 12 ====================
+11
+PHYSICS FOR YOU | JUNE ‘26
+14. The magnitude and direction of the acceleration 
+produced in a body of mass 5 kg when two 
+mutually perpendicular forces 8 N and 6 N act on 
+it, are respectively 
+(a) 2 m s–2 ; tan–1 (3/4) with 6 N force
+(b) 2 m s–2 ; tan–1 (4/3) with 8 N force
+(c) 2 m s–2 ; tan–1 (3/4) with 8 N force
+(d) 20 m s–2 ; tan–1 (4/3) with 8 N force
+15. Five capacitors of capacitances
+ 
+C1 = C2 = C3 = C4 = 10 mF and C5 = 2.5 mF are 
+connected as shown, along with a battery of 50 V.
+C2
+C1
+C4
+C5
+C3
+50 V
+ 
+The equivalent capacitance and the charges on 
+each capacitor respectively are
+(a) 5 mF, 125 mC on all capacitors 
+(b) 5 mF, 250 mC on all capacitors 
+(c) 4 mF, 250 mC on C1 to C4 and 125 mC on C5
+(d) 5 mF, 125 mC on C1 to C4 and 25 mC on C5
+16. In a metre bridge experiment (see figure), the 
+positions of the cell, E, and galvanometer, G, are 
+interchanged. We shall observe in the galvanometer
+R1
+R2
+E
+G
+(a) Only the right-sided deflection
+(b) Only the left-sided deflection 
+(c) There will be no deflection irrespective of the 
+position of the jockey
+(d) Both right-sided and left-sided deflection and 
+at balance point, no deflection
+17. The power of a crane, which lifts a mass of 1000 kg 
+to a height of 20 m in 10 s is
+ 
+(g = 9.8 m/s2 )
+(a) 19.6 W 
+(b) 39.2 W 
+(c) 39.2 kW 
+(d) 19.6 kW
+18. Match List I with List II :
+ 
+List I 
+ 
+List II
+A. Young’s modulus 
+I. 
+Δ
+Δ
+d
+L
+L
+d
+⎛
+⎝⎜
+⎞
+⎠⎟
+B. 
+Compressibility 
+II. 
+FL
+A
+L
+(
+)
+Δ
+C. Bulk modulus 
+III. −
+⎛
+⎝⎜
+⎞
+⎠⎟
+1
+Δ
+Δ
+P
+V
+V
+D. Poisson’s ratio 
+IV. −
+⎛
+⎝⎜
+⎞
+⎠⎟
+P
+V
+V
+Δ
+ 
+Choose the correct answer from the options given 
+below:
+(a) A-I, B-IV, C-III, D-II
+(b) A-IV, B-I, C-II, D-III
+(c) A-III, B-II, C-I, D-IV
+(d) A-II, B-III, C-IV, D-I
+19. In a concave lens, a ray of light emanating from the 
+object parallel to the principal axis of the lens, after 
+refraction
+(a) emerges parallel to the principal axis
+(b) appears to diverge from the first principal focus
+(c) passes through 2F, which is the radius of 
+curvature of the lens
+(d) passes through the second principal focus.
+20. A thin wire of length ‘L’ and 
+linear mass density ‘m’ is 
+bent into a circular ring (in 
+x-y  plane) with centre ‘C’ as 
+shown in figure. The moment 
+of inertia of the ring about an 
+axis yy ′ will be
+(a) 3
+8
+3
+2
+mL
+π
+ 
+(b) 3
+8
+3
+mL
+π 
+(c) 3
+8
+2
+2
+mL
+π
+ 
+(d) 3
+8
+2
+mL
+π
+21. Each side of a metallic cube of mass 5.580 kg is 
+measured to be 9.0 cm. Keeping the significant 
+figures in view, the density of the material of the 
+cube can be best expressed as X × 103 kg m–3, 
+where the value of X is
+(a) 7.654 
+(b) 7.7 
+(c) 7.65 
+(d) 7.6
+22. For a travelling harmonic wave y(x, t) = 2.0 cos 2p 
+(10t – 0.0080 x + 0.35), where x and y are in cm and t 
+in s. The phase difference between oscillatory motion 
+of two points separated by a distance of 0.5 m is
+y
+x
+y′
+C
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 13 ====================
+12
+PHYSICS FOR YOU | JUNE ‘26
+(a) 8 p rad 
+(b) 0.08 p rad
+(c) 0.008 p rad 
+(d) 0.8 p rad
+23. A ray of monochromatic light is passing through 
+an equilateral prism (ABC) as shown in the figure. 
+The refracted ray (QR) is parallel to its base (BC) 
+and the angle of incidence (i) is 50°. Then the angle 
+of deviation (d) is 
+A
+d
+S
+60°
+C
+B
+Q
+P
+R
+i
+(a) 40° 
+(b) 45° 
+(c) 55° 
+(d) 35°
+24. In the circuit shown below, the voltage appearing 
+across the diode D will be of the form
+Vi
+Vi
+t
+VD
+D
+R
+(a) 
+VD
+t
+ 
+(b) 
+VD
+t 
+(c) 
+VD
+t 
+(d) 
+VD
+t
+25. For a simple pendulum, having time period T, the 
+variation of kinetic energy (K.E.) with time (t) is 
+represented by
+(a) 
+K.E.
+0
+t
+T/2
+T
+(b) 
+K.E.
+0
+t
+T/2
+T
+ 
+(c) 
+K.E.
+0
+t
+T/2
+T
+ 
+(d) 
+K.E.
+0
+t
+T
+26. A resistor is connected to a battery of 12 V emf and 
+internal resistance 2 W. If the current in the circuit 
+is 0.6 A, the terminal voltage of the battery is 
+(a) 10 V 
+(b) 10.8 V 
+(c) 12 V 
+(d) 1.2 V
+27. The amount of work done to raise a mass ‘m’ from 
+the surface of the Earth to a height equal to the 
+radius of the Earth ‘R’, will be
+(a) 2 mg R  
+ 
+(b) mg R 
+(c) mg R
+4  
+ 
+(d) mg R
+2
+28. An electric heater supplies heat to a system at a rate 
+of 100 W. If the system performs work at a rate of 
+75J/s, then the rate at which internal energy 
+increases will be 
+(a) 125 W 
+(b) 100 W 
+(c) 25 W 
+(d) 75 W
+29. A room heater is rated 400 W, 200 V. If the supply 
+voltage drops to 200 V, what will be the power 
+consumed (approximately)? 
+(a) 121 W  
+ 
+(b) 331 W 
+(c) 200 W  
+ 
+(d) 400 W
+30. When a ruler falls vertically, 5 different persons 
+catch it with different reaction times. (g = 9.8 m s–2)
+A. Person A has reaction time of 0.20 s.
+B. 
+Person B has reaction time of 0.22 s.
+C. Person C has reaction time of 0.18 s.
+D. Person D has reaction time of 0.19 s.
+E. 
+Person E has reaction time of 0.21 s.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 14 ====================
+13
+PHYSICS FOR YOU | JUNE ‘26
+ 
+What is the correct order of the distance travelled 
+by the ruler for each person?
+(a) C > D > A > B > E 
+(b) C > D > A > E > B 
+(c) B > E > A > C > D 
+(d) B > E > A > D > C
+31. Consider two uncharged capacitors of equal 
+capacitance 200 pF. One of them is charged by a 
+100 V supply and disconnected. Now this capacitor 
+is connected to the uncharged capacitor. The 
+amount of electrostatic energy lost in the process is
+(a) 1.0 × 10–6 J  
+(b) 0.5 × 10–6 J 
+(c) 0.5 J 
+ 
+ 
+(d) 1.0 J
+32. Savitha, a XI standard student, while conducting 
+an experiment to determine the effective length of 
+a simple pendulum L,  notes down the data of time 
+taken to complete 30 oscillations as 60 s and hence 
+calculates the length of the simple pendulum as 
+(Take p2 = 9.8, and g = 9.8 m/s2)
+(a) 2 m 
+(b) 0.75 m (c) 1.5 m 
+(d) 1 m
+33. The peak value of an alternating current is 5 A and 
+frequency is 60 Hz. How long will the current, 
+starting from zero, take to reach the peak value ?
+(a) 
+1
+240s 
+(b) 1
+30s 
+(c) 
+1
+120s 
+(d) 1
+60s
+34. In interference and diffraction, the light energy is 
+redistributed. If it reduces in one region, producing 
+a dark fringe, it increases in another region, 
+producing a bright fringe.
+A. As there is no gain or loss of energy, these 
+phenomena are consistent with the principle 
+of conservation of energy.
+B. 
+Diffraction and interference are characteristics 
+exhibited only by light waves.
+ 
+Choose the correct answer from the options given 
+below :
+(a) A is true, but B is false
+(b) A is true and B is also true
+(c) A is false, but B is true
+(d) both A and B are false
+35. A box of mass 15 kg is kept on the floor of a 
+stationary trolley. The coefficient of static friction 
+between the box and the trolley is 0.12. Keeping 
+the box in stationary state over the trolley, the 
+maximum acceleration with which the trolley can 
+be moved horizontally in m s–2 is
+(a) 1.5 
+(b) 1.8 
+(c) 2.1 
+(d) 1.2
+36. The sum of kinetic energy and potential energy of 
+a simple pendulum bob is 0.02 joule. The speed of 
+the simple pendulum bob at equilibrium position 
+is approximately
+(Consider mass of the bob = 20 g)
+(a) 1.41 m/s 
+(b) 14.1 m/s
+(c) 0.2 m/s 
+(d) 2.0 m/s
+37. Four statements are given (A is mass number) :
+A. The volume of a nucleus is proportional to 
+A1/3.
+B. 
+The volume of a nucleus is proportional to A.
+C. The difference in mass of an atom and its 
+nucleus is called the mass defect.
+D. The difference in mass of a nucleus and its 
+constituents is called the mass defect.
+ 
+Choose the correct answer from the options given 
+below :
+(a) B and D are true, but A and C are false
+(b) A and D are true, but B and C are false
+(c) A and C are true, but B and D are false
+(d) B and C are true, but A and D are false
+38. The angular speed of a flywheel is increased from 
+600 rpm to 1200 rpm in 10 s. The number of 
+revolutions completed  by the flywheel during this 
+time is 
+(a) 600 
+(b) 900
+(c) 300 
+(d) 150
+39. A submarine is designed to withstand an absolute 
+pressure of 100 atm. How deep can it go below the 
+water surface ?
+(Consider the density of water = 1000 kg m–3)
+ 
+1 atm = 1 × 105 Pa and gravitational acceleration 
+g = 10 m/s2)
+(a) 9900 m 
+(b) 99 m
+(c) 9000 m 
+(d) 990 m
+40. Match List I with List II :
+List I 
+List II
+(Electromagnetic 
+(Production)
+wave)
+A. Microwave 
+I. 
+ Electrons in atoms 
+emit light when 
+they move from a 
+higher energy level 
+to a lower energy 
+level
+B. Visible light 
+II.  Radioactive decay 
+of nucleus
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 15 ====================
+14
+PHYSICS FOR YOU | JUNE ‘26
+C. Gamma rays 
+III.  Vibration of atoms 
+and molecules
+D. Infra-red rays  
+IV.  Klystron valve or 
+magnetron valve
+ 
+Choose the correct answer from the options given 
+below :
+(a) A–III, B–I, C-II, D-IV
+(b) A–III, B–IV, C-I, D-II
+(c) A–IV, B–III, C-II, D-I
+(d) A–IV, B–I, C-II, D-III
+41. Which of the following statements are correct ?
+A. Inside a conductor, the electrostatic field is 
+zero.
+B. 
+Electric field at the surface of a charged 
+conductor does not depend on its surface 
+charge density.
+C. The interior of a charged conductor can have 
+no excess charge in the static situation.
+D. At the surface of a charged conductor, the 
+electrostatic field must be normal to the 
+surface at every point.
+E. 
+the electrostatic potential is zero everywhere 
+inside a charged conductor.
+ 
+Choose the correct answer from the options given 
+below :
+(a) C, D and E only 
+(b) A, B and D only
+(c) A, C and D only 
+(d) A, C and E only
+42. For a metal of work function 6.6 eV, which of the 
+following wavelengths of incident radiation does 
+not give rise to the photoelectric effect?
+(Take Planck’s constant as 6.6 × 10–34 Js)
+(a) 200 nm 
+(b) 150 nm
+(c) 100 nm 
+(d) 50 nm
+43. In the first excited state of hydrogen atom, the 
+energy of its electron is – 3.4 eV. The radial distance 
+of the electron from the hydrogen nucleus in this 
+case is approximately
+ 
+(Take 1 eV = 1.6 × 10–19 J, e = 1.6 × 10–19 C and 
+1
+4
+9 10
+0
+9
+2
+2
+πε =
+×
+N m
+C
+/
+)
+(a) 2.1 × 10–8 m 
+(b) 2.1 × 10–11 m
+(c) 2.1 × 10–9 m 
+(d) 2.1 × 10–10 m
+44. Two statements are given below :
+A. When the forward bias voltage across a p-n 
+junction diode increases above a certain 
+threshold voltage, the diode current increases 
+significantly.
+B. 
+This current is called reverse saturation current.
+ 
+Choose the correct answer from the options given 
+below :
+(a) Both statements A and B are false
+(b) Statement A is true, but statement B is false
+(c) Both statements A and B are true
+(d) Statements A is false, but statement B is true
+45. A flask contains argon and chlorine in the ratio of 
+2 : 1 by mass. The temperature of the mixture is 
+27°C. The ratio of root mean square speed of the 
+molecules of the two gases v
+v
+rms
+Ar
+rms
+Cl
+⎛
+⎝⎜
+⎞
+⎠⎟ is 
+ 
+(Atomic mass of argon = 40.0 u and molecular 
+mass of chlorine = 70.0 u)
+(a) 
+7
+2
+⎛
+⎝⎜
+⎞
+⎠⎟ (b) 7
+2 
+(c) 7
+4 
+(d) 2
+7
+SOLUTIONS
+1. (a) : The magnetic field B at the centre of coil is, 
+Bcentre = n
+I
+r
+μ0
+2
+Here, n = 100 ; m0 = 4p × 10–7 T m/A
+r = 5 cm = 5 × 10–2 m; B = 3.14 × 10–3 T
+I
+B
+r
+n
+=
+×
+=
+×
+× × ×
+×
+×
+−
+−
+−
+2
+3 14
+10
+2
+5 10
+100
+4
+10
+0
+3
+2
+7
+μ
+π
+.
+I = 2.5 A
+The magnetic moment, M = nIA
+= nI(pr2)
+= 100 × 2.5 × 3.14 × (5 × 10–2)2
+= 1.96 A m2  2 A m2
+2. (a)
+3. (b) : As branch 1 and 3 are forward biased and 
+branch 2 and branch 4 are reversed biased.
+Hence, current only flows 
+through branch 1 and 3.
+1
+1
+4
+2
+3
+4
+Req
+=
++ 1 =
+⇒
+=
+Req
+4
+3 Ω
+From Ohm’s law, V = IR
+I
+V
+R
+=
+=
+=
+=
+10
+4
+3
+30
+4
+15
+2 A
+4 W
+3 W
+2 W
+5 W
+10 V
++ –
+I
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 16 ====================
+15
+PHYSICS FOR YOU | JUNE ‘26
+4. (c) : As, the speed of light is taken as unity.
+Time taken by the light to reach earth = 6 min 40 s
+Distance = Speed × Time
+= 1 unit/s × 400 s = 400 units
+5. (a) : First velocity decreases linearly as v = u – gt
+After time, t
+u
+g v
+=
+=
+;
+0
+So, after reaching the top, the ball starts accelerating 
+downward and speeds up as it falls in downward 
+direction.
+v
+gt
+v
+t
+′ =
+⇒′ ∝
+6. (c)
+7. (c) : R = 1 kW, C = 0.1 mF, L = 1 mH
+Resonant frequency, 
+f
+LC
+=
+1
+2π
+ 
+f =
+×
+×
+×
+×
+−
+−
+1
+2
+3 14 1 10
+0 1 10
+3
+6
+.
+.
+= 159 × 103 Hz = 15.9 kHz
+8. (a) : Inside the wire, B ∝ r (straight line)
+At the surface, B
+I
+a
+= μ
+π
+0
+2
+(max
+)
+imum
+Outside the wire, B
+r
+∝1 (hyperbola)
+So, correct option is (a).
+9. (a) : It is a balanced Wheatstone bridge, so 
+resistance 2 W can be removed.
+R′ = + =
+1 1
+2Ω
+R′′ = + =
+1 1
+2Ω 
+R
+R R
+R
+R
+eq =
+′ ′′
+′ +
+′′ =
+×
++
+=
+2
+2
+2
+2
+1Ω
+So, I
+Req
+=
+=
+=
+ε
+2
+1
+2 A
+10. (a)
+11. (a) : L = 8 cm, W = 3 cm
+B = 0.3 T and v = 2 cm/s
+Induced emf, e = Bvl
+= 0.3 × 2 × 10–2 × 3 × 10–2
+e = 1.8 × 10–4 V
+12. (a) : Given, Galvanometer resistance, G = 100 W
+Ig = 1 mA = 10–3 A
+As, (10 – Ig) × r = Ig × G
+1 kW
+0.1 mF
+1 mH
+I
+1 W
+1 W
+1 W
+D
+C
+A
+B
+e = 2V
+1 W
+2 W
+8 cm
+3 cm
+v
+B ⊗
+⇒ r
+I
+G
+I
+g
+g
+=
+×
+−
+=
+×
+−
+−
+−
+10
+10
+100
+10
+10
+3
+3 
+ 10
+10
+10
+0 01
+1
+2
+−
+−
+=
+= .
+Ω
+13. (a) : Given, Dx = l, I = K
+Δ
+Δ
+Δ
+x
+x
+′ =
+⇒
+′ =
+×
+′ =
+λ
+φ
+π
+λ
+π
+3
+2
+2
+3
+∴′ =
+′ =
+⎛
+⎝⎜
+⎞
+⎠⎟
+I
+I
+K
+cos
+cos
+2
+2
+2
+3
+φ
+π
+=
+−
+⎡
+⎣⎢
+⎤
+⎦⎥=
+K
+K
+1
+2
+4
+2
+14. (c) : Given, F1 = 8 N, F2 = 6 N, m = 5 kg
+Resultant force, F
+F
+F
+=
++
+=
++
+=
+1
+2
+2
+2
+64
+36
+10N
+Acceleration, a
+F
+m
+=
+=
+=
+10
+5
+2
+2
+m/s 
+θ =
+⎛
+⎝⎜
+⎞
+⎠⎟=
+⎛
+⎝⎜
+⎞
+⎠⎟
+−
+−
+tan
+tan
+1
+1
+8
+6
+4
+3
+′ =
+⎛
+⎝⎜
+⎞
+⎠⎟
+−
+θ
+tan 1 3
+4 with 8 N force
+15. (a) : C1 = C2 = C3 = C4 = 10 mF 
+C5 = 2.5 mF, V = 50 V
+Here, C1, C2, C3 C4 are in series,
+1
+1
+1
+1
+1
+4
+10
+1
+2
+3
+4
+C
+C
+C
+C
+C
+s
+=
++
++
++
+=
+Cs = 2.5 mF
+The equivalent capacitance, 
+Ceq = Cs + C5 = 2.5 + 2.5 = 5 mF
+Charge on C5, q1 = C5 × 50 = 2.5 × 50 = 125 mC
+Charge on C1, C2, C3, C4, q2 = Cs × 50 = 2.5 × 50 
+= 125 mC
+16. (d) : When 
+battery 
+and 
+galvanometer 
+are 
+interchanged, then balanced condition does not 
+change.
+So, option (d) is correct
+17. (d) : Power of crane, P
+W
+t
+=
+=
+=
+×
+×
+mgh
+t
+10
+9 8
+20
+10
+3
+.
+P = 19.6 kW
+18. (d)
+19. (b) : When a ray of light emanating from an object 
+parallel to the principal axis of a concave lens, 
+refracts and diverges. The refracted ray appears to 
+diverge from the first principal focus.
+10 R
+1 mA
+10 – Ig
+Ig
+r
+G
+q
+q′
+6 N
+8 N
+C4
+C1
+C2
+C3
+C5
+50 V
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 17 ====================
+16
+PHYSICS FOR YOU | JUNE ‘26
+20. (a) : Mass density = m
+Length of the wire, L = 2pR
+∴
+=
+R
+L
+2π 
+...(i)
+Let mass of wire, M = mL
+Now, apply parallel axes theorem,
+I = ID + MR2
+=
++
+1
+2
+2
+2
+MR
+MR 
+I
+MR
+= 3
+2
+2 ; I
+mL
+L
+=
+⋅⎛
+⎝⎜
+⎞
+⎠⎟
+3
+2
+2
+2
+(
+)
+π
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+3
+2
+4
+2
+2
+mL
+L
+π
+I
+mL
+= 3
+8
+3
+2
+π
+21. (b) : Density of metallic cube, ρ =
+Mass
+Volume
+ρ =
+×
+−
+5 580
+9 0 10 2 3
+.
+( .
+)
+r = 0.007654 × 106 kg m–3
+r = 7.7 × 103 kg m–3
+On comparing with question, value of X is 7.7.
+22. (d)
+23. (a) : When the refracted ray is parallel to the base of 
+the prism, then prism is in the minimum deviation 
+position, i.e., ∠i = ∠e = 50° (given)
+The angle of minimum deviation is given by
+dm = 50 ° + 50 ° – 60 °
+dm = 40°
+24. (b) : At the time of positive input pulse, the diode is 
+reverse biased, hence it act as an open circuit, so the 
+input voltage Vi appears as output voltage at VD.
+For the next negative input 
+pulse, the diode act as a 
+short circuit, hence there 
+will be no output across VD.
+The output waveform will 
+be represented as,
+25. (c)
+26. (b) : Terminal voltage of the battery, V = E – Ir
+Given, E = 12 V ; Internal resistance (r) = 2 W
+I = 0.6 A
+V = 12 – 0.6 × 2
+= 12 – 1.2 = 10.8 V
+y′
+y
+C
+x
+t
+VD
+27. (d) : Initial potential energy,
+U
+GMm
+R
+1 = −
+Final potential energy
+U
+GMm
+R
+2
+2
+= −
+Work done, U
+U
+GMm
+R
+GMm
+R
+2
+1
+2
+−
+= −
+−−
+⎛
+⎝⎜
+⎞
+⎠⎟
+= GMm
+R
+2
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+GM
+R
+mR
+2
+2
+=
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+mgR
+g
+GM
+R
+2
+2
+∵
+28. (c)
+29. (b) : ∵P
+V
+R
+R
+=
+⇒
+=
+×
+2
+220
+220
+400
+R = 121 W
+When the supply voltage is 200 V, then power 
+consumed will be
+P =
+×
+=
+200
+200
+121
+330 58
+331
+.
+W
+W
+
+\ P ≈ 331 W
+30. (d) : When the ruler falls freely 
+So, S
+gt
+S
+t
+=
+∝
+1
+2
+2
+2
+;
+The distance travelled by the ruler is proportional 
+to the square of the reaction time.
+Therefore, B > E > A > D > C
+31. (b)
+32. (d) : Time period, T
+t
+n
+=
+=
+=
+60
+30
+2 sec
+Time period of a simple pendulum, 
+T
+l g T
+l
+g
+=
+=
+2
+4
+2
+2
+π
+π
+/
+;
+⇒
+=
+×
+4
+4
+2
+π
+l
+g ⇒
+=
+=
+=
+l
+g
+π2
+9 8
+9 8
+1
+.
+.
+m
+Therefore, the length of the simple pendulum is 1 m.
+33. (a) : AC follows sine wave, I = I0 sin (2pft)
+The current reaches its peak value first time starting 
+from zero when phase is π
+2
+So, 2
+2
+π
+π
+ft =
+; t
+f
+=
+=
+×
+=
+1
+4
+1
+4
+60
+1
+240 sec
+34. (a) : Both interference and diffraction obeys the 
+law of conservation of energy.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 18 ====================
+17
+PHYSICS FOR YOU | JUNE ‘26
+But diffraction and interference are characteristics 
+of all types of waves, not just light.
+35. (d) : Normal force acting on the block, N = mg
+Maximum static friction,
+fm = msN = msmg
+For no slipping,
+mamax ≤ fm ; or mamax ≤ ms mg
+or amax ≤ ms g
+or amax = 0.12 × 10 = 1.2 m s–2
+36. (a) : At the equilibrium position, total energy of the 
+pendulum = kinetic energy
+(wA)2 = 2
+0 02
+2
+0 02
+20 10
+2
+2
+2
+1
+2
+3
+×
+=
+×
+×
+=
+×
+× =
+−
+.
+.
+m
+vmax = wA = 
+2 m/s = 1.41 m/s
+37. (a) : As, we know V = 4
+3
+0
+3
+πR A 
+The volume of a nucleus is directly proportional to 
+mass number.
+The difference between the total mass of an atoms 
+constituents and the actual mass of the nucleus is 
+called mass defect.
+38. (d)
+39. (d) : P = 100 atm, r = 1000 kg/ m3, 1 atm = 105 Pa
+and g = 10 m/s2
+Total pressure,
+P = P0 + hrg
+100 × 105 = 105 + h × 1000 × 10
+9.9 × 106 = 104 h
+h = 990 m
+40. (d) : A – IV, B – I, C – II, D – III 
+Microwave - klystron valve or magnetron valve 
+Visible light - Electrons in atoms emit light when 
+they move from a higher energy level to a lower 
+energy level.
+Gamma rays - Radioactive decay of the nucleus.
+Infra-red rays -vibration of atoms and molecules.
+41. (c)
+42. (a) : Threshold wavelength, λ
+φ
+0 = hc
+∴
+=
+×
+× ×
+×
+×
+−
+−
+λ0
+34
+8
+19
+6 6 10
+3 10
+6 6 1 6 10
+187 5
+.
+.
+.
+.
+
+nm
+Wavelength greater than l0 will not eject electrons.
+43. (d) : Since, the energy of an electron in first excited 
+state is −
+= −
+13 6
+3 4
+2
+.
+.
+n
+eV
+Hence, n = 2
+Radius of the electron’s orbit in the nth state,
+rn = n2 × a0
+where a0 is the Bohr radius.
+For first excited state, n = 2
+\ r2 = (2)2  × (0.529 Å) = 2.1 Å = 2.1 × 10–10 m
+44. (b) : When the forward bias voltage exceeds the 
+threshold voltage, the diode current increases 
+significantly. This high current is called forward 
+current.
+45. (a) : vrms = 
+3RT
+M
+At the same temperature, v
+M
+rms ∝
+1
+∴
+=
+v
+v
+M
+M
+Ar
+Cl
+Cl
+Ar
+ or
+Ar
+Cl
+v
+v
+=
+=
+=
+70
+40
+7
+4
+7
+2
+ 
+Contributed by : Kaustubh Dev
+40-65*0/450.":803%(3*%
+ 
+Across
+1. Joule.
+2. Thermometer.
+3. Adiabatic Process.
+4. Enthalpy.
+5. Transverse Wave.
+ 
+Down
+1. Mechanical Energy.
+2. Momentum.
+3. Newton.
+4. Potential Energy.
+5. Gyroscopic Effect.
+L
+S
+D
+P
+M
+Q
+Z
+M
+O
+X
+W
+N
+I
+S
+O
+B
+A
+P
+Z
+P
+T
+H
+E
+R
+M
+O
+M
+E
+T
+E
+R
+P
+A
+P
+G
+E
+G
+O
+A
+M
+C
+N
+H
+M
+A
+S
+S
+W
+J
+I
+L
+S
+T
+I
+B
+T
+S
+H
+H
+D
+I
+E
+P
+K
+X
+T
+Q
+G
+R
+Z
+T
+I
+U
+E
+N
+B
+A
+L
+K
+N
+A
+W
+Z
+O
+I
+Y
+X
+C
+V
+B
+Z
+N
+W
+Q
+N
+B
+E
+T
+Z
+Q
+P
+N
+N
+R
+M
+T
+Y
+P
+Z
+T
+S
+P
+I
+A
+C
+U
+Y
+U
+I
+B
+L
+O
+X
+C
+V
+B
+T
+I
+Q
+N
+C
+W
+A
+M
+H
+H
+X
+C
+V
+S
+R
+M
+O
+M
+A
+A
+D
+I
+A
+B
+A
+T
+I
+C
+P
+R
+O
+C
+E
+S
+S
+T
+S
+L
+Q
+N
+L
+P
+N
+N
+R
+R
+M
+O
+J
+O
+U
+L
+E
+B
+N
+E
+T
+H
+E
+N
+T
+H
+A
+L
+P
+Y
+S
+P
+R
+M
+O
+M
+V
+N
+V
+E
+N
+B
+E
+T
+Z
+Q
+P
+N
+N
+I
+L
+K
+N
+A
+H
+E
+S
+E
+E
+P
+N
+N
+R
+R
+M
+O
+M
+C
+X
+C
+V
+B
+V
+R
+V
+E
+R
+T
+S
+H
+H
+X
+C
+V
+B
+E
+T
+S
+H
+H
+N
+G
+T
+H
+G
+X
+C
+V
+B
+R
+M
+O
+M
+F
+X
+C
+V
+B
+H
+Y
+Q
+N
+Y
+B
+E
+T
+Z
+Q
+P
+N
+N
+F
+L
+K
+N
+A
+T
+R
+A
+N
+S
+V
+E
+R
+S
+E
+W
+A
+V
+E
+T
+S
+H
+H
+V
+C
+V
+B
+P
+N
+N
+R
+A
+L
+K
+N
+A
+C
+P
+N
+N
+R
+R
+M
+O
+M
+T
+S
+H
+H
+Q
+N
+W
+A
+D
+T
+X
+C
+V
+B
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 19 ====================
+18
+PHYSICS FOR YOU | JUNE ‘26
+Held on 
+2nd April, Morning Shift
+(Session - 2)
+ 
+Choose the correct answer from the options given 
+below :
+(a) A, B and C only 
+(b) B, C and D only
+(c) A, C and D only 
+(d) A, B and D only
+5. 
+A planet (P1) is moving around the star of mass 
+2M in the orbit of radius R. Another planet (P2) is 
+moving around another star of mass 4M in an orbit 
+of radius 2R. Ratio of time periods of revolution of 
+P2 and P1 is _________.
+(a) 1
+2 
+(b) 2 
+(c) 4 
+(d) 1
+4
+6. 
+A particle is rotating in a circular path and at any 
+instant its motion can be described as θ =
+−
+5
+40
+3
+4
+3
+t
+t . 
+The angular acceleration of the particle after 10 
+seconds is ________ rad/s2.
+Options :
+(a) 150 
+(b) 120 
+(c) 130 
+(d) 170
+7. 
+A parallel plate air capacitor has a capacitance C. 
+When it is half filled as shown in figure with a 
+dielectric constant K = 5, the percentage increase 
+in the capacitance is ________.
+K = 5
+d/2
+d
+(a) 33.34 
+(b) 66.67
+(c) 200 
+(d) 400
+SECTION-A (MULTIPLE CHOICE QUESTIONS)
+1. 
+The dimensional formula of 1
+2 0
+ε E² 
+(ε0 = permittivity of vacuum and E = electric field) 
+is MaLbTc. The value of 2a − b + c = ________.
+(a) 0 
+(b) 1 
+(c) −1 
+(d) 2
+2. 
+The diameter of a wire measured by a screw 
+gauge of least count 0.001 cm is 0.08 cm. The 
+length measured by a scale of least count 0.1 cm 
+is 150  cm. When a weight of 100 N is applied 
+to the wire, the extension in length is 0.5 cm, 
+measured by a micrometer of least count 0.001 cm. 
+The error in the measured Young's modulus is 
+α × 109 N/m2. The value of α is ________. (Ignore 
+the contribution of the load to Young's modulus 
+error calculation)
+(a) 1.3 
+(b) 1.65 
+(c) 0.13 
+(d) 0.25
+3. 
+The 
+velocity 
+of 
+a 
+particle 
+is 
+given 
+as 
+
+
+
+
+v
+xi
+y j
+zk
+= −
++
+−
+2
+m/s. 
+The 
+magnitude 
+of 
+acceleration at point (1, 2, 4) is ________ m/s2.
+(a)  
+6 
+(b) 9 
+(c) 
+33 
+(d) 0
+4. 
+The position of an object having mass 0.1 kg as a 
+function of time t is given as 
+
+
+r
+t i
+t j
+=
++
+(
+)
+10
+5
+2
+3
+m. 
+At t = 1 s, which of the following statements are 
+correct?
+A. The linear momentum  
+
+
+p
+i
+j
+=
++
+(
+)
+2
+1 5.
+kgm/s.
+B. The force acting on the object 
+
+
+
+F
+i
+j
+=
++
+(
+)
+2
+3
+N.
+C. The angular momentum of the object about its 
+origin 
+
+
+L
+k
+= 15 Js.
+D. The torque acting on the object about its origin 
+
+
+τ = 20k Nm.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 20 ====================
+19
+PHYSICS FOR YOU | JUNE ‘26
+8. 
+Heat is supplied to a diatomic gas at constant 
+pressure. Then the ratio ΔQ : ΔU : ΔW is ______.
+(a) 2 : 3 : 5 
+(b) 5 : 3 : 2
+(c) 2 : 5 : 7 
+(d) 7 : 5 : 2
+9. 
+Two charged conducting spheres S1 and S2 of radii 
+8 cm and 18 cm are connected to each other by a 
+wire. After equilibrium is established, the ratio of 
+electric fields on S1 and S2 spheres are ES1 and ES2 
+respectively. The value of 
+E
+E
+S
+S
+1
+2
+ is _______.
+(a) 3
+2 
+(b) 2
+3 
+(c) 4
+9 
+(d) 9
+4
+10. The equation of a plane progressive wave is given 
+by y
+t
+x
+=
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+5
+200
+150
+cosπ
+  where x and y are in 
+cm and t is in second. The velocity of the wave is 
+________ m/s.
+(a) 120 
+(b) 150 
+(c) 200 
+(d) 300
+11. Two short electric dipoles A and B having dipole 
+moment p1 and p2 respectively are placed with 
+their axis mutually perpendicular as shown in the 
+figure. The resultant electric field at a point x is 
+making an angle of 60° with the line joining points 
+O and x. The ratio of the dipole moments p
+p
+2
+1
+ is 
+_________.
+x
+B
+A
+O
++
++
+_
+_
+(a) 
+3
+2 
+(b) 2 3 
+(c) 
+1
+3
+ 
+(d) 
+3
+12. For the given circuit (shown in part (A)) the time 
+dependent input voltage vin(t) and corresponding 
+output vo(t) are shown in part (B) and part (C), 
+respectively. Identify the components that are used 
+in the circuit between points X and Y.
+Vin
+Vin
+V0 (t)
+t(min)
+2
+1
+(t)
+(A) Circuit used
+Ideal
+diode
+Zener
+diode
+X
+Y
+Part (B) : Input voltage
+20 V
+–20 V
+VZ = 5 V
+vo
+t(min)
+2
+1
+(t)
+Part (C) : Output voltage
+5 V
+–5 V
+(a) X
+Y
+(b) X
+Y
+(c) X
+Y
+(d) X
+Y
+13. When a coil is placed in a time dependent magnetic 
+field the power dissipated in it is P. The number of 
+turns, area of the coil and radius of the coil wire are 
+N, A and r respectively. For a second coil number 
+of turns, area of the coil and radius of the coil wire 
+are 2N, 2A and 3r respectively. When the first coil 
+is replaced with second coil the power dissipated in 
+it is 
+2 αP. The value of α is _______.
+(a) 36 
+(b) 128
+2
+(c) 16 
+(d) 64
+14. Two 
+identical 
+long 
+current carrying wires 
+are bent into the shapes 
+shown in the following 
+figures. If the magnitude 
+of magnetic fields at 
+the centres P and Q of a 
+semicircular arc are B1 
+and B2 respectively, then 
+the ratio B
+B
+1
+2
+ is ________.
+(a) 2
+1
++
++
+π
+π 
+(b) 1
+1
++
+−
+π
+π
+(c) 2
+1
++
+−
+π
+π 
+(d) 1
+2
++
+−
+π
+π
+15. For a thin symmetric prism made of glass 
+(refractive index 1.5), the ratio of incident angle 
+and minimum deviation will be ________.
+(a) 3 : 4 
+(b) 3 : 2
+(c) 2 : 1 
+(d) 1 : 2
+16. Refer the figure given below. μ1 and μ2 are refractive 
+indices of air and lens material. The height of image 
+will be ________ cm.
+Q
+I
+I
+r
+(II)
+P
+I
+I
+r
+(I)
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 21 ====================
+20
+PHYSICS FOR YOU | JUNE ‘26
+O
+C
+20 cm
+2 cm
+μ1 = 1
+μ2 = 1.54
+40 cm
+P
+(a) 1 
+(b) 0.5
+(c) 1.2 
+(d) 0.25
+17. For a certain metal, when monochromatic light of 
+wavelength λ is incident, the stopping potential 
+for photoelectrons is 3V0. When the same metal 
+is illuminated by light of wavelength 2λ, then the 
+stopping potential becomes V0. The threshold 
+wavelength for photoelectric emission for the 
+given metal is αλ. The value of α is _______.
+(a) 1 
+(b) 4
+(c) 2 
+(d) 3
+18. An electromagnetic wave travelling in x-direction is 
+described by field equation E
+t
+x
+c
+y =
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+300 sin
+.
+ω
+If the electron is restricted to move in y-direction 
+only with speed of 1.5 × 106 m/s then ratio of 
+maximum electric and magnetic forces acting on 
+the electron is ________.
+(a) 200 
+(b) 150
+(c) 400 
+(d) 300
+19. Angular momentum of an electron in a hydrogen 
+atom is 3h
+π , then the energy of the electron is 
+_______ eV.
+(a) −1.51 
+(b) −0.85
+(c) −0.38 
+(d) −0.28
+20. A liquid drop of diameter 2 mm breaks into 
+512 droplets. The change in surface energy is 
+α × 10–6 J. The value of α is _______. (Take surface 
+tension of liquid = 0.08 N/m)
+(a) 10 
+(b) 7
+(c) 8 
+(d) 11
+SECTION-B (NUMERICAL VALUE TYPE QUESTIONS)
+21. In single slit diffraction pattern, the wavelength 
+of light used is 628 nm and slit width is 0.2 mm, 
+the angular width of central maximum is α × 10–2 
+degrees. The value of α is _________.
+22. A vessel contains 0.15 m3 of a gas at pressure 8 
+bar and temperature 140 °C with CP = 3R and 
+CV = 2R. It is expanded adiabatically till pressure 
+falls to 1 bar. The work done during this process is 
+_________ k J. (R is gas constant)
+23. 1 
+μC 
+charge 
+moving 
+with 
+velocity 
+
+
+
+
+v
+i
+j
+k
+=
+−
++
+(
+)
+2
+3
+m/s in the region of magnetic field 
+
+
+
+
+B
+i
+j
+k
+=
++
+−
+(
+)
+2
+3
+5
+T . The magnitude of force acting 
+on it is 
+α ×
+−
+10 6 N . The value of α is _________.
+24. A uniform wire of length l of weight w is suspended 
+from the roof with a weight of W at the other end. 
+The stress in the wire at l
+3 distance from the top is 
+W
+A
+w
+A
++
+⎛
+⎝⎜
+⎞
+⎠⎟
+2
+γ
+, where, A is the cross sectional area of 
+the wire. The value of γ is _________.
+25. A tub is filled with water and a wooden cube 
+10 cm × 10 cm × 10 cm is placed in the water. The 
+wooden cube is found to float on the water with a 
+part of it submerged in water. When a metal coin 
+is placed on the wooden cube, the submerged part 
+is increased by 3.87 cm. The mass of the metal coin 
+is _________ gram.
+ 
+(Take water density as 1 g/cm³ and density of wood 
+as 0.4 g/cm³)
+SOLUTIONS
+1. (b) : Since,  1
+2 0
+2
+ε E is the energy per unit volume.
+1
+2
+0
+2
+1 2
+2
+3
+ε E
+dU
+dV
+=
+=
+=
+−
+Energy
+Volume
+[M L T
+[L
+]
+]
+ = [M1L–1T –2]
+Comparing [M1L–1T –2] with [MaLbT c].
+a = 1; b = –1 and c = –2
+2a – b + c = 2 + 1 – 2 = 1
+2. (b) : 
+D = 0.08 cm
+L.C = 0.001 cm
+L
+Given : L.C = 0.001 cm
+A
+D
+=
+=
+×
+×
+−
+π
+π
+2
+2 2
+4
+0 08
+10
+4
+( .
+)
+=
+×
+×
+×
+−
+−
+3 14
+4
+64
+10
+10
+4
+4
+.
+ = 50.24 × 10–8 m2
+Δl = 0.5 cm, L.C. = 0.001 cm
+Y
+FL
+A L
+=
+=
+×
+×
+×
+×
+×
+−
+−
+−
+Δ
+100
+150
+10
+0 5 10
+50 24
+10
+2
+2
+8
+.
+.
+= 5.97 × 1010 ≈ 6 × 1010 Nm–2
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 22 ====================
+21
+PHYSICS FOR YOU | JUNE ‘26
+Error in ΔY = Y Δ
+Δ
+Δ Δ
+Δ
+l
+l
+D
+D
+l
+l
++
++
+⎛
+⎝⎜
+⎞
+⎠⎟
+2
+(
+)
+=
+×
++
+×
++
+⎡
+⎣⎢
+⎤
+⎦⎥
+6
+10
+0 1
+150
+2
+0 001
+0 08
+0 001
+0 5
+10
+.
+.
+.
+.
+.
+=
+×
++
++
+⎡
+⎣
+⎢
+⎤
+⎦
+⎥
+−
+6
+10
+10
+15
+2
+80
+1
+500
+10
+2
+= 6 × 1010 (0.067 + 2.5 + 0.2) × 10–2
+= 1.6 × 109 N/m2
+On comparing with α × 109 N/m2, We get α = 1.6
+3. (b) : Given : Velocity, v
+xi
+y j
+zk
+
+
+
+
+= −
++
+−
+2
+m/s
+Acceleration, 
+
+
+
+
+a
+v
+t
+xi
+t
+y j
+t
+zk
+t
+= ∂
+∂= −∂
+∂
++ ∂
+∂
+−∂
+∂
+2
+= −
++
+−
+v i
+v j
+v k
+x
+y
+z
+
+
+
+2
+ =
++
++
+xi
+y j
+zk
+
+
+
+4
+
+
+
+
+a
+i
+j
+k
+at ( , , )
+1 2 4
+1
+8
+4
+=
++
++
+ 
+a
+
+=
++
++
+1
+64
+16 =
+=
+81
+9
+2
+m/s
+4. (d)
+5. (b) : Orbital velocity, v
+GM
+r
+=
+ 
+...(i)
+Time period, T
+r
+v
+= 2π 
+...(ii)
+2M
+R
+P1
+4M
+2R
+P2
+Putting (i) in equation (ii), we get T
+r
+GM
+= 2
+3 2
+π
+/
+T
+T
+r
+r
+M
+M
+R
+R
+M
+M
+2
+1
+2
+3 2
+1
+3 2
+1
+2
+3 2
+2
+2
+4
+2
+=
+= ⎛
+⎝⎜
+⎞
+⎠⎟
+=
+/
+/
+/
+6. (c) : Given :  Angular displacement, θ =
+−
+5
+40
+3
+4
+3
+t
+t
+Angular velocity, ω
+θ
+=
+=
+−
+d
+dt
+t
+t
+20
+40
+3
+2
+Angular acceleration, α
+ω
+=
+=
+−
+d
+dt
+t
+t
+60
+40
+2
+2
+α(at t = 10) =
+×
+−
+60
+100
+40
+20  = 150 – 20 = 130 rad/s2
+7. (b)
+8. (d) : For a rigid diatomic gas at room temperature 
+(having 5 degree of freedom : 3 translational + 2 
+rotational).
+For a diatomic gas (P = constant)
+C
+R C
+R
+V
+P
+=
+=
+5
+2
+7
+2
+;
+; Δ
+Δ
+Δ
+Δ
+Q
+C
+T
+n
+R T
+P
+=
+=
+7
+2
+Δ
+Δ
+Δ
+W
+P V
+nR T
+=
+=
+; Δ
+Δ
+Δ
+U
+nC
+T
+n R T
+V
+=
+=
+5
+2
+Δ
+Δ
+Δ
+Q
+U
+W
+:
+:
+:
+:
+= 7
+2
+5
+2 1 or 7 : 5 : 2
+9. (d) : When two charged conducting sphere, S1 and 
+S2 are connected by 
+thin conducting wire, 
+charge flow between 
+them until they reach a 
+common potential.
+At equilibrium, V1 = 
+V2 = V
+kq
+kq q
+q
+1
+2
+1
+2
+8
+18
+8
+18
+=
+=
+; E
+E
+kq
+kq
+1
+2
+1
+2
+2
+2
+8
+18
+18
+8
+9
+4
+=
+=
+=
+10. (d) : Given : y
+t
+x
+=
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+5
+200
+150
+cosπ
+v
+k
+w =
+=
+=
+×
+ω
+200
+1
+150
+3 104cm/sec 
+∵ω
+π
+π
+=
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+200
+150
+,k
+ = 300 m/sec
+11. (b) : The resultant field 
+makes an angle q with 
+the axis of dipole A, 
+then
+tanθ =
+=
+E
+E
+p
+p
+B
+A
+2
+1
+2
+ 
+tan60”=
+=
+=
+kp
+r
+kp
+r
+p
+p
+2
+3
+1
+3
+2
+1
+2
+2
+3 or
+p
+p
+2
+1
+2 3
+=
+12. (b) : 
+(A) Circuit used
+Vm
+V2 = 5 V
+V0 = (t)
+The circuit in part (A) contains-
+An ideal diode and zener diode with breakdown 
+voltage Vz = 5V.
+For +ve half cycle:
+Middle diode → forward bias
+Zener diode → reverse bias
+To get 5V in the -ve half cycle, we use the 
+combination of diode and zener-diode as given in 
+option (b).
+S1
+S2
+8cm
+18cm
+r
+x
+60°
++
+–
+–
+p1
+p2
+B
+A
+kp
+r
+2
+3
+2
+1
+3
+kp
+r
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 23 ====================
+22
+PHYSICS FOR YOU | JUNE ‘26
+13. (a) : Magnetic flux, f = BNA
+Induced emf = −
+= ⎛
+⎝⎜
+⎞
+⎠⎟
+d
+dt
+dB
+dt
+NA
+φ
+Power
+emf
+Resistance
+=
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+(
+)2
+2
+2
+2
+2
+2
+dB
+dt
+N A
+N
+A
+r
+π
+π
+Power ∝ NA3/2r2
+P
+P
+NA
+r
+N
+A
+r
+1
+2
+2
+3
+2
+3
+2
+2
+2
+3
+=
+(
+)
+(
+)
+; P
+P
+1
+36 2
+=
+\ α = 36
+14. (a) : Magnetic field at point P, contribution from 
+two straight section with semicircle.
+P
+r
+B
+I
+r
+I
+r
+p =
+×
+μ
+π
+μ
+0
+0
+4
+2 4
+ =
++
+⎛
+⎝⎜
+⎞
+⎠⎟
+μ
+π
+0
+4
+1
+2
+I
+r
+ 
+...(i)
+Total magnetic field at point Q, 
+B
+I
+r
+I
+r
+Q =
++
+μ
+π
+μ
+0
+0
+4
+4
+(Here only one straight section 
+contribute with semicircle)
+=
++
+⎡
+⎣⎢
+⎤
+⎦⎥
+μ
+π
+0
+4
+1
+1
+I
+r
+ 
+...(ii)
+Divide (i) by (ii), we get
+B
+B
+P
+Q
+=
++
++
+=
++
++
+1
+1
+2
+1
+2
+1
+π
+π
+π
+π
+15. (b)
+16. (a) : For concave lens:
+μ1 = 1, μ2 = 1.54, R = –20 cm, u = –40 cm
+Using lens maker's formula,
+μ
+μ
+μ
+μ
+2
+1
+2
+1
+1 54
+1
+40
+1 54
+1
+20
+v
+u
+R
+v
+−
+=
+−
+⇒
+−−
+=
+−
+−
+.
+.
+1 54
+0 54
+20
+1
+40
+.
+.
+v
+= −
+−
+ = −
+×
+−
+0 54
+2
+1
+40
+.
+ 
+20 cm
+40 cm
+C
+P
++
+–
+μ2 = 1.54
+μ1 = 1
+h0 = 2 cm
+Q
+r
+1 54
+2 08
+40
+.
+.
+v
+= −
+v = −
+×
+= −
+= −
+1 54
+40
+2 08
+61 6
+2 08
+29 61
+.
+.
+.
+.
+.
+Magnification, m
+h
+h
+v
+u
+v
+u
+I
+=
+=
+=
+=
+×
+×
+0
+2
+1
+1
+2
+1
+29 61
+1 54
+40
+/
+/
+.
+.
+μ
+μ
+μ
+μ
+hI =
+×
+×
+=
+≅
+2
+29 61
+1 54
+40
+0 96
+1
+.
+.
+.
+cm
+cm
+17. (b)
+18. (a) : The equation of electric field along x-direction 
+in the electromagnetic wave is given by
+E
+t
+x
+c
+y =
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+300 sinω
+F
+F
+eE
+evB
+c
+v
+elec.max
+mag.max
+=
+=
+=
+max
+max
+200
+19. (c) : Angular momentum,
+L
+nh
+h
+=
+=
+2
+3
+π
+π  ⇒ 
+n = 6
+Energy, E
+n
+= −
+=
+= −
+13 6
+13 6
+36
+0 38
+2
+.
+.
+.
+eV
+eV
+20. (b) : Diagram = 2 mm = 2 × 10–3 m 
+R = 1 mm = 1 × 10–3 m
+V
+R
+n
+r
+total =
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+4
+3
+4
+3
+3
+3
+π
+π
+4
+3
+512
+4
+3
+3
+3
+π
+π
+R
+r
+=
+×
+ 
+R
+r
+=
+×
+(
+) /
+512 1 3
+1 mm = 8 × r
+r
+R
+=
+=
+1
+8
+8
+mm
+mm
+Surface energy, ΔU = Uf – Ui
+= −
++
+⎛
+⎝⎜
+⎞
+⎠⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+T
+R
+T
+R
+(
+)
+4
+512
+4
+8
+2
+2
+π
+π
+ 
+= +
+×
+−+
+⎛
+⎝⎜
+⎞
+⎠⎟
+T
+R
+4
+1
+512
+64
+2
+π
+= + 0.08 × 7 × 4pR2 = + 7 × 0.08 × 4p (1 × 10–3)2
+= + ×
+×
+× × ×
+−
+7
+8
+100
+4
+1 1 10 6
+π
+J = 7 × 10–6 J
+\ α = 7
+21. (36) : Given : Wavelength (λ) = 628 nm
+ 
+= 628 × 10–9m
+Slit width (a) = 0.2 mm = 2 × 10–4 m
+For single slit diffraction, 
+R
+r
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 24 ====================
+23
+PHYSICS FOR YOU | JUNE ‘26
+Angular width of central maximum
+θ
+λ
+=
+=
+×
+×
+×
+−
+−
+2
+2
+628
+10
+2
+10
+9
+4
+a
+q = 6.28 × 10–3 radian
+In degree =
+≈
+°
+180
+57 3
+π
+.
+; q = 6.28 × 10–3 × 57.3
+θ ≈
+°
+0 36
+.
+; q = 36 × 10–2 degree 
+\ α = 36
+22. (120) :  Given : 
+P1 = 8 bar, V1 = 0.15 m3, T1 = 140° C = 140 + 273 
+= 413 K
+C
+R C
+R
+C
+C
+P
+V
+P
+V
+=
+=
+=
+=
+=
+3
+2
+3
+2
+1 5
+,
+,
+.
+γ
+; P2 = 1 bar
+In adiabatic process : PV γ = constant
+P V
+P V
+1 1
+2 2
+γ
+γ
+=
+V
+V
+P
+P
+2
+1
+1
+2
+1
+=
+⎛
+⎝⎜
+⎞
+⎠⎟
+/γ
+V2 = 0.15 × (8)2/3; V2 = 0.6 m3
+Work done in adiabatic process :
+W
+P V
+P V
+=
+−
+−
+1 1
+2 2
+1
+γ
+; W =
+×
+−×
+−
+8
+0 15
+1
+0 6
+1 5
+1
+.
+.
+.
+W =
+−
+=
+=
+1 2
+0 6
+0 5
+0 6
+0 5
+1 2
+3
+.
+.
+.
+.
+.
+.
+bar m
+We know 1 bar m3 = 100 kJ
+W = 1.2 × 100 kJ; W = 120 kJ
+23. (171) :  Charge, q = 1μC = 10–6 C
+Velocity, v
+i
+j
+k
+=
+−
++
+(
+)
+.
+
+
+
+2
+3
+m/sec
+Magnetic field, 
+
+
+
+
+B
+i
+j
+k
+=
++
+−
+(
+)
+2
+3
+5
+T
+Magnetic force,
+F
+q v
+B
+=
+×
+
+
+ 
+...(i)
+v
+B
+i
+j
+k
+
+
+
+
+
+×
+=
+−
+−
+1
+2
+3
+2
+3
+5
+
+
+
+
+
+V
+B
+i
+j
+k
+×
+=
+−
+−
+−−
++
++
+(
+)
+(
+)
+(
+)
+10
+9
+5
+6
+3
+4
+v
+B
+i
+j
+k
+
+
+
+
+
+×
+= +
++
+11
+7
+v
+B
+
+
+×
+=
++
++
+=
+1 121
+49
+171
+F
+q
+= . 171 (From eq. (i)) F =
+⋅
+−
+10
+171
+6
+Given : 
+α ×
+−
+10 6N
+\ α = 171
+24. (3) : Weight of wire = w
+Cross-section area = A
+Tension at point = Total weight below point P
+Weight per unit length = w
+l
+Weight of wire below point P
+w
+l
+l
+w
+⋅
+=
+2
+3
+2
+3
+Total tension, T
+W
+w
+=
++ 2
+3
+Stress
+Force
+Area
+=
+Stress = T
+A , Stress =
++
+W
+A
+w
+A
+2
+3
+By comparing γ = 3
+25. (387) :  When the coin is placed on the cube, the 
+additional submerged volume corresponds to 
+weight of the coin.
+Base area of cube, A = 10 × 10
+A = 100 cm2
+Density of water = 1 g/cm3
+Density of wood = 0.4 g/cm3
+Extra submerged height, Δh = 3.87 cm
+When coin is placed, extra buoyout force = Weight 
+of coin extra displaced volume
+= A × Δh = 100 × 3.87 = 387 cm3
+Mass of displaced water equal mass added (coin) 
+m = rΔV;    m = 1 × 387;  m = 387 g 
+P
+W
+l
+l
+3
+l
+l
+l
+−
+=
+3
+2
+3
+W
+The same THREE LETTERS will complete 
+these three words.
+Can yRu find thH thrHH-OHttHr VHTuHnFH?
+ 
+P O T E N  _  _  _ M E T E R 
+ 
+V I B R A  _  _  _  N
+ 
+S T A _  _  _ N A R Y
+ 
+F R I C  _  _  _ N
+ 
+P R O P O R  _  _  _ N A L
+Readers can send their responses at  editor@mtg.in or post us with 
+complete address by 10th of every month.  
+Winners’ names will be published in next issue.
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 25 ====================
+24
+PHYSICS FOR YOU | JUNE ‘26
+1. Instrument fitted in the carburetor of the 
+automobile to provide the correct mixture of air 
+and fuel necessary for combustion works on
+(a) Pascal's Law
+(b) Bernoulli's Principle
+(c) Newton's Law of cooling 
+(d) Archimedes Principle
+2. There are two wires of same material and same 
+length while the diameter of second wire is two 
+times the diameter of the first wire. Then the ratio 
+of extensions produced in the wires by applying 
+same load will be
+(a) 1:1 
+(b) 1:2 
+(c) 2:1 
+(d) 4:1
+3. In a capillary tube experiment, a vertical 30 cm long 
+capillary tube is dipped in water, water rises upto a 
+height of 10 cm due to capillarity. If this experiment 
+is conducted in a freely falling water in an elevator, 
+then the length of the water column becomes
+(a) 10 cm 
+(b) 20 cm 
+(c) 30 cm 
+(d) Zero
+4. In thermodynamic processes, which of the following 
+statements is not true?
+(a) In an isothermal process, the temperature 
+remains constant
+(b) In an isobaric process, the volumn remains 
+constant
+(c) In an adiabatic process, the system is insulated 
+from the surroundings
+(d) In an adiabatic process, PVg =  a constant
+5. The graph of pressure P and volume V of 1 mole of 
+an ideal gas at constant temperature is
+(a) 
+P
+V
+Graph-I
+ 
+(b) 
+P
+V
+Graph-II
+(c) 
+P
+V
+Graph-III
+ 
+(d) 
+P
+V
+Graph-IV
+Karnataka CET
+Held on 
+23rd April 
+2026
+SOLVED PAPER 2026
+We are happy to inform our readers that out of the 60 questions asked in Karnataka CET 2026, 
+more than 95% questions were either exactly same or of similar type from the MTG Books.
+and many more …
+Q. No.
+MTG Books
+Q. No. of  Books
+P. No.
+11
+KCET Objective (XII)
+4
+60
+12
+KCET Objective (XII)
+111
+102
+15
+KCET Objective (XII)
+6
+94
+16
+KCET Objective (XII)
+3
+94
+22
+KCET Objective (XII)
+64
+157
+24
+KCET Objective (XII)
+31
+302
+26
+KCET Objective (XII)
+59
+177
+28
+KCET Objective (XII)
+128
+210
+30
+KCET Objective (XII)
+5
+219
+33
+KCET Objective (XI)
+52
+253
+36
+KCET Objective (XII)
+99
+284
+40
+KCET Objective (XII)
+45
+376
+43
+KCET Objective (XII)
+5
+249
+48
+KCET Objective (XII)
+30
+34
+52
+KCET Objective (XI)
+34
+124
+55
+KCET Objective (XI)
+40
+184
+57
+KCET Objective (XI)
+48
+231
+58
+KCET Objective (XI)
+19 and 28
+205 and 215
+60
+KCET Objective (XI)
+92
+289
+Here, the references of some questions are given :
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 26 ====================
+25
+PHYSICS FOR YOU | JUNE ‘26
+6. A mass of 1 kg is executing SHM. Its displacement 
+is given by x = 6.0 cos(100t + p/4) cm. What is the 
+maximum kinetic energy?
+(a) 3 J 
+(b) 6 J
+(c) 9 J 
+(d) 18 J
+7. A source of frequency n gives 6 beats/second when 
+sounded with a source of frequency 200 Hz. The 
+second Harmonic of frequency 2 n of the source 
+gives 8 beats/second when sounded with a source 
+of frequency 420 Hz. The value of n is
+(a) 205 Hz 
+(b) 206 Hz
+(c) 195 Hz 
+(d) 210 Hz
+8. Follow are statements of a few processes taking 
+place in nature.
+(I) Free expansion of a gas
+(II) The combustion of a mixture of petrol and air 
+ignited by a spark
+(III) The leaking of gas from the kitchen cylinder
+(IV) The transfer of heat from one heated part of a 
+liquid to the other colder part
+Which amongst these processes are irreversible in 
+nature?
+(a) I and II 
+(b) III and IV
+(c) II, III and IV 
+(d) I, II, III and IV
+9. An electron falls through a distance 1.5 cm in a 
+uniform electric field of magnitude 2.0 × 104 N/C 
+from rest. The time taken to cover this distance in 
+second is _____ (e = 1.6 × 10–19 C, me = 9.11 × 10–31 kg)
+(a) 2.9 × 10–9 
+(b) 2.9 × 109
+(c) 4 × 10–6 
+(d) 4 × 106
+10. What will be the total electric flux 
+through the faces of the cube as 
+given in the figure with side of 
+length 'a' if a charge Q is placed at 
+B, midpoint of an edge of the cube 
+(see figure)?
+(a) 
+Q
+8 0
+ε 
+(b) Q
+3 0
+ε 
+(c) 
+Q
+4 0
+ε
+ 
+(d) Q
+2 0
+ε
+11. Consider three point charges –2Q, 
+–Q and three surfaces S1, S2 and 
+S3 as shown in the figure. Match 
+the entries of List-I with that of 
+List-II.
+Q
+B
+a
+–2Q
+S1
+S3
+S2
+Q
+Q
+–Q
+List-I
+List-II
+(a)
+Net flux through S1
+(I)
+−2Q
+n
+ε
+(b)
+Net flux through S2
+(II)
+−Q
+n
+ε
+(c)
+Net flux through S3
+(III)
+Zero
+Codes:
+(a) a - ii, b - i, c - iii 
+(b) a - iii, b - ii, c - i
+(c) a - i, b - ii, c - iii 
+(d) a - ii, b - iii, c - i
+12. A parallel plate capacitor has a uniform electric field 
+'E' in the space between the plates. If the distance 
+between the plates is 'd' and area of each plate is 'A', 
+the energy stored in the capacitor is
+(a) 1
+2
+0
+2
+∈E 
+(b) ∈0EAd
+(c) 1
+2
+0
+2
+∈E Ad 
+(d) E Ad
+2
+0
+∈
+13. In the circuit in the figure, the potential difference 
+across the 4mF capacitor is
+9mF
+12V
+3mF
+4mF
+(a) 3 V 
+(b) 4 V
+(c) 9 V 
+(d) 12 V
+14. An electric dipole of dipole moment P
+
+ is placed 
+in the uniform electric field E
+
+. Then which of the 
+following statements are correct?
+Statement I : The torque on the dipole is P
+E
+
+
+×
+Statement II : The potential energy of the dipole is 
+−⋅
+P E
+ 
+Statement III : The net force on the dipole is non 
+zero
+(a) I, II and III 
+(b) I and II only
+(c) II and III only 
+(d) I and III only
+15. A 200 J of work is done in moving a charge 5 C from 
+a point A where the potential is –20V to another 
+point B where potential is V volt. The value of V at 
+B is
+(a) 10 V 
+(b) 20 V
+(c) 40 V 
+(d) 60 V
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 27 ====================
+26
+PHYSICS FOR YOU | JUNE ‘26
+16. In the figure, the values of currents I1, I2 and I3 
+respectively are
+5A
+1A
+I1
+I2
+I3
+1.5A
+1.5A
+(a) 6A, 1.5A and 1A 
+(b) 4A, 2.5A and 2A
+(c) 4A, 2.5A and 1A 
+(d) 6A, 4.5A and 1.5A
+17. The number of electrons moving per second 
+through the filament of a lamp of 60W operating at 
+120 V is nearly (e = 1.6 × 10–19 C) ________
+(a) 6.2 × 1018 
+(b) 6.2 × 1019
+(c) 3.1 × 1018 
+(d) 3.1 × 1019
+18. Given below are two statements:
+Statement I : The resistivity of a conductor is 
+independent of its temperature
+Statement II : The resistivity of a semiconductor 
+decreases with Increases in temperature
+Select the correct option.
+(a) Both statement I and statement II are false
+(b) Both statement I and statement II are true
+(c) Statement I is true but statement II is false
+(d) Statement I is false but statement II is true
+19. Current flowing through a wire decreases linearly 
+from 10A to zero in 4s as shown in the graph, Find 
+the total charge flowing through the wire in the 
+given time interval.
+10
+I
+(A)
+t
+(s)
+0
+4
+(a) 40C 
+(b) 20C
+(c) 10C 
+(d) 80C
+20. In a conducting region, 1019 electrons and 1019 
+protons move to the left, while 1019 a-particles 
+move to the right per second. The resulting electric 
+current is (e = 1.6 × 10–19 C) _________
+(a) 3.2 A towards left 
+(b) 3.2 A towards right
+(c) 1.6 A towards left 
+(d) 1.6 A towards right
+21. A point charge is placed in a moving train. A 
+passenger A sitting in the train and person B on the 
+ground observe the fields the due to charge, Then
+(a) A observes both electric and magnetic fields
+(b) B observes both electric and magnetic fields
+(c) A observes only magnetic field
+(d) B observes only electric field
+22. A proton, an electron and an a-particle enter 
+at right angles to a uniform magnetic field with 
+the same velocity. If Rp, Re and Ra are the radii of 
+circular paths of these particles, then
+(a) Ra = Rp = Re 
+(b) Ra > Rp > Re
+(c) Ra < Rp = Re 
+(d) Ra > Rp = Re
+23. Biot-Savart law indicates that an electron moving 
+with a V
+
+ produces a magnetic field 
+B around it 
+such that
+(a) 
+
+B is parallel to V
+
+(b) 
+
+B is perpendicular to V
+
+(c) 
+
+B is anti-parallel to V
+
+(d) 
+
+B is inclined to V
+
+ by 45°
+24. Two identical circular current loops carrying equal 
+currents are placed with their axes inclined at 45° 
+to each other as shown in the figure. The resultant 
+field at P is
+R
+P
+45°
+I
+I
+3R
+3R
+X
+Y
+(a) 
+μ0
+16 2
+2
+1
+I
+R
+i
+j
++
+(
+) +
+⎡⎣
+⎤⎦
+
+
+(b) 
+μ0
+16 2
+2
+I
+R
+i
+j
+
+
++
+⎡⎣
+⎤⎦
+(c) μ0
+16
+2
+1
+I
+R
+i
+j
++
+(
+) +
+⎡⎣
+⎤⎦
+
+
+(d) μ0
+16
+2
+I
+R
+i
+j
+
+
++
+⎡⎣
+⎤⎦
+25. If a paramagnetic bar is brought near a bar magnet, 
+then it is
+(a) Attracted by both the poles of the bar magnet
+(b) Repelled by both the poles of the bar magnet.
+(c) Attracted by the South-pole and repelled by the 
+North-pole of the bar magnet
+(d) Attracted by the North-pole and repelled by the 
+South-pole of the bar magnet
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 28 ====================
+27
+PHYSICS FOR YOU | JUNE ‘26
+26. Pick out the WRONG statements about magnetic 
+substances
+(c = magnetic susceptibility)  
+(mr = relative permeability),
+(I) Substances with –1 ≥ c < 0 are diamagnetic
+(II) Substances with c > > 1 are paramagnetic
+(III) Substances with c < < 1 are ferromagnetic
+(IV) Substances with mr > > 1 are ferromagnetic
+(a) I and II 
+(b) III and IV
+(c) II and III 
+(d) II and IV
+27. Work function of the metal is
+(a) Maximum possible energy acquired by an 
+electron
+(b) Equal for all metals
+(c) Minimum energy required by an electron to 
+just eject from metal surface
+(d) Maximum energy which is given to electron to 
+move out of metal surface
+28. Variation of photoelectric current with anode 
+potential is shown below. Choose the correct option 
+(V0 = stopping potential).
+(a) 
+Graph-I
+Vo
+Anode 
+potential
+Photo 
+electric 
+current
+ (b) 
+Graph-II
+Vo
+Anode
+potential
+Photo
+electric
+current
+(c) 
+Graph-III
+Vo
+Anode
+potential
+Photo
+electric
+current
+ (d) 
+Graph-IV
+Vo
+Anode
+potential
+Photo
+electric
+current
+29. In Faraday-Henry's experiment, a coil is connected 
+to a galvanometer. For the deflection of pointer in 
+the galvanometer, which of the following statement 
+is/are WRONG?
+The pointer in the galvanometer deflects-
+(A) When the bar magnet is moved towards the 
+stationary coil along its axis
+(B) When the bar magnet is moved away from the 
+stationary coil along its axis
+(C) When the coil is moved towards the stationary 
+bar magnet along its axis
+(D) When the coil and the magnet are moved without 
+relative motion between them
+(a) A and B 
+(b) B and C
+(c) A, B and C 
+(d) Only B
+30. In the figure shown, the conductor PQ of length l is 
+moved from x = 0 to x = b and then up to 
+x = 2b with a constant velocity v . A uniform 
+magnetic 
+field 
+
+B 
+is 
+perpendicular to the plane 
+of the paper and extends 
+from x = 0 to x = b and it is 
+zero from x > b. The 
+magnitude of emf induced 
+in the conductor is
+(a) B l x ; 0 ≤ x < b 
+(a) Zero ; 0 ≤ x < b
+(a) B l v ; 0 ≤ x ≤ b 
+(a) B l v ; 0 ≤ x < 2b
+31. In a circuit containing a pure resistor connected to 
+an AC source,
+(a) Voltage leads the current by 90°
+(b) Current leads the voltage by 90°
+(c) Voltage and current are in same phase with each 
+other
+(d) Current leads the voltage by 180°
+32. A light bulb rated 100W is connected to an AC 
+source of 220V, 50Hz. The rms current through the 
+bulb is
+(a) 0.454A 
+(b) 0.545A
+(c) 2.20A 
+(d) 0.22A
+33. A small town with a demand of 900 kW of electric 
+power at 220V is situated 20 km away from an 
+electric power generating station. The two-wires 
+line has resistance per unit length of 5 × 10–4 
+Wm–1. The town gets power from the line through 
+45000V to 220 V stepdown transformer at a 
+substation in the town. The line power loss in the 
+form of heat is
+(a) 4 kW 
+(b) 8 kW
+(c) 40 kW 
+(d) 80 kW
+34. Match the following Maxwell's equations:
+(The symbols used here have their usual meanings)
+List-I
+List-II
+(a)
+Gauss' law for 
+electrostatics
+(i)
+
+
+ E dA
+Q
+⋅
+=
+∫
+ε0
+(b)
+Gauss' law for 
+magnetism
+(ii)
+
+
+ B dl
+i
+d
+dt
+e
+E
+⋅
+=
++
+⎡
+⎣⎢
+⎤
+⎦⎥
+∫
+μ
+ε
+φ
+0
+0
+P
+t
+Q
+x = 2b
+x = b
+x = 0
+v
+
+B
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 29 ====================
+28
+PHYSICS FOR YOU | JUNE ‘26
+(c)
+Faraday's law
+(iii)
+
+
+ B dA
+⋅
+=
+∫
+0
+(d)
+Ampere-
+Maxwell's law
+(iv)
+
+
+ E dl
+d
+dt
+B
+⋅
+= −
+∫
+φ
+Codes:
+(a) a - i, b - iii, c - iv, d - ii
+(b) a - ii, b - iii, c - i, d - iv
+(c) a - i, b - ii, c - iii, d - iv
+(d) a - ii, b - iii, c - iv, d - i
+35. With reference to the figure shown below, match 
+the followings:
+Incident ray
+Normal
+Reflected ray
+a
+30°
+List-I
+List-II
+(a)
+Angles of reflection
+(i)
+60°
+(b)
+Value of a
+(ii)
+120°
+(c)
+Angles of deviation
+(iii) 30°
+Codes :
+(a) a - i, b - ii, c - iii 
+(b) a - ii, b - i, c - iii
+(c) a - iii, b - i, c - ii 
+(d) a - iii, b - ii, c - i
+36. The direction of a ray of light incident on a concave 
+mirror is shown by PQ, while direction in which 
+the ray would travel after reflection is shown by 
+four rays marked as A, B, C and D as shown in the 
+figure. Which of the four rays correctly shows the 
+direction of the reflected ray?
+A
+P
+B
+O
+C
+F
+D
+O
+(a) D 
+(b) C
+(c) B 
+(d) A
+37. The incorrect statement about refractive index for a 
+pair of media is
+(a) It depends upon nature of the first medium
+(b) It depends upon nature of the second medium
+(c) It depends upon wavelength of light
+(d) It depends upon angle of incidence
+38. The critical angle for a monochromatic light going 
+from medium A to medium B is q. If the speed of 
+light in medium A is V, then the speed of light in 
+medium B is
+(a) V (1 – cosq) 
+(b) 
+V
+cosθ
+(c) 
+V
+sinθ 
+(d) V (1 – sinq)
+39. What range of electromagnetic spectrum is 
+considered as light?
+(a) 1 mm to 700 nm 
+(a) 400 nm to 1 mm
+(a) 400 nm to 700 nm 
+(a) 1 nm to 10–3 nm
+40. In Young's double slit experiment, how many 
+maximum can be seen on a screen (including 
+central maxima) if d = 5
+2
+λ (where l is wavelength 
+of light and d is distance between the two slits).
+(a) 5 
+(b) 4 
+(c) 7 
+(d) 1
+41. The radius of first orbit in hydrogen atom is 
+5.3 × 10–11 m. The kinetic energy EK, potential 
+energy EP and total energy ET of electron in first 
+orbit are
+(a) EK = –13.6 eV, EP = 27.2 eV, ET = 13.6 eV
+(b) EK = –13.6 eV, EP = –27.2 eV, ET = –13.6 eV
+(c) EK = –27.2 eV, EP = –13.6 eV, ET = 13.6 eV
+(a) EK = 13.6 eV, EP = –6.8 eV, ET = –13.6 eV
+42. Bohr's second postulate implies quantisation of
+(a) Charge of an electron
+(b) Energy of an electron
+(c) Angular momentum of electron
+(d) Radiated energy by an electron
+43. An electron transition takes place from excited state 
+to ground state in hydrogen atom, then
+(a) Its kinetic energy increases but potential energy 
+and total energy decrease
+(b) Its kinetic energy, potential energy and total 
+energy decrease
+(c) Kinetic energy decreases, potential energy 
+increases but total energy remains same
+(d) Kinetic energy and total energy decrease but 
+potential energy increases
+44. An n-type and p-type semiconductor can be 
+obtained by respectively doping pure silicon with
+(a) Arsenic and Phosphorous respectively
+(b) Indian and Aluminium respectively
+(c) Phosphorous and Indian respectively
+(d) Aluminium and Boron respectively
+
+
+==================== Physics_For_You_-_June_2026.pdf - PAGE 30 ====================
+29
+PHYSICS FOR YOU | JUNE ‘26
+45. In which of the following figures, diode is reverse 
+biases?
+(a) 
+5V
+ (b) –20V
+–10V
+(c) 15V
+10V
+ (d) 20V
+–5V
+46. A wafer of pure germanium crystal has two parts X 
+and Y. The end X is obtained by doping with arsenic 
+and Y with indium. It is connected to a battery 
+as shown in the figure. Which of the following 
+statements is correct?
+X
+Y
+(a) X is p-type, Y is n-type and the junction is 
+forward biased
+(b) X is n-type, Y is p-type and the junction is 
+forward biased
+(c) X is p-type, Y is n-type and the junction is 
+reverse biased
+(a) X is n-type, Y is p-type and the junction is 
+reverse biased
+47. From the graph of angle 
+deviation versus angle of 
+incidence for an equilateral 
+prism, the refractive index of 
+material of prism is
+(a) 
+3
+2 
+(b) 3
+2 
+(c) 
+3 
+(d) 
+2
+48. Which of the following circuits is correct for 
+verification of Ohm's law?
+(a) 
+V
+A
+(b) 
+V
+A
+(c) 
+A
+V
+ (d) 
+A
+V
+60°
+60°
+l
+d
+30°
+30°
+0
+49. Match the physical quantities given in List-I with 
+dimensions expressed in terms of mass (M), length (L), 
+time (T) and electric current (A) given in List-II.
+List-I
+List-II
+(a)
+Torque
+(i)
+[M–1L–2T4A2]
+(b)
+Gravitational 
+constant
+(ii)
+[M1L2T –1]
+(c)
+Capacitance
+(iii)
+[M–1L3T –2]
+(d)
+Planck's constant
+(iv)
+[M1L2T –2]
+Codes:
+(a) a - iv, b - ii, c - iii, d - i
+(b) a - iv, b - iii, c - i, d - ii
+(c) a - iv, b - i, c - iii, d - ii
+(d) a - ii, b - i, c - iii, d - iv
+50. A car covers the first half of the distance between 
+two places at 40 km/h and another half at 50 km/h. 
+The average speed of the car is
+(a) 45.00 km/h 
+(a) 44.44 km/h
+(a) 43.14 km/h 
+(a) 42.04 km/h
+51. Two bodies are projected 
+with the same velocity. If one 
+is projected at an angle of 30° 
+and the other at 45° to the 
+horizontal, then the ratio of 
+maximum heights attained is
+(a) 3 : 1 
+(b) 1 : 2 
+(c) 4 : 1 
+(d) 1 : 3
+52. The velocity of a particle moving along x-axis is 
+given as V = x2 – 5x + 4 (in m/s) where x denotes 
+the x-corrdinate of the particle in meters. The 
+magnitude of the acceleration of the particle when 
+the velocity of the particle zero is
+(a) 2 m/s2 (b) 3 m/s2 (c) Zero 
+(d) 1 m/s2
+53. A man weights 80 kg. He stands on a weighing scale 
+in a lift which is moving upwards with a uniform 
+acceleration of 6 m/s2. What would be his weight in 
+kg? (g = 10 m/s2)
+(a) Zero 
+(b) 48 kg 
+(c) 120 kg 
+(d) 128 kg
+54. A mass M is hung with a 
+light inextensible string 
+as shown in figure. 
+Find the tension of the 
+horizontal string.
+(a) 
+2 Mg
+(b) 
+3 Mg
+(c) Mg 
+(d) 3 Mg
+M
+O
+45°

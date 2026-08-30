@@ -1,0 +1,731 @@
+// Comprehensive Master Question Bank for AVAI Prep
+window.PHYSICS_QUESTIONS_DATA = [
+  {
+    "id": "PHY-001",
+    "exam": "NEET",
+    "subject": "Physics",
+    "topic": "Units and Measurement",
+    "difficulty": "Easy",
+    "en": "In a Vernier callipers, 20 Vernier Scale Divisions (VSD) coincide with 16 Main Scale Divisions (MSD). If each MSD is 1 mm, the least count of the Vernier callipers is:",
+    "bn": "একটি ভার্নিয়ার ক্যালিপার্সে, ২০টি ভার্নিয়ার স্কেল ঘর (VSD) ১৬টি মূল স্কেল ঘরের (MSD) সাথে মিলে যায়। মূল স্কেলের প্রতিটি ঘর ১ মিমি হলে ভার্নিয়ার ধ্রুবক (Least Count) কত?",
+    "opts": {
+      "en": [
+        "0.02 cm",
+        "0.01 cm",
+        "0.2 mm",
+        "0.02 mm"
+      ],
+      "bn": [
+        "0.02 cm",
+        "0.01 cm",
+        "0.2 mm",
+        "0.02 mm"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "1 VSD = (16/20) MSD = 0.8 mm. Least Count LC = 1 MSD - 1 VSD = 1 mm - 0.8 mm = 0.2 mm = 0.02 cm.",
+    "expl_bn": "১ VSD = (১৬/২০) MSD = ০.৮ মিমি। ভার্নিয়ার ধ্রুবক LC = ১ MSD - ১ VSD = ১ - ০.৮ = ০.২ মিমি = ০.০২ সেমি।"
+  },
+  {
+    "id": "PHY-002",
+    "exam": "JEE",
+    "subject": "Physics",
+    "topic": "Units and Measurement",
+    "difficulty": "Easy",
+    "en": "The speed of light in vacuum is taken as unity (c = 1 unit). If light takes 6 minutes and 40 seconds to reach the Earth from the Sun, the distance between the Sun and Earth in this new system of units is:",
+    "bn": "শূন্য মাধ্যমে আলোর দ্রুতিকে একক (c = 1 unit) ধরা হলো। সূর্য থেকে পৃথিবীতে আলো পৌঁছাতে ৬ মিনিট ৪০ সেকেন্ড সময় লাগলে, এই নতুন একক পদ্ধতিতে সূর্য ও পৃথিবীর দূরত্ব কত?",
+    "opts": {
+      "en": [
+        "400 units",
+        "500 units",
+        "3 × 10⁸ units",
+        "3 × 10¹⁰ units"
+      ],
+      "bn": [
+        "400 units",
+        "500 units",
+        "3 × 10⁸ units",
+        "3 × 10¹⁰ units"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Time t = 6 min 40 s = (6 × 60) + 40 = 400 s. Distance d = c × t = 1 unit/s × 400 s = 400 units.",
+    "expl_bn": "সময় t = ৬ মিনিট ৪০ সেকেন্ড = ৪০০ সেকেন্ড। দূরত্ব d = c × t = ১ × ৪০০ = ৪০০ units।"
+  },
+  {
+    "id": "PHY-003",
+    "exam": "WBJEE",
+    "subject": "Physics",
+    "topic": "Units and Measurement",
+    "difficulty": "Medium",
+    "en": "The percentage errors in the measurement of mass (m) and speed (v) of a body are 2% and 3% respectively. The maximum percentage error in the estimation of its kinetic energy (E = ½mv²) is:",
+    "bn": "একটি বস্তুর ভর (m) এবং দ্রুতি (v) পরিমাপে শতকরা ত্রুটি যথাক্রমে ২% এবং ৩%। বস্তুটির গতিশক্তি (E = ½mv²) গণনায় সর্বোচ্চ শতকরা ত্রুটি কত?",
+    "opts": {
+      "en": [
+        "8%",
+        "5%",
+        "11%",
+        "7%"
+      ],
+      "bn": [
+        "8%",
+        "5%",
+        "11%",
+        "7%"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Kinetic Energy E = ½mv² => (ΔE/E) × 100 = (Δm/m) × 100 + 2 × (Δv/v) × 100 = 2% + 2(3%) = 8%.",
+    "expl_bn": "গতিশক্তি E = ½mv² => শতকরা ত্রুটি = ২% + ২ × ৩% = ৮%।"
+  },
+  {
+    "id": "PHY-004",
+    "exam": "NEET",
+    "subject": "Physics",
+    "topic": "Kinematics",
+    "difficulty": "Medium",
+    "en": "A body of mass 5 kg is acted upon by two mutually perpendicular forces of 8 N and 6 N. The magnitude and direction of the acceleration produced in the body are respectively:",
+    "bn": "৫ কেজি ভরের একটি বস্তুর ওপর পরস্পরের সাথে লম্বভাবে ৮ N এবং ৬ N মানের দুটি বল প্রযুক্ত হলো। বস্তুতে উৎপন্ন ত্বরণের মান ও অভিমুখ যথাক্রমে:",
+    "opts": {
+      "en": [
+        "2 m/s² ; tan⁻¹(3/4) with the 8 N force",
+        "2 m/s² ; tan⁻¹(4/3) with the 8 N force",
+        "2 m/s² ; tan⁻¹(3/4) with the 6 N force",
+        "10 m/s² ; tan⁻¹(4/3) with the 6 N force"
+      ],
+      "bn": [
+        "2 m/s² ; ৮ N বলের সাথে tan⁻¹(3/4)",
+        "2 m/s² ; ৮ N বলের সাথে tan⁻¹(4/3)",
+        "2 m/s² ; ৬ N বলের সাথে tan⁻¹(3/4)",
+        "10 m/s² ; ৬ N বলের সাথে tan⁻¹(4/3)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Net resultant force F = √(8² + 6²) = 10 N. Acceleration a = F/m = 10 N / 5 kg = 2 m/s². Direction with 8 N force: tan θ = 6/8 = 3/4.",
+    "expl_bn": "লব্ধি বল F = √(৮² + ৬²) = ১০ N। ত্বরণ a = ১০/৫ = ২ m/s²। কোণ θ = tan⁻¹(৩/৪)।"
+  },
+  {
+    "id": "PHY-005",
+    "exam": "JEE",
+    "subject": "Physics",
+    "topic": "Kinematics",
+    "difficulty": "Medium",
+    "en": "A projectile is thrown with an initial velocity of u = (6i + 8j) m/s. The horizontal range of the projectile is (take g = 10 m/s²):",
+    "bn": "একটি প্রক্ষেপ্যকে (6i + 8j) m/s প্রারম্ভিক বেগে নিক্ষেপ করা হলো। প্রক্ষেপ্যটির অনুভূমিক সীমা (Range) কত? (g = 10 m/s²):",
+    "opts": {
+      "en": [
+        "9.6 m",
+        "4.8 m",
+        "12.8 m",
+        "19.2 m"
+      ],
+      "bn": [
+        "9.6 m",
+        "4.8 m",
+        "12.8 m",
+        "19.2 m"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "u_x = 6 m/s, u_y = 8 m/s. Time of flight T = 2(8)/10 = 1.6 s. Horizontal Range R = u_x × T = 6 × 1.6 = 9.6 m.",
+    "expl_bn": "u_x = ৬ m/s, u_y = ৮ m/s। উড্ডয়ন কাল T = ১.৬ সেকেন্ড। অনুভূমিক সীমা R = ৬ × ১.৬ = ৯.৬ মিটার।"
+  },
+  {
+    "id": "PHY-006",
+    "exam": "NEET",
+    "subject": "Physics",
+    "topic": "Electrostatics",
+    "difficulty": "Hard",
+    "en": "Five capacitors of capacitance C₁ = C₂ = C₃ = C₄ = 10 μF and C₅ = 2.5 μF are arranged in a balanced bridge network across 50 V. The equivalent capacitance is:",
+    "bn": "C₁ = C₂ = C₃ = C₄ = ১০ μF এবং C₅ = ২.৫ μF ধারকত্বের পাঁচটি ধারক একটি প্রতিসম ব্রিজ সমবায়ে ৫০ V ব্যাটারির সাথে যুক্ত। সমবায়টির তুল্য ধারকত্ব কত?",
+    "opts": {
+      "en": [
+        "10 μF",
+        "5 μF",
+        "2.5 μF",
+        "20 μF"
+      ],
+      "bn": [
+        "10 μF",
+        "5 μF",
+        "2.5 μF",
+        "20 μF"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Balanced bridge eliminates middle capacitor C₅. Top branch = 5 μF, Bottom branch = 5 μF. Total C_eq = 5 + 5 = 10 μF.",
+    "expl_bn": "প্রতিসম ব্রিজে C₅ নিষ্ক্রিয়। তুল্য ধারকত্ব = ৫ + ৫ = ১০ μF।"
+  },
+  {
+    "id": "CHEM-001",
+    "exam": "JEE",
+    "subject": "Chemistry",
+    "topic": "Chemical Bonding",
+    "difficulty": "Easy",
+    "en": "According to Molecular Orbital Theory (MOT), which of the following species is diamagnetic and has a bond order of 3?",
+    "bn": "আণবিক কক্ষক তত্ত্ব (MOT) অনুসারে, নিচের কোন প্রজাতিটি তিরশ্চৌম্বকীয় (diamagnetic) এবং এর বন্ধন ক্রম 3?",
+    "opts": {
+      "en": [
+        "N₂",
+        "O₂",
+        "NO",
+        "C₂⁺"
+      ],
+      "bn": [
+        "N₂",
+        "O₂",
+        "NO",
+        "C₂⁺"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "N₂ has 14 electrons: Bond Order = (10 - 4)/2 = 3. All electrons are paired, making N₂ diamagnetic.",
+    "expl_bn": "N₂ অণুতে ১৪টি ইলেকট্রন রয়েছে। বন্ধন ক্রম = ৩। কোনো বিজোড় ইলেকট্রন নেই, তাই তিরশ্চৌম্বকীয়।"
+  },
+  {
+    "id": "CHEM-002",
+    "exam": "NEET",
+    "subject": "Chemistry",
+    "topic": "Electrochemistry",
+    "difficulty": "Medium",
+    "en": "The standard electrode potential for Zn²⁺/Zn is -0.76 V and for Cu²⁺/Cu is +0.34 V. The standard EMF of the cell Zn | Zn²⁺ || Cu²⁺ | Cu is:",
+    "bn": "Zn²⁺/Zn এর প্রমাণ তড়িৎদ্বার বিভব -0.76 V এবং Cu²⁺/Cu এর +0.34 V। Zn | Zn²⁺ || Cu²⁺ | Cu কোষের প্রমাণ তড়িচ্চালক বল কত?",
+    "opts": {
+      "en": [
+        "+1.10 V",
+        "-1.10 V",
+        "+0.42 V",
+        "-0.42 V"
+      ],
+      "bn": [
+        "+1.10 V",
+        "-1.10 V",
+        "+0.42 V",
+        "-0.42 V"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "E°_cell = E°_cathode - E°_anode = +0.34 V - (-0.76 V) = +1.10 V.",
+    "expl_bn": "E°_cell = E°_ক্যাথোড - E°_অ্যানোড = ০.৩৪ - (-০.৭৬) = +১.১০ V।"
+  },
+  {
+    "id": "CHEM-003",
+    "exam": "NEET",
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "en": "Which of the following compounds gives a positive Iodoform test upon reaction with I₂/NaOH?",
+    "bn": "নিচের কোন যৌগটি I₂/NaOH সহযোগে বিক্রিয়ায় আয়োডোফর্ম পরীক্ষা দেয়?",
+    "opts": {
+      "en": [
+        "Ethanol (CH₃CH₂OH)",
+        "Methanol (CH₃OH)",
+        "Benzophenone (C₆H₅COC₆H₅)",
+        "Diethyl ether (C₂H₅OC₂H₅)"
+      ],
+      "bn": [
+        "ইথানল (CH₃CH₂OH)",
+        "মিথানল (CH₃OH)",
+        "বেনজোফেনন",
+        "ডাইইথাইল ইথার"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Ethanol is oxidized to ethanal (CH₃CHO) containing CH₃-C=O group which yields yellow CHI₃ precipitate.",
+    "expl_bn": "ইথানল জারিত হয়ে CH₃CHO গঠন করে ও হলুদ CHI₃ অধঃক্ষেপ ফেলে।"
+  },
+  {
+    "id": "CHEM-004",
+    "exam": "JEE",
+    "subject": "Chemistry",
+    "topic": "Coordination Chemistry",
+    "difficulty": "Hard",
+    "en": "The hybridization and magnetic character of the complex [Fe(CN)₆]³⁻ are respectively (Fe atomic number = 26):",
+    "bn": "[Fe(CN)₆]³⁻ জটিল আয়নের সংকরায়ণ (Hybridization) এবং চৌম্বক প্রকৃতি যথাক্রমে:",
+    "opts": {
+      "en": [
+        "d²sp³, Paramagnetic (1 unpaired electron)",
+        "sp³d², Paramagnetic (5 unpaired electrons)",
+        "d²sp³, Diamagnetic",
+        "sp³d², Diamagnetic"
+      ],
+      "bn": [
+        "d²sp³, পরাচৌম্বকীয় (১টি বিজোড় ইলেকট্রন)",
+        "sp³d², পরাচৌম্বকীয় (৫টি বিজোড় ইলেকট্রন)",
+        "d²sp³, তিরশ্চৌম্বকীয়",
+        "sp³d², তিরশ্চৌম্বকীয়"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Fe³⁺ (3d⁵) with strong field ligand CN⁻ causes pairing: t_2g⁵ e_g⁰ (1 unpaired electron), inner d²sp³ orbital hybridization.",
+    "expl_bn": "Fe³⁺ এর 3d⁵ বিন্যাস। CN⁻ তীব্র লিগ্যান্ড হওয়ায় সংকরায়ণ d²sp³, ১টি বিজোড় ইলেকট্রন থাকায় পরাচৌম্বকীয়।"
+  },
+  {
+    "id": "MATH-001",
+    "exam": "JEE",
+    "subject": "Mathematics",
+    "topic": "Definite Integrals",
+    "difficulty": "Medium",
+    "en": "The value of the definite integral ∫[0 to π/2] (sin x) / (sin x + cos x) dx is:",
+    "bn": "নির্দিষ্ট সমাকলনের মান নির্ণয় করো: ∫[0 থেকে π/2] (sin x) / (sin x + cos x) dx:",
+    "opts": {
+      "en": [
+        "π/4",
+        "π/2",
+        "π",
+        "1"
+      ],
+      "bn": [
+        "π/4",
+        "π/2",
+        "π",
+        "1"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Using King's rule ∫[0 to a] f(x)dx = ∫[0 to a] f(a-x)dx: 2I = ∫[0 to π/2] 1 dx = π/2 => I = π/4.",
+    "expl_bn": "∫[0 to a] f(x)dx = ∫[0 to a] f(a-x)dx সূত্র প্রয়োগ করে: 2I = π/২ => I = π/৪।"
+  },
+  {
+    "id": "MATH-002",
+    "exam": "WBJEE",
+    "subject": "Mathematics",
+    "topic": "Matrices & Determinants",
+    "difficulty": "Easy",
+    "en": "If A is a 3 × 3 non-singular square matrix such that |A| = 4, then the determinant of its adjoint |adj(A)| is equal to:",
+    "bn": "যদি A একটি ৩ × ৩ বর্গ ম্যাট্রিক্স হয় এবং |A| = ৪ হয়, তবে |adj(A)| এর মান কত?",
+    "opts": {
+      "en": [
+        "16",
+        "64",
+        "4",
+        "12"
+      ],
+      "bn": [
+        "16",
+        "64",
+        "4",
+        "12"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "|adj(A)| = |A|^(n-1). For n = 3: |adj(A)| = |A|² = 4² = 16.",
+    "expl_bn": "|adj(A)| = |A|^(n-১)। এখানে n = ৩ হওয়ায়: |adj(A)| = ৪² = ১৬।"
+  },
+  {
+    "id": "MATH-003",
+    "exam": "NDA",
+    "subject": "Mathematics",
+    "topic": "Probability",
+    "difficulty": "Easy",
+    "en": "Two fair dice are thrown simultaneously. The probability of obtaining a total sum of 8 is:",
+    "bn": "দুটি নিরপেক্ষ ছক্কা একসাথে গড়িয়ে দিলে মোট সমষ্টি ৮ হওয়ার সম্ভাবনা কত?",
+    "opts": {
+      "en": [
+        "5 / 36",
+        "1 / 6",
+        "7 / 36",
+        "1 / 9"
+      ],
+      "bn": [
+        "5 / 36",
+        "1 / 6",
+        "7 / 36",
+        "1 / 9"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Favourable outcomes for sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) => 5 outcomes out of 36 total. P = 5/36.",
+    "expl_bn": "সমষ্টি ৮ হওয়ার অনুকূল ঘটনা: (২,৬), (৩,৫), (৪,৪), (৫,৩), (৬,২) = ৫টি। সম্ভাবনা = ৫/৩৬।"
+  },
+  {
+    "id": "BIO-001",
+    "exam": "NEET",
+    "subject": "Biology",
+    "topic": "Molecular Biology",
+    "difficulty": "Easy",
+    "en": "Which of the following enzymes synthesizes short RNA primers required for DNA replication?",
+    "bn": "কোন উৎসেচকটি ডিএনএ রেপ্লিকেশনের জন্য প্রয়োজনীয় ক্ষণস্থায়ী আরএনএ প্রাইমার তৈরি করে?",
+    "opts": {
+      "en": [
+        "RNA Primase",
+        "DNA Ligase",
+        "DNA Polymerase I",
+        "Helicase"
+      ],
+      "bn": [
+        "আরএনএ প্রাইমেজ",
+        "ডিএনএ লাইগেজ",
+        "ডিএনএ পলিমারেজ I",
+        "হেলিকোজ"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "RNA Primase synthesizes short RNA primers providing free 3'-OH group for DNA polymerase to initiate replication.",
+    "expl_bn": "আরএনএ প্রাইমেজ আরএনএ প্রাইমার তৈরি করে যা ডিএনএ পলিমারেজকে রেপ্লিকেশন শুরু করতে 3'-OH প্রান্ত দেয়।"
+  },
+  {
+    "id": "BIO-002",
+    "exam": "NEET",
+    "subject": "Biology",
+    "topic": "Human Physiology",
+    "difficulty": "Medium",
+    "en": "In the human nephron, maximum reabsorption of water, glucose, and essential electrolytes takes place in:",
+    "bn": "মানুষের নেফ্রনে সর্বাধিক পরিমাণ জল, গ্লুকোজ ও প্রয়োজনীয় ইলেক্ট্রোলাইট পুনঃশোষিত হয় কোথায়?",
+    "opts": {
+      "en": [
+        "Proximal Convoluted Tubule (PCT)",
+        "Loop of Henle",
+        "Distal Convoluted Tubule (DCT)",
+        "Collecting Duct"
+      ],
+      "bn": [
+        "নিকটবর্তী সংবর্ত নালিকা (PCT)",
+        "হেনলির লুপ",
+        "দূরবর্তী সংবর্ত নালিকা (DCT)",
+        "সংগ্রাহী নালিকা"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "PCT is lined by brush border cuboidal epithelium and reabsorbs ~70-80% of electrolytes and 100% of filtered glucose.",
+    "expl_bn": "PCT-তে ব্রাশ বর্ডার এপিথেলিয়াম থাকে এবং এখানেই গ্লুকোজ ও ৭০-৮০% ইলেক্ট্রোলাইটের সর্বাধিক পুনঃশোষণ ঘটে।"
+  },
+  {
+    "id": "GK-001",
+    "exam": "UPSC",
+    "subject": "General Knowledge",
+    "topic": "Indian Polity & Constitution",
+    "difficulty": "Easy",
+    "en": "Which Article of the Indian Constitution is referred to as the 'Heart and Soul of the Constitution' by Dr. B.R. Ambedkar?",
+    "bn": "ডঃ বি. আর. আম্বেদকর ভারতীয় সংবিধানের কোন ধারাটিকে 'সংবিধানের হৃদয় ও আত্মা' (Heart and Soul) বলে অভিহিত করেছেন?",
+    "opts": {
+      "en": [
+        "Article 32 (Right to Constitutional Remedies)",
+        "Article 21 (Right to Life and Personal Liberty)",
+        "Article 19 (Right to Freedom)",
+        "Article 14 (Equality before Law)"
+      ],
+      "bn": [
+        "ধারা ৩২ (সাংবিধানিক প্রতিবিধানের অধিকার)",
+        "ধারা ২১ (জীবন ও ব্যক্তিগত স্বাধীনতার অধিকার)",
+        "ধারা ১৯ (স্বাধীনতার অধিকার)",
+        "ধারা ১৪ (আইনের দৃষ্টিতে সমতা)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Article 32 empowers citizens to move the Supreme Court directly for the enforcement of Fundamental Rights via writs (Habeas Corpus, Mandamus, Prohibition, Quo-Warranto, Certiorari).",
+    "expl_bn": "ধারা ৩২ নাগরিকদের মৌলিক অধিকার রক্ষার জন্য সরাসরি সুপ্রিম কোর্টে রিট আবেদন করার ক্ষমতা দেয়।"
+  },
+  {
+    "id": "GK-002",
+    "exam": "SSC",
+    "subject": "General Knowledge",
+    "topic": "Awards & Honours",
+    "difficulty": "Easy",
+    "en": "Who was the first Indian to be awarded the Nobel Prize?",
+    "bn": "প্রথম কোন ভারতীয় নোবেল পুরস্কার লাভ করেন?",
+    "opts": {
+      "en": [
+        "Rabindranath Tagore (1913, Literature)",
+        "C.V. Raman (1930, Physics)",
+        "Mother Teresa (1979, Peace)",
+        "Amartya Sen (1998, Economics)"
+      ],
+      "bn": [
+        "রবীন্দ্রনাথ ঠাকুর (১৯১৩, সাহিত্য)",
+        "সি. ভি. রমন (১৯৩০, পদার্থবিজ্ঞান)",
+        "মাদার তেরেসা (১৯৭৯, শান্তি)",
+        "অমর্ত্য সেন (১৯৯৮, অর্থনীতি)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Rabindranath Tagore was awarded the Nobel Prize in Literature in 1913 for his poetry collection 'Gitanjali' (Song Offerings).",
+    "expl_bn": "রবীন্দ্রনাথ ঠাকুর ১৯১৩ সালে তাঁর কাব্যগ্রন্থ 'গীতাঞ্জলি'-র জন্য সাহিত্যে নোবেল পুরস্কার লাভ করেন।"
+  },
+  {
+    "id": "GK-003",
+    "exam": "UPSC",
+    "subject": "General Knowledge",
+    "topic": "International Organisations",
+    "difficulty": "Easy",
+    "en": "The headquarters of the International Court of Justice (ICJ) is situated in:",
+    "bn": "আন্তর্জাতিক আদালত (ICJ)-এর সদর দপ্তর কোথায় অবস্থিত?",
+    "opts": {
+      "en": [
+        "The Hague, Netherlands",
+        "Geneva, Switzerland",
+        "New York, USA",
+        "Vienna, Austria"
+      ],
+      "bn": [
+        "দ্য হেগ, নেদারল্যান্ডস",
+        "জেনেভা, সুইজারল্যান্ড",
+        "নিউ ইয়র্ক, মার্কিন যুক্তরাষ্ট্র",
+        "ভিয়েনা, অস্ট্রিয়া"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "The International Court of Justice (ICJ) is the principal judicial organ of the UN, established at Peace Palace in The Hague, Netherlands.",
+    "expl_bn": "আন্তর্জাতিক আদালতের সদর দপ্তর নেদারল্যান্ডসের দ্য হেগ শহরের পিস প্যালেসে অবস্থিত।"
+  },
+  {
+    "id": "GS-001",
+    "exam": "UPSC",
+    "subject": "General Science",
+    "topic": "Everyday Physics & Chemistry",
+    "difficulty": "Easy",
+    "en": "Which gas is primarily responsible for the greenhouse effect on Earth?",
+    "bn": "পৃথিবীর গ্রিনহাউস প্রভাবের (Greenhouse Effect) জন্য মূলত কোন গ্যাসটি সর্বাধিক দায়ী?",
+    "opts": {
+      "en": [
+        "Water Vapour (H₂O) & Carbon Dioxide (CO₂)",
+        "Nitrogen (N₂)",
+        "Oxygen (O₂)",
+        "Argon (Ar)"
+      ],
+      "bn": [
+        "জলীয় বাষ্প ও কার্বন ডাই অক্সাইড (CO₂)",
+        "নাইট্রোজেন (N₂)",
+        "অক্সিজেন (O₂)",
+        "আর্গন (Ar)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Water vapour and Carbon Dioxide (CO₂) absorb and re-emit infrared radiation, trapping heat in the Earth's atmosphere.",
+    "expl_bn": "জলীয় বাষ্প ও CO₂ বায়ুমণ্ডলে অবলোহিত বিকিরণ শোষণ করে ভূপৃষ্ঠকে উষ্ণ রাখে।"
+  },
+  {
+    "id": "GS-002",
+    "exam": "SSC",
+    "subject": "General Science",
+    "topic": "Human Biology",
+    "difficulty": "Easy",
+    "en": "Which component of human blood is primarily responsible for blood clotting (coagulation)?",
+    "bn": "মানুষের রক্তের কোন উপাদানটি রক্ত জমাট বাঁধতে (রক্ত তঞ্চন) মুখ্য ভূমিকা পালন করে?",
+    "opts": {
+      "en": [
+        "Platelets (Thrombocytes)",
+        "Red Blood Cells (Erythrocytes)",
+        "White Blood Cells (Leukocytes)",
+        "Blood Plasma"
+      ],
+      "bn": [
+        "অনুচক্রিকা (Platelets)",
+        "লোহিত রক্তকণিকা (RBC)",
+        "শ্বেত রক্তকণিকা (WBC)",
+        "রক্তরস (Plasma)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Blood platelets release thromboplastin, initiating the enzymatic cascade that converts prothrombin to thrombin and fibrinogen to insoluble fibrin mesh.",
+    "expl_bn": "অনুচক্রিকা থ্রম্বোপ্লাস্টিন নিঃসৃত করে যা রক্ত জমাট বাঁধতে অপরিহার্য।"
+  },
+  {
+    "id": "HIST-001",
+    "exam": "UPSC",
+    "subject": "History",
+    "topic": "Ancient & Medieval India",
+    "difficulty": "Easy",
+    "en": "The Indus Valley Civilization site 'Harappa' was situated on the bank of which river?",
+    "bn": "সিন্ধু সভ্যতার 'হরপ্পা' প্রত্নক্ষেত্রটি কোন নদীর তীরে অবস্থিত ছিল?",
+    "opts": {
+      "en": [
+        "Ravi",
+        "Indus",
+        "Saraswati",
+        "Ghaggar"
+      ],
+      "bn": [
+        "রাভি (ইরাবতী)",
+        "সিন্ধু",
+        "সরস্বতী",
+        "ঘর্ঘরা"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Harappa was discovered by Daya Ram Sahni in 1921 on the left bank of the Ravi river in Montgomery district (now in Punjab, Pakistan).",
+    "expl_bn": "দয়ারাম সাহনি ১৯২১ সালে রাভি নদীর তীরে হরপ্পা প্রত্নক্ষেত্রটি আবিষ্কার করেন।"
+  },
+  {
+    "id": "HIST-002",
+    "exam": "UPSC",
+    "subject": "History",
+    "topic": "Modern Indian National Movement",
+    "difficulty": "Medium",
+    "en": "The historic 'Dandi March' (Salt Satyagraha) was launched by Mahatma Gandhi in the year:",
+    "bn": "মহাত্মা গান্ধী কত সালে ঐতিহাসিক 'ডান্ডি অভিযান' (লবণ সত্যাগ্রহ) শুরু করেন?",
+    "opts": {
+      "en": [
+        "1930 (12 March to 6 April)",
+        "1920",
+        "1942",
+        "1919"
+      ],
+      "bn": [
+        "১৯৩০ (১২ মার্চ থেকে ৬ এপ্রিল)",
+        "১৯২০",
+        "১৯৪২",
+        "১৯১৯"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Gandhiji walked 240 miles from Sabarmati Ashram to Dandi from 12 March to 6 April 1930 to break the British salt law, marking the launch of the Civil Disobedience Movement.",
+    "expl_bn": "১৯৩০ সালের ১২ মার্চ সবরমতী আশ্রম থেকে ডান্ডি যাত্রা শুরু হয় এবং ৬ এপ্রিল লবণ আইন অমান্য করে আইন অমান্য আন্দোলন সূচিত হয়।"
+  },
+  {
+    "id": "GEO-001",
+    "exam": "UPSC",
+    "subject": "Geography",
+    "topic": "Physical Geography of India",
+    "difficulty": "Easy",
+    "en": "Which is the highest peak in the Western Ghats (and in South India)?",
+    "bn": "পশ্চিমঘাট পর্বতমালার (এবং সমগ্র দক্ষিণ ভারতের) সর্বোচ্চ শৃঙ্গ কোনটি?",
+    "opts": {
+      "en": [
+        "Anamudi (2,695 m)",
+        "Doddabetta (2,637 m)",
+        "Kalsubai",
+        "Mahendragiri"
+      ],
+      "bn": [
+        "আনাইমুদি (২,৬৯৫ মি)",
+        "দোদাবেত্তা (২,৬৩৭ মি)",
+        "কালসুবাই",
+        "মহেন্দ্রগিরি"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Anamudi (2,695 m) located in the Anaimalai Hills (Kerala) is the highest peak of South India and Western Ghats.",
+    "expl_bn": "কেরালার আনাইমালাই পর্বতমালায় অবস্থিত আনাইমুদি (২,৬৯৫ মিটার) দক্ষিণ ভারতের সর্বোচ্চ শৃঙ্গ।"
+  },
+  {
+    "id": "GEO-002",
+    "exam": "SSC",
+    "subject": "Geography",
+    "topic": "Indian River Systems",
+    "difficulty": "Easy",
+    "en": "Which Indian river is known as the 'Sorrow of Bengal' due to historical devastating floods?",
+    "bn": "ঐতিহাসিক ভয়াবহ বন্যার জন্য কোন নদীটিকে 'বাংলার দুঃখ' বলা হতো?",
+    "opts": {
+      "en": [
+        "Damodar",
+        "Kosi",
+        "Brahmaputra",
+        "Hooghly"
+      ],
+      "bn": [
+        "দামোদর",
+        "কোশী",
+        "ব্রহ্মপুত্র",
+        "হুগলি"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "The Damodar river was known as the 'Sorrow of Bengal' before the construction of Damodar Valley Corporation (DVC) multi-purpose dams.",
+    "expl_bn": "DVC বাঁধ নির্মাণের পূর্বে ঘনঘন বন্যার কারণে দামোদর নদীকে 'বাংলার দুঃখ' বলা হতো।"
+  },
+  {
+    "id": "POL-001",
+    "exam": "UPSC",
+    "subject": "Political Science",
+    "topic": "Constitutional Framework",
+    "difficulty": "Easy",
+    "en": "The concept of 'Fundamental Rights' in the Constitution of India was borrowed from the Constitution of:",
+    "bn": "ভারতীয় সংবিধানের 'মৌলিক অধিকার' ধারণাটি কোন দেশের সংবিধান থেকে গৃহীত হয়েছে?",
+    "opts": {
+      "en": [
+        "USA (Bill of Rights)",
+        "United Kingdom (UK)",
+        "USSR",
+        "Ireland (Directive Principles)"
+      ],
+      "bn": [
+        "মার্কিন যুক্তরাষ্ট্র (USA Bill of Rights)",
+        "যুক্তরাজ্য (UK)",
+        "সোভিয়েত ইউনিয়ন (USSR)",
+        "আয়ারল্যান্ড"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Fundamental Rights (Part III, Articles 12-35) were inspired by the US Constitution's Bill of Rights.",
+    "expl_bn": "মৌলিক অধিকার (অংশ III, ধারা ১২-৩৫) মার্কিন যুক্তরাষ্ট্রের সংবিধানের 'বিল অফ রাইটস' থেকে অনুপ্রাণিত।"
+  },
+  {
+    "id": "POL-002",
+    "exam": "UPSC",
+    "subject": "Political Science",
+    "topic": "Union Executive & Judiciary",
+    "difficulty": "Medium",
+    "en": "Under which Article of the Constitution can the President of India declare a 'National Emergency' on grounds of war, external aggression, or armed rebellion?",
+    "bn": "যুদ্ধ, বহিরাক্রমণ বা সশস্ত্র বিদ্রোহের কারণে রাষ্ট্রপতি কোন ধারাবলে 'জাতীয় জরুরি অবস্থা' জারি করতে পারেন?",
+    "opts": {
+      "en": [
+        "Article 352",
+        "Article 356 (President's Rule)",
+        "Article 360 (Financial Emergency)",
+        "Article 368"
+      ],
+      "bn": [
+        "ধারা ৩৫২",
+        "ধারা ৩৫৬ (রাষ্ট্রপতি শাসন)",
+        "ধারা ৩৬০ (আর্থিক জরুরি অবস্থা)",
+        "ধারা ৩৬৮"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "Article 352 governs National Emergency. Article 356 deals with State Emergency (President's Rule), and Article 360 deals with Financial Emergency.",
+    "expl_bn": "ধারা ৩৫২ অনুযায়ী জাতীয় জরুরি অবস্থা জারি করা হয়। ধারা ৩৫৬ হলো রাষ্ট্রপতি শাসন ও ধারা ৩৬০ হলো আর্থিক জরুরি অবস্থা।"
+  },
+  {
+    "id": "ENG-001",
+    "exam": "SSC",
+    "subject": "English",
+    "topic": "Vocabulary & Synonyms",
+    "difficulty": "Easy",
+    "en": "Select the most appropriate SYNONYM of the given word:\n\n**METICULOUS**",
+    "bn": "প্রদত্ত শব্দের সঠিক সমার্থক শব্দ (Synonym) নির্বাচন করো:\n\n**METICULOUS**",
+    "opts": {
+      "en": [
+        "Careful & Precise",
+        "Careless",
+        "Hasty",
+        "Indifferent"
+      ],
+      "bn": [
+        "সতর্ক ও নিখুঁত (Careful & Precise)",
+        "অসতর্ক (Careless)",
+        "ত্বরাপূর্ণ (Hasty)",
+        "উদাসীন (Indifferent)"
+      ]
+    },
+    "correct": 0,
+    "expl_en": "'Meticulous' means showing great attention to detail; very careful and precise.",
+    "expl_bn": "'Meticulous' শব্দের অর্থ অত্যন্ত সতর্ক, যত্নবান এবং খুঁটিনাটি বিষয়ে নিখুঁত।"
+  },
+  {
+    "id": "ENG-002",
+    "exam": "CUET",
+    "subject": "English",
+    "topic": "Grammar & Error Spotting",
+    "difficulty": "Medium",
+    "en": "Identify the grammatically correct sentence from the following:",
+    "bn": "নিচের বাক্যগুলির মধ্যে ব্যাকরণগতভাবে সঠিক বাক্যটি চিহ্নিত করো:",
+    "opts": {
+      "en": [
+        "Neither the teacher nor the students were present in the hall.",
+        "Neither the teacher nor the students was present in the hall.",
+        "Neither the teacher nor the students is present in the hall.",
+        "Neither the teacher or the students were present in the hall."
+      ],
+      "bn": [
+        "Neither the teacher nor the students were present in the hall.",
+        "Neither the teacher nor the students was present in the hall.",
+        "Neither the teacher nor the students is present in the hall.",
+        "Neither the teacher or the students were present in the hall."
+      ]
+    },
+    "correct": 0,
+    "expl_en": "With 'Neither...nor', the verb agrees with the closer subject. 'students' is plural, hence 'were' is grammatically correct.",
+    "expl_bn": "'Neither...nor' গঠনে verb নিকটতম subject অনুসারে হয়। 'students' বহুবচন হওয়ায় 'were' সঠিক।"
+  }
+];

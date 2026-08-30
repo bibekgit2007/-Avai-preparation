@@ -956,3 +956,51 @@ body {
         width: 100%;
     }
 }
+
+/* Compact Embedded / Floating Widget View */
+@media (max-height: 750px), (max-width: 480px) {
+    body {
+        padding: 8px 10px;
+        justify-content: flex-start;
+    }
+    .app-container {
+        gap: 10px;
+    }
+    .calculator-card {
+        padding: 12px 14px;
+        gap: 10px;
+        border-radius: 20px;
+    }
+    .display-panel {
+        padding: 10px 14px;
+        min-height: 90px;
+        border-radius: 16px;
+    }
+    .display-main {
+        font-size: 26px;
+    }
+    .display-tape {
+        font-size: 11px;
+    }
+    .calc-btn {
+        height: 44px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+    .calc-btn.fn-btn {
+        height: 36px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+    .keypad-grid {
+        gap: 8px;
+    }
+    .scientific-grid {
+        gap: 6px;
+    }
+    .shortcuts-bar {
+        font-size: 10px;
+        gap: 8px;
+    }
+}
+
