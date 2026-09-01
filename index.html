@@ -274,8 +274,8 @@
                 </h1>
             </div>
             
-            <!-- Live Exam Countdown Timer -->
-            <div id="timer" class="font-mono bg-slate-950/80 px-3 py-1 rounded-xl border border-slate-800 text-amber-400 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner">
+            <!-- Overall Live Exam Countdown Timer -->
+            <div id="timer" class="font-mono bg-slate-950/80 px-3 py-1 rounded-xl border border-slate-800 text-amber-400 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner" title="Total Exam Timer">
                 <svg class="w-3.5 h-3.5 text-amber-400 pulse-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2.2"/><path stroke-width="2.2" stroke-linecap="round" d="M12 6v6l4 2"/></svg>
                 <span id="timerText">03:00:00</span>
             </div>
@@ -624,7 +624,7 @@
             <h2 class="text-2xl md:text-3xl font-display font-black mb-1 text-white">TEST SCORECARD</h2>
             <p id="resultExamTitle" class="text-xs font-display font-bold text-blue-400 uppercase tracking-widest mb-6">Performance Report</p>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                 <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
                     <p class="text-[10px] text-blue-300 font-bold uppercase mb-1">Score</p>
                     <p class="text-2xl md:text-3xl font-display font-black text-white" id="finalScoreDisplay">0</p>
@@ -638,8 +638,8 @@
                     <p class="text-2xl md:text-3xl font-display font-black text-purple-400" id="attemptedCount">0</p>
                 </div>
                 <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10">
-                    <p class="text-[10px] text-amber-300 font-bold uppercase mb-1">Max Marks</p>
-                    <p class="text-2xl md:text-3xl font-display font-black text-amber-400" id="totalPossibleMarks">0</p>
+                    <p class="text-[10px] text-amber-300 font-bold uppercase mb-1">Avg Speed</p>
+                    <p class="text-2xl md:text-3xl font-display font-black text-amber-400 font-mono" id="avgSpeedDisplay">00:00</p>
                 </div>
             </div>
 
@@ -660,7 +660,7 @@
 
             <!-- Subject-wise Breakdown Table -->
             <div class="mb-6 bg-slate-950/80 rounded-2xl p-4 border border-slate-800 text-left max-h-48 overflow-y-auto">
-                <p class="text-[10px] font-display font-black uppercase tracking-wider text-slate-400 mb-2.5">Subject-wise Analytics</p>
+                <p class="text-[10px] font-display font-black uppercase tracking-wider text-slate-400 mb-2.5">Subject-wise Analytics & Time Breakdown</p>
                 <div id="subjectBreakdownTable" class="space-y-2 text-xs"></div>
             </div>
 
@@ -724,10 +724,22 @@
         let statuses = []; // 'not-visited', 'not-answered', 'answered', 'marked', 'answered-marked'
         let currentLang = 'en';
 
+        // Per-Question Time Tracker State
+        let questionTimes = []; // array of seconds spent on each question (index `orig`)
+        let activeQuestionOrig = null;
+
         // Marking Scheme Settings (Default +4 / -1)
         let positiveMark = 4;
         let negativeMark = 1;
         let isMockMode = false;
+
+        // Helper: Format seconds to MM:SS or HH:MM:SS
+        function formatSecondsMMSS(totalSecs) {
+            const sec = Math.max(0, parseInt(totalSecs, 10) || 0);
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
 
         // 1. SMART GOOGLE SHEET URL CONVERTER
         function sanitizeGoogleSheetUrl(rawUrl) {
@@ -751,13 +763,28 @@
             return rawUrl;
         }
 
-        // 2. DATA NORMALIZER
+        // 2. DATA NORMALIZER (With PYQ & Year Auto-Recognition)
         function normalizeQuestion(q, i) {
             const examVal = (q.exam || q.Exam || q.Exam_Type || 'ALL').toString().trim();
             const subjectVal = (q.subject || q.Subject || 'Physics').toString().trim();
             const topicVal = (q.topic || q.Topic || 'General').toString().trim();
             const qEn = (q.en || q.Question_EN || q.Question || q.question || '').toString().trim();
             const qBn = (q.bn || q.Question_BN || qEn).toString().trim();
+
+            // PYQ & Year Detection
+            let pyqYear = (q.year || q.Year || q.pyq_year || q.PYQ_Year || q.PYQ || '').toString().trim();
+            let isPyq = Boolean(pyqYear);
+
+            // Auto-recognize Year from Question Text, Exam Tag, or Topic if not explicit
+            const combinedText = (qEn + ' ' + topicVal + ' ' + examVal + ' ' + (q.id || '')).trim();
+            const yearMatch = combinedText.match(/\b(19\d{2}|20\d{2})\b/);
+
+            if (!isPyq && yearMatch) {
+                pyqYear = yearMatch[1];
+                isPyq = true;
+            } else if (!isPyq && /\bPYQ\b/i.test(combinedText)) {
+                isPyq = true;
+            }
 
             let optsEn = [];
             let optsBn = [];
@@ -791,6 +818,8 @@
                 subject: subjectVal,
                 topic: topicVal,
                 difficulty: q.difficulty || q.Difficulty || 'Medium',
+                year: pyqYear,
+                isPyq: isPyq,
                 en: qEn || 'Sample Question',
                 bn: qBn || qEn || 'নমুনা প্রশ্ন',
                 opts: { en: optsEn, bn: optsBn },
@@ -840,6 +869,7 @@
             questionBank = [...masterDataset];
             responses = new Array(questionBank.length).fill(null);
             statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
 
             setSyncStatus(`Multi-Subject Bank (${questionBank.length} Qs)`);
             hideAppLoader();
@@ -866,6 +896,7 @@
                                 questionBank = [...masterDataset];
                                 responses = new Array(questionBank.length).fill(null);
                                 statuses = new Array(questionBank.length).fill('not-visited');
+                                questionTimes = new Array(questionBank.length).fill(0);
                                 setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
                                 hideAppLoader();
                                 filterByExam();
@@ -898,6 +929,7 @@
                             questionBank = [...masterDataset];
                             responses = new Array(questionBank.length).fill(null);
                             statuses = new Array(questionBank.length).fill('not-visited');
+                            questionTimes = new Array(questionBank.length).fill(0);
                             closeAdminModal();
                             setSyncStatus(`Uploaded JSON (${questionBank.length} Qs)`);
                             filterByExam();
@@ -915,6 +947,7 @@
                                 questionBank = [...masterDataset];
                                 responses = new Array(questionBank.length).fill(null);
                                 statuses = new Array(questionBank.length).fill('not-visited');
+                                questionTimes = new Array(questionBank.length).fill(0);
                                 closeAdminModal();
                                 setSyncStatus(`Uploaded CSV (${questionBank.length} Qs)`);
                                 filterByExam();
@@ -1028,6 +1061,7 @@
 
             responses = new Array(questionBank.length).fill(null);
             statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
             currentIdx = 0;
             isMockMode = true;
             timeInSecs = durVal * 60;
@@ -1117,7 +1151,8 @@
                 if (searchQuery) {
                     searchMatch = q.en.toLowerCase().includes(searchQuery) || 
                                   q.bn.toLowerCase().includes(searchQuery) || 
-                                  q.topic.toLowerCase().includes(searchQuery);
+                                  q.topic.toLowerCase().includes(searchQuery) ||
+                                  (q.year && q.year.includes(searchQuery));
                 }
 
                 return examMatch && topicMatch && searchMatch;
@@ -1130,13 +1165,14 @@
             return filtered;
         }
 
-        // 7. RENDER QUESTION & OPTIONS (HERO COMPONENT)
+        // 7. RENDER QUESTION & OPTIONS (HERO COMPONENT WITH PER-QUESTION TIMER & PYQ BADGE)
         function render() {
             const filtered = getFiltered();
             const area = document.getElementById('questionArea');
             if (!area) return;
 
             if (filtered.length === 0) {
+                activeQuestionOrig = null;
                 area.innerHTML = `
                     <div class="flex flex-col items-center justify-center h-full text-center p-8 space-y-4 my-12 animate-fade-in">
                         <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black shadow-inner">
@@ -1155,6 +1191,9 @@
             if (currentIdx < 0) currentIdx = 0;
 
             const q = filtered[currentIdx];
+            activeQuestionOrig = q.orig;
+            questionTimes[q.orig] = questionTimes[q.orig] || 0;
+
             if (statuses[q.orig] === 'not-visited') {
                 statuses[q.orig] = 'not-answered';
             }
@@ -1168,17 +1207,34 @@
                                    q.difficulty === 'Hard' ? 'bg-purple-50 text-purple-700 border-purple-200' :
                                    'bg-amber-50 text-amber-700 border-amber-200';
 
+            // PYQ Glowing Badge
+            const pyqBadge = (q.isPyq || q.year) ? `
+                <span class="inline-flex items-center gap-1 text-[11px] font-display font-black px-2.5 py-0.5 rounded-lg bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 text-amber-800 border border-amber-300 shadow-sm" title="Official Previous Year Question">
+                    <span>🎯</span>
+                    <span>${q.year ? `${q.exam !== 'ALL' ? q.exam : ''} ${q.year} PYQ` : `${q.exam} PYQ`}</span>
+                </span>
+            ` : '';
+
             const optionLetters = ['A', 'B', 'C', 'D'];
 
             area.innerHTML = `
                 <div class="max-w-4xl mx-auto animate-fade-in">
                     <!-- Question Header Meta Bar -->
                     <div class="flex flex-wrap justify-between items-center mb-6 gap-2.5 pb-4 border-b border-slate-100">
-                        <div class="flex items-center gap-3 flex-wrap">
+                        <div class="flex items-center gap-2 md:gap-3 flex-wrap">
                             <span class="text-blue-600 font-display font-black text-xl md:text-2xl flex items-center gap-2">
                                 <span>${currentLang === 'en' ? 'Question' : 'প্রশ্ন'} ${currentIdx + 1}</span>
                                 <span class="text-xs text-slate-400 font-mono font-bold">/ ${filtered.length}</span>
                             </span>
+                            
+                            <!-- Per-Question Live Stopwatch Badge -->
+                            <div class="flex items-center gap-1.5 text-[11px] font-mono font-bold bg-slate-100/90 text-slate-700 px-2.5 py-0.5 rounded-lg border border-slate-200/90 shadow-sm" title="Time spent on this specific question">
+                                <span class="text-blue-600">⏱️</span>
+                                <span id="qTimerDisplay">${formatSecondsMMSS(questionTimes[q.orig])}</span>
+                            </div>
+
+                            ${pyqBadge}
+
                             <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${diffBadgeColor}">${q.difficulty}</span>
                             <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">${q.exam}</span>
                             <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">+${positiveMark} / -${negativeMark}</span>
@@ -1211,11 +1267,14 @@
                         `).join('')}
                     </div>
 
-                    <!-- Accordion Solution Box -->
+                    <!-- Accordion Solution Box with Time Stats -->
                     <div id="explanationBox" class="hidden p-6 bg-gradient-to-br from-emerald-50/90 to-teal-50/60 border-l-4 border-emerald-500 rounded-r-3xl shadow-sm animate-fade-in mb-8">
-                        <div class="flex items-center gap-2 mb-2">
+                        <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
                             <span class="text-emerald-800 font-display font-black text-xs uppercase tracking-wider flex items-center gap-1.5">
                                 <span>💡</span> Solution Logic & Derivation:
+                            </span>
+                            <span class="text-[11px] font-mono font-bold bg-emerald-100/80 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">
+                                ⏱️ Time Spent: ${formatSecondsMMSS(questionTimes[q.orig])}
                             </span>
                         </div>
                         <p class="text-emerald-950 text-sm md:text-base leading-relaxed font-medium">${explanationText}</p>
@@ -1269,7 +1328,7 @@
             if (totalBadge) totalBadge.innerText = filtered.length;
 
             palette.innerHTML = filtered.map((q, i) => `
-                <button onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}" title="Question ${i + 1} (${q.topic})">
+                <button onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}" title="Question ${i + 1} (${q.topic}) - Time: ${formatSecondsMMSS(questionTimes[q.orig])}">
                     ${i + 1}
                 </button>
             `).join('');
@@ -1356,7 +1415,7 @@
             }
         }
 
-        // 9. SCORECARD & PERFORMANCE ANALYTICS
+        // 9. SCORECARD & PERFORMANCE ANALYTICS (With Per-Question Time Analysis)
         function showFinalResult() {
             let score = 0;
             let correctCount = 0;
@@ -1364,13 +1423,16 @@
             let attempted = 0;
 
             const subjectStats = {};
+            let totalActiveSecs = 0;
 
             questionBank.forEach((q, i) => {
                 const sub = q.subject || 'General';
                 if (!subjectStats[sub]) {
-                    subjectStats[sub] = { total: 0, attempted: 0, correct: 0, incorrect: 0, score: 0 };
+                    subjectStats[sub] = { total: 0, attempted: 0, correct: 0, incorrect: 0, score: 0, timeSecs: 0 };
                 }
                 subjectStats[sub].total++;
+                subjectStats[sub].timeSecs += (questionTimes[i] || 0);
+                totalActiveSecs += (questionTimes[i] || 0);
 
                 const resp = responses[i];
                 if (resp !== null) {
@@ -1393,11 +1455,12 @@
             const unattempted = questionBank.length - attempted;
             const accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
             const maxMarks = questionBank.length * positiveMark;
+            const avgSpeedSecs = attempted > 0 ? Math.round(totalActiveSecs / attempted) : 0;
 
             document.getElementById('finalScoreDisplay').innerText = `${score > 0 ? '+' : ''}${score} / ${maxMarks}`;
             document.getElementById('accuracyDisplay').innerText = `${accuracy}%`;
             document.getElementById('attemptedCount').innerText = `${attempted} / ${questionBank.length}`;
-            document.getElementById('totalPossibleMarks').innerText = maxMarks;
+            document.getElementById('avgSpeedDisplay').innerText = `${formatSecondsMMSS(avgSpeedSecs)} / Q`;
 
             document.getElementById('correctCount').innerText = correctCount;
             document.getElementById('incorrectCount').innerText = incorrectCount;
@@ -1407,20 +1470,20 @@
             document.getElementById('wrongScoreDed').innerText = negativeMark;
             document.getElementById('resultExamTitle').innerText = `${currentExam === 'ALL' ? 'Multi-Subject' : currentExam} Examination Scorecard`;
 
-            // Subject Breakdown Table with Visual Meter
+            // Subject Breakdown Table with Visual Meter & Time Spent
             const breakdownContainer = document.getElementById('subjectBreakdownTable');
             if (breakdownContainer) {
                 breakdownContainer.innerHTML = Object.keys(subjectStats).map(sub => {
                     const st = subjectStats[sub];
                     const subAcc = st.attempted > 0 ? Math.round((st.correct / st.attempted) * 100) : 0;
                     return `
-                        <div class="py-2 border-b border-slate-800/80 text-xs">
+                        <div class="py-2.5 border-b border-slate-800/80 text-xs">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="font-bold text-slate-200 font-display">${sub}</span>
-                                <span class="text-blue-400 font-mono font-bold">${st.score > 0 ? '+' : ''}${st.score} pts (${subAcc}% Acc)</span>
+                                <span class="text-blue-400 font-mono font-bold">${st.score > 0 ? '+' : ''}${st.score} pts (${subAcc}% Acc) &nbsp;•&nbsp; <span class="text-amber-400 font-mono font-normal">⏱️ ${formatSecondsMMSS(st.timeSecs)}</span></span>
                             </div>
                             <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1.5">
-                                <span>Attempted: ${st.attempted}/${st.total}</span>
+                                <span>Attempted: ${st.attempted}/${st.total} Qs</span>
                                 <span><span class="text-emerald-400 font-bold">${st.correct} ✓</span> &nbsp; <span class="text-red-400 font-bold">${st.incorrect} ✗</span></span>
                             </div>
                             <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
@@ -1441,9 +1504,10 @@
             render();
         });
 
-        // 10. COUNTDOWN TIMER
+        // 10. TIMERS (OVERALL EXAM TIMER + PER-QUESTION LIVE STOPWATCH)
         let timeInSecs = 10800; // 3 hours
         setInterval(() => {
+            // 1. Overall Countdown Timer
             if (timeInSecs > 0) {
                 timeInSecs--;
                 const h = Math.floor(timeInSecs / 3600);
@@ -1454,6 +1518,15 @@
                     timerElem.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     if (timeInSecs < 600) timerElem.className = 'text-red-400 font-bold animate-pulse';
                     else if (timeInSecs < 1800) timerElem.className = 'text-amber-400 font-bold';
+                }
+            }
+
+            // 2. Active Question Stopwatch
+            if (activeQuestionOrig !== null && questionTimes) {
+                questionTimes[activeQuestionOrig] = (questionTimes[activeQuestionOrig] || 0) + 1;
+                const qTimerElem = document.getElementById('qTimerDisplay');
+                if (qTimerElem) {
+                    qTimerElem.innerText = formatSecondsMMSS(questionTimes[activeQuestionOrig]);
                 }
             }
         }, 1000);
