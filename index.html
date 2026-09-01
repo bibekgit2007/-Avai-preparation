@@ -763,28 +763,13 @@
             return rawUrl;
         }
 
-        // 2. DATA NORMALIZER (With PYQ & Year Auto-Recognition)
+        // 2. DATA NORMALIZER
         function normalizeQuestion(q, i) {
             const examVal = (q.exam || q.Exam || q.Exam_Type || 'ALL').toString().trim();
             const subjectVal = (q.subject || q.Subject || 'Physics').toString().trim();
             const topicVal = (q.topic || q.Topic || 'General').toString().trim();
             const qEn = (q.en || q.Question_EN || q.Question || q.question || '').toString().trim();
             const qBn = (q.bn || q.Question_BN || qEn).toString().trim();
-
-            // PYQ & Year Detection
-            let pyqYear = (q.year || q.Year || q.pyq_year || q.PYQ_Year || q.PYQ || '').toString().trim();
-            let isPyq = Boolean(pyqYear);
-
-            // Auto-recognize Year from Question Text, Exam Tag, or Topic if not explicit
-            const combinedText = (qEn + ' ' + topicVal + ' ' + examVal + ' ' + (q.id || '')).trim();
-            const yearMatch = combinedText.match(/\b(19\d{2}|20\d{2})\b/);
-
-            if (!isPyq && yearMatch) {
-                pyqYear = yearMatch[1];
-                isPyq = true;
-            } else if (!isPyq && /\bPYQ\b/i.test(combinedText)) {
-                isPyq = true;
-            }
 
             let optsEn = [];
             let optsBn = [];
@@ -818,8 +803,6 @@
                 subject: subjectVal,
                 topic: topicVal,
                 difficulty: q.difficulty || q.Difficulty || 'Medium',
-                year: pyqYear,
-                isPyq: isPyq,
                 en: qEn || 'Sample Question',
                 bn: qBn || qEn || 'নমুনা প্রশ্ন',
                 opts: { en: optsEn, bn: optsBn },
@@ -1151,8 +1134,7 @@
                 if (searchQuery) {
                     searchMatch = q.en.toLowerCase().includes(searchQuery) || 
                                   q.bn.toLowerCase().includes(searchQuery) || 
-                                  q.topic.toLowerCase().includes(searchQuery) ||
-                                  (q.year && q.year.includes(searchQuery));
+                                  q.topic.toLowerCase().includes(searchQuery);
                 }
 
                 return examMatch && topicMatch && searchMatch;
@@ -1207,14 +1189,6 @@
                                    q.difficulty === 'Hard' ? 'bg-purple-50 text-purple-700 border-purple-200' :
                                    'bg-amber-50 text-amber-700 border-amber-200';
 
-            // PYQ Glowing Badge
-            const pyqBadge = (q.isPyq || q.year) ? `
-                <span class="inline-flex items-center gap-1 text-[11px] font-display font-black px-2.5 py-0.5 rounded-lg bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 text-amber-800 border border-amber-300 shadow-sm" title="Official Previous Year Question">
-                    <span>🎯</span>
-                    <span>${q.year ? `${q.exam !== 'ALL' ? q.exam : ''} ${q.year} PYQ` : `${q.exam} PYQ`}</span>
-                </span>
-            ` : '';
-
             const optionLetters = ['A', 'B', 'C', 'D'];
 
             area.innerHTML = `
@@ -1232,8 +1206,6 @@
                                 <span class="text-blue-600">⏱️</span>
                                 <span id="qTimerDisplay">${formatSecondsMMSS(questionTimes[q.orig])}</span>
                             </div>
-
-                            ${pyqBadge}
 
                             <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${diffBadgeColor}">${q.difficulty}</span>
                             <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200">${q.exam}</span>
