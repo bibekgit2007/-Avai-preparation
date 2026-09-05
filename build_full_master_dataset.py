@@ -314,6 +314,27 @@ SVG_SKEW_LINES = """<svg viewBox="0 0 460 200" width="100%" height="200" xmlns="
   <text x="245" y="100" fill="#0f172a" font-size="13" font-family="system-ui" font-weight="black">d (Shortest Distance)</text>
 </svg>"""
 
+SVG_ICJ_EMBLEM = """<svg viewBox="0 0 440 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <polygon points="220,25 100,60 340,60" fill="url(#goldGrad)" opacity="0.9"/>
+  <rect x="110" y="60" width="220" height="8" rx="2" fill="#93c5fd"/>
+  <rect x="130" y="68" width="14" height="60" rx="3" fill="#cbd5e1"/>
+  <rect x="170" y="68" width="14" height="60" rx="3" fill="#cbd5e1"/>
+  <rect x="213" y="68" width="14" height="60" rx="3" fill="#cbd5e1"/>
+  <rect x="256" y="68" width="14" height="60" rx="3" fill="#cbd5e1"/>
+  <rect x="296" y="68" width="14" height="60" rx="3" fill="#cbd5e1"/>
+  <rect x="100" y="128" width="240" height="12" rx="3" fill="url(#goldGrad)"/>
+  <circle cx="220" cy="48" r="7" fill="#1e1b4b" stroke="#fde047" stroke-width="1.5"/>
+  <line x1="210" y1="48" x2="230" y2="48" stroke="#fde047" stroke-width="2"/>
+  <text x="220" y="156" fill="#0f172a" font-size="11" font-weight="bold" font-family="system-ui" text-anchor="middle">PEACE PALACE • THE HAGUE (NETHERLANDS)</text>
+  <text x="220" y="172" fill="#2563eb" font-size="9" font-family="system-ui" font-weight="bold" text-anchor="middle">International Court of Justice (ICJ) • Principal UN Judicial Organ</text>
+</svg>"""
+
 # =============================================================================
 # MASTER MULTI-SUBJECT & MULTI-EXAM COMPATIBLE QUESTION REPOSITORY
 # =============================================================================
@@ -856,10 +877,11 @@ all_questions = [
     },
 
     # =========================================================================
-    # 5. GENERAL SCIENCE & GENERAL KNOWLEDGE (UPSC, SSC, RRB, PSC, NDA, CDS)
+    # =========================================================================
+    # 5. GENERAL SCIENCE (UPSC, SSC, RRB, PSC, NDA, CDS)
     # =========================================================================
     {
-        "id": "GK-001",
+        "id": "SCI-001",
         "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, BANKING",
         "subject": "General Science",
         "topic": "Physics in Daily Life & Atmospheric Optics",
@@ -885,7 +907,7 @@ all_questions = [
         "expl_bn": "রেলির বিক্ষেপণ নীতি অনুযায়ী বিক্ষেপণের তীব্রতা I ∝ ১/λ⁴। ক্ষুদ্র তরঙ্গদৈর্ঘ্যের নীল আলো বায়ুমণ্ডলের অণুসমূহ দ্বারা লাল আলোর চেয়ে প্রায় ১০ গুণ বেশি বিক্ষিপ্ত হয়।"
     },
     {
-        "id": "GK-002",
+        "id": "SCI-002",
         "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, BANKING",
         "subject": "General Science",
         "topic": "Chemical Substances in Daily Life",
@@ -901,7 +923,7 @@ all_questions = [
         "expl_bn": "সোডিয়াম বেনজোয়েট হলো বহুল ব্যবহৃত একটি খাদ্য সংরক্ষক যা অম্লীয় মাধ্যমে বেনজোয়িক অ্যাসিডে রূপান্তরিত হয়ে অণুজীবের বৃদ্ধি প্রতিরোধ করে।"
     },
     {
-        "id": "GK-003",
+        "id": "SCI-003",
         "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, AFCAT, CAPF",
         "subject": "General Science",
         "topic": "Space Technology & ISRO",
@@ -917,7 +939,7 @@ all_questions = [
         "expl_bn": "চন্দ্রযান-৩ মিশনটি ISRO-এর ভারী উৎক্ষেপণ যান LVM3 (GSLV Mk-III)-এর সাহায্যে শ্রীহরিকোটা থেকে সফলভাবে উৎক্ষেপিত হয়েছিল।"
     },
     {
-        "id": "GK-004",
+        "id": "SCI-004",
         "exam": "UPSC, SSC, CDS, STATE-PSC, CUET, NDA, CAPF",
         "subject": "General Science",
         "topic": "Environmental Science & Ecology",
@@ -931,6 +953,325 @@ all_questions = [
         "correct": 0,
         "expl_en": "The Montreal Protocol on Substances that Deplete the Ozone Layer is an international environmental treaty designed to phase out the production of ozone-depleting substances (ODSs) such as Chlorofluorocarbons (CFCs).",
         "expl_bn": "মন্ট্রিল প্রোটোকল হলো বায়ুমণ্ডলের স্ট্র্যাটোস্ফিয়ারে ওজোন স্তরের ক্ষয় সৃষ্টিকারী ক্লোরোফ্লুরোকার্বন (CFC) ও অন্যান্য পদার্থ নিষিদ্ধ করার লক্ষ্যে সাক্ষরিত একটি বৈশ্বিক চুক্তি।"
+    },
+
+    # =========================================================================
+    # 6. ENGLISH LANGUAGE & VERBAL ABILITY
+    # =========================================================================
+    {
+        "id": "ENG-001",
+        "exam": "BITSAT, VITEEE, CUET, NDA, CDS, AFCAT, SSC, BANKING, STATE-PSC, AFMC",
+        "subject": "English",
+        "topic": "Grammar & Error Spotting",
+        "difficulty": "Medium",
+        "en": "Identify the grammatically correct sentence among the following options:",
+        "bn": "নিচের বিকল্পগুলোর মধ্যে ব্যাকরণগতভাবে সঠিক বাক্যটি নির্বাচন করো:",
+        "opts": {
+            "en": [
+                "Neither the teacher nor the students were present in the laboratory.",
+                "Neither the teacher nor the students was present in the laboratory.",
+                "Neither the teacher or the students were present in the laboratory.",
+                "Neither the teacher nor the students is present in the laboratory."
+            ],
+            "bn": [
+                "Neither the teacher nor the students were present in the laboratory.",
+                "Neither the teacher nor the students was present in the laboratory.",
+                "Neither the teacher or the students were present in the laboratory.",
+                "Neither the teacher nor the students is present in the laboratory."
+            ]
+        },
+        "correct": 0,
+        "expl_en": "When subjects are joined by 'neither... nor', the verb agrees with the subject closest to it (proximity rule). Since 'students' is plural and in the past tense, the plural verb 'were' is correct.",
+        "expl_bn": "'Neither... nor' দ্বারা একাধিক কর্তা যুক্ত হলে নিকটবর্তী কর্তা অনুসারে ক্রিয়া নির্ধারিত হয়। এখানে নিকটবর্তী কর্তা 'students' বহুবচন হওয়ায় 'were' সঠিক।"
+    },
+    {
+        "id": "ENG-002",
+        "exam": "BITSAT, VITEEE, CUET, NDA, CDS, SSC, BANKING, UPSC, STATE-PSC",
+        "subject": "English",
+        "topic": "Vocabulary & Antonyms",
+        "difficulty": "Easy",
+        "en": "Choose the word that is most nearly OPPOSITE in meaning to the word 'TRANSIENT':",
+        "bn": "'TRANSIENT' (ক্ষণস্থায়ী) শব্দটির সবচেয়ে নিকটবর্তী বিপরীতার্থক (Opposite) শব্দটি নির্বাচন করো:",
+        "opts": {
+            "en": ["Permanent", "Ephemeral", "Fleeting", "Temporal"],
+            "bn": ["Permanent (স্থায়ী)", "Ephemeral (ক্ষণস্থায়ী)", "Fleeting (দ্রুত পলায়নপর)", "Temporal (লৌকিক/ক্ষণস্থায়ী)"]
+        },
+        "correct": 0,
+        "expl_en": "'Transient' means lasting only for a short time (impermanent). Its direct antonym is 'Permanent' (lasting or intended to last indefinitely).",
+        "expl_bn": "'Transient' শব্দের অর্থ ক্ষণস্থায়ী। এর সঠিক বিপরীতার্থক শব্দ হলো 'Permanent' (চিরস্থায়ী বা দীর্ঘস্থায়ী)।"
+    },
+    {
+        "id": "ENG-003",
+        "exam": "BITSAT, VITEEE, CUET, NDA, CDS, AFCAT, SSC, BANKING, STATE-PSC",
+        "subject": "English",
+        "topic": "Idioms & Phrasal Usage",
+        "difficulty": "Medium",
+        "en": "What is the accurate meaning of the idiomatic phrase 'To read between the lines'?",
+        "bn": "'To read between the lines' প্রবাদবাক্যটির প্রকৃত অর্থ কী?",
+        "opts": {
+            "en": [
+                "To discover an underlying or hidden meaning not explicitly stated",
+                "To read very fast skipping alternating lines",
+                "To criticize the grammatical style of an author",
+                "To re-read a book after a long gap"
+            ],
+            "bn": [
+                "To discover an underlying or hidden meaning not explicitly stated",
+                "To read very fast skipping alternating lines",
+                "To criticize the grammatical style of an author",
+                "To re-read a book after a long gap"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "'To read between the lines' means to perceive or detect an unexpressed, subtle, or hidden meaning behind explicit words.",
+        "expl_bn": "'To read between the lines' কথাটির অর্থ হলো কোনো লেখার স্পষ্ট বা প্রত্যক্ষ অর্থের আড়ালে থাকা অন্তর্নিহিত বা গোপন ভাবার্থ উপলব্ধি করা।"
+    },
+
+    # =========================================================================
+    # 7. LOGICAL REASONING & GENERAL MENTAL ABILITY
+    # =========================================================================
+    {
+        "id": "REA-001",
+        "exam": "BITSAT, VITEEE, CUET, AFCAT, SSC, RRB, BANKING, UPSC, STATE-PSC, FOUNDATION",
+        "subject": "Reasoning",
+        "topic": "Syllogism & Deductive Logic",
+        "difficulty": "Medium",
+        "en": "Analyze the statements and conclusions:\nStatements:\n1. All scientists are researchers.\n2. Some researchers are teachers.\nConclusions:\nI. Some researchers are scientists.\nII. Some teachers are researchers.\nWhich of the following holds true?",
+        "bn": "বিবৃতি ও উপসংহার বিশ্লেষণ করো:\nবিবৃতি:\n১. সকল বিজ্ঞানী হলেন গবেষক।\n২. কিছু গবেষক হলেন শিক্ষক।\nউপসংহার:\nI. কিছু গবেষক হলেন বিজ্ঞানী।\nII. কিছু শিক্ষক হলেন গবেষক।\nনিচের কোন বিকল্পটি সত্য?",
+        "opts": {
+            "en": [
+                "Both conclusions I and II follow",
+                "Only conclusion I follows",
+                "Only conclusion II follows",
+                "Neither conclusion follows"
+            ],
+            "bn": [
+                "উভয় উপসংহার I এবং II সঠিক",
+                "কেবলমাত্র উপসংহার I সঠিক",
+                "কেবলমাত্র উপসংহার II সঠিক",
+                "কোনো উপসংহারই সঠিক নয়"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Statement 1: 'All scientists are researchers' logically converts to 'Some researchers are scientists' (Conclusion I is valid). Statement 2: 'Some researchers are teachers' directly converts to 'Some teachers are researchers' (Conclusion II is valid). Hence, both follow.",
+        "expl_bn": "বিবৃতি ১ রূপান্তর করলে পাওয়া যায় 'কিছু গবেষক হলেন বিজ্ঞানী' (উপসংহার I সঠিক)। বিবৃতি ২ রূপান্তর করলে পাওয়া যায় 'কিছু শিক্ষক হলেন গবেষক' (উপসংহার II সঠিক)। অতএব উভয় উপসংহারই প্রযোজ্য।"
+    },
+    {
+        "id": "REA-002",
+        "exam": "BITSAT, VITEEE, CUET, AFCAT, SSC, RRB, BANKING, UPSC, STATE-PSC, FOUNDATION",
+        "subject": "Reasoning",
+        "topic": "Coding-Decoding",
+        "difficulty": "Medium",
+        "en": "In a certain code language, if 'SYSTEM' is coded as 'SYSMET' and 'NEARER' is coded as 'AENRER', how will 'FRACTION' be coded in that same language?",
+        "bn": "একটি সাংকেতিক ভাষায় যদি 'SYSTEM' কে লেখা হয় 'SYSMET' এবং 'NEARER' কে লেখা হয় 'AENRER', তবে একই নিয়মে 'FRACTION' কে কীভাবে লেখা হবে?",
+        "opts": {
+            "en": ["CARFNOIT", "ARFCNOIT", "CARFTION", "CRAFNOIT"],
+            "bn": ["CARFNOIT", "ARFCNOIT", "CARFTION", "CRAFNOIT"]
+        },
+        "correct": 0,
+        "expl_en": "The 8-letter word is split into two halves of 4 letters: 'FRAC' and 'TION'. Reversing each 4-letter block gives 'CARF' and 'NOIT'. Combining them yields 'CARFNOIT'.",
+        "expl_bn": "শব্দটিকে দুটি সমান অংশে (প্রতিটিতে ৪টি বর্ণ) ভাগ করা হয়েছে: 'FRAC' এবং 'TION'। প্রতিটি অংশকে উল্টো করে লিখলে পাওয়া যায় 'CARF' এবং 'NOIT', যার সমন্বয়ে গঠিত হয় 'CARFNOIT'।"
+    },
+    {
+        "id": "REA-003",
+        "exam": "BITSAT, VITEEE, CUET, NDA, CDS, AFCAT, SSC, RRB, BANKING, UPSC, STATE-PSC, FOUNDATION",
+        "subject": "Reasoning",
+        "topic": "Direction & Distance Sense",
+        "difficulty": "Easy",
+        "en": "A student walks 12 km towards North, then turns right and walks 5 km. What is the shortest displacement and direction of the student relative to the starting point?",
+        "bn": "একজন শিক্ষার্থী উত্তর দিকে ১২ কিমি হেঁটে গিয়ে ডানদিকে মোড় নিয়ে ৫ কিমি হাঁটলেন। প্রারম্ভিক বিন্দুর সাপেক্ষে শিক্ষার্থীর ন্যূনতম সরণ এবং অভিমুখ কী?",
+        "opts": {
+            "en": ["13 km, North-East", "17 km, North", "13 km, North-West", "7 km, East"],
+            "bn": ["13 km, উত্তর-পূর্ব", "17 km, উত্তর", "13 km, উত্তর-পশ্চিম", "7 km, পূর্ব"]
+        },
+        "correct": 0,
+        "expl_en": "By Pythagoras theorem: Shortest displacement d = √(12² + 5²) = √(144 + 25) = √169 = 13 km. The direction from the origin (0,0) to (+5, +12) is North-East.",
+        "expl_bn": "পিথাগোরাসের উপপাদ্য অনুসারে: ন্যূনতম সরণ d = √(১২² + ৫²) = √১৬৯ = ১৩ কিমি। প্রারম্ভিক বিন্দুর সাপেক্ষে অভিমুখ হলো উত্তর-পূর্ব।"
+    },
+
+    # =========================================================================
+    # 8. HISTORY (Indian National Movement, Ancient & Medieval)
+    # =========================================================================
+    {
+        "id": "HIST-001",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "History",
+        "topic": "Indian National Movement",
+        "difficulty": "Medium",
+        "en": "In which historic session of the Indian National Congress was the resolution for 'Poorna Swaraj' (Complete Independence) officially adopted under the presidency of Jawaharlal Nehru?",
+        "bn": "জওহরলাল নেহরুর সভাপতিত্বে ভারতীয় জাতীয় কংগ্রেসের কোন ঐতিহাসিক অধিবেশনে 'পূর্ণ স্বরাজ' (সম্পূর্ণ স্বাধীনতা)-এর প্রস্তাব আনুষ্ঠানিকভাবে গৃহীত হয়েছিল?",
+        "opts": {
+            "en": [
+                "Lahore Session (1929)",
+                "Belgaum Session (1924)",
+                "Karachi Session (1931)",
+                "Tripuri Session (1939)"
+            ],
+            "bn": [
+                "লাহোর অধিবেশন (১৯২৯)",
+                "বেলগাঁও অধিবেশন (১৯২৪)",
+                "করাচি অধিবেশন (১৯৩১)",
+                "ত্রিপুরী অধিবেশন (১৯৩৯)"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "At the Lahore Session of the Indian National Congress in December 1929, under the presidency of Jawaharlal Nehru, the historic 'Poorna Swaraj' resolution was adopted, declaring 26 January 1930 as the first Independence Day.",
+        "expl_bn": "১৯২৯ সালের ডিসেম্বরে লাহোর অধিবেশনে জওহরলাল নেহরুর সভাপতিত্বে পূর্ণ স্বরাজ প্রস্তাব গৃহীত হয় এবং ২৬ জানুয়ারি ১৯৩০ কে প্রথম স্বাধীনতা দিবস হিসেবে উদযাপনের ঘোষণা দেওয়া হয়।"
+    },
+    {
+        "id": "HIST-002",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "History",
+        "topic": "Ancient India & Harappan Civilization",
+        "difficulty": "Easy",
+        "en": "At which of the following Harappan archaeological sites was a prominent tidal dockyard (naval port basin) discovered by archaeologists?",
+        "bn": "হরপ্পা সভ্যতার নিচের কোন প্রত্নতাত্ত্বিক নিদর্শনস্থলে একটি কৃত্রিম পোতাশ্রয় বা ডকইয়ার্ড আবিষ্কৃত হয়েছিল?",
+        "opts": {
+            "en": ["Lothal", "Kalibangan", "Rakhigarhi", "Banawali"],
+            "bn": ["লোথাল", "কালিবঙ্গান", "রাখিগড়ি", "বনওয়ালি"]
+        },
+        "correct": 0,
+        "expl_en": "Lothal in Gujarat (excavated by S.R. Rao) featured a massive brick-built tidal dockyard connected to the Gulf of Khambhat via the Bhogavo river, serving as an ancient maritime trading hub.",
+        "expl_bn": "গুজরাটের লোথালে সিন্ধু সভ্যতার বিখ্যাত সামুদ্রিক পোতাশ্রয় (ডকইয়ার্ড) আবিষ্কৃত হয় যা প্রাচীনকালে মেসোপটেমিয়ার সাথে বাণিজ্যের প্রধান বন্দর ছিল।"
+    },
+
+    # =========================================================================
+    # 9. GEOGRAPHY (Physical, Climate & Indian Geography)
+    # =========================================================================
+    {
+        "id": "GEOG-001",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "Geography",
+        "topic": "Drainage System of India",
+        "difficulty": "Medium",
+        "en": "Which of the following major Indian rivers flows westwards through a tectonic rift valley between the Vindhya and Satpura mountain ranges into the Arabian Sea?",
+        "bn": "নিচের কোন প্রধান ভারতীয় নদীটি বিন্ধ্য ও সাতপুরা পর্বতমালার মধ্যবর্তী গ্রস্ত উপত্যকার (Rift Valley) মধ্য দিয়ে পশ্চিমবাহিনী হয়ে আরব সাগরে পতিত হয়েছে?",
+        "opts": {
+            "en": ["Narmada", "Godavari", "Mahanadi", "Krishna"],
+            "bn": ["নর্মদা", "গোদাবরী", "মহানদী", "কৃষ্ণা"]
+        },
+        "correct": 0,
+        "expl_en": "The Narmada river originates at Amarkantak and flows westward through a tectonic rift valley bounded by the Vindhyas to the north and Satpuras to the south before emptying into the Arabian Sea.",
+        "expl_bn": "নর্মদা নদী বিন্ধ্য ও সাতপুরা পর্বতের মধ্যবর্তী চ্যুতি বা গ্রস্ত উপত্যকা দিয়ে প্রবাহিত হয়ে পশ্চিমবাহিনী হয়ে আরব সাগরে পতিত হয়েছে।"
+    },
+    {
+        "id": "GEOG-002",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "Geography",
+        "topic": "Atmosphere & Climatology",
+        "difficulty": "Easy",
+        "en": "In which atmospheric layer does almost all operational weather phenomena (clouds, rainfall, fog, and convection) take place on Earth?",
+        "bn": "পৃথিবীর বায়ুমণ্ডলের কোন স্তরে মেঘ, বৃষ্টিপাত, কুয়াশা এবং পরিচলন সহ বায়ুমণ্ডলীয় আবহাওয়া সংক্রান্ত প্রায় সকল প্রধান ঘটনা সংঘটিত হয়?",
+        "opts": {
+            "en": ["Troposphere", "Stratosphere", "Mesosphere", "Thermosphere"],
+            "bn": ["ট্রপোস্ফিয়ার", "স্ট্র্যাটোস্ফিয়ার", "মেসোস্ফিয়ার", "থার্মোস্ফিয়ার"]
+        },
+        "correct": 0,
+        "expl_en": "The troposphere is the lowest atmospheric layer containing ~75% of atmospheric mass and 99% of total water vapor. All active weather phenomena occur exclusively here.",
+        "expl_bn": "বায়ুমণ্ডলের সর্বনিম্ন স্তর ট্রপোস্ফিয়ারে জলীয় বাষ্প ও বায়ুর ঘনত্বের আধিক্যের কারণে মেঘ, বৃষ্টি, ঝড় ইত্যাদি যাবতীয় আবহাওয়া সংক্রান্ত পরিবর্তন ঘটে।"
+    },
+
+    # =========================================================================
+    # 10. POLITICAL SCIENCE & INDIAN POLITY
+    # =========================================================================
+    {
+        "id": "POL-001",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "Political Science",
+        "topic": "Fundamental Rights & Judicial Remedies",
+        "difficulty": "Medium",
+        "en": "Which Article of the Constitution of India empowers the Supreme Court to issue writs (including Habeas Corpus, Mandamus, Prohibition, Quo-Warranto, and Certiorari) for the enforcement of Fundamental Rights?",
+        "bn": "ভারতের সংবিধানের কোন অনুচ্ছেদ অনুযায়ী নাগরিকদের মৌলিক অধিকার বলবৎ করার জন্য সুপ্রিম কোর্ট লেখ বা রিট (Habeas Corpus, Mandamus ইত্যাদি) জারি করতে পারে?",
+        "opts": {
+            "en": ["Article 32", "Article 226", "Article 14", "Article 21"],
+            "bn": ["অনুচ্ছেদ ৩২", "অনুচ্ছেদ ২২৬", "অনুচ্ছেদ ১৪", "অনুচ্ছেদ ২১"]
+        },
+        "correct": 0,
+        "expl_en": "Article 32 provides the Right to Constitutional Remedies and empowers the Supreme Court to issue prerogative writs. Dr. B.R. Ambedkar famously called Article 32 the 'Heart and Soul of the Indian Constitution'.",
+        "expl_bn": "ভারতের সংবিধানের ৩২ নম্বর অনুচ্ছেদ মৌলিক অধিকার সুরক্ষায় সুপ্রিম কোর্টকে রিট জারির ক্ষমতা প্রদান করে। ড. বি. আর. আম্বেদকর একে সংবিধানের 'হৃদয় ও আত্মা' আখ্যা দিয়েছিলেন।"
+    },
+    {
+        "id": "POL-002",
+        "exam": "UPSC, STATE-PSC, SSC, CDS, NDA, CUET, RRB",
+        "subject": "Political Science",
+        "topic": "Preamble & Amendments",
+        "difficulty": "Easy",
+        "en": "By which Constitutional Amendment Act were the words 'SOCIALIST', 'SECULAR', and 'INTEGRITY' inserted into the Preamble of the Constitution of India?",
+        "bn": "কোন সংবিধান সংশোধন আইনের মাধ্যমে ভারতের সংবিধানের প্রস্তাবনায় (Preamble) 'সমাজতান্ত্রিক' (Socialist), 'ধর্মনিরপেক্ষ' (Secular) এবং 'সংহতি' (Integrity) শব্দগুলো যুক্ত করা হয়েছিল?",
+        "opts": {
+            "en": [
+                "42nd Constitutional Amendment Act (1976)",
+                "44th Constitutional Amendment Act (1978)",
+                "73rd Constitutional Amendment Act (1992)",
+                "86th Constitutional Amendment Act (2002)"
+            ],
+            "bn": [
+                "৪২তম সংবিধান সংশোধনী আইন (১৯৭৬)",
+                "৪৪তম সংবিধান সংশোধনী আইন (১৯৭৮)",
+                "৭৩তম সংবিধান সংশোধনী আইন (১৯৯২)",
+                "৮৬তম সংবিধান সংশোধনী আইন (২০০২)"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "The 42nd Constitutional Amendment Act of 1976 amended the Preamble for the first and only time, introducing the terms 'Socialist', 'Secular', and 'Integrity'.",
+        "expl_bn": "১৯৭৬ সালের ৪২তম সংবিধান সংশোধনী আইনের মাধ্যমে ভারতের সংবিধানের প্রস্তাবনায় প্রথম ও একমাত্র বার সংশোধন এনে 'সমাজতান্ত্রিক', 'ধর্মনিরপেক্ষ' এবং 'সংহতি' শব্দগুলো সংযোজন করা হয়।"
+    },
+
+    # =========================================================================
+    # 11. GENERAL KNOWLEDGE & STATIC AWARENESS
+    # =========================================================================
+    {
+        "id": "GK-001",
+        "exam": "UPSC, SSC, CDS, NDA, CUET, BANKING, RRB, STATE-PSC",
+        "subject": "General Knowledge",
+        "topic": "International Organizations & Headquarters",
+        "difficulty": "Easy",
+        "diagram": SVG_ICJ_EMBLEM,
+        "en": "The International Court of Justice (ICJ), the principal judicial organ of the United Nations, has its permanent seat located at:",
+        "bn": "সম্মিলিত রাষ্ট্রপুঞ্জের (UN) প্রধান বিচার বিভাগীয় অঙ্গ আন্তর্জাতিক বিচারালয় (ICJ)-এর স্থায়ী সদর দপ্তর কোথায় অবস্থিত?",
+        "opts": {
+            "en": [
+                "The Hague (Peace Palace), Netherlands",
+                "Geneva, Switzerland",
+                "New York, USA",
+                "Vienna, Austria"
+            ],
+            "bn": [
+                "দ্য হেগ (পিস প্যালেস), নেদারল্যান্ডস",
+                "জেনেভা, সুইজারল্যান্ড",
+                "নিউ ইয়র্ক, মার্কিন যুক্তরাষ্ট্র",
+                "ভিয়েনা, অস্ট্রিয়া"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "The International Court of Justice (ICJ) was established in 1945 by the UN Charter and is situated at the Peace Palace in The Hague, Netherlands. It is the only one of the six principal UN organs not located in New York City.",
+        "expl_bn": "আন্তর্জাতিক বিচারালয় (ICJ) ১৯৪৫ সালে প্রতিষ্ঠিত হয় এবং এটি নেদারল্যান্ডসের দ্য হেগ শহরের পিস প্যালেসে অবস্থিত। এটি রাষ্ট্রপুঞ্জের একমাত্র প্রধান অঙ্গ যা নিউ ইয়র্কে অবস্থিত নয়।"
+    },
+    {
+        "id": "GK-002",
+        "exam": "UPSC, SSC, CDS, NDA, CUET, RRB, STATE-PSC",
+        "subject": "General Knowledge",
+        "topic": "Science & Space Milestones of India",
+        "difficulty": "Medium",
+        "en": "India became the first Asian nation to successfully reach Martian orbit in its maiden attempt. Which launch vehicle carried ISRO's Mars Orbiter Mission (Mangalyaan) into Earth parking orbit on 5th November 2013?",
+        "bn": "ভারত প্রথম এশীয় দেশ হিসেবে প্রথম প্রচেষ্টাতেই সফলভাবে মঙ্গল গ্রহের কক্ষপথে পৌঁছায়। ২০১৩ সালের ৫ই নভেম্বর কোন উৎক্ষেপণ যানের মাধ্যমে ইসরোর মার্স অরবিটার মিশন (মঙ্গলযান) উৎক্ষেপণ করা হয়েছিল?",
+        "opts": {
+            "en": [
+                "PSLV-C25 (XL Variant)",
+                "GSLV Mk III (LVM3)",
+                "PSLV-C11",
+                "GSLV-D5"
+            ],
+            "bn": [
+                "PSLV-C25 (XL ভ্যারিয়েন্ট)",
+                "GSLV Mk III (LVM3)",
+                "PSLV-C11",
+                "GSLV-D5"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "ISRO's Mars Orbiter Mission (Mangalyaan) was launched aboard the Polar Satellite Launch Vehicle (PSLV-C25) in its 'XL' configuration on 5 November 2013 from the Satish Dhawan Space Centre (SDSC) SHAR, Sriharikota.",
+        "expl_bn": "ইসরোর মার্স অরবিটার মিশন (মঙ্গলযান) ২০১৩ সালের ৫ই নভেম্বর অন্ধ্রপ্রদেশের শ্রীহরিকোটার সতীশ ধাওয়ান মহাকাশ কেন্দ্র থেকে PSLV-C25 (XL) রকেটের মাধ্যমে সফলভাবে উৎক্ষেপণ করা হয়।"
     }
 ]
 

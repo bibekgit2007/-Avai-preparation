@@ -393,11 +393,24 @@
         
         <!-- Left Question & Action Workspace -->
         <div class="flex-1 flex flex-col bg-white overflow-hidden shadow-sm">
-            <!-- Dynamic Multi-Subject Toolbar -->
+            <!-- Dynamic Multi-Subject Toolbar with Stream Combinations -->
             <div class="flex flex-wrap items-center justify-between border-b border-slate-200 bg-slate-50/90 px-3 md:px-5 py-2.5 gap-2 select-none" id="toolbarArea">
-                <!-- Subject Tabs Strip -->
-                <div class="flex overflow-x-auto gap-1.5 max-w-full pb-0.5 no-scrollbar" id="subjectTabs">
-                    <!-- Populated dynamically -->
+                <!-- Stream / Subject Combination Selector & Tabs Strip -->
+                <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-0.5 no-scrollbar flex-1 min-w-0">
+                    <!-- Stream Selector Badge -->
+                    <div class="flex items-center gap-1.5 shrink-0" id="streamContainer">
+                        <span class="text-[10px] font-display font-black text-slate-400 uppercase tracking-wider hidden lg:inline">Stream:</span>
+                        <div class="relative">
+                            <select id="streamSelector" onchange="switchStream(this.value)" class="bg-blue-50/90 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[200px] sm:max-w-[290px] truncate shadow-sm pr-6 appearance-none font-display">
+                            </select>
+                            <span class="absolute right-2 top-2.5 text-[9px] pointer-events-none text-blue-500">▼</span>
+                        </div>
+                    </div>
+
+                    <!-- Subject Tabs Strip -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="subjectTabs">
+                        <!-- Populated dynamically based on chosen stream -->
+                    </div>
                 </div>
 
                 <!-- Topic & Search Bar -->
@@ -810,10 +823,145 @@
             'FOUNDATION': ['General Science', 'Mathematics', 'Reasoning', 'Physics', 'Chemistry', 'Biology']
         };
 
+        // Official Examination Streams & Subject Combinations
+        const EXAM_SUBJECT_COMBINATIONS = {
+            'ALL': [
+                { id: 'ALL_COMBINED', name: 'All Subjects (Universal Bank)', subjects: ALL_AVAILABLE_SUBJECTS }
+            ],
+            // Medical & Bio-Sciences
+            'NEET': [
+                { id: 'NEET_PCB', name: 'Standard PCB (Medical Entrance)', subjects: ['Physics', 'Chemistry', 'Biology'] }
+            ],
+            'AIIMS': [
+                { id: 'AIIMS_MBBS', name: 'MBBS / Nursing (PCB + GK + Reasoning)', subjects: ['Physics', 'Chemistry', 'Biology', 'General Knowledge', 'Reasoning'] }
+            ],
+            'AFMC': [
+                { id: 'AFMC_MED', name: 'Armed Forces Medical (PCB + Eng + Reasoning)', subjects: ['Biology', 'Chemistry', 'Physics', 'English', 'Reasoning'] }
+            ],
+            'ICAR': [
+                { id: 'ICAR_PCB', name: 'Agriculture PCB Stream (Bio, Chem, Phys)', subjects: ['Biology', 'Chemistry', 'Physics'] },
+                { id: 'ICAR_PCM', name: 'Agriculture PCM Stream (Math, Phys, Chem)', subjects: ['Mathematics', 'Physics', 'Chemistry'] }
+            ],
+            // Engineering & Technology
+            'JEE': [
+                { id: 'JEE_PCM', name: 'Paper 1: B.E. / B.Tech (PCM Core)', subjects: ['Physics', 'Chemistry', 'Mathematics'] }
+            ],
+            'JEE-ADV': [
+                { id: 'JEE_ADV_PCM', name: 'IIT Advanced (PCM Core)', subjects: ['Physics', 'Chemistry', 'Mathematics'] }
+            ],
+            'WBJEE': [
+                { id: 'WBJEE_ENGG', name: 'Engineering Stream (PCM)', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+                { id: 'WBJEE_PHARM', name: 'Pharmacy Stream (PCB / PCM)', subjects: ['Physics', 'Chemistry', 'Biology', 'Mathematics'] }
+            ],
+            'BITSAT': [
+                { id: 'BITSAT_ENGG', name: 'Engineering (PCM + English + Reasoning)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'English', 'Reasoning'] },
+                { id: 'BITSAT_PHARM', name: 'B.Pharm (PCB + English + Reasoning)', subjects: ['Physics', 'Chemistry', 'Biology', 'English', 'Reasoning'] }
+            ],
+            'VITEEE': [
+                { id: 'VIT_PCM', name: 'MPCEA (Maths + Phys + Chem + Eng + Aptitude)', subjects: ['Mathematics', 'Physics', 'Chemistry', 'English', 'Reasoning'] },
+                { id: 'VIT_PCB', name: 'BPCEA (Bio + Phys + Chem + Eng + Aptitude)', subjects: ['Biology', 'Physics', 'Chemistry', 'English', 'Reasoning'] }
+            ],
+            'MHT-CET': [
+                { id: 'MHT_PCM', name: 'PCM Group (Engineering & Technology)', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+                { id: 'MHT_PCB', name: 'PCB Group (Pharmacy & Agriculture)', subjects: ['Biology', 'Physics', 'Chemistry'] }
+            ],
+            'KCET': [
+                { id: 'KCET_PCM', name: 'Engineering Stream (PCM)', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+                { id: 'KCET_PCB', name: 'Medical / Farm Science (PCB)', subjects: ['Biology', 'Physics', 'Chemistry'] }
+            ],
+            'COMEDK': [
+                { id: 'COMEDK_PCM', name: 'Engineering Stream (PCM)', subjects: ['Physics', 'Chemistry', 'Mathematics'] }
+            ],
+            'KEAM': [
+                { id: 'KEAM_PCM', name: 'Engineering Stream (PCM)', subjects: ['Physics', 'Chemistry', 'Mathematics'] }
+            ],
+            // Pure Sciences, Research & Olympiads
+            'IAT': [
+                { id: 'IAT_PCMB', name: 'IISER Aptitude Test (PCMB Core)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] }
+            ],
+            'NEST': [
+                { id: 'NEST_PCMB', name: 'NISER Integrated M.Sc (PCMB)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] }
+            ],
+            'OLYMPIAD': [
+                { id: 'OLY_SCIENCE', name: 'National Olympiads (NSEP/NSEC/NSEB/INPhO)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] }
+            ],
+            'KVPY': [
+                { id: 'KVPY_STREAM', name: 'Science Stream (SA / SX / SB - PCMB)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] }
+            ],
+            'IIT-JAM': [
+                { id: 'JAM_PHYS', name: 'Physics (PH Paper + Maths)', subjects: ['Physics', 'Mathematics'] },
+                { id: 'JAM_CHEM', name: 'Chemistry (CY Paper + Phys/Maths)', subjects: ['Chemistry', 'Physics', 'Mathematics'] },
+                { id: 'JAM_MATH', name: 'Mathematics (MA Paper)', subjects: ['Mathematics'] },
+                { id: 'JAM_BIO', name: 'Biotechnology (BT: Bio + Chem + Phys)', subjects: ['Biology', 'Chemistry', 'Physics', 'Mathematics'] }
+            ],
+            'CSIR-NET': [
+                { id: 'NET_LIFE', name: 'Life Sciences (Part A General + Life Sci)', subjects: ['General Science', 'Biology'] },
+                { id: 'NET_CHEM', name: 'Chemical Sciences (Part A + Chem)', subjects: ['General Science', 'Chemistry'] },
+                { id: 'NET_PHYS', name: 'Physical Sciences (Part A + Phys)', subjects: ['General Science', 'Physics'] },
+                { id: 'NET_MATH', name: 'Mathematical Sciences (Part A + Maths)', subjects: ['General Science', 'Mathematics'] }
+            ],
+            'GATE': [
+                { id: 'GATE_CORE', name: 'Engineering & Sciences (Aptitude + Math + Science)', subjects: ['General Science', 'Mathematics', 'Reasoning', 'Physics', 'Chemistry'] }
+            ],
+            // Central Universities
+            'CUET': [
+                { id: 'CUET_SCI', name: 'Science Domain (PCM/PCB + English + GT)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'] },
+                { id: 'CUET_ARTS', name: 'Humanities (History + Geog + Polity + English)', subjects: ['History', 'Geography', 'Political Science', 'English', 'General Knowledge'] },
+                { id: 'CUET_GT', name: 'General Test (Reasoning + Maths + GK + Science)', subjects: ['Reasoning', 'Mathematics', 'General Knowledge', 'General Science'] }
+            ],
+            'CUET-PG': [
+                { id: 'CUET_PG_SCI', name: 'Science Domain (Physics, Chemistry, Bio, Maths)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'General Science'] }
+            ],
+            // Defence & Armed Forces
+            'NDA': [
+                { id: 'NDA_FULL', name: 'Full Exam (Paper 1: Maths + Paper 2: GAT)', subjects: ['Mathematics', 'General Science', 'English', 'General Knowledge', 'History', 'Geography'] },
+                { id: 'NDA_MATHS', name: 'Paper 1: Mathematics (300 Marks)', subjects: ['Mathematics'] },
+                { id: 'NDA_GAT', name: 'Paper 2: General Ability Test (600 Marks)', subjects: ['English', 'General Science', 'General Knowledge', 'History', 'Geography'] }
+            ],
+            'CDS': [
+                { id: 'CDS_IMA', name: 'IMA / INA / AFA (English + GK/GS + Maths)', subjects: ['English', 'General Knowledge', 'General Science', 'Mathematics', 'History', 'Geography', 'Political Science'] },
+                { id: 'CDS_OTA', name: 'OTA (English + General Knowledge / GS)', subjects: ['English', 'General Knowledge', 'General Science', 'History', 'Geography', 'Political Science'] }
+            ],
+            'AFCAT': [
+                { id: 'AFCAT_STD', name: 'Standard Test (English, Reasoning, Maths, GK)', subjects: ['English', 'Reasoning', 'Mathematics', 'General Knowledge', 'General Science'] }
+            ],
+            'CAPF': [
+                { id: 'CAPF_P1', name: 'Paper 1: General Ability & Intelligence', subjects: ['General Science', 'General Knowledge', 'History', 'Geography', 'Political Science', 'Reasoning', 'Mathematics'] }
+            ],
+            // Civil Services & State PSCs
+            'UPSC': [
+                { id: 'UPSC_P1', name: 'Paper 1: General Studies (Prelims - 200 Marks)', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge'] },
+                { id: 'UPSC_P2', name: 'Paper 2: CSAT Aptitude (Prelims - 200 Marks)', subjects: ['Reasoning', 'Mathematics', 'English'] },
+                { id: 'UPSC_COMBINED', name: 'Combined Prelims GS + CSAT', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'Reasoning', 'Mathematics', 'English'] }
+            ],
+            'STATE-PSC': [
+                { id: 'PSC_PRELIMS', name: 'General Studies Paper (WBCS / BPSC / UPPSC)', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'English', 'Reasoning', 'Mathematics'] }
+            ],
+            // Staff Selection & Railways
+            'SSC': [
+                { id: 'SSC_TIER1', name: 'Tier 1 Complete (Reasoning + GA + Quant + English)', subjects: ['Reasoning', 'General Knowledge', 'General Science', 'Mathematics', 'English'] }
+            ],
+            'RRB': [
+                { id: 'RRB_CBT1', name: 'CBT 1 (General Science + Maths + Reasoning + GA)', subjects: ['General Science', 'Mathematics', 'Reasoning', 'General Knowledge'] }
+            ],
+            'BANKING': [
+                { id: 'BANK_PRE', name: 'Prelims (Reasoning + Quant + English Language)', subjects: ['Reasoning', 'Mathematics', 'English', 'General Knowledge'] }
+            ],
+            // School Boards & Foundation
+            'CBSE': [
+                { id: 'CBSE_SCI', name: 'Class 12 Science (PCM / PCB + English)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English'] },
+                { id: 'CBSE_HUM', name: 'Class 12 Humanities (Hist + Geog + Polity + Eng)', subjects: ['History', 'Geography', 'Political Science', 'English'] }
+            ],
+            'FOUNDATION': [
+                { id: 'FOUND_SAT_MAT', name: 'Foundation / NTSE (SAT Science/Math + MAT Reasoning)', subjects: ['General Science', 'Mathematics', 'Reasoning', 'Physics', 'Chemistry', 'Biology'] }
+            ]
+        };
+
         // State Variables
         let masterDataset = [];
         let questionBank = [];
         let currentExam = "ALL";
+        let currentStreamId = "ALL_COMBINED";
         let currentSubject = "Physics";
         let currentTopic = "ALL";
         let searchQuery = "";
@@ -1088,13 +1236,20 @@
         function openMockModal() {
             const container = document.getElementById('mockSubjectCheckboxes');
             if (container) {
-                const uniqueSubjects = Array.from(new Set(masterDataset.map(q => q.subject))).filter(Boolean);
-                container.innerHTML = uniqueSubjects.map(sub => `
-                    <label class="flex items-center gap-2 cursor-pointer select-none">
-                        <input type="checkbox" name="mock_subject" value="${sub}" checked class="accent-blue-600 rounded">
-                        <span class="font-medium">${sub}</span>
-                    </label>
-                `).join('');
+                // Get active stream's subjects or fallback to all available subjects
+                const availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] || [];
+                const activeCombo = availableCombos.find(c => c.id === currentStreamId) || availableCombos[0];
+                const activeSubjects = (activeCombo && activeCombo.subjects) ? activeCombo.subjects : ALL_AVAILABLE_SUBJECTS;
+
+                container.innerHTML = ALL_AVAILABLE_SUBJECTS.map(sub => {
+                    const isChecked = activeSubjects.includes(sub) ? 'checked' : '';
+                    return `
+                        <label class="flex items-center gap-2 cursor-pointer select-none p-1.5 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 transition">
+                            <input type="checkbox" name="mock_subject" value="${sub}" ${isChecked} class="accent-blue-600 rounded w-4 h-4">
+                            <span class="font-bold text-slate-800 text-xs">${sub}</span>
+                        </label>
+                    `;
+                }).join('');
             }
             const modal = document.getElementById('mockModal');
             if (modal) modal.classList.remove('hidden');
@@ -1108,45 +1263,74 @@
         function setMockPreset(preset) {
             const dur = document.getElementById('mockDurationInput');
             const mark = document.getElementById('mockMarkingSelect');
-            if (preset === 'NEET' || preset === 'JEE' || preset === 'JEE-ADV' || preset === 'IAT' || preset === 'OLYMPIAD' || preset === 'AIIMS' || preset === 'AFMC') {
+            let targetSubjects = [];
+
+            if (preset === 'NEET' || preset === 'AIIMS' || preset === 'AFMC') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "4,-1";
+                targetSubjects = ['Physics', 'Chemistry', 'Biology'];
+            } else if (preset === 'JEE' || preset === 'JEE-ADV') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "4,-1";
+                targetSubjects = ['Physics', 'Chemistry', 'Mathematics'];
             } else if (preset === 'WBJEE') {
                 if (dur) dur.value = 120;
                 if (mark) mark.value = "2,-0.50";
+                targetSubjects = ['Mathematics', 'Physics', 'Chemistry'];
             } else if (preset === 'BITSAT') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "3,-1";
+                targetSubjects = ['Physics', 'Chemistry', 'Mathematics', 'English', 'Reasoning'];
             } else if (preset === 'VITEEE') {
                 if (dur) dur.value = 150;
                 if (mark) mark.value = "1,0";
+                targetSubjects = ['Mathematics', 'Physics', 'Chemistry', 'English', 'Reasoning'];
             } else if (preset === 'MHT-CET' || preset === 'KCET') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "1,0";
+                targetSubjects = ['Mathematics', 'Physics', 'Chemistry'];
+            } else if (preset === 'IAT' || preset === 'NEST' || preset === 'OLYMPIAD' || preset === 'KVPY') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "4,-1";
+                targetSubjects = ['Physics', 'Chemistry', 'Mathematics', 'Biology'];
             } else if (preset === 'IIT-JAM' || preset === 'GATE' || preset === 'CSIR-NET') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "2,-0.66";
+                targetSubjects = ['Physics', 'Chemistry', 'Mathematics', 'General Science'];
             } else if (preset === 'UPSC' || preset === 'STATE-PSC') {
                 if (dur) dur.value = 120;
                 if (mark) mark.value = "2,-0.66";
+                targetSubjects = ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'Reasoning', 'Mathematics', 'English'];
             } else if (preset === 'SSC') {
                 if (dur) dur.value = 60;
                 if (mark) mark.value = "2,-0.50";
+                targetSubjects = ['Reasoning', 'General Knowledge', 'General Science', 'Mathematics', 'English'];
             } else if (preset === 'RRB') {
                 if (dur) dur.value = 90;
                 if (mark) mark.value = "1,-0.33";
+                targetSubjects = ['General Science', 'Mathematics', 'Reasoning', 'General Knowledge'];
             } else if (preset === 'BANKING') {
                 if (dur) dur.value = 60;
                 if (mark) mark.value = "1,-0.25";
+                targetSubjects = ['Reasoning', 'Mathematics', 'English', 'General Knowledge'];
             } else if (preset === 'CUET') {
                 if (dur) dur.value = 45;
                 if (mark) mark.value = "5,-1";
+                targetSubjects = ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'];
             } else if (preset === 'NDA' || preset === 'CDS' || preset === 'AFCAT') {
                 if (dur) dur.value = 150;
                 if (mark) mark.value = "2.5,-0.83";
+                targetSubjects = ['Mathematics', 'General Science', 'English', 'General Knowledge', 'History', 'Geography'];
             } else if (preset === 'QUICK') {
                 if (dur) dur.value = 15;
                 if (mark) mark.value = "4,-1";
+                targetSubjects = ALL_AVAILABLE_SUBJECTS;
+            }
+
+            if (targetSubjects.length > 0) {
+                document.querySelectorAll('input[name="mock_subject"]').forEach(cb => {
+                    cb.checked = targetSubjects.includes(cb.value);
+                });
             }
         }
 
@@ -1180,28 +1364,80 @@
             alert(`🎯 Custom Mock Test Started!\nDuration: ${durVal} minutes\nMarking: +${positiveMark} / -${negativeMark}\nTotal Questions: ${questionBank.length}`);
         }
 
-        // 6. EXAM & SUBJECT NAVIGATION
+        // 6. EXAM & STREAM & SUBJECT NAVIGATION
         function filterByExam() {
             const selector = document.getElementById('examSelector');
             currentExam = selector ? selector.value : 'ALL';
-            
+
+            // 1. Get official streams/combinations for this exam
+            const availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] || [
+                { id: currentExam + '_STD', name: `${currentExam} Standard Stream`, subjects: SUBJECTS_BY_EXAM[currentExam] || ALL_AVAILABLE_SUBJECTS }
+            ];
+
+            // 2. Populate the Stream Selector dropdown
+            const streamSelect = document.getElementById('streamSelector');
+            if (streamSelect) {
+                streamSelect.innerHTML = availableCombos.map(combo => 
+                    `<option value="${combo.id}">${combo.name}</option>`
+                ).join('');
+                
+                // Keep selected stream if still valid for this exam, else pick the first
+                const matching = availableCombos.find(c => c.id === currentStreamId);
+                currentStreamId = matching ? matching.id : availableCombos[0].id;
+                streamSelect.value = currentStreamId;
+            } else {
+                currentStreamId = availableCombos[0].id;
+            }
+
+            // 3. Delegate to switchStream
+            switchStream(currentStreamId);
+        }
+
+        function switchStream(streamId) {
+            currentStreamId = streamId;
+            const streamSelect = document.getElementById('streamSelector');
+            if (streamSelect && streamSelect.value !== streamId) {
+                streamSelect.value = streamId;
+            }
+
+            // Find stream configuration
+            const availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] || [
+                { id: currentExam + '_STD', name: `${currentExam} Standard Stream`, subjects: SUBJECTS_BY_EXAM[currentExam] || ALL_AVAILABLE_SUBJECTS }
+            ];
+            const activeCombo = availableCombos.find(c => c.id === streamId) || availableCombos[0];
+
+            // Update candidate badge
             const examBadge = document.getElementById('examBadgeText');
-            if (examBadge) examBadge.innerText = `${currentExam === 'ALL' ? 'Multi-Subject' : currentExam} Mock Test`;
+            if (examBadge) {
+                if (currentExam === 'ALL') {
+                    examBadge.innerText = activeCombo.name;
+                } else {
+                    examBadge.innerText = `${currentExam} • ${activeCombo.name}`;
+                }
+            }
 
-            const availableSubjectsInBank = Array.from(new Set(questionBank.map(q => q.subject))).filter(Boolean);
-            const examSubjects = SUBJECTS_BY_EXAM[currentExam] || availableSubjectsInBank;
-            const finalSubjects = availableSubjectsInBank.length > 0 
-                ? (currentExam === 'ALL' ? availableSubjectsInBank : examSubjects.filter(s => availableSubjectsInBank.includes(s)))
-                : examSubjects;
+            // Determine active stream subjects
+            const streamSubjects = (activeCombo && activeCombo.subjects && activeCombo.subjects.length > 0)
+                ? activeCombo.subjects 
+                : ALL_AVAILABLE_SUBJECTS;
 
+            // Update subject tabs to show only the subjects of this stream
             const tabsContainer = document.getElementById('subjectTabs');
             if (tabsContainer) {
-                currentSubject = finalSubjects.includes(currentSubject) ? currentSubject : (finalSubjects[0] || 'Physics');
-                tabsContainer.innerHTML = finalSubjects.map(sub => `
+                if (!streamSubjects.includes(currentSubject)) {
+                    currentSubject = streamSubjects[0] || 'Physics';
+                }
+                tabsContainer.innerHTML = streamSubjects.map(sub => `
                     <button onclick="switchSubject('${sub}')" class="subject-tab ${sub === currentSubject ? 'active' : ''}">${sub}</button>
                 `).join('');
             }
 
+            // Update current subject title
+            const subTitle = document.getElementById('currentSubjectTitle');
+            if (subTitle) subTitle.innerText = `${currentSubject} Progress`;
+
+            currentIdx = 0;
+            currentTopic = "ALL";
             populateTopicFilter();
             render();
         }
