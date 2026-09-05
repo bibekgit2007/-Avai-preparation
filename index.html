@@ -397,14 +397,18 @@
             <div class="flex flex-wrap items-center justify-between border-b border-slate-200 bg-slate-50/90 px-3 md:px-5 py-2.5 gap-2 select-none" id="toolbarArea">
                 <!-- Stream / Subject Combination Selector & Tabs Strip -->
                 <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-0.5 no-scrollbar flex-1 min-w-0">
-                    <!-- Stream Selector Badge -->
+                    <!-- Stream Selector Badge & Universal Toggle -->
                     <div class="flex items-center gap-1.5 shrink-0" id="streamContainer">
                         <span class="text-[10px] font-display font-black text-slate-400 uppercase tracking-wider hidden lg:inline">Stream:</span>
                         <div class="relative">
-                            <select id="streamSelector" onchange="switchStream(this.value)" class="bg-blue-50/90 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[200px] sm:max-w-[290px] truncate shadow-sm pr-6 appearance-none font-display">
+                            <select id="streamSelector" onchange="switchStream(this.value)" class="bg-blue-50/90 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[180px] sm:max-w-[260px] truncate shadow-sm pr-6 appearance-none font-display">
                             </select>
                             <span class="absolute right-2 top-2.5 text-[9px] pointer-events-none text-blue-500">▼</span>
                         </div>
+                        <button id="universalToggleBtn" onclick="toggleUniversalBank()" class="px-2.5 py-1 text-[11px] font-bold rounded-xl border border-blue-200 bg-white hover:bg-blue-50 text-blue-700 transition shadow-sm flex items-center gap-1 cursor-pointer shrink-0" title="Quickly Toggle Universal Question Bank (All 11 Subjects & Exams)">
+                            <span>🌐</span>
+                            <span class="hidden sm:inline">Universal Bank</span>
+                        </button>
                     </div>
 
                     <!-- Subject Tabs Strip -->
@@ -826,7 +830,14 @@
         // Official Examination Streams & Subject Combinations
         const EXAM_SUBJECT_COMBINATIONS = {
             'ALL': [
-                { id: 'ALL_COMBINED', name: 'All Subjects (Universal Bank)', subjects: ALL_AVAILABLE_SUBJECTS }
+                { id: 'ALL_COMBINED', name: '🌟 Universal Bank (All 11 Subjects)', subjects: ALL_AVAILABLE_SUBJECTS },
+                { id: 'ALL_MED', name: '🩺 Medical Stream (PCB - Physics, Chemistry, Bio)', subjects: ['Biology', 'Physics', 'Chemistry'] },
+                { id: 'ALL_ENGG', name: '⚙️ Engineering Stream (PCM - Maths, Physics, Chem)', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+                { id: 'ALL_RESEARCH', name: '🔬 Pure Science & Research (PCMB)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] },
+                { id: 'ALL_CIVIL', name: '🏛️ Civil Services & General Studies (GS + CSAT)', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'Reasoning', 'Mathematics', 'English'] },
+                { id: 'ALL_DEFENCE', name: '🛡️ Defence & Armed Forces (Maths + GAT)', subjects: ['Mathematics', 'English', 'General Science', 'General Knowledge', 'History', 'Geography'] },
+                { id: 'ALL_GOVT', name: '🚆 SSC, Railways & Banking (Quant, Reasoning, GK, English)', subjects: ['Reasoning', 'Mathematics', 'General Knowledge', 'General Science', 'English'] },
+                { id: 'ALL_CUET', name: '🎓 Central Universities (CUET Science & Humanities)', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'] }
             ],
             // Medical & Bio-Sciences
             'NEET': [
@@ -1370,9 +1381,18 @@
             currentExam = selector ? selector.value : 'ALL';
 
             // 1. Get official streams/combinations for this exam
-            const availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] || [
+            let availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] ? [...EXAM_SUBJECT_COMBINATIONS[currentExam]] : [
                 { id: currentExam + '_STD', name: `${currentExam} Standard Stream`, subjects: SUBJECTS_BY_EXAM[currentExam] || ALL_AVAILABLE_SUBJECTS }
             ];
+
+            // For any specific exam, offer the Universal Bank option so students can easily switch to full syllabus practice
+            if (currentExam !== 'ALL' && !availableCombos.some(c => c.id.endsWith('_UNIVERSAL'))) {
+                availableCombos.push({
+                    id: currentExam + '_UNIVERSAL',
+                    name: '🌟 Universal Bank (All 11 Subjects)',
+                    subjects: ALL_AVAILABLE_SUBJECTS
+                });
+            }
 
             // 2. Populate the Stream Selector dropdown
             const streamSelect = document.getElementById('streamSelector');
@@ -1401,18 +1421,39 @@
             }
 
             // Find stream configuration
-            const availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] || [
+            let availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] ? [...EXAM_SUBJECT_COMBINATIONS[currentExam]] : [
                 { id: currentExam + '_STD', name: `${currentExam} Standard Stream`, subjects: SUBJECTS_BY_EXAM[currentExam] || ALL_AVAILABLE_SUBJECTS }
             ];
+            if (currentExam !== 'ALL' && !availableCombos.some(c => c.id.endsWith('_UNIVERSAL'))) {
+                availableCombos.push({
+                    id: currentExam + '_UNIVERSAL',
+                    name: '🌟 Universal Bank (All 11 Subjects)',
+                    subjects: ALL_AVAILABLE_SUBJECTS
+                });
+            }
+
             const activeCombo = availableCombos.find(c => c.id === streamId) || availableCombos[0];
+            const isUniv = (streamId && (streamId.includes('UNIVERSAL') || streamId === 'ALL_COMBINED'));
 
             // Update candidate badge
             const examBadge = document.getElementById('examBadgeText');
             if (examBadge) {
-                if (currentExam === 'ALL') {
-                    examBadge.innerText = activeCombo.name;
+                if (isUniv) {
+                    examBadge.innerText = (currentExam === 'ALL') ? 'Universal Practice Bank (All Exams)' : `${currentExam} • Universal Bank`;
                 } else {
                     examBadge.innerText = `${currentExam} • ${activeCombo.name}`;
+                }
+            }
+
+            // Update Universal Bank toggle button styling & state
+            const univBtn = document.getElementById('universalToggleBtn');
+            if (univBtn) {
+                if (isUniv) {
+                    univBtn.className = "px-2.5 py-1 text-[11px] font-bold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition shadow-sm shadow-blue-500/20 flex items-center gap-1 cursor-pointer shrink-0";
+                    univBtn.innerHTML = "<span>🌟</span><span class='hidden sm:inline'>Universal Active</span>";
+                } else {
+                    univBtn.className = "px-2.5 py-1 text-[11px] font-bold rounded-xl border border-blue-200 bg-white hover:bg-blue-50 text-blue-700 transition shadow-sm flex items-center gap-1 cursor-pointer shrink-0";
+                    univBtn.innerHTML = "<span>🌐</span><span class='hidden sm:inline'>Universal Bank</span>";
                 }
             }
 
@@ -1440,6 +1481,21 @@
             currentTopic = "ALL";
             populateTopicFilter();
             render();
+        }
+
+        function toggleUniversalBank() {
+            const isCurrentlyUniversal = (currentStreamId && (currentStreamId.includes('UNIVERSAL') || currentStreamId === 'ALL_COMBINED'));
+            let availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] ? [...EXAM_SUBJECT_COMBINATIONS[currentExam]] : [];
+            
+            if (isCurrentlyUniversal) {
+                // Toggle back to the primary exam stream
+                const primaryCombo = availableCombos.find(c => !c.id.includes('UNIVERSAL') && c.id !== 'ALL_COMBINED') || availableCombos[0];
+                switchStream(primaryCombo ? primaryCombo.id : 'ALL_COMBINED');
+            } else {
+                // Switch to Universal Bank for current exam
+                const universalComboId = (currentExam === 'ALL') ? 'ALL_COMBINED' : `${currentExam}_UNIVERSAL`;
+                switchStream(universalComboId);
+            }
         }
 
         function switchSubject(subjectName) {
@@ -1487,7 +1543,9 @@
                 if (!subjectMatch) return false;
 
                 let examMatch = false;
-                if (currentExam === 'ALL' || q.exam === 'ALL') {
+                const isUniversal = (currentExam === 'ALL' || q.exam === 'ALL' || (currentStreamId && (currentStreamId.includes('UNIVERSAL') || currentStreamId === 'ALL_COMBINED')));
+                
+                if (isUniversal) {
                     examMatch = true;
                 } else {
                     const cleanCurrentExam = currentExam.toUpperCase();
