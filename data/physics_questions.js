@@ -1,371 +1,7 @@
 window.PHYSICS_QUESTIONS_DATA = [
     {
-        "id": "MATH-001",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Combinatorics & Number Theory",
-        "difficulty": "Hard",
-        "en": "Let n = 2³ × 3⁴ × 5². The number of divisors of n which are of the form 4k + 2 (k ≥ 0) is:",
-        "bn": "ধরি n = 2³ × 3⁴ × 5²। n-এর এমন উৎপাদকের (divisors) সংখ্যা নির্ণয় করো যা 4k + 2 (k ≥ 0) আকারের:",
-        "opts": {
-            "en": [
-                "15",
-                "18",
-                "12",
-                "9"
-            ],
-            "bn": [
-                "15",
-                "18",
-                "12",
-                "9"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Any divisor of the form 4k + 2 = 2(2k + 1) is an even number containing exactly one factor of 2 (i.e., 2¹) and an odd part formed by the factors of 3⁴ × 5². Number of odd factors = (4 + 1)(2 + 1) = 5 × 3 = 15. Hence, there are 15 divisors of the form 4k + 2.",
-        "expl_bn": "4k + 2 = 2(2k + 1) আকারের উৎপাদক হলো বিজোড় সংখ্যাকে ২ দ্বারা গুণফল (অর্থাৎ ২-এর ঘাত ঠিক ১ হবে)। 3⁴ × 5²-এর মোট উৎপাদক সংখ্যা = (৪ + ১)(২ + ১) = ৫ × ৩ = ১৫।"
-    },
-    {
-        "id": "MATH-002",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Limits & Infinite Products",
-        "difficulty": "Hard",
-        "en": "The value of lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) is equal to:",
-        "bn": "lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) -এর মান কত?",
-        "opts": {
-            "en": [
-                "2",
-                "3",
-                "3/2",
-                "4/3"
-            ],
-            "bn": [
-                "2",
-                "3",
-                "3/2",
-                "4/3"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "1 + 1/(r(r+2)) = (r² + 2r + 1)/(r(r+2)) = (r+1)² / [r(r+2)] = [(r+1)/r] × [(r+1)/(r+2)]. Expanding the telescoping product from r=1 to n: P_n = (2/1 × 3/2 × ... × (n+1)/n) × (2/3 × 3/4 × ... × (n+1)/(n+2)) = (n+1) × [2/(n+2)] = 2(n+1)/(n+2). As n -> ∞, the limit is 2.",
-        "expl_bn": "১ + ১/(r(r+২)) = (r+১)² / [r(r+২)] = [(r+১)/r] × [(r+১)/(r+২)]। টেলিস্কোপিং গুণফল নিলে পাওয়া যায় ২(n+১)/(n+২)। n -> ∞ হলে সীমা = ২।"
-    },
-    {
-        "id": "MATH-003",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Functional Equations",
-        "difficulty": "Hard",
-        "en": "If f(x) is a continuous function satisfying f(x + y) = f(x) + f(y) + 3xy(x + y) for all x, y ∈ ℝ, and lim (x -> 0) f(x)/x = 2, then f(3) is equal to:",
-        "bn": "যদি f(x) একটি অবিচ্ছিন্ন অপেক্ষক হয় যা f(x + y) = f(x) + f(y) + 3xy(x + y) সিদ্ধ করে এবং lim (x -> 0) f(x)/x = 2 হয়, তবে f(3) এর মান:",
-        "opts": {
-            "en": [
-                "33",
-                "27",
-                "35",
-                "30"
-            ],
-            "bn": [
-                "33",
-                "27",
-                "35",
-                "30"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Let g(x) = f(x) - x³. Then g(x+y) = f(x+y) - (x+y)³ = [f(x) + f(y) + 3xy(x+y)] - [x³ + y³ + 3xy(x+y)] = (f(x) - x³) + (f(y) - y³) = g(x) + g(y). Thus g(x) = kx. Given lim(x->0) f(x)/x = 2 => lim(x->0) [g(x) + x³]/x = k = 2. Hence f(x) = x³ + 2x. Therefore, f(3) = 3³ + 2(3) = 27 + 6 = 33.",
-        "expl_bn": "g(x) = f(x) - x³ ধরলে g(x+y) = g(x) + g(y) পাওয়া যায়, অর্থাৎ g(x) = 2x। সুতরাং f(x) = x³ + 2x। অতএব f(3) = ৩³ + ২(৩) = ২৭ + ৬ = ৩৩।"
-    },
-    {
-        "id": "MATH-004",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Trigonometric Inequations",
-        "difficulty": "Medium",
-        "en": "The number of solutions of the inequation 2 sin²(x) - sin(x) - 1 ≤ 0 in the interval [0, 2π] is given by the length of the interval of solution, which is:",
-        "bn": "[0, 2π] ব্যবধিতে 2 sin²(x) - sin(x) - 1 ≤ 0 অসমীকরণটির সমাধান অঞ্চলের মোট বিস্তার (দৈর্ঘ্য) কত?",
-        "opts": {
-            "en": [
-                "4π/3",
-                "π",
-                "5π/6",
-                "3π/2"
-            ],
-            "bn": [
-                "4π/3",
-                "π",
-                "5π/6",
-                "3π/2"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Factorizing: (2 sin x + 1)(sin x - 1) ≤ 0. Since (sin x - 1) ≤ 0 for all real x, the inequality holds when 2 sin x + 1 ≥ 0, which means sin x ≥ -1/2. In [0, 2π], sin x ≥ -1/2 on [0, 7π/6] ∪ [11π/6, 2π]. Total length = (7π/6 - 0) + (2π - 11π/6) = 7π/6 + π/6 = 8π/6 = 4π/3.",
-        "expl_bn": "(2 sin x + 1)(sin x - 1) ≤ 0। যেহেতু sin x - 1 সর্বদাই ≤ 0, তাই 2 sin x + 1 ≥ 0 হতে হবে অর্থাৎ sin x ≥ -1/2। [0, 2π] ব্যবধিতে এর দৈর্ঘ্য = ৭π/৬ + π/৬ = ৮π/৬ = ৪π/৩।"
-    },
-    {
-        "id": "MATH-005",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Definite Integrals & Properties",
-        "difficulty": "Hard",
-        "en": "The value of the definite integral I = ∫₀^{π/2} (sin³ x)/(sin³ x + cos³ x) dx is:",
-        "bn": "I = ∫₀^{π/2} (sin³ x)/(sin³ x + cos³ x) dx নির্দিষ্ট সমাকলটির মান কত?",
-        "opts": {
-            "en": [
-                "π/4",
-                "π/2",
-                "π",
-                "0"
-            ],
-            "bn": [
-                "π/4",
-                "π/2",
-                "π",
-                "0"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Using King's property ∫₀ᵃ f(x) dx = ∫₀ᵃ f(a - x) dx: I = ∫₀^{π/2} (cos³ x)/(cos³ x + sin³ x) dx. Adding the two equations: 2I = ∫₀^{π/2} 1 dx = [x]₀^{π/2} = π/2 => I = π/4.",
-        "expl_bn": "King's property ব্যবহার করে: 2I = ∫₀^{π/2} 1 dx = π/2 => I = π/4।"
-    },
-    {
-        "id": "MATH-006",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Matrices & Determinants",
-        "difficulty": "Medium",
-        "en": "If A is a 3 × 3 non-singular matrix such that A² = 3A - 2I, then A⁻¹ is equal to:",
-        "bn": "যদি A একটি ৩ × ৩ বর্গ ম্যাট্রিক্স হয় যাতে A² = 3A - 2I, তবে A⁻¹ সমান:",
-        "opts": {
-            "en": [
-                "(3I - A)/2",
-                "(A - 3I)/2",
-                "3I + A",
-                "2I - A"
-            ],
-            "bn": [
-                "(3I - A)/2",
-                "(A - 3I)/2",
-                "3I + A",
-                "2I - A"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Rearranging A² - 3A = -2I => 2I = 3A - A² = A(3I - A). Multiplying both sides by A⁻¹ gives 2 A⁻¹ = 3I - A => A⁻¹ = (3I - A)/2.",
-        "expl_bn": "2I = 3A - A² = A(3I - A)। উভয়পক্ষে A⁻¹ গুণ করে পাওয়া যায় A⁻¹ = (3I - A)/2।"
-    },
-    {
-        "id": "MATH-007",
-        "exam": "JEE",
-        "subject": "Mathematics",
-        "topic": "Probability",
-        "difficulty": "Medium",
-        "en": "Two fair dice are thrown simultaneously. The conditional probability that the sum of the numbers is 8, given that the sum is an even number, is:",
-        "bn": "দুটি নিরপেক্ষ ছক্কা একসাথে ছোড়া হলো। প্রাপ্ত সংখ্যা দুটির যোগফল জোড় সংখ্যা হওয়ার শর্তে যোগফল ৮ হওয়ার শর্তাধীন সম্ভাবনা (Conditional Probability) কত?",
-        "opts": {
-            "en": [
-                "5/18",
-                "5/36",
-                "1/6",
-                "1/4"
-            ],
-            "bn": [
-                "5/18",
-                "5/36",
-                "1/6",
-                "1/4"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Total outcomes with an even sum = 18 (sums 2, 4, 6, 8, 10, 12). Outcomes giving sum 8: {(2,6), (3,5), (4,4), (5,3), (6,2)} = 5 outcomes. Hence P(Sum=8 | Even Sum) = 5/18.",
-        "expl_bn": "জোড় যোগফলের মোট ঘটনা = ১৮। ৮ যোগফল আসার অনুকূল ঘটনা = ৫টি {(২,৬), (৩,৫), (৪,৪), (৫,৩), (৬,২)}। অতএব নির্ণেয় সম্ভাবনা = ৫/১৮।"
-    },
-    {
-        "id": "CHEM-001",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Ionic Equilibrium",
-        "difficulty": "Medium",
-        "en": "During the titration of a weak acid (HA) with a strong base (NaOH), the pH of the solution at the half-equivalence point is equal to:",
-        "bn": "একটি মৃদু অ্যাসিড (HA) ও তীব্র ক্ষারের (NaOH) টাইট্রেশনে অর্ধ-প্রশমন বিন্দুতে (half-equivalence point) দ্রবণের pH কত হবে?",
-        "opts": {
-            "en": [
-                "pKa",
-                "pKb",
-                "7.0",
-                "pKa + 1"
-            ],
-            "bn": [
-                "pKa",
-                "pKb",
-                "7.0",
-                "pKa + 1"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "By Henderson-Hasselbalch equation: pH = pKa + log([A⁻]/[HA]). At the half-equivalence point, exactly half the weak acid is converted to its conjugate base, so [A⁻] = [HA], which gives log(1) = 0, hence pH = pKa.",
-        "expl_bn": "হেন্ডারসন সমীকরণ অনুসারে: pH = pKa + log([A⁻]/[HA])। অর্ধ-প্রশমন বিন্দুতে [A⁻] = [HA], তাই pH = pKa।"
-    },
-    {
-        "id": "CHEM-002",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Stereochemistry",
-        "difficulty": "Hard",
-        "en": "The total number of optical isomers possible for 1-bromo-2-methylcyclobutane is:",
-        "bn": "1-bromo-2-methylcyclobutane যৌগটির জন্য সম্ভাব্য মোট আলোকীয় সমাবয়বের (optical isomers) সংখ্যা কত?",
-        "opts": {
-            "en": [
-                "4",
-                "2",
-                "3",
-                "6"
-            ],
-            "bn": [
-                "4",
-                "2",
-                "3",
-                "6"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "1-bromo-2-methylcyclobutane has 2 asymmetric chiral carbons (C1 and C2) and lacks any plane or centre of symmetry. The number of d- and l- enantiomeric forms is 2² = 4 with 0 meso forms. Hence total optical isomers = 4.",
-        "expl_bn": "যৌগটিতে ২টি কাইরাল কার্বন (C1 ও C2) রয়েছে এবং কোনো প্রতিসাম্য উপাদান নেই। তাই মোট আলোক সক্রিয় সমাবয়ব = ২² = ৪টি।"
-    },
-    {
-        "id": "CHEM-003",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "p-Block Elements",
-        "difficulty": "Medium",
-        "en": "Which of the following hydride sequences correctly represents the decreasing order of boiling points?",
-        "bn": "নিচের কোন ক্রমটি হাইড্রাইডসমূহের স্ফুটনাঙ্কের সঠিক অধঃক্রম প্রকাশ করে?",
-        "opts": {
-            "en": [
-                "H₂O > SbH₃ > NH₃ > AsH₃ > PH₃",
-                "H₂O > NH₃ > SbH₃ > AsH₃ > PH₃",
-                "SbH₃ > H₂O > NH₃ > AsH₃ > PH₃",
-                "H₂O > SbH₃ > AsH₃ > PH₃ > NH₃"
-            ],
-            "bn": [
-                "H₂O > SbH₃ > NH₃ > AsH₃ > PH₃",
-                "H₂O > NH₃ > SbH₃ > AsH₃ > PH₃",
-                "SbH₃ > H₂O > NH₃ > AsH₃ > PH₃",
-                "H₂O > SbH₃ > AsH₃ > PH₃ > NH₃"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "H₂O has the highest boiling point due to extensive intermolecular hydrogen bonding. NH₃ also forms H-bonds, making its boiling point higher than PH₃ and AsH₃, while SbH₃ has higher van der Waals forces due to large molecular size. Hence: H₂O > SbH₃ > NH₃ > AsH₃ > PH₃.",
-        "expl_bn": "আন্তঃআণবিক হাইড্রোজেন বন্ধনের কারণে পানির স্ফুটনাঙ্ক সর্বাধিক। সঠিক ক্রম: H₂O > SbH₃ > NH₃ > AsH₃ > PH₃।"
-    },
-    {
-        "id": "CHEM-004",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Carbonyl Compounds",
-        "difficulty": "Easy",
-        "en": "Which of the following carbonyl compounds does NOT undergo aldol condensation?",
-        "bn": "নিচের কোন কার্বনিল যৌগটি অ্যালডল ঘনীভবন (Aldol Condensation) বিক্রিয়া দেয় না?",
-        "opts": {
-            "en": [
-                "Chloral (CCl₃CHO)",
-                "Acetaldehyde (CH₃CHO)",
-                "Propanal (CH₃CH₂CHO)",
-                "Acetone (CH₃COCH₃)"
-            ],
-            "bn": [
-                "ক্লোরাল (CCl₃CHO)",
-                "অ্যাসিটালডিহাইড (CH₃CHO)",
-                "প্রোপান্যাল (CH₃CH₂CHO)",
-                "অ্যাসিটোন (CH₃COCH₃)"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "Aldol condensation requires at least one α-hydrogen atom attached to the α-carbon. Chloral (CCl₃CHO) possesses three chlorine atoms on the α-carbon and zero α-hydrogens, thus it cannot undergo aldol condensation.",
-        "expl_bn": "অ্যালডল ঘনীভবনের জন্য আলফা-হাইড্রোজেনের উপস্থিতি বাধ্যতামূলক। ক্লোরালে (CCl₃CHO) কোনো আলফা হাইড্রোজেন নেই।"
-    },
-    {
-        "id": "CHEM-005",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Atomic Structure & Quantum Numbers",
-        "difficulty": "Medium",
-        "en": "For a 3d orbital, the number of radial nodes and angular nodes are respectively:",
-        "bn": "একটি 3d কক্ষকের জন্য রেডিয়াল নোড (Radial Nodes) এবং কৌণিক নোডের (Angular Nodes) সংখ্যা যথাক্রমে:",
-        "opts": {
-            "en": [
-                "0 and 2",
-                "1 and 2",
-                "2 and 1",
-                "0 and 1"
-            ],
-            "bn": [
-                "0 এবং 2",
-                "1 এবং 2",
-                "2 এবং 1",
-                "0 এবং 1"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "For a 3d orbital: principal quantum number n = 3, azimuthal quantum number l = 2. Radial nodes = n - l - 1 = 3 - 2 - 1 = 0. Angular nodes = l = 2.",
-        "expl_bn": "3d কক্ষকের জন্য n = ৩, l = ২। রেডিয়াল নোড = n - l - ১ = ৩ - ২ - ১ = ০। কৌণিক নোড = l = ২।"
-    },
-    {
-        "id": "CHEM-006",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Coordination Compounds",
-        "difficulty": "Medium",
-        "en": "The intense bright red colour of the nickel dimethylglyoxime complex [Ni(dmg)₂] is stabilized by how many intramolecular hydrogen bonds?",
-        "bn": "নিকেল ডাইমিথাইলগ্লাইঅক্সিম জটিল যৌগে [Ni(dmg)₂] কয়টি অন্তঃআণবিক হাইড্রোজেন বন্ধন উপস্থিত থাকে?",
-        "opts": {
-            "en": [
-                "2",
-                "4",
-                "1",
-                "0"
-            ],
-            "bn": [
-                "2",
-                "4",
-                "1",
-                "0"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "In the square planar [Ni(dmg)₂] complex, the two dimethylglyoximate bidentate ligands are joined through two O-H···O symmetrical intramolecular hydrogen bonds, creating extra six-membered chelate rings.",
-        "expl_bn": "[Ni(dmg)₂] জটিল যৌগে দুটি লিগ্যান্ডের মধ্যে ২টি O-H···O অন্তঃআণবিক হাইড্রোজেন বন্ধন থাকে।"
-    },
-    {
-        "id": "CHEM-007",
-        "exam": "JEE",
-        "subject": "Chemistry",
-        "topic": "Solutions & Colligative Properties",
-        "difficulty": "Hard",
-        "en": "A salt MX₂ dissociates into M²⁺ and 2X⁻ ions in water with degree of dissociation α = 0.5. The van 't Hoff factor (i) for this electrolyte is:",
-        "bn": "MX₂ লবণটি পানিতে M²⁺ ও 2X⁻ আয়নে বিয়োজিত হয় যার বিয়োজন মাত্রা α = ০.৫। এই দ্রবণটির ভ্যান্ট হফ গুণক (i) কত?",
-        "opts": {
-            "en": [
-                "2.0",
-                "2.5",
-                "1.5",
-                "3.0"
-            ],
-            "bn": [
-                "2.0",
-                "2.5",
-                "1.5",
-                "3.0"
-            ]
-        },
-        "correct": 0,
-        "expl_en": "MX₂ -> M²⁺ + 2X⁻ (n = 3 ions per formula unit). Van 't Hoff factor i = 1 + (n - 1)α = 1 + (3 - 1)(0.5) = 1 + 2(0.5) = 1 + 1 = 2.0.",
-        "expl_bn": "MX₂ বিয়োজনে ৩টি আয়ন উৎপন্ন হয় (n = ৩)। ভ্যান্ট হফ গুণক i = ১ + (n - ১)α = ১ + ২(০.৫) = ২.০।"
-    },
-    {
         "id": "PHY-001",
-        "exam": "NEET",
+        "exam": "NEET, JEE, WBJEE, CUET, VITEEE, MHT-CET, KCET, CBSE",
         "subject": "Physics",
         "topic": "Units and Measurement",
         "difficulty": "Easy",
@@ -391,7 +27,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "PHY-002",
-        "exam": "JEE",
+        "exam": "JEE, WBJEE, BITSAT, NDA, MHT-CET, VITEEE, KCET",
         "subject": "Physics",
         "topic": "Kinematics",
         "difficulty": "Medium",
@@ -417,7 +53,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "PHY-003",
-        "exam": "WBJEE",
+        "exam": "WBJEE, JEE, NEET, CUET, VITEEE, MHT-CET, KCET, COMEDK",
         "subject": "Physics",
         "topic": "Current Electricity",
         "difficulty": "Medium",
@@ -443,7 +79,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "PHY-004",
-        "exam": "NEET",
+        "exam": "NEET, CUET, WBJEE, NDA, CBSE, AIIMS, AFMC",
         "subject": "Physics",
         "topic": "Ray Optics",
         "difficulty": "Easy",
@@ -469,7 +105,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "PHY-005",
-        "exam": "JEE",
+        "exam": "JEE, WBJEE, IAT, NEET, BITSAT, OLYMPIAD, IIT-JAM",
         "subject": "Physics",
         "topic": "Modern Physics & Dual Nature",
         "difficulty": "Medium",
@@ -494,8 +130,381 @@ window.PHYSICS_QUESTIONS_DATA = [
         "expl_bn": "ইলেকট্রনের জন্য λ = ১২.২৭ / √V Å = ১২.২৭ / ১০ = ১.২২৭ Å।"
     },
     {
+        "id": "PHY-006",
+        "exam": "JEE, WBJEE, NEET, BITSAT, IAT, NEST, KCET, COMEDK",
+        "subject": "Physics",
+        "topic": "Experimental Physics & Instruments",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 520 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <defs>\n    <linearGradient id=\"metalGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#334155\"/>\n      <stop offset=\"50%\" stop-color=\"#64748b\"/>\n      <stop offset=\"100%\" stop-color=\"#1e293b\"/>\n    </linearGradient>\n    <linearGradient id=\"thimbleGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#1e293b\"/>\n      <stop offset=\"50%\" stop-color=\"#475569\"/>\n      <stop offset=\"100%\" stop-color=\"#0f172a\"/>\n    </linearGradient>\n  </defs>\n  <rect x=\"30\" y=\"45\" width=\"220\" height=\"90\" rx=\"6\" fill=\"url(#metalGrad)\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n  <line x1=\"30\" y1=\"90\" x2=\"250\" y2=\"90\" stroke=\"#f8fafc\" stroke-width=\"2.5\"/>\n  <line x1=\"60\" y1=\"90\" x2=\"60\" y2=\"70\" stroke=\"#f8fafc\" stroke-width=\"2\"/><text x=\"56\" y=\"65\" fill=\"#f8fafc\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">0</text>\n  <line x1=\"90\" y1=\"90\" x2=\"90\" y2=\"72\" stroke=\"#f8fafc\" stroke-width=\"1.8\"/><text x=\"86\" y=\"65\" fill=\"#f8fafc\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">1</text>\n  <line x1=\"120\" y1=\"90\" x2=\"120\" y2=\"72\" stroke=\"#f8fafc\" stroke-width=\"1.8\"/><text x=\"116\" y=\"65\" fill=\"#f8fafc\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">2</text>\n  <line x1=\"150\" y1=\"90\" x2=\"150\" y2=\"72\" stroke=\"#f8fafc\" stroke-width=\"1.8\"/><text x=\"146\" y=\"65\" fill=\"#38bdf8\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">3</text>\n  <line x1=\"75\" y1=\"90\" x2=\"75\" y2=\"104\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n  <line x1=\"105\" y1=\"90\" x2=\"105\" y2=\"104\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n  <line x1=\"135\" y1=\"90\" x2=\"135\" y2=\"104\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n  <path d=\"M 250 30 L 460 30 L 460 150 L 250 150 Z\" fill=\"url(#thimbleGrad)\" stroke=\"#0f172a\" stroke-width=\"2\"/>\n  <line x1=\"250\" y1=\"30\" x2=\"250\" y2=\"150\" stroke=\"#38bdf8\" stroke-width=\"3\"/>\n  <line x1=\"250\" y1=\"50\" x2=\"275\" y2=\"50\" stroke=\"#f8fafc\" stroke-width=\"1.5\"/><text x=\"282\" y=\"54\" fill=\"#f8fafc\" font-size=\"11\" font-family=\"monospace\">40</text>\n  <line x1=\"250\" y1=\"70\" x2=\"275\" y2=\"70\" stroke=\"#f8fafc\" stroke-width=\"1.5\"/><text x=\"282\" y=\"74\" fill=\"#f8fafc\" font-size=\"11\" font-family=\"monospace\">35</text>\n  <line x1=\"250\" y1=\"82\" x2=\"285\" y2=\"82\" stroke=\"#38bdf8\" stroke-width=\"2.5\"/><text x=\"292\" y=\"86\" fill=\"#38bdf8\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\">32 (Coincides)</text>\n  <line x1=\"250\" y1=\"90\" x2=\"275\" y2=\"90\" stroke=\"#f8fafc\" stroke-width=\"1.5\"/><text x=\"282\" y=\"94\" fill=\"#f8fafc\" font-size=\"11\" font-family=\"monospace\">30</text>\n  <line x1=\"250\" y1=\"110\" x2=\"275\" y2=\"110\" stroke=\"#f8fafc\" stroke-width=\"1.5\"/><text x=\"282\" y=\"114\" fill=\"#f8fafc\" font-size=\"11\" font-family=\"monospace\">25</text>\n  <text x=\"75\" y=\"165\" fill=\"#0f172a\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">Main Scale (mm)</text>\n  <text x=\"280\" y=\"165\" fill=\"#0369a1\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">Circular Scale (Pitch = 0.5 mm, 50 div)</text>\n</svg>",
+        "en": "A screw gauge has a pitch of 0.5 mm and 50 divisions on its circular scale. When measuring a wire, the linear scale reads 3 mm and the 32nd division coincides with the reference line. If the screw gauge has a negative zero error of -0.02 mm, the true diameter of the wire is:",
+        "bn": "একটি স্ক্রু গেজের পিচ ০.৫ মিমি এবং বৃত্তাকার স্কেলে ৫০টি ভাগ রয়েছে। একটি তারের ব্যাস পরিমাপে রৈখিক স্কেলের পাঠ ৩ মিমি এবং বৃত্তাকার স্কেলের ৩২তম দাগ নির্দেশক রেখার সাথে মিলে যায়। যন্ত্রটিতে যদি -০.০২ মিমি ঋণাত্মক শূন্য ত্রুটি থাকে, তবে তারটির প্রকৃত ব্যাস কত?",
+        "opts": {
+            "en": [
+                "3.34 mm",
+                "3.30 mm",
+                "3.32 mm",
+                "3.36 mm"
+            ],
+            "bn": [
+                "3.34 mm",
+                "3.30 mm",
+                "3.32 mm",
+                "3.36 mm"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Least Count LC = Pitch / Total Circular Divisions = 0.5 mm / 50 = 0.01 mm. Measured Reading = MSR + (CSR × LC) = 3 mm + (32 × 0.01 mm) = 3.32 mm. True Reading = Measured Reading - (Zero Error) = 3.32 mm - (-0.02 mm) = 3.34 mm.",
+        "expl_bn": "লঘিষ্ঠ ধ্রুবক LC = ০.৫ / ৫০ = ০.০১ মিমি। পরিমাপকৃত মান = ৩ + (৩২ × ০.০১) = ৩.৩২ মিমি। প্রকৃত মান = ৩.৩২ - (-০.০২) = ৩.৩৪ মিমি।"
+    },
+    {
+        "id": "PHY-007",
+        "exam": "JEE, WBJEE, IAT, BITSAT, VITEEE, MHT-CET, GATE",
+        "subject": "Physics",
+        "topic": "Alternating Current",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 560 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <rect x=\"40\" y=\"50\" width=\"480\" height=\"120\" rx=\"12\" fill=\"none\" stroke=\"#334155\" stroke-width=\"3\"/>\n  <!-- Inductor L -->\n  <rect x=\"75\" y=\"47\" width=\"150\" height=\"6\" fill=\"#ffffff\"/>\n  <path d=\"M 80 50 C 90 25, 105 25, 115 50 C 125 25, 140 25, 150 50 C 160 25, 175 25, 185 50 C 195 25, 210 25, 220 50\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"3.5\"/>\n  <text x=\"150\" y=\"80\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Inductor L</text>\n  <circle cx=\"150\" cy=\"18\" r=\"14\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"150\" y=\"23\" fill=\"#1e40af\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">L</tspan></text>\n  <line x1=\"80\" y1=\"50\" x2=\"136\" y2=\"18\" stroke=\"#2563eb\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"220\" y1=\"50\" x2=\"164\" y2=\"18\" stroke=\"#2563eb\" stroke-dasharray=\"2 2\"/>\n  \n  <!-- Capacitor C -->\n  <rect x=\"250\" y=\"46\" width=\"60\" height=\"8\" fill=\"#ffffff\"/>\n  <line x1=\"270\" y1=\"35\" x2=\"270\" y2=\"65\" stroke=\"#0891b2\" stroke-width=\"4\"/>\n  <line x1=\"285\" y1=\"35\" x2=\"285\" y2=\"65\" stroke=\"#0891b2\" stroke-width=\"4\"/>\n  <text x=\"277\" y=\"80\" fill=\"#0e7490\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Capacitor C</text>\n  <circle cx=\"277\" cy=\"18\" r=\"14\" fill=\"#ecfeff\" stroke=\"#0891b2\" stroke-width=\"2\"/>\n  <text x=\"277\" y=\"23\" fill=\"#0e7490\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">C</tspan></text>\n  <line x1=\"250\" y1=\"50\" x2=\"263\" y2=\"18\" stroke=\"#0891b2\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"310\" y1=\"50\" x2=\"291\" y2=\"18\" stroke=\"#0891b2\" stroke-dasharray=\"2 2\"/>\n\n  <!-- Resistor R -->\n  <rect x=\"345\" y=\"46\" width=\"130\" height=\"8\" fill=\"#ffffff\"/>\n  <path d=\"M 350 50 L 360 40 L 375 60 L 390 40 L 405 60 L 420 40 L 435 60 L 445 50\" fill=\"none\" stroke=\"#d97706\" stroke-width=\"3.5\"/>\n  <text x=\"398\" y=\"80\" fill=\"#b45309\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">R = 4 Ω</text>\n  <circle cx=\"398\" cy=\"18\" r=\"14\" fill=\"#fffbeb\" stroke=\"#d97706\" stroke-width=\"2\"/>\n  <text x=\"398\" y=\"23\" fill=\"#b45309\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">R</tspan></text>\n  <line x1=\"350\" y1=\"50\" x2=\"384\" y2=\"18\" stroke=\"#d97706\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"445\" y1=\"50\" x2=\"412\" y2=\"18\" stroke=\"#d97706\" stroke-dasharray=\"2 2\"/>\n\n  <!-- AC Source Bottom -->\n  <rect x=\"250\" y=\"165\" width=\"60\" height=\"10\" fill=\"#ffffff\"/>\n  <circle cx=\"280\" cy=\"170\" r=\"18\" fill=\"#f8fafc\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <path d=\"M 270 170 Q 275 163 280 170 T 290 170\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <text x=\"280\" y=\"202\" fill=\"#334155\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V = V₀ sin(100πt + π/6)</text>\n</svg>",
+        "en": "In the given series LCR circuit connected to an AC source V = V₀ sin(100πt + π/6), the voltmeters read V_L = 40 V, V_R = 40 V, and the circuit parameters are Z = 5 Ω, R = 4 Ω. The capacitive reactance X_C and the peak voltage V₀ of the AC source are respectively:",
+        "bn": "চিত্রে প্রদর্শিত শ্রেণী LCR বর্তনীতে V = V₀ sin(100πt + π/6) পরিবর্তী উৎসের সাথে যুক্ত থাকলে ভোল্টমিটারের পাঠ V_L = 40 V, V_R = 40 V এবং বর্তনীর প্রতিবন্ধকতা Z = 5 Ω, রোধ R = 4 Ω। ধারকীয় প্রতিঘাত X_C এবং উৎসের শীর্ষ ভোল্টেজ V₀ যথাক্রমে কত?",
+        "opts": {
+            "en": [
+                "1 Ω and 50√2 V",
+                "7 Ω and 50 V",
+                "1 Ω and 50 V",
+                "3 Ω and 40√2 V"
+            ],
+            "bn": [
+                "1 Ω এবং 50√2 V",
+                "7 Ω and 50 V",
+                "1 Ω and 50 V",
+                "3 Ω and 40√2 V"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Current I_rms = V_R / R = 40/4 = 10 A. Peak current I_0 = 10√2 A. Effective voltage V_rms = I_rms × Z = 10 × 5 = 50 V => V_0 = 50√2 V. Reactance X_L = V_L / I_rms = 40/10 = 4 Ω. Since Z² = R² + (X_L - X_C)², 25 = 16 + (4 - X_C)² => (4 - X_C)² = 9 => 4 - X_C = 3 => X_C = 1 Ω.",
+        "expl_bn": "তড়িৎপ্রবাহ I_rms = ৪০/৪ = ১০ A। কার্যকর ভোল্টেজ V_rms = ১০ × ৫ = ৫০ V, শীর্ষ ভোল্টেজ V₀ = ৫০√২ V। প্রতিঘাত X_L = ৪০/১০ = ৪ Ω। Z² = R² + (X_L - X_C)² থেকে X_C = ১ Ω।"
+    },
+    {
+        "id": "PHY-008",
+        "exam": "JEE, WBJEE, NDA, NEET, CDS, AFCAT, MHT-CET",
+        "subject": "Physics",
+        "topic": "Laws of Motion & Equilibrium",
+        "difficulty": "Medium",
+        "diagram": "<svg viewBox=\"0 0 460 200\" width=\"100%\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <rect x=\"30\" y=\"100\" width=\"220\" height=\"20\" fill=\"#cbd5e1\" stroke=\"#475569\" stroke-width=\"2\"/>\n  <line x1=\"30\" y1=\"120\" x2=\"30\" y2=\"190\" stroke=\"#475569\" stroke-width=\"4\"/>\n  <line x1=\"250\" y1=\"100\" x2=\"250\" y2=\"190\" stroke=\"#475569\" stroke-width=\"4\"/>\n  <rect x=\"350\" y=\"20\" width=\"80\" height=\"14\" fill=\"#94a3b8\" stroke=\"#475569\" stroke-width=\"1.5\"/>\n  <rect x=\"90\" y=\"55\" width=\"75\" height=\"45\" rx=\"4\" fill=\"#3b82f6\" stroke=\"#1d4ed8\" stroke-width=\"2\"/>\n  <text x=\"127\" y=\"83\" fill=\"#ffffff\" font-size=\"16\" font-family=\"system-ui\" font-weight=\"black\" text-anchor=\"middle\">B (W)</text>\n  <line x1=\"165\" y1=\"78\" x2=\"320\" y2=\"78\" stroke=\"#0f172a\" stroke-width=\"3\"/>\n  <circle cx=\"320\" cy=\"78\" r=\"6\" fill=\"#ef4444\" stroke=\"#991b1b\" stroke-width=\"1.5\"/>\n  <text x=\"320\" y=\"68\" fill=\"#991b1b\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Knot</text>\n  <line x1=\"320\" y1=\"78\" x2=\"390\" y2=\"20\" stroke=\"#0f172a\" stroke-width=\"3\"/>\n  <path d=\"M 375 20 A 20 20 0 0 1 365 40\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"365\" y=\"32\" fill=\"#1d4ed8\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">θ</text>\n  <line x1=\"320\" y1=\"78\" x2=\"320\" y2=\"135\" stroke=\"#0f172a\" stroke-width=\"3\"/>\n  <rect x=\"295\" y=\"135\" width=\"50\" height=\"45\" rx=\"4\" fill=\"#10b981\" stroke=\"#047857\" stroke-width=\"2\"/>\n  <text x=\"320\" y=\"163\" fill=\"#ffffff\" font-size=\"15\" font-family=\"system-ui\" font-weight=\"black\" text-anchor=\"middle\">A</text>\n  <text x=\"127\" y=\"115\" fill=\"#475569\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Friction coeff: μ</text>\n</svg>",
+        "en": "Block B of weight W lies on a rough horizontal table with coefficient of static friction μ. The cord between block B and the knot is horizontal, while the cord to the wall makes an angle θ with the ceiling. The maximum weight of hanging block A for which the system remains in stationary equilibrium is:",
+        "bn": "W ওজনের একটি ব্লক B একটি খসখসে অনুভূমিক টেবিলের ওপর রাখা আছে যার স্থৈতিক ঘর্ষণ গুণাঙ্ক μ। B এবং নটের (knot) মধ্যবর্তী দড়িটি অনুভূমিক এবং ছাদের সাথে যুক্ত দড়িটি ছাদের সাথে θ কোণ উৎপন্ন করে। ঝুলন্ত ব্লক A-এর সর্বোচ্চ কত ওজনের জন্য সংস্থাটি সাম্যাবস্থায় স্থির থাকবে?",
+        "opts": {
+            "en": [
+                "μ W tan θ",
+                "W tan θ / μ",
+                "μ W sin θ",
+                "μ W √(1 + tan² θ)"
+            ],
+            "bn": [
+                "μ W tan θ",
+                "W tan θ / μ",
+                "μ W sin θ",
+                "μ W √(1 + tan² θ)"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "At the knot: let slanted tension be T. Horizontal equilibrium: T cos θ = T_horiz = f_s ≤ μ W. Vertical equilibrium: T sin θ = W_A. Dividing the two equations: W_A / (μ W) = tan θ => W_A = μ W tan θ.",
+        "expl_bn": "নট বিন্দুতে সাম্যাবস্থা বিবেচনা করে: অনুভূমিক উপাংশ T cos θ = μ W এবং উল্লম্ব উপাংশ T sin θ = W_A। ভাগ করে পাওয়া যায় W_A = μ W tan θ।"
+    },
+    {
+        "id": "PHY-009",
+        "exam": "JEE, JEE-ADV, IAT, WBJEE, NEST, OLYMPIAD, IIT-JAM",
+        "subject": "Physics",
+        "topic": "Gravitation",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 380 200\" width=\"100%\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <circle cx=\"170\" cy=\"100\" r=\"80\" fill=\"#f1f5f9\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n  <circle cx=\"210\" cy=\"100\" r=\"40\" fill=\"#e2e8f0\" stroke=\"#dc2626\" stroke-width=\"2.5\" stroke-dasharray=\"4 3\"/>\n  <circle cx=\"170\" cy=\"100\" r=\"3.5\" fill=\"#334155\"/>\n  <text x=\"162\" y=\"118\" fill=\"#334155\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">O</text>\n  <circle cx=\"210\" cy=\"100\" r=\"3.5\" fill=\"#dc2626\"/>\n  <text x=\"214\" y=\"118\" fill=\"#dc2626\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">P (Center of Cavity)</text>\n  <line x1=\"170\" y1=\"100\" x2=\"170\" y2=\"20\" stroke=\"#64748b\" stroke-width=\"1.5\" stroke-dasharray=\"2 2\"/>\n  <text x=\"155\" y=\"60\" fill=\"#475569\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">R</text>\n  <line x1=\"210\" y1=\"100\" x2=\"210\" y2=\"60\" stroke=\"#dc2626\" stroke-width=\"1.5\"/>\n  <text x=\"215\" y=\"78\" fill=\"#dc2626\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">R/2</text>\n</svg>",
+        "en": "From a uniform solid sphere of mass M and radius R, a spherical cavity of radius R/2 is removed such that its surface touches the boundary of the sphere. Taking gravitational potential V = 0 at r = ∞, the gravitational potential at the center P of the cavity thus formed is:",
+        "bn": "M ভর ও R ব্যাসার্ধের একটি সুষম নিরেট গোলক থেকে R/2 ব্যাসার্ধের একটি গোলকীয় গহ্বর অপসারণ করা হলো যা মূল গোলকের পৃষ্ঠ স্পর্শ করে। r = ∞ তে মহাকর্ষীয় বিভব V = 0 ধরে, উৎপন্ন গহ্বরের কেন্দ্রবিন্দু P-তে মহাকর্ষীয় বিভব কত?",
+        "opts": {
+            "en": [
+                "-GM / R",
+                "-2GM / 3R",
+                "-GM / 2R",
+                "-2GM / R"
+            ],
+            "bn": [
+                "-GM / R",
+                "-2GM / 3R",
+                "-GM / 2R",
+                "-2GM / R"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "By superposition principle: V_P = V_entire(at r = R/2) - V_removed(at its own center). For complete sphere: V_entire(R/2) = -(GM / 2R³)[3R² - (R/2)²] = -11GM / (8R). The removed cavity has mass M' = M( (R/2)³ / R³ ) = M/8 and radius R' = R/2. Potential at its center V_removed(0) = -3G M' / (2R') = -3G(M/8) / [2(R/2)] = -3GM / (8R). Therefore, V_P = -11GM/(8R) - [-3GM/(8R)] = -8GM/(8R) = -GM/R.",
+        "expl_bn": "উপরিলেপন নীতি অনুযায়ী: V_P = V_সম্পূর্ণ(R/2) - V_অপসারিত(0)। সম্পূর্ণ গোলকের জন্য বিভব = -১১GM/(৮R) এবং অপসারিত অংশের কেন্দ্রে নিজস্ব বিভব = -৩GM/(৮R)। অতএব V_P = -GM/R।"
+    },
+    {
+        "id": "PHY-010",
+        "exam": "NEET, JEE, WBJEE, NDA, CUET, AIIMS, AFMC, KCET",
+        "subject": "Physics",
+        "topic": "Ray Optics & Optical Instruments",
+        "difficulty": "Medium",
+        "diagram": "<svg viewBox=\"0 0 440 220\" width=\"100%\" height=\"220\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <polygon points=\"100,180 320,180 100,40\" fill=\"#f0fdf4\" stroke=\"#16a34a\" stroke-width=\"3\"/>\n  <text x=\"85\" y=\"195\" fill=\"#15803d\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\">A (90°)</text>\n  <text x=\"330\" y=\"190\" fill=\"#15803d\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\">B (45°)</text>\n  <text x=\"85\" y=\"35\" fill=\"#15803d\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\">C (45°)</text>\n  <!-- Incident Ray -->\n  <line x1=\"20\" y1=\"110\" x2=\"100\" y2=\"110\" stroke=\"#2563eb\" stroke-width=\"3.5\"/>\n  <line x1=\"100\" y1=\"110\" x2=\"210\" y2=\"110\" stroke=\"#2563eb\" stroke-width=\"3.5\"/>\n  <!-- Normal at hypotenuse -->\n  <line x1=\"180\" y1=\"80\" x2=\"240\" y2=\"140\" stroke=\"#94a3b8\" stroke-width=\"2\" stroke-dasharray=\"3 3\"/>\n  <circle cx=\"210\" cy=\"110\" r=\"4\" fill=\"#dc2626\"/>\n  <!-- Reflected Ray inside -->\n  <line x1=\"210\" y1=\"110\" x2=\"210\" y2=\"180\" stroke=\"#dc2626\" stroke-width=\"3.5\"/>\n  <!-- Emergent Ray -->\n  <line x1=\"210\" y1=\"180\" x2=\"210\" y2=\"215\" stroke=\"#dc2626\" stroke-width=\"3.5\"/>\n  <text x=\"220\" y=\"150\" fill=\"#dc2626\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">TIR (i = 45° > C)</text>\n  <text x=\"220\" y=\"210\" fill=\"#dc2626\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">δ = 90°</text>\n</svg>",
+        "en": "A light ray is incident normally on face AB of a right-angled isosceles prism (A = 90°, B = 45°, C = 45°). If the refractive index of the prism material is μ = 1.50, the angle of deviation experienced by the ray upon emerging is:",
+        "bn": "একটি সমকোণী সমদ্বিবাহু প্রিজমের (A = ৯০°, B = ৪৫°, C = ৪৫°) AB তলে একটি আলোক রশ্মি লম্বভাবে আপতিত হলো। প্রিজমের উপাদানের প্রতিসরাঙ্ক μ = ১.৫০ হলে নির্গমনকালে রশ্মিটির চ্যুতি কোণ (Angle of Deviation) কত হবে?",
+        "opts": {
+            "en": [
+                "90°",
+                "45°",
+                "0°",
+                "180°"
+            ],
+            "bn": [
+                "90°",
+                "45°",
+                "0°",
+                "180°"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Critical angle C_c = sin⁻¹(1/μ) = sin⁻¹(1/1.5) = 41.8°. Inside the prism, the ray strikes the hypotenuse BC at an angle of incidence i = 45°. Since i > C_c, Total Internal Reflection (TIR) occurs at BC and the ray exits perpendicular to face AC. Net deviation δ = 90°.",
+        "expl_bn": "সংকট কোণ C_c = sin⁻¹(১/১.৫) = ৪১.৮°। প্রিজমের অভ্যন্তরে অতিভুজ পৃষ্ঠে আপতন কোণ i = ৪৫° যা সংকট কোণের চেয়ে বড়। ফলে পূর্ণ অভ্যন্তরীণ প্রতিফলন ঘটে এবং রশ্মিটি ৯০° কোণে বিচ্যুত হয়।"
+    },
+    {
+        "id": "PHY-011",
+        "exam": "JEE, WBJEE, BITSAT, NEET, CUET, NDA, MHT-CET",
+        "subject": "Physics",
+        "topic": "Current Electricity & Bridge Circuits",
+        "difficulty": "Easy",
+        "diagram": "<svg viewBox=\"0 0 480 230\" width=\"100%\" height=\"230\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Diamond Shape -->\n  <polygon points=\"240,30 380,115 240,200 100,115\" fill=\"#f8fafc\" stroke=\"#334155\" stroke-width=\"3\"/>\n  <!-- Resistor P (Top-Left) -->\n  <rect x=\"140\" y=\"55\" width=\"55\" height=\"24\" rx=\"4\" fill=\"#dbeafe\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"167\" y=\"72\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">P = 10 Ω</text>\n  <!-- Resistor Q (Top-Right) -->\n  <rect x=\"285\" y=\"55\" width=\"55\" height=\"24\" rx=\"4\" fill=\"#dbeafe\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"312\" y=\"72\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Q = 20 Ω</text>\n  <!-- Resistor R (Bottom-Left) -->\n  <rect x=\"140\" y=\"150\" width=\"55\" height=\"24\" rx=\"4\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"2\"/>\n  <text x=\"167\" y=\"167\" fill=\"#b45309\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">R = 15 Ω</text>\n  <!-- Resistor S (Bottom-Right) -->\n  <rect x=\"285\" y=\"150\" width=\"55\" height=\"24\" rx=\"4\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"2\"/>\n  <text x=\"312\" y=\"167\" fill=\"#b45309\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">S = ? Ω</text>\n  <!-- Galvanometer Branch -->\n  <line x1=\"240\" y1=\"30\" x2=\"240\" y2=\"85\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <circle cx=\"240\" cy=\"115\" r=\"22\" fill=\"#ffffff\" stroke=\"#16a34a\" stroke-width=\"2.5\"/>\n  <text x=\"240\" y=\"121\" fill=\"#15803d\" font-size=\"15\" font-family=\"system-ui\" font-weight=\"black\" text-anchor=\"middle\">G (0)</text>\n  <line x1=\"240\" y1=\"145\" x2=\"240\" y2=\"200\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <!-- Nodes -->\n  <circle cx=\"100\" cy=\"115\" r=\"5\" fill=\"#0f172a\"/><text x=\"80\" y=\"120\" fill=\"#0f172a\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\">A</text>\n  <circle cx=\"380\" cy=\"115\" r=\"5\" fill=\"#0f172a\"/><text x=\"390\" y=\"120\" fill=\"#0f172a\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\">C</text>\n  <circle cx=\"240\" cy=\"30\" r=\"5\" fill=\"#0f172a\"/><text x=\"240\" y=\"20\" fill=\"#0f172a\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">B</text>\n  <circle cx=\"240\" cy=\"200\" r=\"5\" fill=\"#0f172a\"/><text x=\"240\" y=\"222\" fill=\"#0f172a\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">D</text>\n</svg>",
+        "en": "In the balanced Wheatstone bridge circuit shown in the diagram, the values of the three known resistors are P = 10 Ω, Q = 20 Ω, and R = 15 Ω. For zero deflection in the galvanometer, the unknown resistance S must be:",
+        "bn": "চিত্রে প্রদর্শিত নিস্পন্দ বা সাম্যাবস্থায় থাকা হুইটস্টোন ব্রিজ বর্তনীতে তিনটি জানা রোধের মান P = ১০ Ω, Q = ২০ Ω এবং R = ১৫ Ω। গ্যালভানোমিটারে শূন্য বিক্ষেপের জন্য অজানা রোধ S-এর মান কত হতে হবে?",
+        "opts": {
+            "en": [
+                "30 Ω",
+                "7.5 Ω",
+                "25 Ω",
+                "15 Ω"
+            ],
+            "bn": [
+                "30 Ω",
+                "7.5 Ω",
+                "25 Ω",
+                "15 Ω"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "For a balanced Wheatstone bridge with zero galvanometer deflection: P/Q = R/S => S = R × (Q/P) = 15 × (20/10) = 15 × 2 = 30 Ω.",
+        "expl_bn": "হুইটস্টোন ব্রিজের সাম্যাবস্থার শর্তানুসারে: P/Q = R/S => S = ১৫ × (২০/১০) = ৩০ Ω।"
+    },
+    {
+        "id": "PHY-012",
+        "exam": "JEE, JEE-ADV, WBJEE, IAT, NEET, IIT-JAM, GATE",
+        "subject": "Physics",
+        "topic": "Thermodynamics & Carnot Engine",
+        "difficulty": "Medium",
+        "diagram": "<svg viewBox=\"0 0 460 220\" width=\"100%\" height=\"220\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Axes -->\n  <line x1=\"60\" y1=\"190\" x2=\"420\" y2=\"190\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <line x1=\"60\" y1=\"190\" x2=\"60\" y2=\"20\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <text x=\"415\" y=\"180\" fill=\"#475569\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">Volume (V)</text>\n  <text x=\"70\" y=\"30\" fill=\"#475569\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">Pressure (P)</text>\n  \n  <!-- Carnot Loop Path -->\n  <path d=\"M 120 50 Q 180 65 240 90 Q 280 130 320 160 Q 250 155 180 145 Q 150 100 120 50 Z\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"3\"/>\n  \n  <!-- Vertices -->\n  <circle cx=\"120\" cy=\"50\" r=\"4.5\" fill=\"#dc2626\"/><text x=\"105\" y=\"45\" fill=\"#dc2626\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">1 (P₁,V₁,T₁)</text>\n  <circle cx=\"240\" cy=\"90\" r=\"4.5\" fill=\"#dc2626\"/><text x=\"250\" y=\"85\" fill=\"#dc2626\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">2 (P₂,V₂,T₁)</text>\n  <circle cx=\"320\" cy=\"160\" r=\"4.5\" fill=\"#2563eb\"/><text x=\"330\" y=\"165\" fill=\"#2563eb\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">3 (P₃,V₃,T₂)</text>\n  <circle cx=\"180\" cy=\"145\" r=\"4.5\" fill=\"#2563eb\"/><text x=\"145\" y=\"165\" fill=\"#2563eb\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">4 (P₄,V₄,T₂)</text>\n  \n  <!-- Process Labels -->\n  <text x=\"180\" y=\"55\" fill=\"#b91c1c\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Isothermal (Q_in at T₁)</text>\n  <text x=\"295\" y=\"120\" fill=\"#475569\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Adiabatic</text>\n  <text x=\"210\" y=\"175\" fill=\"#1d4ed8\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Isothermal (Q_out at T₂)</text>\n  <text x=\"105\" y=\"110\" fill=\"#475569\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Adiabatic</text>\n</svg>",
+        "en": "A Carnot heat engine operates between source temperature T₁ = 500 K and sink temperature T₂ = 300 K. If it absorbs 600 J of heat from the high-temperature source per cycle, the work done by the engine per cycle is:",
+        "bn": "একটি কার্নো ইঞ্জিন T₁ = ৫০০ K তাপমাত্রার উৎস এবং T₂ = ৩০০ K তাপমাত্রার গ্রাহকের মধ্যে কার্যকর। ইঞ্জিনটি প্রতি চক্রে উৎস থেকে ৬০০ J তাপ শোষণ করলে প্রতি চক্রে কৃতকার্যের পরিমাণ কত?",
+        "opts": {
+            "en": [
+                "240 J",
+                "360 J",
+                "300 J",
+                "400 J"
+            ],
+            "bn": [
+                "240 J",
+                "360 J",
+                "300 J",
+                "400 J"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Carnot efficiency η = 1 - T₂/T₁ = 1 - 300/500 = 1 - 0.6 = 0.4 (40%). Work done W = η × Q_in = 0.4 × 600 J = 240 J.",
+        "expl_bn": "কার্নো ইঞ্জিনের কর্মদক্ষতা η = ১ - ৩০০/৫০০ = ০.৪ (৪০%)। প্রতি চক্রে কৃতকার্য W = ০.৪ × ৬০০ = ২৪০ জুল।"
+    },
+    {
+        "id": "CHEM-001",
+        "exam": "JEE, NEET, WBJEE, CUET, AIIMS, AFMC, ICAR, MHT-CET",
+        "subject": "Chemistry",
+        "topic": "Ionic Equilibrium",
+        "difficulty": "Medium",
+        "en": "During the titration of a weak acid (HA) with a strong base (NaOH), the pH of the solution at the half-equivalence point is equal to:",
+        "bn": "একটি মৃদু অ্যাসিড (HA) ও তীব্র ক্ষারের (NaOH) টাইট্রেশনে অর্ধ-প্রশমন বিন্দুতে (half-equivalence point) দ্রবণের pH কত হবে?",
+        "opts": {
+            "en": [
+                "pKa",
+                "pKb",
+                "7.0",
+                "pKa + 1"
+            ],
+            "bn": [
+                "pKa",
+                "pKb",
+                "7.0",
+                "pKa + 1"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "By Henderson-Hasselbalch equation: pH = pKa + log([A⁻]/[HA]). At the half-equivalence point, exactly half the weak acid is converted to its conjugate base, so [A⁻] = [HA], which gives log(1) = 0, hence pH = pKa.",
+        "expl_bn": "হেন্ডারসন সমীকরণ অনুসারে: pH = pKa + log([A⁻]/[HA])। অর্ধ-প্রশমন বিন্দুতে [A⁻] = [HA], তাই pH = pKa।"
+    },
+    {
+        "id": "CHEM-002",
+        "exam": "JEE, JEE-ADV, WBJEE, BITSAT, IAT, NEST, IIT-JAM",
+        "subject": "Chemistry",
+        "topic": "Stereochemistry",
+        "difficulty": "Hard",
+        "en": "The total number of optical isomers possible for 1-bromo-2-methylcyclobutane is:",
+        "bn": "1-bromo-2-methylcyclobutane যৌগটির জন্য সম্ভাব্য মোট আলোকীয় সমাবয়বের (optical isomers) সংখ্যা কত?",
+        "opts": {
+            "en": [
+                "4",
+                "2",
+                "3",
+                "6"
+            ],
+            "bn": [
+                "4",
+                "2",
+                "3",
+                "6"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "1-bromo-2-methylcyclobutane has 2 asymmetric chiral carbons (C1 and C2) and lacks any plane or centre of symmetry. The number of d- and l- enantiomeric forms is 2² = 4 with 0 meso forms. Hence total optical isomers = 4.",
+        "expl_bn": "যৌগটিতে ২টি কাইরাল কার্বন (C1 ও C2) রয়েছে এবং কোনো প্রতিসাম্য উপাদান নেই। তাই মোট আলোক সক্রিয় সমাবয়ব = ২² = ৪টি।"
+    },
+    {
+        "id": "CHEM-003",
+        "exam": "JEE, NEET, WBJEE, CUET, AIIMS, KCET, MHT-CET",
+        "subject": "Chemistry",
+        "topic": "p-Block Elements",
+        "difficulty": "Medium",
+        "en": "Which of the following hydride sequences correctly represents the decreasing order of boiling points?",
+        "bn": "নিচের কোন ক্রমটি হাইড্রাইডসমূহের স্ফুটনাঙ্কের সঠিক অধঃক্রম প্রকাশ করে?",
+        "opts": {
+            "en": [
+                "H₂O > SbH₃ > NH₃ > AsH₃ > PH₃",
+                "H₂O > NH₃ > SbH₃ > AsH₃ > PH₃",
+                "SbH₃ > H₂O > NH₃ > AsH₃ > PH₃",
+                "H₂O > SbH₃ > AsH₃ > PH₃ > NH₃"
+            ],
+            "bn": [
+                "H₂O > SbH₃ > NH₃ > AsH₃ > PH₃",
+                "H₂O > NH₃ > SbH₃ > AsH₃ > PH₃",
+                "SbH₃ > H₂O > NH₃ > AsH₃ > PH₃",
+                "H₂O > SbH₃ > AsH₃ > PH₃ > NH₃"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "H₂O has the highest boiling point due to extensive intermolecular hydrogen bonding. NH₃ also forms H-bonds, making its boiling point higher than PH₃ and AsH₃, while SbH₃ has higher van der Waals forces due to large molecular size. Hence: H₂O > SbH₃ > NH₃ > AsH₃ > PH₃.",
+        "expl_bn": "আন্তঃআণবিক হাইড্রোজেন বন্ধনের কারণে পানির স্ফুটনাঙ্ক সর্বাধিক। সঠিক ক্রম: H₂O > SbH₃ > NH₃ > AsH₃ > PH₃।"
+    },
+    {
+        "id": "CHEM-004",
+        "exam": "JEE, NEET, WBJEE, BITSAT, VITEEE, CUET, CBSE",
+        "subject": "Chemistry",
+        "topic": "Carbonyl Compounds",
+        "difficulty": "Easy",
+        "en": "Which of the following carbonyl compounds does NOT undergo aldol condensation?",
+        "bn": "নিচের কোন কার্বনিল যৌগটি অ্যালডল ঘনীভবন (Aldol Condensation) বিক্রিয়া দেয় না?",
+        "opts": {
+            "en": [
+                "Chloral (CCl₃CHO)",
+                "Acetaldehyde (CH₃CHO)",
+                "Propanal (CH₃CH₂CHO)",
+                "Acetone (CH₃COCH₃)"
+            ],
+            "bn": [
+                "ক্লোরাল (CCl₃CHO)",
+                "অ্যাসিটালডিহাইড (CH₃CHO)",
+                "প্রোপান্যাল (CH₃CH₂CHO)",
+                "অ্যাসিটোন (CH₃COCH₃)"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Aldol condensation requires at least one α-hydrogen atom attached to the α-carbon. Chloral (CCl₃CHO) possesses three chlorine atoms on the α-carbon and zero α-hydrogens, thus it cannot undergo aldol condensation.",
+        "expl_bn": "অ্যালডল ঘনীভবনের জন্য আলফা-হাইড্রোজেনের উপস্থিতি বাধ্যতামূলক। ক্লোরালে (CCl₃CHO) কোনো আলফা হাইড্রোজেন নেই।"
+    },
+    {
+        "id": "CHEM-005",
+        "exam": "JEE, WBJEE, IAT, NEET, BITSAT, IIT-JAM",
+        "subject": "Chemistry",
+        "topic": "Inorganic Reaction Pathways",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 540 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Box A -->\n  <rect x=\"20\" y=\"30\" width=\"130\" height=\"60\" rx=\"8\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"85\" y=\"55\" fill=\"#1e40af\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">PbO₂ + H₂SO₄</text>\n  <text x=\"85\" y=\"75\" fill=\"#64748b\" font-size=\"11\" font-family=\"system-ui\" text-anchor=\"middle\">(Warm, Δ)</text>\n  <!-- Arrow 1 -->\n  <line x1=\"150\" y1=\"60\" x2=\"210\" y2=\"60\" stroke=\"#2563eb\" stroke-width=\"2.5\" marker-end=\"url(#arrow)\"/>\n  <text x=\"180\" y=\"50\" fill=\"#2563eb\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">O₂ ↑</text>\n  <!-- Box B -->\n  <rect x=\"210\" y=\"30\" width=\"130\" height=\"60\" rx=\"8\" fill=\"#f0fdf4\" stroke=\"#16a34a\" stroke-width=\"2\"/>\n  <text x=\"275\" y=\"55\" fill=\"#15803d\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">PbSO₄ + H₂O</text>\n  <text x=\"275\" y=\"75\" fill=\"#16a34a\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">White ppt</text>\n  \n  <!-- Row 2 -->\n  <rect x=\"20\" y=\"125\" width=\"130\" height=\"60\" rx=\"8\" fill=\"#fffbeb\" stroke=\"#d97706\" stroke-width=\"2\"/>\n  <text x=\"85\" y=\"150\" fill=\"#b45309\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">Na₂S₂O₃ + Cl₂</text>\n  <text x=\"85\" y=\"170\" fill=\"#64748b\" font-size=\"11\" font-family=\"system-ui\" text-anchor=\"middle\">+ H₂O</text>\n  <!-- Arrow 2 -->\n  <line x1=\"150\" y1=\"155\" x2=\"210\" y2=\"155\" stroke=\"#d97706\" stroke-width=\"2.5\"/>\n  <!-- Box C -->\n  <rect x=\"210\" y=\"125\" width=\"130\" height=\"60\" rx=\"8\" fill=\"#fef2f2\" stroke=\"#dc2626\" stroke-width=\"2\"/>\n  <text x=\"275\" y=\"150\" fill=\"#b91c1c\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">NaHSO₄ + S ↓</text>\n  <text x=\"275\" y=\"170\" fill=\"#dc2626\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Colloidal Sulfur</text>\n\n  <!-- Legend -->\n  <rect x=\"360\" y=\"30\" width=\"160\" height=\"155\" rx=\"8\" fill=\"#f8fafc\" stroke=\"#475569\" stroke-width=\"1.5\"/>\n  <text x=\"440\" y=\"55\" fill=\"#0f172a\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Reagent Key</text>\n  <text x=\"370\" y=\"85\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\">• (A) Δ (Heat)</text>\n  <text x=\"370\" y=\"110\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\">• (B) Chlorine (Cl₂)</text>\n  <text x=\"370\" y=\"135\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\">• (C) Iodine (I₂)</text>\n  <text x=\"370\" y=\"160\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\">• (D) Nitric Oxide (NO)</text>\n</svg>",
+        "en": "Match the inorganic chemical conversions given in List I with the appropriate reagent/condition in List II:\n(A) PbO₂ + H₂SO₄ → PbSO₄ + O₂\n(B) Na₂S₂O₃ + H₂O → NaHSO₄ + S\n(C) N₂H₄ → N₂\n(D) XeF₂ → Xe",
+        "bn": "তালিকা-I এর অজৈব বিক্রিয়া রূপান্তরগুলোর সাথে তালিকা-II এর সঠিক বিকারক/শর্ত মিলিয়ে সঠিক বিকল্প নির্বাচন করো:\n(A) PbO₂ + H₂SO₄ → PbSO₄ + O₂\n(B) Na₂S₂O₃ + H₂O → NaHSO₄ + S\n(C) N₂H₄ → N₂\n(D) XeF₂ → Xe",
+        "opts": {
+            "en": [
+                "A → Warm (Δ), B → Cl₂, C → I₂, D → NO",
+                "A → Cl₂, B → Warm (Δ), C → NO, D → I₂",
+                "A → NO, B → I₂, C → Cl₂, D → Warm (Δ)",
+                "A → Warm (Δ), B → NO, C → Cl₂, D → I₂"
+            ],
+            "bn": [
+                "A → উত্তাপ (Δ), B → Cl₂, C → I₂, D → NO",
+                "A → Cl₂, B → উত্তাপ (Δ), C → NO, D → I₂",
+                "A → NO, B → I₂, C → Cl₂, D → উত্তাপ (Δ)",
+                "A → উত্তাপ (Δ), B → NO, C → Cl₂, D → I₂"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "(A) PbO₂ reacts with hot H₂SO₄ releasing O₂. (B) Chlorine oxidizes sodium thiosulfate to sulfate with sulfur precipitate. (C) Hydrazine reduces Iodine (I₂) to HI with liberation of N₂. (D) XeF₂ reacts with Nitric Oxide (NO) forming Xe and nitrosyl fluoride (NOF).",
+        "expl_bn": "(A) PbO₂ উত্তপ্ত H₂SO₄ এর সাথে বিক্রিয়ায় O₂ গ্যাস মুক্ত করে। (B) থায়োসালফেটের দ্রবণে ক্লোরিন চালনা করলে সালফারের অধঃক্ষেপ পড়ে। (C) হাইড্রাজিন আয়োডিনকে বিজারিত করে N₂ মুক্ত করে। (D) XeF₂ এবং NO বিক্রিয়া করে Xe ও NOF গঠন করে।"
+    },
+    {
+        "id": "CHEM-006",
+        "exam": "JEE, NEET, WBJEE, CUET, AIIMS, KCET, MHT-CET",
+        "subject": "Chemistry",
+        "topic": "Coordination Compounds",
+        "difficulty": "Medium",
+        "en": "The spin-only magnetic moment (in B.M.) for high-spin tetrahedral [MnBr₄]²⁻ complex ion (Atomic number of Mn = 25) is:",
+        "bn": "উচ্চ-স্পিন চতুস্তলকীয় [MnBr₄]²⁻ জটিল আয়নের (Mn এর পারমাণবিক সংখ্যা = ২৫) শুধুমাত্র স্পিন-ভিত্তিক চৌম্বক ভ্রামক (Spin-only Magnetic Moment) কত?",
+        "opts": {
+            "en": [
+                "5.92 B.M.",
+                "4.90 B.M.",
+                "3.87 B.M.",
+                "1.73 B.M."
+            ],
+            "bn": [
+                "5.92 B.M.",
+                "4.90 B.M.",
+                "3.87 B.M.",
+                "1.73 B.M."
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Mn²⁺ has 3d⁵ electronic configuration. Since Br⁻ is a weak field ligand, it forms a high-spin tetrahedral complex with n = 5 unpaired electrons. μ = √(n(n+2)) = √(5(7)) = √35 = 5.92 B.M.",
+        "expl_bn": "Mn²⁺ এর ৩d⁵ ইলেকট্রন বিন্যাস রয়েছে। Br⁻ দুর্বল লিগ্যান্ড হওয়ায় অযুগ্ম ইলেকট্রন সংখ্যা n = ৫। চৌম্বক ভ্রামক μ = √৩৫ = ৫.৯২ B.M.।"
+    },
+    {
+        "id": "CHEM-007",
+        "exam": "JEE, JEE-ADV, IAT, NEET, NEST, OLYMPIAD, IIT-JAM, CSIR-NET",
+        "subject": "Chemistry",
+        "topic": "Coordination Compounds & CFT",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 460 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Free ion d-orbitals -->\n  <rect x=\"30\" y=\"90\" width=\"110\" height=\"30\" rx=\"4\" fill=\"#e2e8f0\" stroke=\"#475569\" stroke-width=\"2\"/>\n  <text x=\"85\" y=\"110\" fill=\"#1e293b\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Free ion (5 d)</text>\n  <!-- Barycenter line -->\n  <line x1=\"140\" y1=\"105\" x2=\"430\" y2=\"105\" stroke=\"#94a3b8\" stroke-dasharray=\"3 3\" stroke-width=\"1.5\"/>\n  <text x=\"420\" y=\"120\" fill=\"#64748b\" font-size=\"10\" font-family=\"system-ui\">Barycenter</text>\n  <!-- Octahedral splitting -->\n  <!-- eg level (up) -->\n  <line x1=\"200\" y1=\"105\" x2=\"270\" y2=\"45\" stroke=\"#3b82f6\" stroke-width=\"1.5\"/>\n  <rect x=\"270\" y=\"30\" width=\"80\" height=\"30\" rx=\"4\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"310\" y=\"50\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">e<tspan font-size=\"10\">g</tspan> (+0.6 Δₒ)</text>\n  <!-- t2g level (down) -->\n  <line x1=\"200\" y1=\"105\" x2=\"270\" y2=\"155\" stroke=\"#3b82f6\" stroke-width=\"1.5\"/>\n  <rect x=\"270\" y=\"140\" width=\"90\" height=\"30\" rx=\"4\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"315\" y=\"160\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">t<tspan font-size=\"10\">2g</tspan> (-0.4 Δₒ)</text>\n  <!-- Arrow delta_o -->\n  <line x1=\"380\" y1=\"45\" x2=\"380\" y2=\"155\" stroke=\"#dc2626\" stroke-width=\"2\"/>\n  <text x=\"395\" y=\"105\" fill=\"#dc2626\" font-size=\"15\" font-family=\"system-ui\" font-weight=\"black\">Δₒ</text>\n</svg>",
+        "en": "In an octahedral crystal field, what is the Crystal Field Stabilization Energy (CFSE) in terms of Δ_o for a high-spin d⁴ transition metal ion?",
+        "bn": "একটি অষ্টতলকীয় কেলাস ক্ষেত্রে (Octahedral Crystal Field), উচ্চ-স্পিন d⁴ অবস্থান্তর ধাতু আয়নের জন্য কেলাস ক্ষেত্র স্থায়িত্বায়ন শক্তি (CFSE) Δ_o-এর এককে কত হবে?",
+        "opts": {
+            "en": [
+                "-0.6 Δ_o",
+                "-1.6 Δ_o",
+                "-0.4 Δ_o",
+                "-1.2 Δ_o + P"
+            ],
+            "bn": [
+                "-0.6 Δ_o",
+                "-1.6 Δ_o",
+                "-0.4 Δ_o",
+                "-1.2 Δ_o + P"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "In an octahedral field, the d-orbitals split into lower t₂g (-0.4 Δ_o) and higher e_g (+0.6 Δ_o). High-spin d⁴ occupies configuration t₂g³ e_g¹. CFSE = [3(-0.4) + 1(+0.6)] Δ_o = (-1.2 + 0.6) Δ_o = -0.6 Δ_o.",
+        "expl_bn": "অষ্টতলকীয় ক্ষেত্রে d-অরবিটাল t₂g (-০.৪ Δ_o) এবং e_g (+০.৬ Δ_o) স্তরে বিভক্ত হয়। উচ্চ-স্পিন d⁴ এর বিন্যাস t₂g³ e_g¹। CFSE = [৩(-০.৪) + ১(+০.৬)] Δ_o = -০.৬ Δ_o।"
+    },
+    {
         "id": "BIO-001",
-        "exam": "NEET",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, OLYMPIAD, ICAR",
         "subject": "Biology",
         "topic": "Cell Biology",
         "difficulty": "Easy",
@@ -521,7 +530,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "BIO-002",
-        "exam": "NEET",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, OLYMPIAD, ICAR, CSIR-NET",
         "subject": "Biology",
         "topic": "Genetics & Molecular Basis",
         "difficulty": "Medium",
@@ -547,7 +556,7 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "BIO-003",
-        "exam": "NEET",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT",
         "subject": "Biology",
         "topic": "Human Physiology",
         "difficulty": "Medium",
@@ -573,80 +582,345 @@ window.PHYSICS_QUESTIONS_DATA = [
     },
     {
         "id": "BIO-004",
-        "exam": "NEET",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, OLYMPIAD, CSIR-NET",
         "subject": "Biology",
-        "topic": "Biotechnology",
-        "difficulty": "Medium",
-        "en": "EcoRI restriction endonuclease recognizes and cleaves which specific palindromic nucleotide sequence in double-stranded DNA?",
-        "bn": "EcoRI রেস্ট্রিকশন এন্ডোনিউক্লিয়েজ দ্বিসূত্রক ডিএনএ-র কোন নির্দিষ্ট প্যালিনড্রোমিক ক্ষারীয় অনুক্রমকে শনাক্ত ও কর্তন করে?",
+        "topic": "Human Health and Disease",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 520 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Axes -->\n  <line x1=\"50\" y1=\"175\" x2=\"480\" y2=\"175\" stroke=\"#334155\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"175\" x2=\"50\" y2=\"25\" stroke=\"#334155\" stroke-width=\"2\"/>\n  <text x=\"440\" y=\"195\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Time (Days)</text>\n  <text x=\"55\" y=\"20\" fill=\"#334155\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">Antibody Titer in Serum (log scale)</text>\n  \n  <!-- Primary Response Curve -->\n  <path d=\"M 70 175 Q 110 175 140 105 Q 170 115 210 160\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"3\"/>\n  <text x=\"140\" y=\"90\" fill=\"#1d4ed8\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Primary Response (IgM)</text>\n  \n  <!-- Secondary Exposure Point -->\n  <line x1=\"250\" y1=\"175\" x2=\"250\" y2=\"130\" stroke=\"#dc2626\" stroke-dasharray=\"2 2\" stroke-width=\"1.5\"/>\n  <text x=\"250\" y=\"125\" fill=\"#dc2626\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">2nd Exposure</text>\n  \n  <!-- Secondary Response Curve (Much higher & faster) -->\n  <path d=\"M 250 160 Q 280 40 330 35 Q 400 45 470 95\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"3.5\"/>\n  <text x=\"350\" y=\"28\" fill=\"#b91c1c\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"black\" text-anchor=\"middle\">Secondary Response (High IgG)</text>\n</svg>",
+        "en": "The accompanying graph depicts antibody titer in blood serum following primary and secondary antigen exposures. Which immunoglobulin class is predominantly responsible for the rapid, high-magnitude peak observed in the secondary immune response?",
+        "bn": "সংযুক্ত লেখচিত্রটিতে প্রাথমিক ও গৌণ অ্যান্টিজেন সংস্পর্শের পর সিরামে অ্যান্টিবডির মাত্রা দেখানো হয়েছে। গৌণ অনাক্রম্য সাড়ায় (Secondary response) দ্রুত ও উচ্চ মাত্রার অ্যান্টিবডি নিঃসরণের জন্য প্রধানত কোন ইমিউনোগ্লোবুলিন দায়ী?",
         "opts": {
             "en": [
-                "5'-GAATTC-3'",
-                "5'-GGATCC-3'",
-                "5'-AAGCTT-3'",
-                "5'-CTGCAG-3'"
+                "IgG",
+                "IgM",
+                "IgE",
+                "IgA"
             ],
             "bn": [
-                "5'-GAATTC-3'",
-                "5'-GGATCC-3'",
-                "5'-AAGCTT-3'",
-                "5'-CTGCAG-3'"
+                "IgG",
+                "IgM",
+                "IgE",
+                "IgA"
             ]
         },
         "correct": 0,
-        "expl_en": "EcoRI cuts specifically between G and A in the 5'-GAATTC-3' palindromic sequence, producing 5' cohesive sticky ends.",
-        "expl_bn": "EcoRI উৎসেচকটি 5'-GAATTC-3' সিকোয়েন্সে G ও A এর মধ্যবর্তী ফসফোডাইএস্টার বন্ধন ছিন্ন করে।"
+        "expl_en": "The primary immune response predominantly produces IgM with lower affinity and a lag phase. Memory B-cells generated during the primary response facilitate class switching to produce massive titers of high-affinity IgG during the secondary immune response.",
+        "expl_bn": "প্রাথমিক অনাক্রম্যতায় প্রধানত IgM উৎপন্ন হয়, কিন্তু মেমরি বি-কোষের উপস্থিতির কারণে গৌণ অনাক্রম্যতায় অত্যন্ত দ্রুত ও বিপুল পরিমাণে IgG অ্যান্টিবডি ক্ষরিত হয়।"
+    },
+    {
+        "id": "BIO-005",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, ICAR",
+        "subject": "Biology",
+        "topic": "Human Health and Disease",
+        "difficulty": "Medium",
+        "diagram": "<svg viewBox=\"0 0 420 230\" width=\"100%\" height=\"230\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Heavy Chains (Blue) -->\n  <path d=\"M 120 40 L 190 110 L 190 200\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n  <path d=\"M 300 40 L 230 110 L 230 200\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n  <!-- Light Chains (Cyan) -->\n  <path d=\"M 80 65 L 145 125\" fill=\"none\" stroke=\"#06b6d4\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n  <path d=\"M 340 65 L 275 125\" fill=\"none\" stroke=\"#06b6d4\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n  <!-- Disulfide bonds -->\n  <line x1=\"190\" y1=\"135\" x2=\"230\" y2=\"135\" stroke=\"#eab308\" stroke-width=\"3\"/>\n  <line x1=\"190\" y1=\"150\" x2=\"230\" y2=\"150\" stroke=\"#eab308\" stroke-width=\"3\"/>\n  <line x1=\"125\" y1=\"105\" x2=\"140\" y2=\"120\" stroke=\"#eab308\" stroke-width=\"3\"/>\n  <line x1=\"295\" y1=\"105\" x2=\"280\" y2=\"120\" stroke=\"#eab308\" stroke-width=\"3\"/>\n  <text x=\"70\" y=\"30\" fill=\"#0e7490\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">Antigen-Binding Site (Fab)</text>\n  <text x=\"350\" y=\"30\" fill=\"#0e7490\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">Antigen-Binding Site (Fab)</text>\n  <text x=\"210\" y=\"215\" fill=\"#1e3a8a\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Fc Region (Constant)</text>\n  <text x=\"50\" y=\"100\" fill=\"#0891b2\" font-size=\"11\" font-family=\"system-ui\">Light Chain (L)</text>\n  <text x=\"250\" y=\"170\" fill=\"#1d4ed8\" font-size=\"11\" font-family=\"system-ui\">Heavy Chain (H₂L₂)</text>\n</svg>",
+        "en": "In the standard Y-shaped immunoglobulin monomer (H₂L₂), how many inter-chain and intra-chain disulfide bonds typically connect the heavy (H) and light (L) polypeptide chains?",
+        "bn": "একটি আদর্শ Y-আকৃতির ইমিউনোগ্লোবুলিন মনোমারে (H₂L₂) ভারী (H) এবং হালকা (L) পলিপেপটাইড শৃঙ্খলগুলো প্রধানত কোন রাসায়নিক বন্ধন দ্বারা পরস্পরের সাথে আবদ্ধ থাকে?",
+        "opts": {
+            "en": [
+                "Disulfide bridges (—S—S—)",
+                "Glycosidic linkages",
+                "Phosphodiester bonds",
+                "Ester bonds"
+            ],
+            "bn": [
+                "ডাইসালফাইড বন্ধন (—S—S—)",
+                "গ্লাইকোসাইডিক বন্ধন",
+                "ফসফোডাইএস্টার বন্ধন",
+                "এস্টার বন্ধন"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Antibody molecules are glycoproteins composed of 2 heavy and 2 light polypeptide chains held firmly together by inter-chain covalent disulfide bridges (—S—S— bonds).",
+        "expl_bn": "অ্যান্টিবডি অণুতে ২টি ভারী এবং ২টি হালকা শৃঙ্খল পরস্পরের সাথে সমযোজী ডাইসালফাইড বন্ধন (—S—S—) দ্বারা দৃঢ়ভাবে যুক্ত থাকে।"
+    },
+    {
+        "id": "BIO-006",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, OLYMPIAD, CSIR-NET",
+        "subject": "Biology",
+        "topic": "Molecular Basis of Inheritance",
+        "difficulty": "Medium",
+        "diagram": "<svg viewBox=\"0 0 540 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- DNA Strip -->\n  <rect x=\"20\" y=\"60\" width=\"500\" height=\"40\" rx=\"6\" fill=\"#f8fafc\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n  <!-- Genes -->\n  <rect x=\"30\" y=\"65\" width=\"60\" height=\"30\" rx=\"4\" fill=\"#cbd5e1\"/><text x=\"60\" y=\"85\" fill=\"#0f172a\" font-size=\"12\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">p(i)</text>\n  <rect x=\"95\" y=\"65\" width=\"70\" height=\"30\" rx=\"4\" fill=\"#fed7aa\"/><text x=\"130\" y=\"85\" fill=\"#9a3412\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">i (rep)</text>\n  <rect x=\"170\" y=\"65\" width=\"60\" height=\"30\" rx=\"4\" fill=\"#cbd5e1\"/><text x=\"200\" y=\"85\" fill=\"#0f172a\" font-size=\"12\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">P</text>\n  <rect x=\"235\" y=\"65\" width=\"55\" height=\"30\" rx=\"4\" fill=\"#bbf7d0\"/><text x=\"262\" y=\"85\" fill=\"#166534\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">O</text>\n  <rect x=\"295\" y=\"65\" width=\"75\" height=\"30\" rx=\"4\" fill=\"#bfdbfe\"/><text x=\"332\" y=\"85\" fill=\"#1e40af\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">z (β-gal)</text>\n  <rect x=\"375\" y=\"65\" width=\"70\" height=\"30\" rx=\"4\" fill=\"#ddd6fe\"/><text x=\"410\" y=\"85\" fill=\"#5b21b6\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">y (perm)</text>\n  <rect x=\"450\" y=\"65\" width=\"65\" height=\"30\" rx=\"4\" fill=\"#fbcfe8\"/><text x=\"482\" y=\"85\" fill=\"#9d174d\" font-size=\"13\" font-family=\"monospace\" font-weight=\"bold\" text-anchor=\"middle\">a (trans)</text>\n  <text x=\"270\" y=\"140\" fill=\"#0f172a\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Lac Operon Regulatory Unit in E. coli</text>\n</svg>",
+        "en": "In the Lac operon of Escherichia coli, which structural gene specifically codes for the enzyme β-galactosidase that catalyzes the hydrolysis of lactose into galactose and glucose?",
+        "bn": "Escherichia coli-এর ল্যাক ওপেরনে (Lac Operon), কোন গাঠনিক জিনটি সরাসরি β-গ্যালাক্টোসিডেজ উৎসেচক সংশ্লেষণ করে যা ল্যাকটোজকে গ্লুকোজ ও গ্যালাক্টোজে আর্দ্রবিশ্লেষিত করে?",
+        "opts": {
+            "en": [
+                "z gene",
+                "y gene",
+                "a gene",
+                "i gene"
+            ],
+            "bn": [
+                "z জিন",
+                "y জিন",
+                "a জিন",
+                "i জিন"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "In the lac operon: gene 'z' codes for β-galactosidase, gene 'y' codes for β-galactoside permease, gene 'a' codes for β-galactoside transacetylase, and gene 'i' codes for the repressor protein.",
+        "expl_bn": "ল্যাক ওপেরনে: 'z' জিন β-গ্যালাক্টোসিডেজ সংশ্লেষ করে, 'y' জিন পারমিয়েজ এনজাইম এবং 'a' জিন ট্রান্সঅ্যাসিটাইলেজ সংশ্লেষ করে। 'i' জিন রিপ্রেসার প্রোটিন তৈরি করে।"
+    },
+    {
+        "id": "MATH-001",
+        "exam": "JEE, JEE-ADV, WBJEE, BITSAT, NDA, IAT, IIT-JAM",
+        "subject": "Mathematics",
+        "topic": "Combinatorics & Number Theory",
+        "difficulty": "Hard",
+        "en": "Let n = 2³ × 3⁴ × 5². The number of divisors of n which are of the form 4k + 2 (k ≥ 0) is:",
+        "bn": "ধরি n = 2³ × 3⁴ × 5²। n-এর এমন উৎপাদকের (divisors) সংখ্যা নির্ণয় করো যা 4k + 2 (k ≥ 0) আকারের:",
+        "opts": {
+            "en": [
+                "15",
+                "18",
+                "12",
+                "9"
+            ],
+            "bn": [
+                "15",
+                "18",
+                "12",
+                "9"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Any divisor of the form 4k + 2 = 2(2k + 1) is an even number containing exactly one factor of 2 (i.e., 2¹) and an odd part formed by the factors of 3⁴ × 5². Number of odd factors = (4 + 1)(2 + 1) = 5 × 3 = 15. Hence, there are 15 divisors of the form 4k + 2.",
+        "expl_bn": "4k + 2 = 2(2k + 1) আকারের উৎপাদক হলো বিজোড় সংখ্যাকে ২ দ্বারা গুণফল (অর্থাৎ ২-এর ঘাত ঠিক ১ হবে)। 3⁴ × 5²-এর মোট উৎপাদক সংখ্যা = (৪ + ১)(২ + ১) = ৫ × ৩ = ১৫।"
+    },
+    {
+        "id": "MATH-002",
+        "exam": "JEE, JEE-ADV, WBJEE, IAT, NEST, OLYMPIAD, IIT-JAM",
+        "subject": "Mathematics",
+        "topic": "Limits & Infinite Products",
+        "difficulty": "Hard",
+        "en": "The value of lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) is equal to:",
+        "bn": "lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) -এর মান কত?",
+        "opts": {
+            "en": [
+                "2",
+                "3",
+                "3/2",
+                "4/3"
+            ],
+            "bn": [
+                "2",
+                "3",
+                "3/2",
+                "4/3"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "1 + 1/(r(r+2)) = (r² + 2r + 1)/(r(r+2)) = (r+1)² / [r(r+2)] = [(r+1)/r] × [(r+1)/(r+2)]. Expanding the telescoping product from r=1 to n: P_n = (2/1 × 3/2 × ... × (n+1)/n) × (2/3 × 3/4 × ... × (n+1)/(n+2)) = (n+1) × [2/(n+2)] = 2(n+1)/(n+2). As n -> ∞, the limit is 2.",
+        "expl_bn": "১ + ১/(r(r+২)) = (r+১)² / [r(r+২)] = [(r+১)/r] × [(r+১)/(r+২)]। টেলিস্কোপিং গুণফল নিলে পাওয়া যায় ২(n+১)/(n+২)। n -> ∞ হলে সীমা = ২।"
+    },
+    {
+        "id": "MATH-003",
+        "exam": "JEE, JEE-ADV, WBJEE, BITSAT, IAT, IIT-JAM",
+        "subject": "Mathematics",
+        "topic": "Functional Equations",
+        "difficulty": "Hard",
+        "en": "If f(x) is a continuous function satisfying f(x + y) = f(x) + f(y) + 3xy(x + y) for all x, y ∈ ℝ, and lim (x -> 0) f(x)/x = 2, then f(3) is equal to:",
+        "bn": "যদি f(x) একটি অবিচ্ছিন্ন অপেক্ষক হয় যা f(x + y) = f(x) + f(y) + 3xy(x + y) সিদ্ধ করে এবং lim (x -> 0) f(x)/x = 2 হয়, তবে f(3) এর মান:",
+        "opts": {
+            "en": [
+                "33",
+                "27",
+                "35",
+                "30"
+            ],
+            "bn": [
+                "33",
+                "27",
+                "35",
+                "30"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Let g(x) = f(x) - x³. Then g(x+y) = f(x+y) - (x+y)³ = [f(x) + f(y) + 3xy(x+y)] - [x³ + y³ + 3xy(x+y)] = (f(x) - x³) + (f(y) - y³) = g(x) + g(y). Thus g(x) = kx. Given lim(x->0) f(x)/x = 2 => lim(x->0) [g(x) + x³]/x = k = 2. Hence f(x) = x³ + 2x. Therefore, f(3) = 3³ + 2(3) = 27 + 6 = 33.",
+        "expl_bn": "g(x) = f(x) - x³ ধরলে g(x+y) = g(x) + g(y) পাওয়া যায়, অর্থাৎ g(x) = 2x। সুতরাং f(x) = x³ + 2x। অতএব f(3) = ৩³ + ২(৩) = ২৭ + ৬ = ৩৩।"
+    },
+    {
+        "id": "MATH-004",
+        "exam": "JEE, WBJEE, BITSAT, NDA, VITEEE, MHT-CET, KCET",
+        "subject": "Mathematics",
+        "topic": "Integral Calculus & Bounded Area",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 420 220\" width=\"100%\" height=\"220\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <line x1=\"60\" y1=\"190\" x2=\"380\" y2=\"190\" stroke=\"#475569\" stroke-width=\"2\"/>\n  <line x1=\"90\" y1=\"210\" x2=\"90\" y2=\"20\" stroke=\"#475569\" stroke-width=\"2\"/>\n  <text x=\"375\" y=\"180\" fill=\"#475569\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">x</text>\n  <text x=\"100\" y=\"30\" fill=\"#475569\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">y</text>\n  <path d=\"M 90 190 Q 180 190 270 70 Q 180 30 90 190 Z\" fill=\"#93c5fd\" fill-opacity=\"0.45\" stroke=\"#2563eb\" stroke-width=\"1.5\"/>\n  <path d=\"M 40 190 Q 90 190 290 30\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"3\"/>\n  <text x=\"300\" y=\"45\" fill=\"#1d4ed8\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">y = x²</text>\n  <path d=\"M 50 190 Q 180 10 310 190\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"3\"/>\n  <text x=\"220\" y=\"25\" fill=\"#b91c1c\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">y = 2x - x²</text>\n  <circle cx=\"90\" cy=\"190\" r=\"4\" fill=\"#0f172a\"/>\n  <text x=\"75\" y=\"205\" fill=\"#0f172a\" font-size=\"11\" font-family=\"monospace\">(0,0)</text>\n  <circle cx=\"270\" cy=\"70\" r=\"4\" fill=\"#0f172a\"/>\n  <text x=\"275\" y=\"75\" fill=\"#0f172a\" font-size=\"11\" font-family=\"monospace\">(1,1)</text>\n</svg>",
+        "en": "The area of the region bounded by the intersecting parabolas y = x² and y = 2x - x² is equal to:",
+        "bn": "y = x² এবং y = 2x - x² পরাবৃত্ত দুটি দ্বারা সীমাবদ্ধ অঞ্চলের ক্ষেত্রফল কত?",
+        "opts": {
+            "en": [
+                "1/3 sq units",
+                "2/3 sq units",
+                "1/6 sq units",
+                "4/3 sq units"
+            ],
+            "bn": [
+                "1/3 বর্গ একক",
+                "2/3 বর্গ একক",
+                "1/6 বর্গ একক",
+                "4/3 বর্গ একক"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Intersection points: x² = 2x - x² => 2x² - 2x = 0 => 2x(x - 1) = 0 => x = 0 and x = 1. Area A = ∫₀¹ [(2x - x²) - x²] dx = ∫₀¹ (2x - 2x²) dx = [x² - (2/3)x³]₀¹ = 1 - 2/3 = 1/3 sq units.",
+        "expl_bn": "ছেদবিন্দু: x = ০ এবং x = ১। সীমাবদ্ধ ক্ষেত্রফল A = ∫₀¹ (2x - 2x²) dx = [x² - (২/৩)x³]₀¹ = ১ - ২/৩ = ১/৩ বর্গ একক।"
+    },
+    {
+        "id": "MATH-005",
+        "exam": "JEE, WBJEE, NDA, CUET, VITEEE, MHT-CET, KCET, CBSE",
+        "subject": "Mathematics",
+        "topic": "Matrices & Determinants",
+        "difficulty": "Medium",
+        "en": "If A is a 3 × 3 non-singular matrix such that A² = 3A - 2I, then A⁻¹ is equal to:",
+        "bn": "যদি A একটি ৩ × ৩ বর্গ ম্যাট্রিক্স হয় যাতে A² = 3A - 2I, তবে A⁻¹ সমান:",
+        "opts": {
+            "en": [
+                "(3I - A)/2",
+                "(A - 3I)/2",
+                "3I + A",
+                "2I - A"
+            ],
+            "bn": [
+                "(3I - A)/2",
+                "(A - 3I)/2",
+                "3I + A",
+                "2I - A"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Rearranging A² - 3A = -2I => 2I = 3A - A² = A(3I - A). Multiplying both sides by A⁻¹ gives 2 A⁻¹ = 3I - A => A⁻¹ = (3I - A)/2.",
+        "expl_bn": "2I = 3A - A² = A(3I - A)। উভয়পক্ষে A⁻¹ গুণ করে পাওয়া যায় A⁻¹ = (3I - A)/2।"
+    },
+    {
+        "id": "MATH-006",
+        "exam": "JEE, JEE-ADV, WBJEE, BITSAT, NDA, IAT, GATE",
+        "subject": "Mathematics",
+        "topic": "3D Geometry & Vectors",
+        "difficulty": "Hard",
+        "diagram": "<svg viewBox=\"0 0 460 200\" width=\"100%\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Line 1 -->\n  <line x1=\"60\" y1=\"60\" x2=\"380\" y2=\"40\" stroke=\"#2563eb\" stroke-width=\"3\"/>\n  <text x=\"390\" y=\"45\" fill=\"#1d4ed8\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">L₁: r⃗ = a⃗₁ + λb⃗₁</text>\n  <!-- Line 2 -->\n  <line x1=\"80\" y1=\"160\" x2=\"400\" y2=\"130\" stroke=\"#dc2626\" stroke-width=\"3\"/>\n  <text x=\"410\" y=\"135\" fill=\"#b91c1c\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">L₂: r⃗ = a⃗₂ + μb⃗₂</text>\n  <!-- Common Perpendicular Shortest Distance -->\n  <line x1=\"220\" y1=\"50\" x2=\"250\" y2=\"145\" stroke=\"#0f172a\" stroke-width=\"2.5\" stroke-dasharray=\"4 3\"/>\n  <circle cx=\"220\" cy=\"50\" r=\"4\" fill=\"#0f172a\"/>\n  <circle cx=\"250\" cy=\"145\" r=\"4\" fill=\"#0f172a\"/>\n  <text x=\"245\" y=\"100\" fill=\"#0f172a\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"black\">d (Shortest Distance)</text>\n</svg>",
+        "en": "Find the shortest distance between the two skew lines given by vector equations:\nL₁: r⃗ = (i + 2j + 3k) + λ(2i + 3j + 4k)\nL₂: r⃗ = (2i + 4j + 5k) + μ(3i + 4j + 5k):",
+        "bn": "ভেক্টর সমীকরণ দ্বারা প্রকাশিত দুটি বিষমতলীয় সরলরেখার (Skew lines) মধ্যবর্তী ক্ষুদ্রতম দূরত্ব নির্ণয় করো:\nL₁: r⃗ = (i + 2j + 3k) + λ(2i + 3j + 4k)\nL₂: r⃗ = (2i + 4j + 5k) + μ(3i + 4j + 5k):",
+        "opts": {
+            "en": [
+                "1 / √6",
+                "2 / √6",
+                "1 / √3",
+                "3 / √6"
+            ],
+            "bn": [
+                "1 / √6",
+                "2 / √6",
+                "1 / √3",
+                "3 / √6"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "a⃗₂ - a⃗₁ = (2-1)i + (4-2)j + (5-3)k = i + 2j + 2k. b⃗₁ × b⃗₂ = |i j k; 2 3 4; 3 4 5| = i(15-16) - j(10-12) + k(8-9) = -i + 2j - k. Magnitude |b⃗₁ × b⃗₂| = √((-1)² + 2² + (-1)²) = √6. Dot product (a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂) = (1)(-1) + (2)(2) + (2)(-1) = -1 + 4 - 2 = 1. Shortest distance d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂| = 1 / √6.",
+        "expl_bn": "a⃗₂ - a⃗₁ = i + 2j + 2k এবং b⃗₁ × b⃗₂ = -i + 2j - k। ডট গুণফল = ১। অতএব ক্ষুদ্রতম দূরত্ব d = ১ / √৬।"
     },
     {
         "id": "GK-001",
-        "exam": "UPSC",
+        "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, BANKING",
         "subject": "General Science",
-        "topic": "Space & Defense Technology",
-        "difficulty": "Medium",
-        "en": "In satellite communication, the standard geostationary orbit (GEO) is located at an altitude of approximately how many kilometers above Earth's equator?",
-        "bn": "উপগ্রহীয় যোগাযোগ ব্যবস্থায় আদর্শ ভূ-স্থির কক্ষপথ (Geostationary Orbit) পৃথিবীর বিষুবরেখা থেকে আনুমানিক কত কিলোমিটার উচ্চতায় অবস্থিত?",
+        "topic": "Physics in Daily Life & Atmospheric Optics",
+        "difficulty": "Easy",
+        "en": "Why does the clear daytime sky appear predominantly blue to an observer on Earth?",
+        "bn": "দিনের বেলায় পরিষ্কার আকাশ কেন প্রধানত নীল দেখায়?",
         "opts": {
             "en": [
-                "35,786 km",
-                "400 km",
-                "20,200 km",
-                "1,000 km"
+                "Rayleigh scattering of shorter wavelengths (blue light) by atmospheric molecules",
+                "Total internal reflection of solar radiation in water droplets",
+                "Selective absorption of red light by nitrogen gas",
+                "Diffraction of light by cloud particles"
             ],
             "bn": [
-                "৩৫,৭৮৬ কিমি",
-                "৪০০ কিমি",
-                "২০,২০০ কিমি",
-                "১,০০০ কিমি"
+                "বায়ুমণ্ডলের গ্যাসীয় অণু দ্বারা নীল আলোর রেলি বিক্ষেপণ (Rayleigh Scattering)",
+                "মেঘের মধ্যে আলোর পূর্ণ অভ্যন্তরীণ প্রতিফলন",
+                "নাইট্রোজেন গ্যাস দ্বারা লাল আলোর শোষণ",
+                "ধূলিকণা দ্বারা আলোর অপবর্তন"
             ]
         },
         "correct": 0,
-        "expl_en": "A circular geosynchronous orbit positioned exactly over the equator at ~35,786 km (22,236 miles) has an orbital period matching Earth's rotation (23h 56m 4s), appearing stationary relative to ground antennas.",
-        "expl_bn": "ভূ-স্থির উপগ্রহ বিষুবরেখার ঠিক ওপরে ৩৫,৭৮৬ কিমি উচ্চতায় পৃথিবীকে ২৪ ঘণ্টায় একবার প্রদক্ষিণ করে।"
+        "expl_en": "According to Rayleigh scattering law, the intensity of scattered light is inversely proportional to the fourth power of wavelength (I ∝ 1/λ⁴). Shorter blue wavelengths are scattered roughly 10 times more effectively than longer red wavelengths.",
+        "expl_bn": "রেলির বিক্ষেপণ নীতি অনুযায়ী বিক্ষেপণের তীব্রতা I ∝ ১/λ⁴। ক্ষুদ্র তরঙ্গদৈর্ঘ্যের নীল আলো বায়ুমণ্ডলের অণুসমূহ দ্বারা লাল আলোর চেয়ে প্রায় ১০ গুণ বেশি বিক্ষিপ্ত হয়।"
     },
     {
         "id": "GK-002",
-        "exam": "SSC",
-        "subject": "General Knowledge",
-        "topic": "Indian Polity & Constitution",
+        "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, BANKING",
+        "subject": "General Science",
+        "topic": "Chemical Substances in Daily Life",
         "difficulty": "Easy",
-        "en": "Under which Article of the Constitution of India is the Right to Equality guaranteed to all citizens?",
-        "bn": "ভারতের সংবিধানের কোন অনুচ্ছেদের অধীনে সকল নাগরিকের জন্য সাম্যের অধিকার (Right to Equality) সুরক্ষিত?",
+        "en": "Which chemical compound is commonly used in food preservation to prevent microbial spoilage in acidic foods like tomato ketchup, pickles, and fruit juices?",
+        "bn": "টমেটো সস, আচার এবং ফলের রসের মতো অম্লীয় খাদ্যে জীবাণু সংক্রমণ রোধ করতে প্রিজারভেটিভ হিসেবে সাধারণত কোন রাসায়নিক যৌগটি ব্যবহৃত হয়?",
         "opts": {
             "en": [
-                "Articles 14 to 18",
-                "Articles 19 to 22",
-                "Articles 25 to 28",
-                "Articles 32 to 35"
+                "Sodium benzoate",
+                "Sodium chloride",
+                "Calcium carbide",
+                "Potassium chlorate"
             ],
             "bn": [
-                "অনুচ্ছেদ ১৪ থেকে ১৮",
-                "অনুচ্ছেদ ১৯ থেকে ২২",
-                "অনুচ্ছেদ ২৫ থেকে ২৮",
-                "অনুচ্ছেদ ৩২ থেকে ৩৫"
+                "সোডিয়াম বেনজোয়েট",
+                "সোডিয়াম ক্লোরাইড",
+                "ক্যালসিয়াম কার্বাইড",
+                "পটাশিয়াম ক্লোরেট"
             ]
         },
         "correct": 0,
-        "expl_en": "Articles 14 through 18 of Part III of the Indian Constitution guarantee Fundamental Rights to Equality before law and equal protection of laws.",
-        "expl_bn": "সংবিধানের তৃতীয় অংশের অনুচ্ছেদ ১৪ থেকে ১৮ নাগরিকদের সাম্যের মৌলিক অধিকার প্রদান করে।"
+        "expl_en": "Sodium benzoate (C₆H₅COONa) is widely utilized as a food preservative (E211). In acidic media (pH < 4.5), it converts to undissociated benzoic acid which inhibits mold and yeast growth.",
+        "expl_bn": "সোডিয়াম বেনজোয়েট হলো বহুল ব্যবহৃত একটি খাদ্য সংরক্ষক যা অম্লীয় মাধ্যমে বেনজোয়িক অ্যাসিডে রূপান্তরিত হয়ে অণুজীবের বৃদ্ধি প্রতিরোধ করে।"
+    },
+    {
+        "id": "GK-003",
+        "exam": "UPSC, SSC, RRB, NDA, CDS, STATE-PSC, AFCAT, CAPF",
+        "subject": "General Science",
+        "topic": "Space Technology & ISRO",
+        "difficulty": "Medium",
+        "en": "Which launch vehicle was utilized by the Indian Space Research Organisation (ISRO) to successfully inject Chandrayaan-3 into its intended translunar trajectory?",
+        "bn": "ভারতীয় মহাকাশ গবেষণা সংস্থা (ISRO) কোন উৎক্ষেপণ যানের (Launch Vehicle) সাহায্যে চন্দ্রযান-৩ কে সফলভাবে চাঁদের কক্ষপথের অভিমুখে প্রেরণ করেছিল?",
+        "opts": {
+            "en": [
+                "LVM3 (GSLV Mk-III)",
+                "PSLV-C56",
+                "SSLV-D2",
+                "GSLV-F12"
+            ],
+            "bn": [
+                "LVM3 (GSLV Mk-III)",
+                "PSLV-C56",
+                "SSLV-D2",
+                "GSLV-F12"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "ISRO launched Chandrayaan-3 using the Launch Vehicle Mark-3 (LVM3-M4) heavy-lift rocket from Satish Dhawan Space Centre, Sriharikota.",
+        "expl_bn": "চন্দ্রযান-৩ মিশনটি ISRO-এর ভারী উৎক্ষেপণ যান LVM3 (GSLV Mk-III)-এর সাহায্যে শ্রীহরিকোটা থেকে সফলভাবে উৎক্ষেপিত হয়েছিল।"
+    },
+    {
+        "id": "GK-004",
+        "exam": "UPSC, SSC, CDS, STATE-PSC, CUET, NDA, CAPF",
+        "subject": "General Science",
+        "topic": "Environmental Science & Ecology",
+        "difficulty": "Easy",
+        "en": "The landmark international environmental treaty known as the Montreal Protocol (1987) was established to regulate and phase out substances that cause:",
+        "bn": "ঐতিহাসিক আন্তর্জাতিক পরিবেশ চুক্তি 'মন্ট্রিল প্রোটোকল' (১৯৮৭) কোন ক্ষতিকর প্রক্রিয়া নিয়ন্ত্রণের উদ্দেশ্যে সাক্ষরিত হয়েছিল?",
+        "opts": {
+            "en": [
+                "Depletion of the stratospheric ozone layer",
+                "Global ocean acidification",
+                "Eutrophication of freshwaters",
+                "Radioactive nuclear fallout"
+            ],
+            "bn": [
+                "স্ট্র্যাটোস্ফিয়ারের ওজোন স্তরের ক্ষয়রোধ",
+                "মহাসাগরের অম্লতাকরণ",
+                "জলাশয়ের ইউট্রোফিকেশন",
+                "তেজস্ক্রিয় নিউক্লীয় বর্জ্য"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "The Montreal Protocol on Substances that Deplete the Ozone Layer is an international environmental treaty designed to phase out the production of ozone-depleting substances (ODSs) such as Chlorofluorocarbons (CFCs).",
+        "expl_bn": "মন্ট্রিল প্রোটোকল হলো বায়ুমণ্ডলের স্ট্র্যাটোস্ফিয়ারে ওজোন স্তরের ক্ষয় সৃষ্টিকারী ক্লোরোফ্লুরোকার্বন (CFC) ও অন্যান্য পদার্থ নিষিদ্ধ করার লক্ষ্যে সাক্ষরিত একটি বৈশ্বিক চুক্তি।"
     }
 ];

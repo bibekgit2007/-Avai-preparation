@@ -298,14 +298,64 @@
             <!-- Exam Target Selector -->
             <div class="relative">
                 <select id="examSelector" onchange="filterByExam()" class="bg-slate-800/90 border border-slate-700/80 hover:border-blue-500/80 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-bold text-blue-300 outline-none transition cursor-pointer appearance-none pr-7">
-                    <option value="ALL">All Exams</option>
-                    <option value="NEET">NEET</option>
-                    <option value="JEE">JEE Main</option>
-                    <option value="WBJEE">WBJEE</option>
-                    <option value="UPSC">UPSC</option>
-                    <option value="SSC">SSC (CGL/CHSL)</option>
-                    <option value="CUET">CUET</option>
-                    <option value="NDA">NDA</option>
+                    <option value="ALL">🌟 All Exams (Universal Bank)</option>
+                    
+                    <optgroup label="🩺 Medical & Bio-Sciences" class="bg-slate-900 text-slate-200">
+                        <option value="NEET">NEET (UG Medical)</option>
+                        <option value="AIIMS">AIIMS / Nursing / Paramedical</option>
+                        <option value="AFMC">AFMC (Armed Forces Medical)</option>
+                        <option value="ICAR">ICAR AIEEA (Bio & Agriculture)</option>
+                    </optgroup>
+                    
+                    <optgroup label="⚙️ Engineering & Technology" class="bg-slate-900 text-slate-200">
+                        <option value="JEE">JEE Main</option>
+                        <option value="JEE-ADV">JEE Advanced (IITs)</option>
+                        <option value="WBJEE">WBJEE</option>
+                        <option value="BITSAT">BITSAT</option>
+                        <option value="VITEEE">VITEEE</option>
+                        <option value="MHT-CET">MHT-CET</option>
+                        <option value="KCET">KCET</option>
+                        <option value="COMEDK">COMEDK</option>
+                        <option value="KEAM">KEAM / GUJCET</option>
+                    </optgroup>
+                    
+                    <optgroup label="🔬 Research, Pure Sciences & Olympiads" class="bg-slate-900 text-slate-200">
+                        <option value="IAT">IAT (IISER Aptitude Test)</option>
+                        <option value="NEST">NEST (NISER / CEBS)</option>
+                        <option value="OLYMPIAD">Science Olympiad (NSEP/NSEC/NSEB)</option>
+                        <option value="KVPY">KVPY / Science Aptitude</option>
+                        <option value="IIT-JAM">IIT-JAM (M.Sc / Pure Sciences)</option>
+                        <option value="CSIR-NET">CSIR-UGC NET (JRF / LS)</option>
+                        <option value="GATE">GATE (Engineering & Science)</option>
+                    </optgroup>
+                    
+                    <optgroup label="🎓 Central Universities" class="bg-slate-900 text-slate-200">
+                        <option value="CUET">CUET (UG Central Universities)</option>
+                        <option value="CUET-PG">CUET (PG Admissions)</option>
+                    </optgroup>
+                    
+                    <optgroup label="🛡️ Defence & Armed Forces" class="bg-slate-900 text-slate-200">
+                        <option value="NDA">NDA / NA (Defence)</option>
+                        <option value="CDS">CDS (Combined Defence Services)</option>
+                        <option value="AFCAT">AFCAT (Air Force)</option>
+                        <option value="CAPF">CAPF (Assistant Commandant)</option>
+                    </optgroup>
+                    
+                    <optgroup label="🏛️ Civil Services & State PSC" class="bg-slate-900 text-slate-200">
+                        <option value="UPSC">UPSC (CSE / Civil Services Prelims)</option>
+                        <option value="STATE-PSC">State PSC / WBCS / BPSC / UPPSC</option>
+                    </optgroup>
+                    
+                    <optgroup label="🚆 Recruitment & Staff Selection" class="bg-slate-900 text-slate-200">
+                        <option value="SSC">SSC (CGL / CHSL / JE / CPO)</option>
+                        <option value="RRB">RRB (Railways NTPC / JE / ALP)</option>
+                        <option value="BANKING">Banking (IBPS / SBI PO / Clerk)</option>
+                    </optgroup>
+
+                    <optgroup label="🏫 School Board & Foundation" class="bg-slate-900 text-slate-200">
+                        <option value="CBSE">CBSE Class 11 & 12 Boards</option>
+                        <option value="FOUNDATION">Foundation / NTSE / Olympiad Prep</option>
+                    </optgroup>
                 </select>
                 <span class="absolute right-2 top-2.5 text-[10px] pointer-events-none text-slate-400">▼</span>
             </div>
@@ -478,13 +528,23 @@
                 <!-- Preset Buttons -->
                 <div>
                     <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-2">Preset Exam Formats:</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button onclick="setMockPreset('NEET')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">NEET (180m)</button>
-                        <button onclick="setMockPreset('JEE')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">JEE Main (180m)</button>
-                        <button onclick="setMockPreset('UPSC')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">UPSC (120m)</button>
-                        <button onclick="setMockPreset('SSC')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">SSC (60m)</button>
-                        <button onclick="setMockPreset('CUET')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">CUET (45m)</button>
-                        <button onclick="setMockPreset('QUICK')" class="px-2.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">⚡ 15m Sprint</button>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-1.5 max-h-40 overflow-y-auto p-1 bg-slate-50 rounded-2xl border border-slate-200">
+                        <button onclick="setMockPreset('NEET')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">NEET (180m)</button>
+                        <button onclick="setMockPreset('JEE')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">JEE Main (180m)</button>
+                        <button onclick="setMockPreset('JEE-ADV')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">JEE Adv (180m)</button>
+                        <button onclick="setMockPreset('WBJEE')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">WBJEE (120m)</button>
+                        <button onclick="setMockPreset('BITSAT')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">BITSAT (180m)</button>
+                        <button onclick="setMockPreset('VITEEE')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">VITEEE (150m)</button>
+                        <button onclick="setMockPreset('MHT-CET')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">MHT-CET (180m)</button>
+                        <button onclick="setMockPreset('IAT')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">IAT/NEST (180m)</button>
+                        <button onclick="setMockPreset('IIT-JAM')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">IIT-JAM (180m)</button>
+                        <button onclick="setMockPreset('CUET')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">CUET (45m)</button>
+                        <button onclick="setMockPreset('NDA')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">NDA (150m)</button>
+                        <button onclick="setMockPreset('UPSC')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">UPSC (120m)</button>
+                        <button onclick="setMockPreset('SSC')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">SSC (60m)</button>
+                        <button onclick="setMockPreset('RRB')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">RRB (90m)</button>
+                        <button onclick="setMockPreset('BANKING')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">Banking (60m)</button>
+                        <button onclick="setMockPreset('QUICK')" class="px-2 py-1.5 border border-slate-200 rounded-xl text-[11px] font-bold hover:border-blue-500 hover:bg-blue-50 focus:bg-blue-100 transition text-slate-700">⚡ 15m Sprint</button>
                     </div>
                 </div>
 
@@ -496,10 +556,14 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Marking Scheme:</label>
                         <select id="mockMarkingSelect" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-bold outline-none focus:border-blue-500 bg-white">
-                            <option value="4,-1">+4 Correct / -1 Wrong (NEET/JEE)</option>
-                            <option value="2,-0.66">+2 Correct / -0.66 Wrong (UPSC)</option>
-                            <option value="2,-0.50">+2 Correct / -0.50 Wrong (SSC)</option>
-                            <option value="1,-0.25">+1 Correct / -0.25 Wrong (Bank/Govt)</option>
+                            <option value="4,-1">+4 Correct / -1 Wrong (NEET/JEE/IAT)</option>
+                            <option value="5,-1">+5 Correct / -1 Wrong (CUET NTA)</option>
+                            <option value="3,-1">+3 Correct / -1 Wrong (BITSAT/Olympiad)</option>
+                            <option value="2,-0.66">+2 Correct / -0.66 Wrong (UPSC/JAM/GATE)</option>
+                            <option value="2,-0.50">+2 Correct / -0.50 Wrong (WBJEE/SSC CGL)</option>
+                            <option value="2.5,-0.83">+2.5 Correct / -0.83 Wrong (NDA Maths)</option>
+                            <option value="1,-0.33">+1 Correct / -0.33 Wrong (RRB/CDS)</option>
+                            <option value="1,-0.25">+1 Correct / -0.25 Wrong (Banking/Clerk)</option>
                             <option value="1,0">+1 Correct / No Negative Marking</option>
                         </select>
                     </div>
@@ -703,13 +767,47 @@
         // Subject Mapping for Various Exams
         const SUBJECTS_BY_EXAM = {
             'ALL': ALL_AVAILABLE_SUBJECTS,
+            // Medical & Bio-Sciences
             'NEET': ['Physics', 'Chemistry', 'Biology'],
+            'AIIMS': ['Physics', 'Chemistry', 'Biology', 'General Knowledge', 'Reasoning'],
+            'AFMC': ['Biology', 'Chemistry', 'Physics', 'English', 'Reasoning'],
+            'ICAR': ['Physics', 'Chemistry', 'Biology', 'Mathematics'],
+            // Engineering & Technology
             'JEE': ['Physics', 'Chemistry', 'Mathematics'],
-            'WBJEE': ['Physics', 'Chemistry', 'Mathematics'],
-            'UPSC': ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge'],
+            'JEE-ADV': ['Physics', 'Chemistry', 'Mathematics'],
+            'WBJEE': ['Mathematics', 'Physics', 'Chemistry'],
+            'BITSAT': ['Physics', 'Chemistry', 'Mathematics', 'English', 'Reasoning'],
+            'VITEEE': ['Mathematics', 'Physics', 'Chemistry', 'English', 'Reasoning', 'Biology'],
+            'MHT-CET': ['Mathematics', 'Physics', 'Chemistry', 'Biology'],
+            'KCET': ['Mathematics', 'Physics', 'Chemistry', 'Biology'],
+            'COMEDK': ['Physics', 'Chemistry', 'Mathematics'],
+            'KEAM': ['Physics', 'Chemistry', 'Mathematics'],
+            // Pure Sciences, Research & Olympiads
+            'IAT': ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+            'NEST': ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+            'OLYMPIAD': ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+            'KVPY': ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+            'IIT-JAM': ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+            'CSIR-NET': ['General Science', 'Physics', 'Chemistry', 'Biology', 'Mathematics'],
+            'GATE': ['General Science', 'Mathematics', 'Physics', 'Chemistry', 'Reasoning'],
+            // Central Universities
+            'CUET': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge', 'General Science', 'History', 'Geography', 'Political Science'],
+            'CUET-PG': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'General Science'],
+            // Defence & Armed Forces
+            'NDA': ['Mathematics', 'General Science', 'English', 'General Knowledge', 'History', 'Geography'],
+            'CDS': ['English', 'General Knowledge', 'General Science', 'Mathematics', 'History', 'Geography', 'Political Science'],
+            'AFCAT': ['English', 'Reasoning', 'Mathematics', 'General Knowledge', 'General Science'],
+            'CAPF': ['General Science', 'General Knowledge', 'History', 'Geography', 'Political Science', 'English'],
+            // Civil Services & State PSCs
+            'UPSC': ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'Reasoning', 'Mathematics', 'English'],
+            'STATE-PSC': ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'English', 'Reasoning', 'Mathematics'],
+            // Staff Selection, Railways & Banking
             'SSC': ['General Knowledge', 'General Science', 'English', 'Mathematics', 'Reasoning'],
-            'CUET': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'],
-            'NDA': ['Mathematics', 'General Science', 'English', 'General Knowledge']
+            'RRB': ['General Science', 'Mathematics', 'Reasoning', 'General Knowledge'],
+            'BANKING': ['Reasoning', 'Mathematics', 'English', 'General Knowledge'],
+            // School Boards & Foundation
+            'CBSE': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English'],
+            'FOUNDATION': ['General Science', 'Mathematics', 'Reasoning', 'Physics', 'Chemistry', 'Biology']
         };
 
         // State Variables
@@ -807,6 +905,7 @@
                 bn: qBn || qEn || 'নমুনা প্রশ্ন',
                 opts: { en: optsEn, bn: optsBn },
                 image: q.image || q.Image_URL || '',
+                diagram: q.diagram || q.Diagram || q.svg || q.SVG || '',
                 correct: correctVal,
                 expl_en: q.expl_en || q.Expl_EN || q.Explanation || 'Step-by-step logic, derivation, and fundamental concepts provided.',
                 expl_bn: q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।'
@@ -1009,18 +1108,42 @@
         function setMockPreset(preset) {
             const dur = document.getElementById('mockDurationInput');
             const mark = document.getElementById('mockMarkingSelect');
-            if (preset === 'NEET' || preset === 'JEE') {
+            if (preset === 'NEET' || preset === 'JEE' || preset === 'JEE-ADV' || preset === 'IAT' || preset === 'OLYMPIAD' || preset === 'AIIMS' || preset === 'AFMC') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "4,-1";
-            } else if (preset === 'UPSC') {
+            } else if (preset === 'WBJEE') {
+                if (dur) dur.value = 120;
+                if (mark) mark.value = "2,-0.50";
+            } else if (preset === 'BITSAT') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "3,-1";
+            } else if (preset === 'VITEEE') {
+                if (dur) dur.value = 150;
+                if (mark) mark.value = "1,0";
+            } else if (preset === 'MHT-CET' || preset === 'KCET') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "1,0";
+            } else if (preset === 'IIT-JAM' || preset === 'GATE' || preset === 'CSIR-NET') {
+                if (dur) dur.value = 180;
+                if (mark) mark.value = "2,-0.66";
+            } else if (preset === 'UPSC' || preset === 'STATE-PSC') {
                 if (dur) dur.value = 120;
                 if (mark) mark.value = "2,-0.66";
             } else if (preset === 'SSC') {
                 if (dur) dur.value = 60;
                 if (mark) mark.value = "2,-0.50";
+            } else if (preset === 'RRB') {
+                if (dur) dur.value = 90;
+                if (mark) mark.value = "1,-0.33";
+            } else if (preset === 'BANKING') {
+                if (dur) dur.value = 60;
+                if (mark) mark.value = "1,-0.25";
             } else if (preset === 'CUET') {
                 if (dur) dur.value = 45;
                 if (mark) mark.value = "5,-1";
+            } else if (preset === 'NDA' || preset === 'CDS' || preset === 'AFCAT') {
+                if (dur) dur.value = 150;
+                if (mark) mark.value = "2.5,-0.83";
             } else if (preset === 'QUICK') {
                 if (dur) dur.value = 15;
                 if (mark) mark.value = "4,-1";
@@ -1127,7 +1250,14 @@
                 const subjectMatch = q.subject.toUpperCase() === currentSubject.toUpperCase();
                 if (!subjectMatch) return false;
 
-                const examMatch = (currentExam === 'ALL' || q.exam.toUpperCase() === currentExam.toUpperCase() || q.exam === 'ALL');
+                let examMatch = false;
+                if (currentExam === 'ALL' || q.exam === 'ALL') {
+                    examMatch = true;
+                } else {
+                    const cleanCurrentExam = currentExam.toUpperCase();
+                    const cleanQExam = q.exam.toUpperCase();
+                    examMatch = (cleanQExam === cleanCurrentExam) || cleanQExam.includes(cleanCurrentExam);
+                }
                 const topicMatch = (currentTopic === "ALL" || q.topic === currentTopic);
 
                 let searchMatch = true;
@@ -1181,7 +1311,12 @@
             }
 
             const currentSelected = responses[q.orig];
-            const imgHtml = q.image ? `<div class="my-5 p-3 bg-white rounded-2xl border border-slate-200 shadow-sm max-w-md mx-auto"><img src="${q.image}" class="max-h-64 mx-auto rounded-xl object-contain" alt="Question Diagram"></div>` : '';
+            let diagramHtml = '';
+            if (q.diagram) {
+                diagramHtml = `<div class="my-5 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl flex flex-col items-center justify-center overflow-x-auto shadow-sm max-w-2xl mx-auto">${q.diagram}</div>`;
+            } else if (q.image) {
+                diagramHtml = `<div class="my-5 p-3 bg-white rounded-2xl border border-slate-200 shadow-sm max-w-md mx-auto"><img src="${q.image}" class="max-h-64 mx-auto rounded-xl object-contain" alt="Question Diagram"></div>`;
+            }
             const questionTitle = currentLang === 'en' ? (q.en || q.bn) : (q.bn || q.en);
             const explanationText = currentLang === 'en' ? (q.expl_en || q.expl_bn) : (q.expl_bn || q.expl_en);
 
@@ -1214,7 +1349,7 @@
                         <span class="text-[11px] font-display font-bold bg-blue-50 text-blue-700 px-3.5 py-1 rounded-full uppercase tracking-wider border border-blue-200/80">${q.topic}</span>
                     </div>
 
-                    ${imgHtml}
+                    ${diagramHtml}
 
                     <!-- Question Prompt Text -->
                     <h2 class="text-base md:text-xl font-semibold mb-8 leading-relaxed text-slate-900 tracking-tight">${questionTitle}</h2>
