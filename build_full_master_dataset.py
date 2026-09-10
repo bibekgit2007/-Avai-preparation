@@ -335,6 +335,198 @@ SVG_ICJ_EMBLEM = """<svg viewBox="0 0 440 180" width="100%" height="180" xmlns="
   <text x="220" y="172" fill="#2563eb" font-size="9" font-family="system-ui" font-weight="bold" text-anchor="middle">International Court of Justice (ICJ) • Principal UN Judicial Organ</text>
 </svg>"""
 
+SVG_TWO_CONDUCTORS_SERIES = """<svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <defs>
+    <linearGradient id="cond1Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cond2Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect x="70" y="55" width="170" height="60" rx="6" fill="url(#cond1Grad)" stroke="#1e3a8a" stroke-width="2"/>
+  <ellipse cx="70" cy="85" rx="14" ry="30" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="155" y="82" fill="#ffffff" font-size="14" font-family="system-ui" font-weight="bold" text-anchor="middle">Metal 1 (σ₁)</text>
+  <text x="155" y="100" fill="#eff6ff" font-size="11" font-family="system-ui" text-anchor="middle">Length = L, Area = A</text>
+  <rect x="240" y="55" width="170" height="60" rx="6" fill="url(#cond2Grad)" stroke="#b45309" stroke-width="2"/>
+  <ellipse cx="240" cy="85" rx="14" ry="30" fill="#d97706" stroke="#b45309" stroke-width="2"/>
+  <ellipse cx="410" cy="85" rx="14" ry="30" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
+  <text x="325" y="82" fill="#ffffff" font-size="14" font-family="system-ui" font-weight="bold" text-anchor="middle">Metal 2 (σ₂)</text>
+  <text x="325" y="100" fill="#fffbeb" font-size="11" font-family="system-ui" text-anchor="middle">Length = L, Area = A</text>
+  <line x1="20" y1="85" x2="60" y2="85" stroke="#0f172a" stroke-width="3"/>
+  <polygon points="65,85 55,80 55,90" fill="#0f172a"/>
+  <text x="35" y="75" fill="#0f172a" font-size="13" font-family="system-ui" font-weight="bold">I</text>
+  <line x1="420" y1="85" x2="480" y2="85" stroke="#0f172a" stroke-width="3"/>
+  <polygon points="485,85 475,80 475,90" fill="#0f172a"/>
+  <text x="450" y="75" fill="#0f172a" font-size="13" font-family="system-ui" font-weight="bold">I</text>
+  <line x1="70" y1="135" x2="410" y2="135" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="70" y1="128" x2="70" y2="142" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="240" y1="128" x2="240" y2="142" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="410" y1="128" x2="410" y2="142" stroke="#64748b" stroke-width="1.5"/>
+  <text x="155" y="152" fill="#475569" font-size="12" font-family="system-ui" text-anchor="middle">L</text>
+  <text x="325" y="152" fill="#475569" font-size="12" font-family="system-ui" text-anchor="middle">L</text>
+  <text x="240" y="172" fill="#0369a1" font-size="12" font-family="system-ui" font-weight="bold" text-anchor="middle">Equivalent Conductivity: σ_eq = 2σ₁σ₂ / (σ₁ + σ₂)</text>
+</svg>"""
+
+SVG_COIL_MAGNETIC_MOMENT = """<svg viewBox="0 0 460 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <line x1="40" y1="100" x2="420" y2="100" stroke="#94a3b8" stroke-dasharray="4 3" stroke-width="1.5"/>
+  <ellipse cx="200" cy="100" rx="35" ry="75" fill="none" stroke="#2563eb" stroke-width="4"/>
+  <line x1="200" y1="100" x2="200" y2="25" stroke="#dc2626" stroke-width="2"/>
+  <text x="185" y="65" fill="#dc2626" font-size="12" font-family="system-ui" font-weight="bold">R = 5 cm</text>
+  <circle cx="200" cy="100" r="4" fill="#0f172a"/>
+  <text x="205" y="115" fill="#0f172a" font-size="12" font-family="system-ui" font-weight="bold">O (Centre)</text>
+  <polygon points="166,95 163,108 171,105" fill="#2563eb"/>
+  <polygon points="234,105 237,92 229,95" fill="#2563eb"/>
+  <text x="140" y="105" fill="#2563eb" font-size="12" font-family="system-ui" font-weight="bold">I</text>
+  <line x1="200" y1="100" x2="360" y2="100" stroke="#16a34a" stroke-width="3.5"/>
+  <polygon points="368,100 355,94 355,106" fill="#16a34a"/>
+  <text x="270" y="85" fill="#16a34a" font-size="13" font-family="system-ui" font-weight="bold">B_centre = μ₀NI / 2R</text>
+  <text x="270" y="125" fill="#0f766e" font-size="13" font-family="system-ui" font-weight="bold">M = NI(πR²)</text>
+  <text x="200" y="190" fill="#334155" font-size="12" font-family="system-ui" font-weight="bold" text-anchor="middle">N = 100 turns, B = 3.14 × 10⁻³ T → I = 2.5 A, M ≈ 2 A·m²</text>
+</svg>"""
+
+SVG_ARRHENIUS_PLOT = """<svg viewBox="0 0 460 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <line x1="60" y1="170" x2="420" y2="170" stroke="#334155" stroke-width="2.5"/>
+  <line x1="60" y1="170" x2="60" y2="20" stroke="#334155" stroke-width="2.5"/>
+  <text x="415" y="160" fill="#334155" font-size="12" font-family="system-ui" font-weight="bold">1 / T (K⁻¹)</text>
+  <text x="70" y="30" fill="#334155" font-size="12" font-family="system-ui" font-weight="bold">ln(k)</text>
+  <circle cx="60" cy="45" r="4" fill="#2563eb"/>
+  <text x="68" y="45" fill="#2563eb" font-size="11" font-family="system-ui" font-weight="bold">ln(A) (Intercept)</text>
+  <line x1="60" y1="45" x2="380" y2="155" stroke="#dc2626" stroke-width="3"/>
+  <line x1="200" y1="93" x2="280" y2="93" stroke="#64748b" stroke-dasharray="3 2" stroke-width="1.5"/>
+  <line x1="280" y1="93" x2="280" y2="121" stroke="#64748b" stroke-dasharray="3 2" stroke-width="1.5"/>
+  <text x="290" y="112" fill="#dc2626" font-size="12" font-family="system-ui" font-weight="bold">Slope = −Eₐ / R</text>
+  <rect x="180" y="25" width="220" height="35" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="290" y="47" fill="#0f172a" font-size="12" font-family="system-ui" font-weight="bold" text-anchor="middle">ln(k) = ln(A) − (Eₐ / R)(1 / T)</text>
+</svg>"""
+
+SVG_CANNIZZARO_FLOW = """<svg viewBox="0 0 540 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <rect x="20" y="45" width="150" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="95" y="72" fill="#1e40af" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle">C₆H₅CHO + HCHO</text>
+  <text x="95" y="95" fill="#3b82f6" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">(No α-H atoms)</text>
+  <line x1="170" y1="80" x2="260" y2="80" stroke="#0f172a" stroke-width="2.5"/>
+  <polygon points="268,80 256,75 256,85" fill="#0f172a"/>
+  <text x="215" y="65" fill="#b91c1c" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">50% conc. NaOH</text>
+  <text x="215" y="98" fill="#475569" font-size="10" font-family="system-ui" text-anchor="middle">Δ (Heat)</text>
+  <rect x="270" y="25" width="240" height="50" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="390" y="48" fill="#15803d" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle">C₆H₅CH₂OH (Benzyl alcohol)</text>
+  <text x="390" y="64" fill="#16a34a" font-size="10" font-family="system-ui" text-anchor="middle">[Reduction Product]</text>
+  <rect x="270" y="85" width="240" height="50" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="390" y="108" fill="#b45309" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle">HCOO⁻Na⁺ (Sodium formate)</text>
+  <text x="390" y="124" fill="#d97706" font-size="10" font-family="system-ui" text-anchor="middle">[Oxidation Product: HCHO is more reactive]</text>
+  <text x="270" y="170" fill="#475569" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">Crossed Cannizzaro Reaction: Formaldehyde oxidized, Benzaldehyde reduced</text>
+</svg>"""
+
+SVG_KRANZ_ANATOMY = """<svg viewBox="0 0 520 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <circle cx="260" cy="105" r="30" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="260" y="103" fill="#9a3412" font-size="10" font-family="system-ui" font-weight="bold" text-anchor="middle">Vascular</text>
+  <text x="260" y="117" fill="#9a3412" font-size="10" font-family="system-ui" font-weight="bold" text-anchor="middle">Bundle</text>
+  <circle cx="260" cy="105" r="58" fill="none" stroke="#16a34a" stroke-width="22" stroke-opacity="0.25"/>
+  <circle cx="208" cy="105" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="312" cy="105" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="260" cy="53" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="260" cy="157" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="223" cy="68" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="297" cy="68" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="223" cy="142" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <circle cx="297" cy="142" r="11" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
+  <rect x="60" y="30" width="100" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="110" y="48" fill="#166534" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">Mesophyll Cell</text>
+  <text x="110" y="62" fill="#15803d" font-size="9" font-family="system-ui" text-anchor="middle">PEPcase (C₄ Acid)</text>
+  <line x1="160" y1="50" x2="220" y2="70" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="360" y="30" width="130" height="40" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="425" y="48" fill="#92400e" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">Bundle Sheath Cell</text>
+  <text x="425" y="62" fill="#b45309" font-size="9" font-family="system-ui" text-anchor="middle">RuBisCO (Calvin Cycle)</text>
+  <line x1="360" y1="50" x2="300" y2="70" stroke="#d97706" stroke-width="1.5"/>
+  <text x="260" y="195" fill="#0f172a" font-size="12" font-family="system-ui" font-weight="bold" text-anchor="middle">Kranz Anatomy in C₄ Plants (Maize, Sugarcane) • Zero Photorespiration</text>
+</svg>"""
+
+SVG_SARCOMERE_STRUCTURE = """<svg viewBox="0 0 540 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <line x1="60" y1="20" x2="60" y2="160" stroke="#1e3a8a" stroke-width="3"/>
+  <text x="60" y="175" fill="#1e3a8a" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">Z-line</text>
+  <line x1="480" y1="20" x2="480" y2="160" stroke="#1e3a8a" stroke-width="3"/>
+  <text x="480" y="175" fill="#1e3a8a" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">Z-line</text>
+  <line x1="270" y1="20" x2="270" y2="160" stroke="#dc2626" stroke-dasharray="3 2" stroke-width="2"/>
+  <text x="270" y="175" fill="#dc2626" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">M-line</text>
+  <rect x="150" y="55" width="240" height="12" rx="3" fill="#dc2626"/>
+  <rect x="150" y="85" width="240" height="12" rx="3" fill="#dc2626"/>
+  <rect x="150" y="115" width="240" height="12" rx="3" fill="#dc2626"/>
+  <line x1="60" y1="45" x2="220" y2="45" stroke="#2563eb" stroke-width="3"/>
+  <line x1="60" y1="75" x2="220" y2="75" stroke="#2563eb" stroke-width="3"/>
+  <line x1="60" y1="105" x2="220" y2="105" stroke="#2563eb" stroke-width="3"/>
+  <line x1="60" y1="135" x2="220" y2="135" stroke="#2563eb" stroke-width="3"/>
+  <line x1="480" y1="45" x2="320" y2="45" stroke="#2563eb" stroke-width="3"/>
+  <line x1="480" y1="75" x2="320" y2="75" stroke="#2563eb" stroke-width="3"/>
+  <line x1="480" y1="105" x2="320" y2="105" stroke="#2563eb" stroke-width="3"/>
+  <line x1="480" y1="135" x2="320" y2="135" stroke="#2563eb" stroke-width="3"/>
+  <line x1="150" y1="30" x2="390" y2="30" stroke="#991b1b" stroke-width="1.5"/>
+  <text x="270" y="24" fill="#991b1b" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">A-Band (Constant Length)</text>
+  <line x1="220" y1="150" x2="320" y2="150" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="270" y="145" fill="#ea580c" font-size="10" font-family="system-ui" font-weight="bold" text-anchor="middle">H-Zone</text>
+  <text x="270" y="195" fill="#0f172a" font-size="12" font-family="system-ui" font-weight="bold" text-anchor="middle">1 Sarcomere (Between two Z-discs) • Contraction reduces H-zone &amp; I-band</text>
+</svg>"""
+
+SVG_GEL_ELECTROPHORESIS = """<svg viewBox="0 0 500 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <rect x="50" y="30" width="400" height="150" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+  <rect x="50" y="15" width="400" height="12" rx="3" fill="#3b82f6"/>
+  <text x="250" y="25" fill="#ffffff" font-size="10" font-family="system-ui" font-weight="bold" text-anchor="middle">Cathode (−)</text>
+  <rect x="50" y="183" width="400" height="12" rx="3" fill="#ef4444"/>
+  <text x="250" y="193" fill="#ffffff" font-size="10" font-family="system-ui" font-weight="bold" text-anchor="middle">Anode (+)</text>
+  <rect x="90" y="40" width="30" height="10" rx="2" fill="#334155"/>
+  <rect x="160" y="40" width="30" height="10" rx="2" fill="#334155"/>
+  <rect x="230" y="40" width="30" height="10" rx="2" fill="#334155"/>
+  <rect x="300" y="40" width="30" height="10" rx="2" fill="#334155"/>
+  <rect x="370" y="40" width="30" height="10" rx="2" fill="#334155"/>
+  <rect x="93" y="65" width="24" height="4" fill="#f97316"/>
+  <rect x="93" y="90" width="24" height="4" fill="#f97316"/>
+  <rect x="93" y="115" width="24" height="4" fill="#f97316"/>
+  <rect x="93" y="140" width="24" height="4" fill="#f97316"/>
+  <rect x="93" y="165" width="24" height="4" fill="#f97316"/>
+  <text x="105" y="58" fill="#64748b" font-size="9" font-family="system-ui" text-anchor="middle">Ladder</text>
+  <rect x="163" y="80" width="24" height="5" fill="#f97316"/>
+  <rect x="163" y="145" width="24" height="5" fill="#f97316"/>
+  <rect x="233" y="165" width="24" height="5" fill="#f97316"/>
+  <text x="245" y="155" fill="#ea580c" font-size="9" font-family="system-ui" font-weight="bold" text-anchor="middle">Smallest DNA</text>
+  <line x1="420" y1="50" x2="420" y2="160" stroke="#dc2626" stroke-width="2"/>
+  <polygon points="420,165 415,155 425,155" fill="#dc2626"/>
+  <text x="430" y="105" fill="#dc2626" font-size="10" font-family="system-ui" font-weight="bold" transform="rotate(90,430,105)" text-anchor="middle">Migration Direction</text>
+</svg>"""
+
+SVG_HORMONAL_CYCLE = """<svg viewBox="0 0 520 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <line x1="45" y1="160" x2="480" y2="160" stroke="#334155" stroke-width="2"/>
+  <line x1="45" y1="160" x2="45" y2="20" stroke="#334155" stroke-width="2"/>
+  <text x="45" y="180" fill="#334155" font-size="10" font-family="system-ui" font-weight="bold">Day 1</text>
+  <text x="240" y="180" fill="#dc2626" font-size="11" font-family="system-ui" font-weight="bold">Day 14 (Ovulation)</text>
+  <text x="460" y="180" fill="#334155" font-size="10" font-family="system-ui" font-weight="bold">Day 28</text>
+  <line x1="250" y1="160" x2="250" y2="25" stroke="#dc2626" stroke-dasharray="3 2" stroke-width="1.5"/>
+  <path d="M 50 145 Q 180 140 230 110 Q 250 25 270 120 Q 350 145 475 145" fill="none" stroke="#dc2626" stroke-width="3"/>
+  <text x="260" y="40" fill="#dc2626" font-size="11" font-family="system-ui" font-weight="bold">LH Surge</text>
+  <path d="M 50 150 Q 150 145 220 70 Q 250 110 320 100 Q 400 135 475 150" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="200" y="60" fill="#2563eb" font-size="10" font-family="system-ui" font-weight="bold">Estrogen</text>
+  <path d="M 50 155 L 250 155 Q 350 65 420 80 Q 460 130 475 155" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="375" y="75" fill="#16a34a" font-size="10" font-family="system-ui" font-weight="bold">Progesterone</text>
+  <text x="260" y="198" fill="#475569" font-size="11" font-family="system-ui" font-weight="bold" text-anchor="middle">LH Surge triggers rupture of Graafian Follicle and Ovulation at Day 14</text>
+</svg>"""
+
+SVG_CONIC_COMMON_TANGENT = """<svg viewBox="0 0 460 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg" class="select-none">
+  <line x1="30" y1="105" x2="430" y2="105" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="180" y1="20" x2="180" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="420" y="98" fill="#64748b" font-size="11" font-family="system-ui">x</text>
+  <text x="185" y="25" fill="#64748b" font-size="11" font-family="system-ui">y</text>
+  <circle cx="180" cy="105" r="50" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="135" y="70" fill="#2563eb" font-size="11" font-family="system-ui" font-weight="bold">x² + y² = 2a²</text>
+  <path d="M 330 35 Q 180 105 330 175" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="320" y="30" fill="#16a34a" font-size="11" font-family="system-ui" font-weight="bold">y² = 8ax</text>
+  <line x1="80" y1="180" x2="340" y2="40" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="240" y="65" fill="#dc2626" font-size="12" font-family="system-ui" font-weight="bold">Common Tangent: y = ±(x + 2a)</text>
+  <circle cx="145" cy="142" r="3.5" fill="#dc2626"/>
+  <circle cx="280" cy="72" r="3.5" fill="#dc2626"/>
+</svg>"""
+
 # =============================================================================
 # MASTER MULTI-SUBJECT & MULTI-EXAM COMPATIBLE QUESTION REPOSITORY
 # =============================================================================
@@ -1272,7 +1464,435 @@ all_questions = [
         "correct": 0,
         "expl_en": "ISRO's Mars Orbiter Mission (Mangalyaan) was launched aboard the Polar Satellite Launch Vehicle (PSLV-C25) in its 'XL' configuration on 5 November 2013 from the Satish Dhawan Space Centre (SDSC) SHAR, Sriharikota.",
         "expl_bn": "ইসরোর মার্স অরবিটার মিশন (মঙ্গলযান) ২০১৩ সালের ৫ই নভেম্বর অন্ধ্রপ্রদেশের শ্রীহরিকোটার সতীশ ধাওয়ান মহাকাশ কেন্দ্র থেকে PSLV-C25 (XL) রকেটের মাধ্যমে সফলভাবে উৎক্ষেপণ করা হয়।"
+    }    ,
+    # =========================================================================
+    # PHYSICS (Newly Sorted High-Yield Questions)
+    # =========================================================================
+    {
+        "id": "PHY-013",
+        "exam": "NEET, JEE, WBJEE, CUET, BITSAT, VITEEE",
+        "subject": "Physics",
+        "topic": "Magnetic Effects of Current & Dipole Moment",
+        "difficulty": "Medium",
+        "diagram": SVG_COIL_MAGNETIC_MOMENT,
+        "en": "A 100-turn closely wound circular coil of radius 5 cm carries a steady current such that the magnetic field at its centre is 3.14 × 10⁻³ T. Taking μ₀ = 4π × 10⁻⁷ T·m/A, the electric current flowing through the coil and the magnitude of the magnetic dipole moment of the coil are respectively:",
+        "bn": "৫ সেমি ব্যাসার্ধের একটি ১০০ পাকের নিবিড়ভাবে জড়ানো বৃত্তাকার কুণ্ডলীর কেন্দ্রে চৌম্বক ক্ষেত্র ৩.১৪ × ১০⁻³ T। μ₀ = ৪π × ১০⁻⁷ T·m/A ধরে, কুণ্ডলীর মধ্য দিয়ে প্রবাহিত তড়িৎপ্রবাহ এবং কুণ্ডলীটির চৌম্বক দ্বিমেরু ভ্রামকের মান যথাক্রমে কত?",
+        "opts": {
+            "en": ["2.5 A and 2.0 A·m²", "2.5 A and 20.0 A·m²", "2.0 A and 4.0 A·m²", "2.0 A and 10.0 A·m²"],
+            "bn": ["2.5 A এবং 2.0 A·m²", "2.5 A এবং 20.0 A·m²", "2.0 A এবং 4.0 A·m²", "2.0 A এবং 10.0 A·m²"]
+        },
+        "correct": 0,
+        "expl_en": "Magnetic field at centre: B = (μ₀ N I)/(2R) => I = (2 R B)/(μ₀ N) = (2 × 0.05 × 3.14 × 10⁻³)/(4π × 10⁻⁷ × 100) = 2.5 A. Magnetic moment: M = N I (π R²) = 100 × 2.5 × π × (0.05)² ≈ 1.963 A·m² ≈ 2.0 A·m².",
+        "expl_bn": "কুণ্ডলীর কেন্দ্রে চৌম্বক ক্ষেত্র: B = (μ₀ N I)/(2R) => I = (২ × ০.০৫ × ৩.১৪ × ১০⁻³)/(৪π × ১০⁻⁷ × ১০০) = ২.৫ A। চৌম্বক ভ্রামক: M = N I (π R²) = ১০০ × ২.৫ × π × (০.০৫)² ≈ ১.৯৬৩ A·m² ≈ ২.০ A·m²।"
+    },
+    {
+        "id": "PHY-014",
+        "exam": "JEE, WBJEE, NEET, CUET, MHT-CET, KCET, BITSAT",
+        "subject": "Physics",
+        "topic": "Current Electricity & Conductivity",
+        "difficulty": "Medium",
+        "diagram": SVG_TWO_CONDUCTORS_SERIES,
+        "en": "Two metal rods of identical length L and cross-sectional area A have electrical conductivities σ₁ and σ₂ respectively. When they are joined end-to-end in series, the effective electrical conductivity (σ_eq) of the combination is:",
+        "bn": "সমান দৈর্ঘ্য L এবং সমান প্রস্থচ্ছেদ A বিশিষ্ট দুটি ধাতব দণ্ডের তড়িৎ পরিবাহিতা যথাক্রমে σ₁ এবং σ₂। এদের শ্রেণি সমবায়ে যুক্ত করা হলে সমবায়টির কার্যকর তড়িৎ পরিবাহিতা (σ_eq) কত হবে?",
+        "opts": {
+            "en": ["(2σ₁σ₂) / (σ₁ + σ₂)", "(σ₁ + σ₂) / 2", "√(σ₁σ₂)", "(σ₁σ₂) / (2(σ₁ + σ₂))"],
+            "bn": ["(2σ₁σ₂) / (σ₁ + σ₂)", "(σ₁ + σ₂) / 2", "√(σ₁σ₂)", "(σ₁σ₂) / (2(σ₁ + σ₂))"]
+        },
+        "correct": 0,
+        "expl_en": "Total length = 2L, area = A. In series, equivalent resistance R_eq = R₁ + R₂. Using R = L / (σ A): (2L)/(σ_eq A) = L/(σ₁ A) + L/(σ₂ A) => 2/σ_eq = (σ₁ + σ₂)/(σ₁σ₂) => σ_eq = (2σ₁σ₂) / (σ₁ + σ₂).",
+        "expl_bn": "মোট দৈর্ঘ্য = 2L এবং ক্ষেত্রফল = A। শ্রেণি সমবায়ে তুল্য রোধ R_eq = R₁ + R₂। R = L / (σ A) থেকে: 2/σ_eq = 1/σ₁ + 1/σ₂ => σ_eq = (2σ₁σ₂) / (σ₁ + σ₂), যা পরিবাহিতা দুটির হারমোনিক গড়।"
+    },
+    {
+        "id": "PHY-015",
+        "exam": "NEET, JEE, WBJEE, CUET, BITSAT, NDA",
+        "subject": "Physics",
+        "topic": "Alternating Current & Resonance",
+        "difficulty": "Medium",
+        "en": "An AC circuit consists of a pure resistance of 1 kΩ, a capacitor of capacitance 0.1 μF, and an inductor of inductance 1 mH connected in series. The approximate resonant frequency (f_r) of the circuit and the effect on f_r if the resistance is doubled are respectively:",
+        "bn": "একটি পরিবর্তী প্রবাহ (AC) বর্তনীতে ১ kΩ রোধ, ০.১ μF ধারকত্ব এবং ১ mH আবেশাঙ্ক শ্রেণি সমবায়ে যুক্ত রয়েছে। বর্তনীটির আনুমানিক অনুনাদী কম্পাঙ্ক (f_r) এবং রোধ দ্বিগুণ করা হলে f_r-এর ওপর প্রভাব যথাক্রমে:",
+        "opts": {
+            "en": ["15.9 kHz, unchanged", "10.1 kHz, halved", "15.9 kHz, doubled", "20.7 kHz, unchanged"],
+            "bn": ["15.9 kHz, অপরিবর্তিত থাকবে", "10.1 kHz, অর্ধেক হবে", "15.9 kHz, দ্বিগুণ হবে", "20.7 kHz, অপরিবর্তিত থাকবে"]
+        },
+        "correct": 0,
+        "expl_en": "Series resonant frequency: f_r = 1 / (2π√(LC)). With L = 10⁻³ H and C = 10⁻⁷ F, √(LC) = 10⁻⁵ s => f_r = 10⁵ / (2π) ≈ 15.9 kHz. Because resonance depends solely on L and C and is independent of resistance R, doubling R leaves f_r unchanged.",
+        "expl_bn": "অনুনাদী কম্পাঙ্ক: f_r = ১ / (২π√(LC))। L = ১০⁻³ H এবং C = ১০⁻⁷ F হলে √(LC) = ১০⁻⁵ s => f_r = ১০⁵ / (২π) ≈ ১৫.৯ kHz। অনুনাদী কম্পাঙ্ক রোধ R-এর ওপর নির্ভর করে না, তাই রোধ দ্বিগুণ করলেও তা অপরিবর্তিত থাকে।"
+    },
+    {
+        "id": "PHY-016",
+        "exam": "JEE, WBJEE, NEET, CUET, NDA, BITSAT",
+        "subject": "Physics",
+        "topic": "Current Electricity & Bridge Instruments",
+        "difficulty": "Medium",
+        "en": "In a balanced Metre Bridge experiment, the positions of the galvanometer and the battery cell are interchanged. Which of the following observations will be correct regarding the balance point?",
+        "bn": "একটি ভারসাম্যাবস্থায় থাকা মিটার ব্রিজ পরীক্ষায় গ্যালভানোমিটার এবং ব্যাটারি কোষের অবস্থান পরস্পর বিনিময় করা হলো। ভারসাম্যাবস্থার বিন্দুর ক্ষেত্রে নিচের কোন পর্যবেক্ষণটি সঠিক হবে?",
+        "opts": {
+            "en": [
+                "The balance condition remains unaffected and the galvanometer still shows null deflection",
+                "The balance point shifts to the extreme right end",
+                "The balance point shifts to the extreme left end",
+                "The bridge becomes inoperable and permanent deflection occurs"
+            ],
+            "bn": [
+                "ভারসাম্যের শর্ত অপরিবর্তিত থাকবে এবং গ্যালভানোমিটারে বিক্ষেপ শূন্যই থাকবে",
+                "ভারসাম্য বিন্দু চরম ডান প্রান্তে সরে যাবে",
+                "ভারসাম্য বিন্দু চরম বাম প্রান্তে সরে যাবে",
+                "ব্রিজটি অকার্যকর হয়ে যাবে এবং স্থায়ী বিক্ষেপ দেখাবে"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "By the conjugate arms property of a Wheatstone bridge, the battery arm and galvanometer arm are mutually conjugate. Interchanging the galvanometer and battery does not alter the balance condition (P/Q = R/S), so the galvanometer continues to show null deflection at the exact same point.",
+        "expl_bn": "হুইটস্টোন ব্রিজের অনুবন্ধী বাহু (Conjugate Arms) নীতি অনুসারে ব্যাটারি এবং গ্যালভানোমিটারের বাহু পরস্পর অনুবন্ধী। এদের অবস্থান বিনিময় করলেও ভারসাম্যের মূল শর্ত অপরিবর্তিত থাকে এবং গ্যালভানোমিটার শূন্য বিক্ষেপই প্রদর্শন করে।"
+    },
+    # =========================================================================
+    # CHEMISTRY (Newly Sorted High-Yield Questions)
+    # =========================================================================
+    {
+        "id": "CHEM-008",
+        "exam": "JEE, NEET, WBJEE, BITSAT, CUET, IIT-JAM",
+        "subject": "Chemistry",
+        "topic": "Chemical Kinetics & Arrhenius Theory",
+        "difficulty": "Hard",
+        "diagram": SVG_ARRHENIUS_PLOT,
+        "en": "According to the Arrhenius equation, a plot of ln(k) against 1/T for a first-order chemical reaction yields a straight line with a slope of -6000 K. Taking the universal gas constant R = 8.314 J·K⁻¹·mol⁻¹, the activation energy (E_a) of the reaction is approximately:",
+        "bn": "আরহেনিয়াসের সমীকরণ অনুসারে, একটি প্রথম ক্রম বিক্রিয়ার ক্ষেত্রে 1/T এর বিপরীতে ln(k) এর লেখচিত্র অঙ্কন করলে -৬০০০ K নতি (slope) বিশিষ্ট একটি সরলরেখা পাওয়া যায়। সার্বজনীন গ্যাস ধ্রুবক R = ৮.৩১৪ J·K⁻¹·mol⁻¹ হলে বিক্রিয়াটির সক্রিয়করণ শক্তি (E_a) প্রায় কত?",
+        "opts": {
+            "en": ["49.88 kJ/mol", "24.94 kJ/mol", "99.76 kJ/mol", "12.47 kJ/mol"],
+            "bn": ["49.88 kJ/mol", "24.94 kJ/mol", "99.76 kJ/mol", "12.47 kJ/mol"]
+        },
+        "correct": 0,
+        "expl_en": "Arrhenius equation: ln(k) = ln(A) - (E_a / R)(1/T). Comparing with y = mx + c: Slope m = -E_a / R = -6000 K => E_a = 6000 × 8.314 J/mol = 49,884 J/mol ≈ 49.88 kJ/mol.",
+        "expl_bn": "আরহেনিয়াসের সমীকরণ: ln(k) = ln(A) - (E_a / R)(১/T)। লেখচিত্রের নতি m = -E_a / R = -৬০০০ K => E_a = ৬০০০ × ৮.৩১৪ J/mol = ৪৯,৮৮৪ J/mol ≈ ৪৯.৮৮ kJ/mol।"
+    },
+    {
+        "id": "CHEM-009",
+        "exam": "JEE, NEET, WBJEE, BITSAT, AIIMS, CUET",
+        "subject": "Chemistry",
+        "topic": "Carbonyl Compounds & Reaction Mechanisms",
+        "difficulty": "Hard",
+        "diagram": SVG_CANNIZZARO_FLOW,
+        "en": "When an equimolar mixture of benzaldehyde (C₆H₅CHO) and formaldehyde (HCHO) is heated with 50% concentrated aqueous NaOH solution (Crossed Cannizzaro reaction), the major organic products formed are:",
+        "bn": "বেনজালডিহাইড (C₆H₅CHO) এবং ফর্মালডিহাইডের (HCHO) সমমোলার মিশ্রণকে ৫০% গাঢ় জলীয় NaOH দ্রবণের সাথে উত্তপ্ত করলে (ক্রসড ক্যানিজারো বিক্রিয়া) প্রধান জৈব উৎপাদসমূহ কী কী গঠিত হয়?",
+        "opts": {
+            "en": [
+                "Benzyl alcohol and Sodium formate",
+                "Sodium benzoate and Methanol",
+                "Benzyl alcohol and Methanol",
+                "Sodium benzoate and Sodium formate"
+            ],
+            "bn": [
+                "বেনজাইল অ্যালকোহল এবং সোডিয়াম ফরমেট",
+                "সোডিয়াম বেনজোয়েট এবং মিথানল",
+                "বেনজাইল অ্যালকোহল এবং মিথানল",
+                "সোডিয়াম বেনজোয়েট এবং সোডিয়াম ফরমেট"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "In crossed Cannizzaro, OH⁻ attacks the sterically unhindered and more electrophilic formaldehyde. The formed intermediate transfers a hydride ion (H⁻) to benzaldehyde. Thus, formaldehyde is oxidized to sodium formate (HCOONa) while benzaldehyde is reduced to benzyl alcohol (C₆H₅CH₂OH).",
+        "expl_bn": "ক্রসড ক্যানিজারো বিক্রিয়ায় OH⁻ দ্রুত ফর্মালডিহাইডে আক্রমণ করে কারণ এটি অধিক ইলেকট্রোফিলিক। এরপর হাইড্রাইড আয়ন বেনজালডিহাইডে স্থানান্তরিত হওয়ায় ফর্মালডিহাইড জারিত হয়ে সোডিয়াম ফরমেট এবং বেনজালডিহাইড বিজারিত হয়ে বেনজাইল অ্যালকোহল গঠন করে।"
+    },
+    {
+        "id": "CHEM-010",
+        "exam": "NEET, JEE, WBJEE, CUET, BITSAT, AIIMS",
+        "subject": "Chemistry",
+        "topic": "Electrochemistry & Nernst Equation",
+        "difficulty": "Medium",
+        "en": "For the Daniell cell represented as Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) at 298 K, the standard cell potential is E°_cell = 1.10 V. Given (2.303 RT/F) = 0.0591 V, the electromotive force (EMF) of this galvanic cell is:",
+        "bn": "২৯৮ K তাপমাত্রায় Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) ড্যানিয়েল কোষের প্রমাণ বিভব E°_cell = 1.10 V। (2.303 RT/F) = 0.0591 V হলে এই গ্যালভানীয় কোষটির তড়িচ্চালক বল (EMF) কত?",
+        "opts": {
+            "en": ["1.130 V", "1.070 V", "1.159 V", "1.041 V"],
+            "bn": ["1.130 V", "1.070 V", "1.159 V", "1.041 V"]
+        },
+        "correct": 0,
+        "expl_en": "Cell reaction: Zn + Cu²⁺ -> Zn²⁺ + Cu (n = 2). Nernst equation: E_cell = E°_cell - (0.0591/2) log([Zn²⁺]/[Cu²⁺]) = 1.10 - 0.02955 log(0.01/0.1) = 1.10 - 0.02955(-1) = 1.10 + 0.02955 ≈ 1.130 V.",
+        "expl_bn": "কোষ বিক্রিয়া: Zn + Cu²⁺ -> Zn²⁺ + Cu (n = ২)। নার্নস্ট সমীকরণ: E_cell = ১.১০ - (০.০৫৯১/২) log(০.০১/০.১) = ১.১০ - ০.০২৯৫৫(-১) ≈ ১.১৩০ V।"
+    },
+    {
+        "id": "CHEM-011",
+        "exam": "JEE, NEET, WBJEE, CUET, AIIMS, NEST, IIT-JAM",
+        "subject": "Chemistry",
+        "topic": "Coordination Chemistry & Crystal Field Theory",
+        "difficulty": "Hard",
+        "en": "Consider the two octahedral iron(III) complexes [Fe(CN)₆]³⁻ and [Fe(H₂O)₆]³⁺. The hybridization of the central metal ion and the spin-only magnetic moment (μ_s) of [Fe(CN)₆]³⁻ are respectively:",
+        "bn": "দুটি অষ্টতলকীয় আয়রন(III) জটিল যৌগ [Fe(CN)₆]³⁻ এবং [Fe(H₂O)₆]³⁺ বিবেচনা করো। [Fe(CN)₆]³⁻ যৌগে কেন্দ্রীয় ধাতব আয়নের সংকরায়ন (hybridization) এবং কেবল ঘূর্ণনজনিত চৌম্বক ভ্রামক (μ_s) যথাক্রমে কত?",
+        "opts": {
+            "en": ["d²sp³ and 1.73 BM", "sp³d² and 5.92 BM", "d²sp³ and 3.87 BM", "sp³d² and 1.73 BM"],
+            "bn": ["d²sp³ এবং 1.73 BM", "sp³d² এবং 5.92 BM", "d²sp³ এবং 3.87 BM", "sp³d² এবং 1.73 BM"]
+        },
+        "correct": 0,
+        "expl_en": "Fe³⁺ has 3d⁵ configuration. Strong-field ligand CN⁻ forces electron pairing (t_2g⁵ e_g⁰), giving 1 unpaired electron (n = 1) and vacant inner 3d orbitals for d²sp³ hybridization. Spin-only magnetic moment: μ_s = √(1(3)) ≈ 1.73 BM (low spin complex).",
+        "expl_bn": "Fe³⁺ এর ইলেকট্রন বিন্যাস 3d⁵। শক্তিশালী লিগ্যান্ড CN⁻ ইলেকট্রন জোড় বাঁধায় (t_2g⁵ e_g⁰), ফলে ১টি অযুগ্ম ইলেকট্রন থাকে এবং অভ্যন্তরীণ d²sp³ সংকরায়ন ঘটে। ঘূর্ণন চৌম্বক ভ্রামক μ_s = √৩ ≈ ১.৭৩ BM।"
+    },
+    {
+        "id": "CHEM-012",
+        "exam": "JEE, NEET, WBJEE, BITSAT, CUET",
+        "subject": "Chemistry",
+        "topic": "Solutions & Colligative Properties",
+        "difficulty": "Medium",
+        "en": "When benzoic acid (C₆H₅COOH) is dissolved in benzene, it undergoes partial dimerisation: 2 C₆H₅COOH ⇌ (C₆H₅COOH)₂. If the degree of association (α) of benzoic acid in the solution is 80%, the van 't Hoff factor (i) is:",
+        "bn": "বেনজয়িক অ্যাসিডকে (C₆H₅COOH) বেনজিনে দ্রবীভূত করলে এটি আংশিক ডাইমারাইজেশন সম্পন্ন করে: 2 C₆H₅COOH ⇌ (C₆H₅COOH)₂। দ্রবণে বেনজয়িক অ্যাসিডের সংযোজন মাত্রা (α) ৮০% হলে ভ্যান্ট হফ গুণক (i) কত হবে?",
+        "opts": {
+            "en": ["0.60", "0.80", "1.20", "0.40"],
+            "bn": ["0.60", "0.80", "1.20", "0.40"]
+        },
+        "correct": 0,
+        "expl_en": "For association into an n-mer: i = 1 - α(1 - 1/n). For dimerisation n = 2 and α = 0.80: i = 1 - 0.80(1 - 1/2) = 1 - 0.40 = 0.60.",
+        "expl_bn": "অণুর সংযোজনের ক্ষেত্রে: i = ১ - α(১ - ১/n)। ডাইমার গঠনের ক্ষেত্রে n = ২ এবং α = ০.৮০ বসালে: i = ১ - ০.৮০(০.৫) = ১ - ০.৪০ = ০.৬০।"
+    },
+    # =========================================================================
+    # BIOLOGY (Newly Sorted High-Yield Questions)
+    # =========================================================================
+    {
+        "id": "BIO-007",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, ICAR",
+        "subject": "Biology",
+        "topic": "Plant Physiology & Photosynthesis",
+        "difficulty": "Medium",
+        "diagram": SVG_KRANZ_ANATOMY,
+        "en": "In C₄ plants such as maize and sugarcane, carbon dioxide fixation occurs through the Hatch and Slack pathway. The primary CO₂ acceptor molecule and the initial carboxylating enzyme present in the mesophyll cells are respectively:",
+        "bn": "ভুট্টা এবং আখের মতো C₄ উদ্ভিদে হ্যাচ ও স্ল্যাক চক্রের মাধ্যমে কার্বন ডাইঅক্সাইড সংবন্ধন ঘটে। মেসোফিল কোষে প্রাথমিক CO₂ গ্রাহক অণু এবং প্রাথমিক কার্বক্সিলেটিং উৎসেচক যথাক্রমে কোনটি?",
+        "opts": {
+            "en": [
+                "Phosphoenolpyruvate (PEP) and PEP carboxylase",
+                "Ribulose-1,5-bisphosphate (RuBP) and RuBisCO",
+                "Oxaloacetic acid (OAA) and Malic dehydrogenase",
+                "Phosphoglyceric acid (PGA) and RuBisCO"
+            ],
+            "bn": [
+                "ফসফোএনলপাইরুভেট (PEP) এবং PEP কার্বক্সিলেজ",
+                "রিবুলোজ-১,৫-বিসফসফেট (RuBP) এবং RuBisCO",
+                "অক্সালোঅ্যাসিটিক অ্যাসিড (OAA) এবং ম্যালিক ডিহাইড্রোজিনেজ",
+                "ফসফোগ্লিসারিক অ্যাসিড (PGA) এবং RuBisCO"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "In C₄ plants showing Kranz anatomy, the primary CO₂ acceptor in the mesophyll cytoplasm is the 3-carbon phosphoenolpyruvate (PEP), catalyzed by PEP carboxylase (PEPcase) to form 4-carbon oxaloacetic acid (OAA). RuBisCO is absent in mesophyll cells and restricted to bundle sheath cells.",
+        "expl_bn": "ক্র্যাঞ্জ শারীরস্থান বিশিষ্ট C₄ উদ্ভিদের মেসোফিল কোষে প্রাথমিক CO₂ গ্রাহক হলো ফসফোএনলপাইরুভেট (PEP), যা PEP কার্বক্সিলেজ দ্বারা অনুঘটক হয়ে অক্সালোঅ্যাসিটিক অ্যাসিড (OAA) তৈরি করে। মেসোফিল কোষে RuBisCO থাকে না, এটি বান্ডিল সিথ কোষে থাকে।"
+    },
+    {
+        "id": "BIO-008",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT",
+        "subject": "Biology",
+        "topic": "Human Physiology & Locomotion",
+        "difficulty": "Medium",
+        "diagram": SVG_SARCOMERE_STRUCTURE,
+        "en": "According to the sliding filament mechanism of skeletal muscle contraction, when calcium ions (Ca²⁺) bind to troponin C on actin filaments, which of the following structural changes occurs in the sarcomere?",
+        "bn": "কঙ্কাল পেশি সংকোচনের স্লাইডিং ফিলামেন্ট তত্ত্ব অনুসারে, যখন ক্যালসিয়াম আয়ন (Ca²⁺) অ্যাক্টিন ফিলামেন্টের ট্রপোনিন C-এর সাথে যুক্ত হয়, তখন সারকোমিয়ারে নিচের কোন গাঠনিক পরিবর্তনটি ঘটে?",
+        "opts": {
+            "en": [
+                "The H-zone and I-band narrow while the length of the A-band remains constant",
+                "The A-band shortens while the I-band and Z-lines remain stationary",
+                "Both the A-band and I-band lengthen as myosin filaments stretch",
+                "The Z-lines move apart and the H-zone widens"
+            ],
+            "bn": [
+                "H-অঞ্চল এবং I-ব্যান্ড সংকীর্ণ হয় কিন্তু A-ব্যান্ডের দৈর্ঘ্য অপরিবর্তিত থাকে",
+                "A-ব্যান্ড ছোট হয় কিন্তু I-ব্যান্ড এবং Z-রেখা স্থির থাকে",
+                "মায়োসিন প্রসারিত হওয়ায় A-ব্যান্ড এবং I-ব্যান্ড উভয়ই দীর্ঘায়িত হয়",
+                "Z-রেখা দুটি দূরে সরে যায় এবং H-অঞ্চল প্রসারিত হয়"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "During contraction, actin filaments slide over myosin filaments toward the M-line. Consequently, the I-bands shorten, the central H-zone narrows/disappears, while the length of the dark A-band (representing thick myosin filaments) remains strictly constant.",
+        "expl_bn": "পেশি সংকোচনের সময় অ্যাক্টিন ফিলামেন্ট মায়োসিনের ওপর দিয়ে কেন্দ্রের দিকে সরে যায়। ফলে I-ব্যান্ড এবং H-অঞ্চল সংকুচিত হয়, কিন্তু মায়োসিন ফিলামেন্টের দৈর্ঘ্য নির্দেশক A-ব্যান্ডের দৈর্ঘ্য সর্বদা স্থির থাকে।"
+    },
+    {
+        "id": "BIO-009",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, CSIR-NET",
+        "subject": "Biology",
+        "topic": "Biotechnology & Molecular Techniques",
+        "difficulty": "Medium",
+        "diagram": SVG_GEL_ELECTROPHORESIS,
+        "en": "In agarose gel electrophoresis of DNA fragments, which of the following statements correctly describes the migration behavior and visualization of the separated fragments?",
+        "bn": "DNA খণ্ডকের অ্যাগারোজ জেল ইলেক্ট্রোফোরেসিসের ক্ষেত্রে, পৃথকীকৃত খণ্ডকগুলির চলন এবং দৃশ্যমানতার বিষয়ে নিচের কোন বক্তব্যটি সঠিক?",
+        "opts": {
+            "en": [
+                "Negatively charged DNA fragments migrate toward the positive anode, with smaller fragments moving faster; bands appear bright orange under UV light after ethidium bromide staining",
+                "Positively charged DNA fragments migrate toward the negative cathode, with larger fragments moving faster; bands are directly visible under white light",
+                "DNA fragments migrate toward the anode with velocities independent of their base-pair sizes",
+                "Ethidium bromide stains DNA blue under infrared illumination"
+            ],
+            "bn": [
+                "ঋণাত্মক আধানযুক্ত DNA খণ্ডকগুলি ধনাত্মক অ্যানোডের দিকে ধাবিত হয়, ছোট খণ্ডকগুলি দ্রুত চলে; ইথিডিয়াম ব্রোমাইড রঞ্জনের পর UV আলোতে উজ্জ্বল কমলা রঙের ব্যান্ড দৃশ্যমান হয়",
+                "ধনাত্মক আধানযুক্ত DNA খণ্ডকগুলি ঋণাত্মক ক্যাথোডের দিকে ধাবিত হয়, বড় খণ্ডকগুলি দ্রুত চলে; সাদা আলোতে সরাসরি দৃশ্যমান হয়",
+                "DNA খণ্ডকগুলির অ্যানোডের দিকে চলন তাদের ক্ষার-জোড় (base pair) আকারের ওপর নির্ভর করে না",
+                "ইথিডিয়াম ব্রোমাইড অবলোহিত আলোতে DNA-কে নীল রঙে রঞ্জিত করে"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "DNA's negative phosphate backbone drives migration toward the positive anode. Agarose acts as a sieve where smaller fragments move faster and farther. Staining with ethidium bromide (EtBr) followed by ultraviolet (UV) transillumination reveals bright orange fluorescent DNA bands.",
+        "expl_bn": "ফসফেট গ্রুপের ঋণাত্মক আধানের কারণে DNA অ্যানোডের দিকে অগ্রসর হয় এবং জেলের মধ্যে ছোট খণ্ডকগুলি দ্রুত চলে। ইথিডিয়াম ব্রোমাইড (EtBr) রঞ্জক যোগ করার পর অতিবেগুনি (UV) আলোয় দেখলে উজ্জ্বল কমলা রঙের ব্যান্ড প্রতীয়মান হয়।"
+    },
+    {
+        "id": "BIO-010",
+        "exam": "NEET, AIIMS, CUET, ICAR, UPSC, STATE-PSC",
+        "subject": "Biology",
+        "topic": "Ecosystem Dynamics & Energy Flow",
+        "difficulty": "Easy",
+        "en": "According to Lindeman's 10 percent law of energy transfer in an ecosystem, if the primary producers (green plants) synthesize 20,000 J of energy through photosynthesis, how much energy will be available to the tertiary consumer (e.g., eagle or apex predator)?",
+        "bn": "বাস্তুতন্ত্রে শক্তি প্রবাহের লিন্ডেম্যানের ১০ শতাংশ সূত্র অনুসারে, প্রাথমিক উৎপাদকরা (সবুজ উদ্ভিদ) সালোকসংশ্লেষের মাধ্যমে ২০,০০০ J শক্তি উৎপাদন করলে, তৃতীয় স্তরের খাদক (যেমন ঈগল বা শীর্ষ শিকারী) কতটুকু শক্তি লাভ করবে?",
+        "opts": {
+            "en": ["20 J", "200 J", "2 J", "2,000 J"],
+            "bn": ["20 J", "200 J", "2 J", "2,000 J"]
+        },
+        "correct": 0,
+        "expl_en": "Applying Lindeman's 10% law: Producers (T₁) = 20,000 J -> Herbivores (T₂) = 2,000 J -> Primary Carnivores (T₃) = 200 J -> Tertiary Consumers (T₄) = 20 J.",
+        "expl_bn": "লিন্ডেম্যানের ১০% সূত্রানুসারে: উৎপাদক (T₁) = ২০,০০০ J -> প্রাথমিক খাদক (T₂) = ২,০০০ J -> গৌণ খাদক (T₃) = ২০০ J -> তৃতীয় স্তরের খাদক (T₄) = ২০ J।"
+    },
+    {
+        "id": "BIO-011",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT, CSIR-NET",
+        "subject": "Biology",
+        "topic": "Genetics & Morgan's Linkage Experiments",
+        "difficulty": "Hard",
+        "en": "In his seminal dihybrid crosses on Drosophila melanogaster, Thomas Hunt Morgan observed that genes located on the same chromosome did not assort independently. When crossing yellow-bodied, white-eyed females with wild-type brown-bodied, red-eyed males, the proportion of parental phenotypes versus recombinant types in the F₂ generation was:",
+        "bn": "ড্রোসোফিলা মেলানোগাস্টারের ওপর দ্বি-সংকরায়ন পরীক্ষায় থমাস হান্ট মর্গান লক্ষ্য করেন যে একই ক্রোমোজোমে অবস্থিত জিনগুলি স্বাধীনভাবে সঞ্চারিত হয় না। হলুদ দেহ ও সাদা চোখের স্ত্রী মাছির সাথে বুনো বাদামী দেহ ও লাল চোখের পুরুষ মাছির সংকরায়নে F₂ জনুতে অপত্যদের মধ্যে জনিতৃ বৈশিষ্ট্য এবং পুনর্বিন্যস্ত (রিকম্বিন্যান্ট) বৈশিষ্ট্যের অনুপাত কত ছিল?",
+        "opts": {
+            "en": [
+                "98.7% Parental types and 1.3% Recombinant types",
+                "62.8% Parental types and 37.2% Recombinant types",
+                "50.0% Parental types and 50.0% Recombinant types",
+                "75.0% Parental types and 25.0% Recombinant types"
+            ],
+            "bn": [
+                "৯৮.৭% জনিতৃ বৈশিষ্ট্য এবং ১.৩% রিকম্বিন্যান্ট বৈশিষ্ট্য",
+                "৬২.৮% জনিতৃ বৈশিষ্ট্য এবং ৩৭.২% রিকম্বিন্যান্ট বৈশিষ্ট্য",
+                "৫০.০% জনিতৃ বৈশিষ্ট্য এবং ৫০.০% রিকম্বিন্যান্ট বৈশিষ্ট্য",
+                "৭৫.০% জনিতৃ বৈশিষ্ট্য এবং ২৫.০% রিকম্বিন্যান্ট বৈশিষ্ট্য"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Morgan attributed the deviation from 9:3:3:1 to X-chromosome physical linkage. The genes for body colour (yellow) and eye colour (white) are very tightly linked, showing 98.7% parental combinations and only 1.3% crossing-over recombinants.",
+        "expl_bn": "মেন্ডেলীয় অনুপাত থেকে বিচ্যুতির কারণ হিসেবে মর্গান X-ক্রোমোজোমে জিনের সহসংযোজন বা লিংকেজ নির্দেশ করেন। হলুদ দেহ ও সাদা চোখের জিন দুটি দৃঢ়ভাবে সংলগ্ন থাকায় ৯৮.৭% জনিতৃ বৈশিষ্ট্য এবং মাত্র ১.৩% রিকম্বিন্যান্ট অপত্য তৈরি হয়েছিল।"
+    },
+    {
+        "id": "BIO-012",
+        "exam": "NEET, AIIMS, AFMC, CUET, IAT",
+        "subject": "Biology",
+        "topic": "Human Reproduction & Menstrual Cycle",
+        "difficulty": "Medium",
+        "diagram": SVG_HORMONAL_CYCLE,
+        "en": "In the human female menstrual cycle of 28 days, ovulation (release of secondary oocyte from the mature Graafian follicle) is directly triggered by which endocrine event around day 14?",
+        "bn": "মানব স্ত্রীদেহে ২৮ দিনের রজঃচক্রের ক্ষেত্রে, ১৪তম দিনের কাছাকাছি পরিপক্ক গ্রাফিয়ান ফলিকল বিদীর্ণ হয়ে ডিম্বাণু নির্গমন (ওভিউলেশন) সরাসরি কোন হরমোনজনিত ঘটনার দ্বারা ঘটে?",
+        "opts": {
+            "en": [
+                "A rapid surge in Luteinizing Hormone (LH surge) secreted by the anterior pituitary",
+                "A sharp drop in estrogen levels produced by the corpus luteum",
+                "Peak secretion of progesterone by developing primary follicles",
+                "A sudden drop in Follicle Stimulating Hormone (FSH) to baseline levels"
+            ],
+            "bn": [
+                "অগ্র পিটুইটারি থেকে নিঃসৃত লিউটিনাইজিং হরমোনের তীব্র বৃদ্ধি (LH সার্জ)",
+                "কর্পাস লিউটিয়াম দ্বারা উৎপাদিত ইস্ট্রোজেনের মাত্রায় আকস্মিক হ্রাস",
+                "বিকাশমান প্রাথমিক ফলিকল দ্বারা প্রোজেস্টেরনের সর্বোচ্চ ক্ষরণ",
+                "ফলিকল স্টিমুলেটিং হরমোনের (FSH) আকস্মিক পতন"
+            ]
+        },
+        "correct": 0,
+        "expl_en": "Around the 14th day of the cycle, rapid secretion of LH induces maximum mid-cycle concentration ('LH surge'), which causes rupture of the mature Graafian follicle and release of the ovum (ovulation).",
+        "expl_bn": "চক্রের মধ্যভাগে (১৪তম দিনে) অগ্র পিটুইটারি থেকে লিউটিনাইজিং হরমোনের (LH) ক্ষরণ সর্বোচ্চ মাত্রায় পৌঁছায় ('LH সার্জ'), যা গ্রাফিয়ান ফলিকলকে বিদীর্ণ করে ডিম্বাণু নির্গমন বা ওভিউলেশন ঘটায়।"
+    },
+    # =========================================================================
+    # MATHEMATICS (Newly Sorted High-Yield Questions)
+    # =========================================================================
+    {
+        "id": "MATH-007",
+        "exam": "JEE, WBJEE, BITSAT, NDA, IAT",
+        "subject": "Mathematics",
+        "topic": "Differential Calculus & Mean Value Theorems",
+        "difficulty": "Hard",
+        "en": "Let f(x) = x(x - 1)(x - 2) on the closed interval [0, 1/2]. According to Lagrange's Mean Value Theorem, there exists a value c ∈ (0, 1/2) such that f'(c) = (f(1/2) - f(0)) / (1/2 - 0). The value of c is:",
+        "bn": "ধরি [0, 1/2] বদ্ধ বিস্তারে f(x) = x(x - 1)(x - 2)। ল্যাগ্রাঞ্জের গড় মান উপপাদ্য (LMVT) অনুসারে (0, 1/2) মুক্ত বিস্তারে এমন একটি বিন্দু c অবস্থান করে যার জন্য f'(c) = (f(1/2) - f(0)) / (1/2 - 0)। c এর মান কত?",
+        "opts": {
+            "en": ["(6 - √21) / 6", "(6 + √21) / 6", "1 / √6", "(3 - √5) / 4"],
+            "bn": ["(6 - √21) / 6", "(6 + √21) / 6", "1 / √6", "(3 - √5) / 4"]
+        },
+        "correct": 0,
+        "expl_en": "f(x) = x³ - 3x² + 2x. f(0) = 0 and f(1/2) = 3/8 => slope = (3/8)/(1/2) = 3/4. Setting f'(c) = 3c² - 6c + 2 = 3/4 => 12c² - 24c + 5 = 0. Solving: c = (6 ± √21)/6. Because (6 - √21)/6 ≈ 0.236 lies in (0, 1/2), c = (6 - √21)/6.",
+        "expl_bn": "f(x) = x³ - 3x² + 2x। f(০) = ০ এবং f(১/২) = ৩/৮ => গড় ঢাল = ৩/৪। f'(c) = 3c² - 6c + 2 = ৩/৪ => 12c² - 24c + 5 = 0। সমাধান করলে c = (৬ ± √২১)/৬। যেহেতু ০.২৩৬ মানটি (০, ১/২) বিস্তারে অবস্থিত, তাই c = (৬ - √২১)/৬।"
+    },
+    {
+        "id": "MATH-008",
+        "exam": "JEE, JEE-ADV, WBJEE, BITSAT, IAT, IIT-JAM",
+        "subject": "Mathematics",
+        "topic": "Integral Calculus & Definite Integrals",
+        "difficulty": "Hard",
+        "en": "The value of the definite integral I = ∫₀^π (x sin(x)) / (1 + cos²(x)) dx is:",
+        "bn": "নির্দিষ্ট সমাকল I = ∫₀^π (x sin(x)) / (1 + cos²(x)) dx এর মান কত?",
+        "opts": {
+            "en": ["π² / 4", "π² / 2", "π / 4", "π² / 8"],
+            "bn": ["π² / 4", "π² / 2", "π / 4", "π² / 8"]
+        },
+        "correct": 0,
+        "expl_en": "By King's property: 2I = π ∫₀^π sin(x)/(1 + cos²(x)) dx. Substituting u = cos(x), du = -sin(x)dx gives 2I = π ∫₋₁¹ du/(1 + u²) = π [tan⁻¹(1) - tan⁻¹(-1)] = π²/2 => I = π²/4.",
+        "expl_bn": "কিং-এর ধর্ম প্রয়োগ করে: 2I = π ∫₀^π sin(x)/(1 + cos²(x)) dx। u = cos(x) বসালে: 2I = π ∫₋₁¹ du/(1 + u²) = π²/2 => I = π²/4।"
+    },
+    {
+        "id": "MATH-009",
+        "exam": "JEE, WBJEE, BITSAT, NDA",
+        "subject": "Mathematics",
+        "topic": "Coordinate Geometry & Conic Sections",
+        "difficulty": "Hard",
+        "diagram": SVG_CONIC_COMMON_TANGENT,
+        "en": "The equation of a common tangent to the parabola y² = 8ax and the circle x² + y² = 2a² is:",
+        "bn": "অধিবৃত্ত y² = 8ax এবং বৃত্ত x² + y² = 2a² এর একটি সাধারণ স্পর্শকের সমীকরণ কোনটি?",
+        "opts": {
+            "en": ["y = x + 2a", "y = 2x + a", "y = x + a√2", "y = √3 x + a"],
+            "bn": ["y = x + 2a", "y = 2x + a", "y = x + a√2", "y = √3 x + a"]
+        },
+        "correct": 0,
+        "expl_en": "For parabola y² = 8ax (4A = 8a => A = 2a), tangent with slope m is y = mx + 2a/m. Perpendicular distance from circle centre (0,0) to mx - y + 2a/m = 0 must equal circle radius a√2: |2a/m| / √(m² + 1) = a√2. Putting m = 1 gives |2a|/√2 = a√2, which satisfies the condition. Thus, y = x + 2a is a common tangent.",
+        "expl_bn": "y² = 8ax অধিবৃত্তের m নতিযুক্ত স্পর্শক হলো y = mx + 2a/m। বৃত্তের কেন্দ্র (0,0) থেকে এর দূরত্ব ব্যাসার্ধ a√2 এর সমান হলে: |2a/m| / √(m² + 1) = a√2। m = ১ বসালে সমীকরণটি সিদ্ধ হয়, সুতরাং সাধারণ স্পর্শকটি হলো y = x + 2a।"
+    },
+    {
+        "id": "MATH-010",
+        "exam": "JEE, WBJEE, BITSAT, NDA, CUET",
+        "subject": "Mathematics",
+        "topic": "Complex Numbers & Cube Roots of Unity",
+        "difficulty": "Medium",
+        "en": "If ω is a complex cube root of unity (ω ≠ 1), the value of the algebraic expression (1 - ω + ω²)⁵ + (1 + ω - ω²)⁵ is:",
+        "bn": "যদি ω এককের একটি জটিল ঘনমূল হয় (ω ≠ 1), তবে (1 - ω + ω²)⁵ + (1 + ω - ω²)⁵ রাশিটির মান কত?",
+        "opts": {
+            "en": ["32", "-32", "64", "0"],
+            "bn": ["32", "-32", "64", "0"]
+        },
+        "correct": 0,
+        "expl_en": "Since 1 + ω + ω² = 0, 1 + ω² = -ω and 1 + ω = -ω². Then (-2ω)⁵ + (-2ω²)⁵ = -32ω⁵ - 32ω¹⁰ = -32ω² - 32ω = -32(ω² + ω) = -32(-1) = 32.",
+        "expl_bn": "১ + ω + ω² = ০ থেকে পাই ১ + ω² = -ω এবং ১ + ω = -ω²। মান বসিয়ে: (-২ω)⁵ + (-২ω²)⁵ = -৩২(ω² + ω) = -৩২(-১) = ৩২।"
+    },
+    {
+        "id": "MATH-011",
+        "exam": "JEE, WBJEE, BITSAT, NDA, CUET, BANKING",
+        "subject": "Mathematics",
+        "topic": "Probability & Bayes' Theorem",
+        "difficulty": "Hard",
+        "en": "In a precision factory, Machine A produces 60% of total daily output with a 2% defective rate, while Machine B produces the remaining 40% with a 4% defective rate. An item is selected at random and found to be defective. The posterior probability that this defective item was manufactured by Machine A is:",
+        "bn": "একটি কারখানায় যন্ত্র A মোট উৎপাদনের ৬০% তৈরি করে যার ২% ত্রুটিযুক্ত, এবং যন্ত্র B অবশিষ্ট ৪০% তৈরি করে যার ৪% ত্রুটিযুক্ত। দৈবচয়ন পদ্ধতিতে নির্বাচিত একটি পণ্য ত্রুটিযুক্ত পাওয়া গেল। পণ্যটি যন্ত্র A দ্বারা তৈরি হওয়ার উত্তর সম্ভাবনা (posterior probability) কত?",
+        "opts": {
+            "en": ["3/7", "4/7", "3/10", "1/2"],
+            "bn": ["3/7", "4/7", "3/10", "1/2"]
+        },
+        "correct": 0,
+        "expl_en": "P(A) = 0.60, P(B) = 0.40. Defectives: P(D|A) = 0.02, P(D|B) = 0.04. Total defective probability P(D) = 0.60(0.02) + 0.40(0.04) = 0.012 + 0.016 = 0.028. By Bayes' theorem: P(A|D) = 0.012 / 0.028 = 12/28 = 3/7.",
+        "expl_bn": "P(A) = ০.৬০, P(B) = ০.৪০। ত্রুটি P(D|A) = ০.০২, P(D|B) = ০.০৪। মোট ত্রুটি P(D) = ০.০২৮। বেইজের সূত্রানুসারে: P(A|D) = ০.০১২ / ০.০২৮ = ৩/৭।"
+    },
+    {
+        "id": "MATH-012",
+        "exam": "JEE, WBJEE, BITSAT, NDA, CUET, IIT-JAM",
+        "subject": "Mathematics",
+        "topic": "Differential Equations & Integrating Factor",
+        "difficulty": "Medium",
+        "en": "The particular solution of the linear differential equation dy/dx + y cot(x) = 2 cos(x) satisfying the initial boundary condition y(π/2) = 1 is:",
+        "bn": "dy/dx + y cot(x) = 2 cos(x) রৈখিক অবকল সমীকরণের বিশেষ সমাধান কোনটি যা y(π/2) = 1 শর্তটিকে সিদ্ধ করে?",
+        "opts": {
+            "en": ["y = sin(x)", "y = cos(x)", "y = sin²(x)", "y = 2 sin(x) - 1"],
+            "bn": ["y = sin(x)", "y = cos(x)", "y = sin²(x)", "y = 2 sin(x) - 1"]
+        },
+        "correct": 0,
+        "expl_en": "Integrating Factor IF = e^{∫ cot(x) dx} = sin(x). Solution: y sin(x) = ∫ 2 sin(x) cos(x) dx = -cos(2x)/2 + C. Using y(π/2) = 1: 1 = 1/2 + C => C = 1/2. Thus y sin(x) = (1 - cos(2x))/2 = sin²(x) => y = sin(x).",
+        "expl_bn": "সমাকলন গুণক IF = sin(x)। সমাকল করে: y sin(x) = -cos(2x)/২ + C। y(π/২) = ১ বসালে C = ১/২। সুতরাং y sin(x) = sin²(x) => y = sin(x)।"
     }
+
 ]
 
 def export_all():
