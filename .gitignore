@@ -13,3 +13,11 @@ Thumbs.db
 physics for you/
 pdf_sources/
 raw_pdfs/
+
+# Temporary scratch directories & inspection images
+scratch_pages/
+scratch_*.py
+render_*.py
+*.png
+__pycache__/
+
