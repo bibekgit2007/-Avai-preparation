@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avai-prep-v2';
+const CACHE_NAME = 'avai-prep-v3';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -8,7 +8,8 @@ const STATIC_ASSETS = [
   './style.css',
   './script.js',
   './manifest.json',
-  './data/physics_questions.js'
+  './data/physics_questions.js',
+  './data/physics_questions.json'
 ];
 
 // Cache core assets on install

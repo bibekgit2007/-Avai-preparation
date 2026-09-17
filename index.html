@@ -18,11 +18,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     
     <!-- Master Question Bank -->
-    <script src="data/physics_questions.js"></script>
+    <script src="data/physics_questions.js?v=322"></script>
     
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
+        navigator.serviceWorker.register('sw.js').then(reg => {
+          reg.update();
+        }).catch(() => {});
       }
     </script>
     
