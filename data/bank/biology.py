@@ -281,8 +281,8 @@ biology_questions = [
         "bn": 'বাস্তুতন্ত্রে শক্তি প্রবাহের লিন্ডেম্যানের ১০ শতাংশ সূত্র অনুসারে, প্রাথমিক উৎপাদকরা (সবুজ উদ্ভিদ) সালোকসংশ্লেষের মাধ্যমে ২০,০০০ J শক্তি উৎপাদন করলে, তৃতীয় স্তরের খাদক (যেমন ঈগল বা শীর্ষ শিকারী) কতটুকু শক্তি লাভ করবে?',
         "opts": {'en': ['20 J', '200 J', '2 J', '2,000 J'], 'bn': ['20 J', '200 J', '2 J', '2,000 J']},
         "correct": 0,
-        "expl_en": "Applying Lindeman's 10% law: Producers (T₁) = 20,000 J -> Herbivores (T₂) = 2,000 J -> Primary Carnivores (T₃) = 200 J -> Tertiary Consumers (T₄) = 20 J.",
-        "expl_bn": 'লিন্ডেম্যানের ১০% সূত্রানুসারে: উৎপাদক (T₁) = ২০,০০০ J -> প্রাথমিক খাদক (T₂) = ২,০০০ J -> গৌণ খাদক (T₃) = ২০০ J -> তৃতীয় স্তরের খাদক (T₄) = ২০ J।',
+        "expl_en": "Applying Lindeman's 10% law: Producers (T₁) = 20,000 J → Herbivores (T₂) = 2,000 J → Primary Carnivores (T₃) = 200 J → Tertiary Consumers (T₄) = 20 J.",
+        "expl_bn": 'লিন্ডেম্যানের ১০% সূত্রানুসারে: উৎপাদক (T₁) = ২০,০০০ J → প্রাথমিক খাদক (T₂) = ২,০০০ J → গৌণ খাদক (T₃) = ২০০ J → তৃতীয় স্তরের খাদক (T₄) = ২০ J।',
     },
     {
         "id": 'BIO-011',
@@ -321,8 +321,8 @@ biology_questions = [
         "bn": 'শ্রেণিবিন্যাসীয় ক্রমপরম্পরা (taxonomic hierarchy) অনুসারে নিচের কোন ক্যাটাগরিটি বাকি সকলকে অন্তর্ভুক্ত করে?',
         "opts": {'en': ['Order', 'Family', 'Genus', 'Species'], 'bn': ['বর্গ (Order)', 'গোত্র (Family)', 'গণ (Genus)', 'প্রজাতি (Species)']},
         "correct": 0,
-        "expl_en": "The ascending order of taxonomic hierarchy is: Species -> Genus -> Family -> Order -> Class -> Phylum/Division -> Kingdom. Thus, 'Order' is higher than Family, Genus, and Species, and includes all of them.",
-        "expl_bn": "ট্যাক্সোনমিক ক্রম হলো: প্রজাতি -> গণ -> গোত্র -> বর্গ -> শ্রেণী -> পর্ব -> রাজ্য। অতএব 'বর্গ' (Order) গোত্র, গণ ও প্রজাতিকে অন্তর্ভুক্ত করে।",
+        "expl_en": "The ascending order of taxonomic hierarchy is: Species → Genus → Family → Order → Class → Phylum/Division → Kingdom. Thus, 'Order' is higher than Family, Genus, and Species, and includes all of them.",
+        "expl_bn": "ট্যাক্সোনমিক ক্রম হলো: প্রজাতি → গণ → গোত্র → বর্গ → শ্রেণী → পর্ব → রাজ্য। অতএব 'বর্গ' (Order) গোত্র, গণ ও প্রজাতিকে অন্তর্ভুক্ত করে।",
     },
     {
         "id": 'BIO-014',
@@ -555,7 +555,7 @@ biology_questions = [
         "bn": 'সালোকসংশ্লেষের আলোক দশায় জলের আলোক-বিশ্লেষণ বা ফটোলাইসিসের জন্য কোন অপরিহার্য অনুখাদ্যটি (মাইক্রোনিউট্রিয়েন্ট) প্রয়োজন?',
         "opts": {'en': ['Manganese (Mn) and Chlorine (Cl)', 'Iron (Fe) and Magnesium (Mg)', 'Zinc (Zn) and Copper (Cu)', 'Molybdenum (Mo) and Boron (B)'], 'bn': ['ম্যাঙ্গানিজ (Mn) এবং ক্লোরিন (Cl)', 'আয়রন (Fe) এবং ম্যাগনেসিয়াম (Mg)', 'জিংক (Zn) এবং তামা (Cu)', 'মলিবডেনাম (Mo) এবং বোরন (B)']},
         "correct": 0,
-        "expl_en": 'Manganese (Mn²⁺) and Chlorine (Cl⁻) are essential cofactors of the oxygen-evolving complex (OEC) associated with Photosystem II for the photolytic splitting of water (2H₂O -> 4H⁺ + 4e⁻ + O₂).',
+        "expl_en": 'Manganese (Mn²⁺) and Chlorine (Cl⁻) are essential cofactors of the oxygen-evolving complex (OEC) associated with Photosystem II for the photolytic splitting of water (2H₂O → 4H⁺ + 4e⁻ + O₂).',
         "expl_bn": 'ফটোসিস্টেম-২ এর সাথে যুক্ত অক্সিজেন নির্গমনকারী কমপ্লেক্সে ম্যাঙ্গানিজ ও ক্লোরাইড আয়ন জলের ফটোলাইসিস ও O₂ মুক্তিকরণে অপরিহার্য।',
     },
     {
@@ -789,7 +789,7 @@ biology_questions = [
         "bn": 'গুপ্তবীজী উদ্ভিদের দ্বিনিষেক (double fertilization) প্রক্রিয়ায় কোন দুটি সংযুক্তি ঘটে?',
         "opts": {'en': ['Syngamy (egg + sperm) and Triple Fusion (central cell + sperm)', 'Syngamy and Parthenogenesis', 'Two sperms fusing with the egg cell simultaneously', 'Triple fusion only'], 'bn': ['সিনগ্যামি (ডিম্বাণু + পুংজননকোষ) এবং ত্রিসংযোজন (কেন্দ্রীয় কোষ + পুংজননকোষ)', 'সিনগ্যামি এবং পার্থেনোজেনেসিস', 'দুটি পুংজননকোষ একই সাথে ডিম্বাণুর সাথে যুক্ত হয়', 'শুধুমাত্র ত্রিসংযোজন']},
         "correct": 0,
-        "expl_en": 'Double fertilization involves: 1) Syngamy (one male gamete + egg cell -> diploid zygote, 2n); 2) Triple fusion (second male gamete + 2 polar nuclei of central cell -> triploid primary endosperm nucleus, PEN, 3n).',
+        "expl_en": 'Double fertilization involves: 1) Syngamy (one male gamete + egg cell → diploid zygote, 2n); 2) Triple fusion (second male gamete + 2 polar nuclei of central cell → triploid primary endosperm nucleus, PEN, 3n).',
         "expl_bn": 'দ্বিনিষেকে একটি পুংজননকোষ ডিম্বাণুকে নিষিক্ত করে ডিপ্লয়েড জাইগোট (2n) গঠন করে (সিনগ্যামি), এবং অপর পুংজননকোষটি নির্ণীত নিউক্লিয়াসের সাথে যুক্ত হয়ে ট্রিপ্লয়েড শস্য (3n) তৈরি করে (ত্রিসংযোজন)।',
     },
     {
@@ -894,7 +894,7 @@ biology_questions = [
         "opts": {'en': ['Glutamic acid by Valine at position 6 (GAG to GUG)', 'Valine by Glutamic acid at position 6', 'Glutamic acid by Glycine at position 6', 'Lysine by Valine at position 3'], 'bn': ['৬ নম্বর স্থানে গ্লুটামিক অ্যাসিডের পরিবর্তে ভ্যালিন (GAG থেকে GUG)', '৬ নম্বর স্থানে ভ্যালিনের পরিবর্তে গ্লুটামিক অ্যাসিড', '৬ নম্বর স্থানে গ্লুটামিক অ্যাসিডের পরিবর্তে গ্লাইসিন', '৩ নম্বর স্থানে লাইসিনের পরিবর্তে ভ্যালিন']},
         "correct": 0,
         "expl_en": 'Sickle-cell anemia results from a transversion point mutation where the 6th codon of the β-globin gene changes from GAG to GUG, causing substitution of glutamic acid (polar) with valine (non-polar).',
-        "expl_bn": 'β-গ্লোবিন জিনের ৬ষ্ঠ কোডনে একটি বেস পরিবর্তনের কারণে (GAG -> GUG) স্বাভাবিক গ্লুটামিক অ্যাসিডের স্থলে হাইড্রোফোবিক ভ্যালিন যুক্ত হয়ে পলিমারাইজেশন ঘটায়।',
+        "expl_bn": 'β-গ্লোবিন জিনের ৬ষ্ঠ কোডনে একটি বেস পরিবর্তনের কারণে (GAG → GUG) স্বাভাবিক গ্লুটামিক অ্যাসিডের স্থলে হাইড্রোফোবিক ভ্যালিন যুক্ত হয়ে পলিমারাইজেশন ঘটায়।',
     },
     {
         "id": 'BIO-058',
@@ -1166,7 +1166,7 @@ biology_questions = [
         "bn": 'জলজ খাদ্য শৃঙ্খলে DDT-এর মতো অপচনশীল পদার্থের জৈব-বিবর্ধন (Biomagnification) সর্বোচ্চ স্তরে কার দেহে পৌঁছায়?',
         "opts": {'en': ['Fish-eating birds (top carnivores, ~25 ppm)', 'Zooplankton (~0.04 ppm)', 'Small fish (~0.5 ppm)', 'Phytoplankton (~0.003 ppm)'], 'bn': ['মাছখেকো পাখি (শীর্ষ খাদক, ~২৫ ppm)', 'জুপ্ল্যাঙ্কটন (~০.০৪ ppm)', 'ছোট মাছ (~০.৫ ppm)', 'ফাইটোপ্ল্যাঙ্কটন (~০.০০৩ ppm)']},
         "correct": 0,
-        "expl_en": 'DDT is lipophilic and non-metabolizable. As it moves up trophic levels from water (0.003 ppb) -> zooplankton (0.04 ppm) -> small fish (0.5 ppm) -> large fish (2 ppm), it accumulates to 25 ppm in fish-eating birds, causing thinning of eggshells.',
+        "expl_en": 'DDT is lipophilic and non-metabolizable. As it moves up trophic levels from water (0.003 ppb) → zooplankton (0.04 ppm) → small fish (0.5 ppm) → large fish (2 ppm), it accumulates to 25 ppm in fish-eating birds, causing thinning of eggshells.',
         "expl_bn": 'DDT খাদ্যশৃঙ্খলের প্রতিটি স্তরে ক্রমাগত ঘনীভূত হয়ে শীর্ষ স্তরে মাছখেকো পাখির দেহে সর্বোচ্চ ২৫ ppm পর্যন্ত পৌঁছায়, যা ডিমের খোলস পাতলা করে প্রজনন ব্যাহত করে।',
     },
     {
@@ -1190,9 +1190,9 @@ biology_questions = [
         "difficulty": 'Medium',
         "en": 'Alexander von Humboldt observed that within a region, species richness increases with increasing explored area up to a limit, represented by the rectangular hyperbola equation:',
         "bn": 'আলেকজান্ডার ভন হামবোল্ট পর্যবেক্ষণ করেন যে নির্দিষ্ট অঞ্চলে অন্বেষণ এলাকা বাড়ার সাথে প্রজাতির প্রাচুর্য বাড়ে, যার সমীকরণ হলো:',
-        "opts": {'en': ['log S = log C + Z log A', 'log S = log A + Z log C', 'S = C · A^r', 'dN/dt = rN(1 - N/K)'], 'bn': ['log S = log C + Z log A', 'log S = log A + Z log C', 'S = C · A^r', 'dN/dt = rN(1 - N/K)']},
+        "opts": {'en': ['log S = log C + Z log A', 'log S = log A + Z log C', 'S = C · A<sup>r</sup>', 'dN/dt = rN(1 - N/K)'], 'bn': ['log S = log C + Z log A', 'log S = log A + Z log C', 'S = C · A<sup>r</sup>', 'dN/dt = rN(1 - N/K)']},
         "correct": 0,
-        "expl_en": "Alexander von Humboldt's species-area relationship is described by S = C A^Z, which on a logarithmic scale gives a straight line equation: log S = log C + Z log A (where S = species richness, A = area, Z = regression coefficient/slope, C = Y-intercept).",
-        "expl_bn": 'হামবোল্টের প্রজাতি-এলাকা সম্পর্কের সমীকরণ S = C A^Z। লগ স্কেলে এটি সরলরেখার রূপ নেয়: log S = log C + Z log A।',
+        "expl_en": "Alexander von Humboldt's species-area relationship is described by S = C A<sup>Z</sup>, which on a logarithmic scale gives a straight line equation: log S = log C + Z log A (where S = species richness, A = area, Z = regression coefficient/slope, C = Y-intercept).",
+        "expl_bn": 'হামবোল্টের প্রজাতি-এলাকা সম্পর্কের সমীকরণ S = C A<sup>Z</sup>। লগ স্কেলে এটি সরলরেখার রূপ নেয়: log S = log C + Z log A।',
     },
 ]

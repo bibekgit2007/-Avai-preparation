@@ -48,8 +48,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "u_x = 6 m/s, u_y = 8 m/s. Time of flight T = 2 u_y / g = 2(8)/10 = 1.6 s. Horizontal Range R = u_x × T = 6 × 1.6 = 9.6 m.",
-        "expl_bn": "u_x = ৬ m/s, u_y = ৮ m/s। উড্ডয়ন কাল T = ১.৬ সেকেন্ড। অনুভূমিক সীমা R = ৬ × ১.৬ = ৯.৬ মিটার।"
+        "expl_en": "u<sub>x</sub> = 6 m/s, u<sub>y</sub> = 8 m/s. Time of flight T = 2 u<sub>y</sub> / g = 2(8)/10 = 1.6 s. Horizontal Range R = u<sub>x</sub> × T = 6 × 1.6 = 9.6 m.",
+        "expl_bn": "u<sub>x</sub> = ৬ m/s, u<sub>y</sub> = ৮ m/s। উড্ডয়ন কাল T = ১.৬ সেকেন্ড। অনুভূমিক সীমা R = ৬ × ১.৬ = ৯.৬ মিটার।"
     },
     {
         "id": "PHY-003",
@@ -100,8 +100,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Lens Maker's Formula: 1/f_air = (1.5 - 1)(1/R1 - 1/R2) = 0.5 K => K = 1/10. In water: 1/f_water = [(1.5 / 1.333) - 1] K = (1/8)(1/10) = 1/80 => f_water = 80 cm.",
-        "expl_bn": "লেন্স মেকার সূত্রানুসারে: f_water = 4 × f_air = ৪ × ২০ = ৮০ সেমি।"
+        "expl_en": "By Lens Maker's Formula: 1/f<sub>air</sub> = (1.5 - 1)(1/R1 - 1/R2) = 0.5 K => K = 1/10. In water: 1/f<sub>water</sub> = [(1.5 / 1.333) - 1] K = (1/8)(1/10) = 1/80 => f<sub>water</sub> = 80 cm.",
+        "expl_bn": "লেন্স মেকার সূত্রানুসারে: f<sub>water</sub> = 4 × f<sub>air</sub> = ৪ × ২০ = ৮০ সেমি।"
     },
     {
         "id": "PHY-005",
@@ -163,8 +163,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "topic": "Alternating Current",
         "difficulty": "Hard",
         "diagram": "<svg viewBox=\"0 0 560 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <rect x=\"40\" y=\"50\" width=\"480\" height=\"120\" rx=\"12\" fill=\"none\" stroke=\"#334155\" stroke-width=\"3\"/>\n  <!-- Inductor L -->\n  <rect x=\"75\" y=\"47\" width=\"150\" height=\"6\" fill=\"#ffffff\"/>\n  <path d=\"M 80 50 C 90 25, 105 25, 115 50 C 125 25, 140 25, 150 50 C 160 25, 175 25, 185 50 C 195 25, 210 25, 220 50\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"3.5\"/>\n  <text x=\"150\" y=\"80\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Inductor L</text>\n  <circle cx=\"150\" cy=\"18\" r=\"14\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"150\" y=\"23\" fill=\"#1e40af\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">L</tspan></text>\n  <line x1=\"80\" y1=\"50\" x2=\"136\" y2=\"18\" stroke=\"#2563eb\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"220\" y1=\"50\" x2=\"164\" y2=\"18\" stroke=\"#2563eb\" stroke-dasharray=\"2 2\"/>\n  \n  <!-- Capacitor C -->\n  <rect x=\"250\" y=\"46\" width=\"60\" height=\"8\" fill=\"#ffffff\"/>\n  <line x1=\"270\" y1=\"35\" x2=\"270\" y2=\"65\" stroke=\"#0891b2\" stroke-width=\"4\"/>\n  <line x1=\"285\" y1=\"35\" x2=\"285\" y2=\"65\" stroke=\"#0891b2\" stroke-width=\"4\"/>\n  <text x=\"277\" y=\"80\" fill=\"#0e7490\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Capacitor C</text>\n  <circle cx=\"277\" cy=\"18\" r=\"14\" fill=\"#ecfeff\" stroke=\"#0891b2\" stroke-width=\"2\"/>\n  <text x=\"277\" y=\"23\" fill=\"#0e7490\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">C</tspan></text>\n  <line x1=\"250\" y1=\"50\" x2=\"263\" y2=\"18\" stroke=\"#0891b2\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"310\" y1=\"50\" x2=\"291\" y2=\"18\" stroke=\"#0891b2\" stroke-dasharray=\"2 2\"/>\n\n  <!-- Resistor R -->\n  <rect x=\"345\" y=\"46\" width=\"130\" height=\"8\" fill=\"#ffffff\"/>\n  <path d=\"M 350 50 L 360 40 L 375 60 L 390 40 L 405 60 L 420 40 L 435 60 L 445 50\" fill=\"none\" stroke=\"#d97706\" stroke-width=\"3.5\"/>\n  <text x=\"398\" y=\"80\" fill=\"#b45309\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">R = 4 Ω</text>\n  <circle cx=\"398\" cy=\"18\" r=\"14\" fill=\"#fffbeb\" stroke=\"#d97706\" stroke-width=\"2\"/>\n  <text x=\"398\" y=\"23\" fill=\"#b45309\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V<tspan font-size=\"8\">R</tspan></text>\n  <line x1=\"350\" y1=\"50\" x2=\"384\" y2=\"18\" stroke=\"#d97706\" stroke-dasharray=\"2 2\"/>\n  <line x1=\"445\" y1=\"50\" x2=\"412\" y2=\"18\" stroke=\"#d97706\" stroke-dasharray=\"2 2\"/>\n\n  <!-- AC Source Bottom -->\n  <rect x=\"250\" y=\"165\" width=\"60\" height=\"10\" fill=\"#ffffff\"/>\n  <circle cx=\"280\" cy=\"170\" r=\"18\" fill=\"#f8fafc\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <path d=\"M 270 170 Q 275 163 280 170 T 290 170\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2.5\"/>\n  <text x=\"280\" y=\"202\" fill=\"#334155\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">V = V₀ sin(100πt + π/6)</text>\n</svg>",
-        "en": "In the given series LCR circuit connected to an AC source V = V₀ sin(100πt + π/6), the voltmeters read V_L = 40 V, V_R = 40 V, and the circuit parameters are Z = 5 Ω, R = 4 Ω. The capacitive reactance X_C and the peak voltage V₀ of the AC source are respectively:",
-        "bn": "চিত্রে প্রদর্শিত শ্রেণী LCR বর্তনীতে V = V₀ sin(100πt + π/6) পরিবর্তী উৎসের সাথে যুক্ত থাকলে ভোল্টমিটারের পাঠ V_L = 40 V, V_R = 40 V এবং বর্তনীর প্রতিবন্ধকতা Z = 5 Ω, রোধ R = 4 Ω। ধারকীয় প্রতিঘাত X_C এবং উৎসের শীর্ষ ভোল্টেজ V₀ যথাক্রমে কত?",
+        "en": "In the given series LCR circuit connected to an AC source V = V₀ sin(100πt + π/6), the voltmeters read V<sub>L</sub> = 40 V, V<sub>R</sub> = 40 V, and the circuit parameters are Z = 5 Ω, R = 4 Ω. The capacitive reactance X<sub>C</sub> and the peak voltage V₀ of the AC source are respectively:",
+        "bn": "চিত্রে প্রদর্শিত শ্রেণী LCR বর্তনীতে V = V₀ sin(100πt + π/6) পরিবর্তী উৎসের সাথে যুক্ত থাকলে ভোল্টমিটারের পাঠ V<sub>L</sub> = 40 V, V<sub>R</sub> = 40 V এবং বর্তনীর প্রতিবন্ধকতা Z = 5 Ω, রোধ R = 4 Ω। ধারকীয় প্রতিঘাত X<sub>C</sub> এবং উৎসের শীর্ষ ভোল্টেজ V₀ যথাক্রমে কত?",
         "opts": {
             "en": [
                 "1 Ω and 50√2 V",
@@ -180,8 +180,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Current I_rms = V_R / R = 40/4 = 10 A. Peak current I_0 = 10√2 A. Effective voltage V_rms = I_rms × Z = 10 × 5 = 50 V => V_0 = 50√2 V. Reactance X_L = V_L / I_rms = 40/10 = 4 Ω. Since Z² = R² + (X_L - X_C)², 25 = 16 + (4 - X_C)² => (4 - X_C)² = 9 => 4 - X_C = 3 => X_C = 1 Ω.",
-        "expl_bn": "তড়িৎপ্রবাহ I_rms = ৪০/৪ = ১০ A। কার্যকর ভোল্টেজ V_rms = ১০ × ৫ = ৫০ V, শীর্ষ ভোল্টেজ V₀ = ৫০√২ V। প্রতিঘাত X_L = ৪০/১০ = ৪ Ω। Z² = R² + (X_L - X_C)² থেকে X_C = ১ Ω।"
+        "expl_en": "Current I<sub>rms</sub> = V<sub>R</sub> / R = 40/4 = 10 A. Peak current I<sub>0</sub> = 10√2 A. Effective voltage V<sub>rms</sub> = I<sub>rms</sub> × Z = 10 × 5 = 50 V => V<sub>0</sub> = 50√2 V. Reactance X<sub>L</sub> = V<sub>L</sub> / I<sub>rms</sub> = 40/10 = 4 Ω. Since Z² = R² + (X<sub>L</sub> - X<sub>C</sub>)², 25 = 16 + (4 - X<sub>C</sub>)² => (4 - X<sub>C</sub>)² = 9 => 4 - X<sub>C</sub> = 3 => X<sub>C</sub> = 1 Ω.",
+        "expl_bn": "তড়িৎপ্রবাহ I<sub>rms</sub> = ৪০/৪ = ১০ A। কার্যকর ভোল্টেজ V<sub>rms</sub> = ১০ × ৫ = ৫০ V, শীর্ষ ভোল্টেজ V₀ = ৫০√২ V। প্রতিঘাত X<sub>L</sub> = ৪০/১০ = ৪ Ω। Z² = R² + (X<sub>L</sub> - X<sub>C</sub>)² থেকে X<sub>C</sub> = ১ Ω।"
     },
     {
         "id": "PHY-008",
@@ -207,8 +207,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "At the knot: let slanted tension be T. Horizontal equilibrium: T cos θ = T_horiz = f_s ≤ μ W. Vertical equilibrium: T sin θ = W_A. Dividing the two equations: W_A / (μ W) = tan θ => W_A = μ W tan θ.",
-        "expl_bn": "নট বিন্দুতে সাম্যাবস্থা বিবেচনা করে: অনুভূমিক উপাংশ T cos θ = μ W এবং উল্লম্ব উপাংশ T sin θ = W_A। ভাগ করে পাওয়া যায় W_A = μ W tan θ।"
+        "expl_en": "At the knot: let slanted tension be T. Horizontal equilibrium: T cos θ = T<sub>horiz</sub> = f<sub>s</sub> ≤ μ W. Vertical equilibrium: T sin θ = W<sub>A</sub>. Dividing the two equations: W<sub>A</sub> / (μ W) = tan θ => W<sub>A</sub> = μ W tan θ.",
+        "expl_bn": "নট বিন্দুতে সাম্যাবস্থা বিবেচনা করে: অনুভূমিক উপাংশ T cos θ = μ W এবং উল্লম্ব উপাংশ T sin θ = W<sub>A</sub>। ভাগ করে পাওয়া যায় W<sub>A</sub> = μ W tan θ।"
     },
     {
         "id": "PHY-009",
@@ -234,8 +234,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By superposition principle: V_P = V_entire(at r = R/2) - V_removed(at its own center). For complete sphere: V_entire(R/2) = -(GM / 2R³)[3R² - (R/2)²] = -11GM / (8R). The removed cavity has mass M' = M( (R/2)³ / R³ ) = M/8 and radius R' = R/2. Potential at its center V_removed(0) = -3G M' / (2R') = -3G(M/8) / [2(R/2)] = -3GM / (8R). Therefore, V_P = -11GM/(8R) - [-3GM/(8R)] = -8GM/(8R) = -GM/R.",
-        "expl_bn": "উপরিলেপন নীতি অনুযায়ী: V_P = V_সম্পূর্ণ(R/2) - V_অপসারিত(0)। সম্পূর্ণ গোলকের জন্য বিভব = -১১GM/(৮R) এবং অপসারিত অংশের কেন্দ্রে নিজস্ব বিভব = -৩GM/(৮R)। অতএব V_P = -GM/R।"
+        "expl_en": "By superposition principle: V<sub>P</sub> = V<sub>entire</sub>(at r = R/2) - V<sub>removed</sub>(at its own center). For complete sphere: V<sub>entire</sub>(R/2) = -(GM / 2R³)[3R² - (R/2)²] = -11GM / (8R). The removed cavity has mass M' = M( (R/2)³ / R³ ) = M/8 and radius R' = R/2. Potential at its center V<sub>removed</sub>(0) = -3G M' / (2R') = -3G(M/8) / [2(R/2)] = -3GM / (8R). Therefore, V<sub>P</sub> = -11GM/(8R) - [-3GM/(8R)] = -8GM/(8R) = -GM/R.",
+        "expl_bn": "উপরিলেপন নীতি অনুযায়ী: V<sub>P</sub> = V<sub>সম্পূর্ণ</sub>(R/2) - V<sub>অপসারিত</sub>(0)। সম্পূর্ণ গোলকের জন্য বিভব = -১১GM/(৮R) এবং অপসারিত অংশের কেন্দ্রে নিজস্ব বিভব = -৩GM/(৮R)। অতএব V<sub>P</sub> = -GM/R।"
     },
     {
         "id": "PHY-010",
@@ -261,8 +261,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Critical angle C_c = sin⁻¹(1/μ) = sin⁻¹(1/1.5) = 41.8°. Inside the prism, the ray strikes the hypotenuse BC at an angle of incidence i = 45°. Since i > C_c, Total Internal Reflection (TIR) occurs at BC and the ray exits perpendicular to face AC. Net deviation δ = 90°.",
-        "expl_bn": "সংকট কোণ C_c = sin⁻¹(১/১.৫) = ৪১.৮°। প্রিজমের অভ্যন্তরে অতিভুজ পৃষ্ঠে আপতন কোণ i = ৪৫° যা সংকট কোণের চেয়ে বড়। ফলে পূর্ণ অভ্যন্তরীণ প্রতিফলন ঘটে এবং রশ্মিটি ৯০° কোণে বিচ্যুত হয়।"
+        "expl_en": "Critical angle C<sub>c</sub> = sin⁻¹(1/μ) = sin⁻¹(1/1.5) = 41.8°. Inside the prism, the ray strikes the hypotenuse BC at an angle of incidence i = 45°. Since i > C<sub>c</sub>, Total Internal Reflection (TIR) occurs at BC and the ray exits perpendicular to face AC. Net deviation δ = 90°.",
+        "expl_bn": "সংকট কোণ C<sub>c</sub> = sin⁻¹(১/১.৫) = ৪১.৮°। প্রিজমের অভ্যন্তরে অতিভুজ পৃষ্ঠে আপতন কোণ i = ৪৫° যা সংকট কোণের চেয়ে বড়। ফলে পূর্ণ অভ্যন্তরীণ প্রতিফলন ঘটে এবং রশ্মিটি ৯০° কোণে বিচ্যুত হয়।"
     },
     {
         "id": "PHY-011",
@@ -315,7 +315,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Carnot efficiency η = 1 - T₂/T₁ = 1 - 300/500 = 1 - 0.6 = 0.4 (40%). Work done W = η × Q_in = 0.4 × 600 J = 240 J.",
+        "expl_en": "Carnot efficiency η = 1 - T₂/T₁ = 1 - 300/500 = 1 - 0.6 = 0.4 (40%). Work done W = η × Q<sub>in</sub> = 0.4 × 600 J = 240 J.",
         "expl_bn": "কার্নো ইঞ্জিনের কর্মদক্ষতা η = ১ - ৩০০/৫০০ = ০.৪ (৪০%)। প্রতি চক্রে কৃতকার্য W = ০.৪ × ৬০০ = ২৪০ জুল।"
     },
     {
@@ -352,8 +352,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "topic": "Current Electricity & Conductivity",
         "difficulty": "Medium",
         "diagram": "<svg viewBox=\"0 0 520 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <defs>\n    <linearGradient id=\"cond1Grad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#3b82f6\"/>\n      <stop offset=\"50%\" stop-color=\"#60a5fa\"/>\n      <stop offset=\"100%\" stop-color=\"#1d4ed8\"/>\n    </linearGradient>\n    <linearGradient id=\"cond2Grad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#f59e0b\"/>\n      <stop offset=\"50%\" stop-color=\"#fbbf24\"/>\n      <stop offset=\"100%\" stop-color=\"#d97706\"/>\n    </linearGradient>\n  </defs>\n  <rect x=\"70\" y=\"55\" width=\"170\" height=\"60\" rx=\"6\" fill=\"url(#cond1Grad)\" stroke=\"#1e3a8a\" stroke-width=\"2\"/>\n  <ellipse cx=\"70\" cy=\"85\" rx=\"14\" ry=\"30\" fill=\"#2563eb\" stroke=\"#1e3a8a\" stroke-width=\"2\"/>\n  <text x=\"155\" y=\"82\" fill=\"#ffffff\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Metal 1 (σ₁)</text>\n  <text x=\"155\" y=\"100\" fill=\"#eff6ff\" font-size=\"11\" font-family=\"system-ui\" text-anchor=\"middle\">Length = L, Area = A</text>\n  <rect x=\"240\" y=\"55\" width=\"170\" height=\"60\" rx=\"6\" fill=\"url(#cond2Grad)\" stroke=\"#b45309\" stroke-width=\"2\"/>\n  <ellipse cx=\"240\" cy=\"85\" rx=\"14\" ry=\"30\" fill=\"#d97706\" stroke=\"#b45309\" stroke-width=\"2\"/>\n  <ellipse cx=\"410\" cy=\"85\" rx=\"14\" ry=\"30\" fill=\"#f59e0b\" stroke=\"#b45309\" stroke-width=\"2\"/>\n  <text x=\"325\" y=\"82\" fill=\"#ffffff\" font-size=\"14\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Metal 2 (σ₂)</text>\n  <text x=\"325\" y=\"100\" fill=\"#fffbeb\" font-size=\"11\" font-family=\"system-ui\" text-anchor=\"middle\">Length = L, Area = A</text>\n  <line x1=\"20\" y1=\"85\" x2=\"60\" y2=\"85\" stroke=\"#0f172a\" stroke-width=\"3\"/>\n  <polygon points=\"65,85 55,80 55,90\" fill=\"#0f172a\"/>\n  <text x=\"35\" y=\"75\" fill=\"#0f172a\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">I</text>\n  <line x1=\"420\" y1=\"85\" x2=\"480\" y2=\"85\" stroke=\"#0f172a\" stroke-width=\"3\"/>\n  <polygon points=\"485,85 475,80 475,90\" fill=\"#0f172a\"/>\n  <text x=\"450\" y=\"75\" fill=\"#0f172a\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\">I</text>\n  <line x1=\"70\" y1=\"135\" x2=\"410\" y2=\"135\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n  <line x1=\"70\" y1=\"128\" x2=\"70\" y2=\"142\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n  <line x1=\"240\" y1=\"128\" x2=\"240\" y2=\"142\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n  <line x1=\"410\" y1=\"128\" x2=\"410\" y2=\"142\" stroke=\"#64748b\" stroke-width=\"1.5\"/>\n  <text x=\"155\" y=\"152\" fill=\"#475569\" font-size=\"12\" font-family=\"system-ui\" text-anchor=\"middle\">L</text>\n  <text x=\"325\" y=\"152\" fill=\"#475569\" font-size=\"12\" font-family=\"system-ui\" text-anchor=\"middle\">L</text>\n  <text x=\"240\" y=\"172\" fill=\"#0369a1\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Equivalent Conductivity: σ_eq = 2σ₁σ₂ / (σ₁ + σ₂)</text>\n</svg>",
-        "en": "Two metal rods of identical length L and cross-sectional area A have electrical conductivities σ₁ and σ₂ respectively. When they are joined end-to-end in series, the effective electrical conductivity (σ_eq) of the combination is:",
-        "bn": "সমান দৈর্ঘ্য L এবং সমান প্রস্থচ্ছেদ A বিশিষ্ট দুটি ধাতব দণ্ডের তড়িৎ পরিবাহিতা যথাক্রমে σ₁ এবং σ₂। এদের শ্রেণি সমবায়ে যুক্ত করা হলে সমবায়টির কার্যকর তড়িৎ পরিবাহিতা (σ_eq) কত হবে?",
+        "en": "Two metal rods of identical length L and cross-sectional area A have electrical conductivities σ₁ and σ₂ respectively. When they are joined end-to-end in series, the effective electrical conductivity (σ<sub>eq</sub>) of the combination is:",
+        "bn": "সমান দৈর্ঘ্য L এবং সমান প্রস্থচ্ছেদ A বিশিষ্ট দুটি ধাতব দণ্ডের তড়িৎ পরিবাহিতা যথাক্রমে σ₁ এবং σ₂। এদের শ্রেণি সমবায়ে যুক্ত করা হলে সমবায়টির কার্যকর তড়িৎ পরিবাহিতা (σ<sub>eq</sub>) কত হবে?",
         "opts": {
             "en": [
                 "(2σ₁σ₂) / (σ₁ + σ₂)",
@@ -369,8 +369,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Total length = 2L, area = A. In series, equivalent resistance R_eq = R₁ + R₂. Using R = L / (σ A): (2L)/(σ_eq A) = L/(σ₁ A) + L/(σ₂ A) => 2/σ_eq = (σ₁ + σ₂)/(σ₁σ₂) => σ_eq = (2σ₁σ₂) / (σ₁ + σ₂).",
-        "expl_bn": "মোট দৈর্ঘ্য = 2L এবং ক্ষেত্রফল = A। শ্রেণি সমবায়ে তুল্য রোধ R_eq = R₁ + R₂। R = L / (σ A) থেকে: 2/σ_eq = 1/σ₁ + 1/σ₂ => σ_eq = (2σ₁σ₂) / (σ₁ + σ₂), যা পরিবাহিতা দুটির হারমোনিক গড়।"
+        "expl_en": "Total length = 2L, area = A. In series, equivalent resistance R<sub>eq</sub> = R₁ + R₂. Using R = L / (σ A): (2L)/(σ<sub>eq</sub> A) = L/(σ₁ A) + L/(σ₂ A) => 2/σ<sub>eq</sub> = (σ₁ + σ₂)/(σ₁σ₂) => σ<sub>eq</sub> = (2σ₁σ₂) / (σ₁ + σ₂).",
+        "expl_bn": "মোট দৈর্ঘ্য = 2L এবং ক্ষেত্রফল = A। শ্রেণি সমবায়ে তুল্য রোধ R<sub>eq</sub> = R₁ + R₂। R = L / (σ A) থেকে: 2/σ<sub>eq</sub> = 1/σ₁ + 1/σ₂ => σ<sub>eq</sub> = (2σ₁σ₂) / (σ₁ + σ₂), যা পরিবাহিতা দুটির হারমোনিক গড়।"
     },
     {
         "id": "PHY-015",
@@ -378,8 +378,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Alternating Current & Resonance",
         "difficulty": "Medium",
-        "en": "An AC circuit consists of a pure resistance of 1 kΩ, a capacitor of capacitance 0.1 μF, and an inductor of inductance 1 mH connected in series. The approximate resonant frequency (f_r) of the circuit and the effect on f_r if the resistance is doubled are respectively:",
-        "bn": "একটি পরিবর্তী প্রবাহ (AC) বর্তনীতে ১ kΩ রোধ, ০.১ μF ধারকত্ব এবং ১ mH আবেশাঙ্ক শ্রেণি সমবায়ে যুক্ত রয়েছে। বর্তনীটির আনুমানিক অনুনাদী কম্পাঙ্ক (f_r) এবং রোধ দ্বিগুণ করা হলে f_r-এর ওপর প্রভাব যথাক্রমে:",
+        "en": "An AC circuit consists of a pure resistance of 1 kΩ, a capacitor of capacitance 0.1 μF, and an inductor of inductance 1 mH connected in series. The approximate resonant frequency (f<sub>r</sub>) of the circuit and the effect on f<sub>r</sub> if the resistance is doubled are respectively:",
+        "bn": "একটি পরিবর্তী প্রবাহ (AC) বর্তনীতে ১ kΩ রোধ, ০.১ μF ধারকত্ব এবং ১ mH আবেশাঙ্ক শ্রেণি সমবায়ে যুক্ত রয়েছে। বর্তনীটির আনুমানিক অনুনাদী কম্পাঙ্ক (f<sub>r</sub>) এবং রোধ দ্বিগুণ করা হলে f<sub>r</sub>-এর ওপর প্রভাব যথাক্রমে:",
         "opts": {
             "en": [
                 "15.9 kHz, unchanged",
@@ -395,8 +395,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Series resonant frequency: f_r = 1 / (2π√(LC)). With L = 10⁻³ H and C = 10⁻⁷ F, √(LC) = 10⁻⁵ s => f_r = 10⁵ / (2π) ≈ 15.9 kHz. Because resonance depends solely on L and C and is independent of resistance R, doubling R leaves f_r unchanged.",
-        "expl_bn": "অনুনাদী কম্পাঙ্ক: f_r = ১ / (২π√(LC))। L = ১০⁻³ H এবং C = ১০⁻⁷ F হলে √(LC) = ১০⁻⁵ s => f_r = ১০⁵ / (২π) ≈ ১৫.৯ kHz। অনুনাদী কম্পাঙ্ক রোধ R-এর ওপর নির্ভর করে না, তাই রোধ দ্বিগুণ করলেও তা অপরিবর্তিত থাকে।"
+        "expl_en": "Series resonant frequency: f<sub>r</sub> = 1 / (2π√(LC)). With L = 10⁻³ H and C = 10⁻⁷ F, √(LC) = 10⁻⁵ s => f<sub>r</sub> = 10⁵ / (2π) ≈ 15.9 kHz. Because resonance depends solely on L and C and is independent of resistance R, doubling R leaves f<sub>r</sub> unchanged.",
+        "expl_bn": "অনুনাদী কম্পাঙ্ক: f<sub>r</sub> = ১ / (২π√(LC))। L = ১০⁻³ H এবং C = ১০⁻⁷ F হলে √(LC) = ১০⁻⁵ s => f<sub>r</sub> = ১০⁵ / (২π) ≈ ১৫.৯ kHz। অনুনাদী কম্পাঙ্ক রোধ R-এর ওপর নির্ভর করে না, তাই রোধ দ্বিগুণ করলেও তা অপরিবর্তিত থাকে।"
     },
     {
         "id": "PHY-016",
@@ -473,8 +473,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "For shortest path (perpendicular crossing), resultant velocity v_net = √(v_b² - v_r²) = √(5² - 3²) = √16 = 4 km/h. Time t = d / v_net = 1 km / (4 km/h) = 0.25 h = 15 minutes.",
-        "expl_bn": "ক্ষুদ্রতম পথে (সরাসরি নদীর বিপরীত পাড়ে) পারাপারের জন্য লব্ধি বেগ v_net = √(৫² - ৩²) = ৪ কিমি/ঘণ্টা। প্রয়োজনীয় সময় t = ১/৪ ঘণ্টা = ১৫ মিনিট।"
+        "expl_en": "For shortest path (perpendicular crossing), resultant velocity v<sub>net</sub> = √(v<sub>b</sub>² - v<sub>r</sub>²) = √(5² - 3²) = √16 = 4 km/h. Time t = d / v<sub>net</sub> = 1 km / (4 km/h) = 0.25 h = 15 minutes.",
+        "expl_bn": "ক্ষুদ্রতম পথে (সরাসরি নদীর বিপরীত পাড়ে) পারাপারের জন্য লব্ধি বেগ v<sub>net</sub> = √(৫² - ৩²) = ৪ কিমি/ঘণ্টা। প্রয়োজনীয় সময় t = ১/৪ ঘণ্টা = ১৫ মিনিট।"
     },
     {
         "id": "PHY-019",
@@ -482,8 +482,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Laws of Motion & Friction",
         "difficulty": "Medium",
-        "en": "A block of mass 2 kg is placed on a rough horizontal surface with coefficient of static friction μ_s = 0.4. If a horizontal force of 6 N is applied to the block, the frictional force exerted by the surface on the block is (take g = 10 m/s²):",
-        "bn": "২ কেজি ভরের একটি ব্লক অমসৃণ অনুভূমিক তলে রাখা আছে যার স্থির ঘর্ষণ গুণাঙ্ক μ_s = ০.৪। ব্লকের ওপর ৬ N অনুভূমিক বল প্রয়োগ করা হলে তল কর্তৃক ব্লকের ওপর প্রযুক্ত ঘর্ষণ বল কত? (g = 10 m/s²):",
+        "en": "A block of mass 2 kg is placed on a rough horizontal surface with coefficient of static friction μ<sub>s</sub> = 0.4. If a horizontal force of 6 N is applied to the block, the frictional force exerted by the surface on the block is (take g = 10 m/s²):",
+        "bn": "২ কেজি ভরের একটি ব্লক অমসৃণ অনুভূমিক তলে রাখা আছে যার স্থির ঘর্ষণ গুণাঙ্ক μ<sub>s</sub> = ০.৪। ব্লকের ওপর ৬ N অনুভূমিক বল প্রয়োগ করা হলে তল কর্তৃক ব্লকের ওপর প্রযুক্ত ঘর্ষণ বল কত? (g = 10 m/s²):",
         "opts": {
             "en": [
                 "6 N",
@@ -499,8 +499,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Maximum static limiting friction f_max = μ_s × N = μ_s × m g = 0.4 × 2 × 10 = 8 N. Since applied force F = 6 N < f_max, the block does not move. Static friction is self-adjusting, so f = F_applied = 6 N.",
-        "expl_bn": "সীমাস্ত ঘর্ষণ বল f_max = μ_s × mg = ০.৪ × ২ × ১০ = ৮ N। যেহেতু প্রযুক্ত বল ৬ N সীমাস্ত মানের চেয়ে কম, তাই ব্লকটি গতিশীল হবে না। স্ব-নিয়ন্ত্রক স্থির ঘর্ষণ বল প্রযুক্ত বলের সমান হবে, অর্থাৎ f = ৬ N।"
+        "expl_en": "Maximum static limiting friction f<sub>max</sub> = μ<sub>s</sub> × N = μ<sub>s</sub> × m g = 0.4 × 2 × 10 = 8 N. Since applied force F = 6 N < f<sub>max</sub>, the block does not move. Static friction is self-adjusting, so f = F<sub>applied</sub> = 6 N.",
+        "expl_bn": "সীমাস্ত ঘর্ষণ বল f<sub>max</sub> = μ<sub>s</sub> × mg = ০.৪ × ২ × ১০ = ৮ N। যেহেতু প্রযুক্ত বল ৬ N সীমাস্ত মানের চেয়ে কম, তাই ব্লকটি গতিশীল হবে না। স্ব-নিয়ন্ত্রক স্থির ঘর্ষণ বল প্রযুক্ত বলের সমান হবে, অর্থাৎ f = ৬ N।"
     },
     {
         "id": "PHY-020",
@@ -560,8 +560,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Rotational Motion & Moment of Inertia",
         "difficulty": "Hard",
-        "en": "A solid cylinder and a hollow cylinder of identical mass M and outer radius R roll down an inclined plane without slipping from the same height. The ratio of their linear accelerations (a_solid / a_hollow) down the incline is:",
-        "bn": "সমান ভর M এবং ব্যাসার্ধ R বিশিষ্ট একটি নিরেট চোঙ এবং একটি ফাঁপা চোঙ একই উচ্চতা থেকে একটি নততল বেয়ে না পিছলে গড়িয়ে নিচে নামে। তাদের রৈখিক ত্বরণের অনুপাত (a_solid / a_hollow) কত?",
+        "en": "A solid cylinder and a hollow cylinder of identical mass M and outer radius R roll down an inclined plane without slipping from the same height. The ratio of their linear accelerations (a<sub>solid</sub> / a<sub>hollow</sub>) down the incline is:",
+        "bn": "সমান ভর M এবং ব্যাসার্ধ R বিশিষ্ট একটি নিরেট চোঙ এবং একটি ফাঁপা চোঙ একই উচ্চতা থেকে একটি নততল বেয়ে না পিছলে গড়িয়ে নিচে নামে। তাদের রৈখিক ত্বরণের অনুপাত (a<sub>solid</sub> / a<sub>hollow</sub>) কত?",
         "opts": {
             "en": [
                 "4 / 3",
@@ -577,8 +577,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Pure rolling acceleration on an incline: a = (g sin θ) / (1 + I / (M R²)). For a solid cylinder, I = 0.5 M R² => a_s = (g sin θ)/(1 + 0.5) = (2/3) g sin θ. For a hollow cylinder, I = M R² => a_h = (g sin θ)/(1 + 1) = (1/2) g sin θ. Ratio = (2/3) / (1/2) = 4/3.",
-        "expl_bn": "নততলে ঘূর্ণনের ক্ষেত্রে ত্বরণ a = (g sin θ) / (১ + I/(MR²))। নিরেট চোঙের জন্য I = ০.৫ MR² => a_s = (২/৩) g sin θ। ফাঁপা চোঙের জন্য I = MR² => a_h = (১/২) g sin θ। ত্বরণের অনুপাত = (২/৩) / (১/২) = ৪/৩।"
+        "expl_en": "Pure rolling acceleration on an incline: a = (g sin θ) / (1 + I / (M R²)). For a solid cylinder, I = 0.5 M R² => a<sub>s</sub> = (g sin θ)/(1 + 0.5) = (2/3) g sin θ. For a hollow cylinder, I = M R² => a<sub>h</sub> = (g sin θ)/(1 + 1) = (1/2) g sin θ. Ratio = (2/3) / (1/2) = 4/3.",
+        "expl_bn": "নততলে ঘূর্ণনের ক্ষেত্রে ত্বরণ a = (g sin θ) / (১ + I/(MR²))। নিরেট চোঙের জন্য I = ০.৫ MR² => a<sub>s</sub> = (২/৩) g sin θ। ফাঁপা চোঙের জন্য I = MR² => a<sub>h</sub> = (১/২) g sin θ। ত্বরণের অনুপাত = (২/৩) / (১/২) = ৪/৩।"
     },
     {
         "id": "PHY-023",
@@ -629,8 +629,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Kepler's Third Law, T² ∝ r³. T_geo = 24 h at r₁ = 7R. For r₂ = 3.5R = r₁/2: T₂ / T₁ = (r₂ / r₁)^(3/2) = (1/2)^(3/2) = 1 / (2√2). T₂ = 24 / (2√2) = 12 / √2 = 6√2 hours ≈ 8.48 h.",
-        "expl_bn": "কেপলারের ৩য় সূত্রানুসারে T² ∝ r³। ভূ-সমলয় উপগ্রহের T₁ = ২৪ ঘণ্টা, r₁ = 7R। r₂ = 3.5R = r₁/২ হলে: T₂ = ২৪ × (১/২)^(৩/২) = ২৪ / (২√২) = ৬√২ ঘণ্টা ≈ ৮.৪৮ ঘণ্টা।"
+        "expl_en": "By Kepler's Third Law, T² ∝ r³. T<sub>geo</sub> = 24 h at r₁ = 7R. For r₂ = 3.5R = r₁/2: T₂ / T₁ = (r₂ / r₁)<sup>3/2</sup> = (1/2)<sup>3/2</sup> = 1 / (2√2). T₂ = 24 / (2√2) = 12 / √2 = 6√2 hours ≈ 8.48 h.",
+        "expl_bn": "কেপলারের ৩য় সূত্রানুসারে T² ∝ r³। ভূ-সমলয় উপগ্রহের T₁ = ২৪ ঘণ্টা, r₁ = 7R। r₂ = 3.5R = r₁/২ হলে: T₂ = ২৪ × (১/২)<sup>৩/২</sup> = ২৪ / (২√২) = ৬√২ ঘণ্টা ≈ ৮.৪৮ ঘণ্টা।"
     },
     {
         "id": "PHY-025",
@@ -733,8 +733,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "For an adiabatic process: T V^(γ - 1) = constant. T₂ / T₁ = (V₁ / V₂)^(γ - 1) = (1 / 8)^(5/3 - 1) = (1 / 8)^(2/3) = ((1/8)^(1/3))² = (1/2)² = 1/4.",
-        "expl_bn": "রুদ্ধতাপ প্রক্রিয়ায় T V^(γ - 1) = ধ্রুবক। T₂/T₁ = (১/৮)^(৫/৩ - ১) = (১/৮)^(২/৩) = (১/২)² = ১/৪।"
+        "expl_en": "For an adiabatic process: T V<sup>γ - 1</sup> = constant. T₂ / T₁ = (V₁ / V₂)<sup>γ - 1</sup> = (1 / 8)<sup>5/3 - 1</sup> = (1 / 8)<sup>2/3</sup> = ((1/8)<sup>1/3</sup>)² = (1/2)² = 1/4.",
+        "expl_bn": "রুদ্ধতাপ প্রক্রিয়ায় T V<sup>γ - 1</sup> = ধ্রুবক। T₂/T₁ = (১/৮)<sup>৫/৩ - ১</sup> = (১/৮)<sup>২/৩</sup> = (১/২)² = ১/৪।"
     },
     {
         "id": "PHY-029",
@@ -759,8 +759,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "v_rms = √(3 R T / M) => v_rms ∝ 1 / √M. v_He / v_O2 = √(M_O2 / M_He) = √(32 / 4) = √8 = 2√2.",
-        "expl_bn": "গ্যাসের rms বেগ v_rms = √(3RT/M) ∝ ১/√M। v_He / v_O2 = √(৩২/৪) = √৮ = ২√২ : ১।"
+        "expl_en": "v<sub>rms</sub> = √(3 R T / M) => v<sub>rms</sub> ∝ 1 / √M. v<sub>He</sub> / v<sub>O2</sub> = √(M<sub>O2</sub> / M<sub>He</sub>) = √(32 / 4) = √8 = 2√2.",
+        "expl_bn": "গ্যাসের rms বেগ v<sub>rms</sub> = √(3RT/M) ∝ ১/√M। v<sub>He</sub> / v<sub>O2</sub> = √(৩২/৪) = √৮ = ২√২ : ১।"
     },
     {
         "id": "PHY-030",
@@ -811,8 +811,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Doppler's effect for moving source approaching stationary observer: f' = f × v / (v - v_s) = 300 × 330 / (330 - 33) = 300 × 330 / 297 = 300 × (10/9) = 333.3 Hz.",
-        "expl_bn": "ডপলার ক্রিয়া অনুসারে f' = f × v / (v - v_s) = ৩০০ × ৩৩০ / (৩৩০ - ৩৩) = ৩০০ × (১০/৯) = ৩৩৩.৩ Hz।"
+        "expl_en": "By Doppler's effect for moving source approaching stationary observer: f' = f × v / (v - v<sub>s</sub>) = 300 × 330 / (330 - 33) = 300 × 330 / 297 = 300 × (10/9) = 333.3 Hz.",
+        "expl_bn": "ডপলার ক্রিয়া অনুসারে f' = f × v / (v - v<sub>s</sub>) = ৩০০ × ৩৩০ / (৩৩০ - ৩৩) = ৩০০ × (১০/৯) = ৩৩৩.৩ Hz।"
     },
     {
         "id": "PHY-032",
@@ -863,7 +863,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Gauss's law, total flux through the enclosed cube is Φ_total = q / ε₀. By symmetry, the flux is distributed equally across all 6 faces, so flux through each face = q / (6 ε₀).",
+        "expl_en": "By Gauss's law, total flux through the enclosed cube is Φ<sub>total</sub> = q / ε₀. By symmetry, the flux is distributed equally across all 6 faces, so flux through each face = q / (6 ε₀).",
         "expl_bn": "গাউসের সূত্রানুসারে ঘনকের মধ্য দিয়ে মোট ফ্লাক্স Φ = q / ε₀। প্রতিসাম্যের কারণে ৬টি তলের প্রতিটির মধ্য দিয়ে ফ্লাক্স = q / (৬ ε₀)।"
     },
     {
@@ -1028,8 +1028,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Ray Optics & Lens Maker's Formula",
         "difficulty": "Medium",
-        "en": "A convex lens of focal length 20 cm in air (refractive index μ_glass = 1.5) is immersed in water (μ_water = 4/3). Its focal length in water becomes:",
-        "bn": "বায়ুতে ২০ সেমি ফোকাস দৈর্ঘ্যের একটি উত্তল কাচ লেন্সকে (μ_glass = ১.৫) জলে (μ_water = ৪/৩) নিমজ্জিত করা হলো। জলে লেন্সটির ফোকাস দৈর্ঘ্য কত হবে?",
+        "en": "A convex lens of focal length 20 cm in air (refractive index μ<sub>glass</sub> = 1.5) is immersed in water (μ<sub>water</sub> = 4/3). Its focal length in water becomes:",
+        "bn": "বায়ুতে ২০ সেমি ফোকাস দৈর্ঘ্যের একটি উত্তল কাচ লেন্সকে (μ<sub>glass</sub> = ১.৫) জলে (μ<sub>water</sub> = ৪/৩) নিমজ্জিত করা হলো। জলে লেন্সটির ফোকাস দৈর্ঘ্য কত হবে?",
         "opts": {
             "en": [
                 "80 cm",
@@ -1045,8 +1045,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Lens maker's formula: 1/f = (μ_rel - 1)(1/R₁ - 1/R₂). In air: 1/20 = (1.5 - 1) K = 0.5 K => K = 0.1. In water: 1/f_w = (1.5 / (4/3) - 1) K = (9/8 - 1) K = (1/8)(0.1) = 1/80 => f_w = 80 cm.",
-        "expl_bn": "লেন্স নির্মাতার সূত্রানুসারে f_w / f_a = (μ_g - ১) / (μ_g/μ_w - ১) = (০.৫) / (৯/৮ - ১) = ০.৫ / (১/৮) = ৪। f_w = ৪ × ২০ = ৮০ সেমি।"
+        "expl_en": "Lens maker's formula: 1/f = (μ<sub>rel</sub> - 1)(1/R₁ - 1/R₂). In air: 1/20 = (1.5 - 1) K = 0.5 K => K = 0.1. In water: 1/f<sub>w</sub> = (1.5 / (4/3) - 1) K = (9/8 - 1) K = (1/8)(0.1) = 1/80 => f<sub>w</sub> = 80 cm.",
+        "expl_bn": "লেন্স নির্মাতার সূত্রানুসারে f<sub>w</sub> / f<sub>a</sub> = (μ<sub>g</sub> - ১) / (μ<sub>g</sub>/μ<sub>w</sub> - ১) = (০.৫) / (৯/৮ - ১) = ০.৫ / (১/৮) = ৪। f<sub>w</sub> = ৪ × ২০ = ৮০ সেমি।"
     },
     {
         "id": "PHY-041",
@@ -1097,8 +1097,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Work function Φ = hc / λ₀ = 1240 / 500 = 2.48 eV. Incident photon energy E = hc / λ = 1240 / 250 = 4.96 eV. Maximum kinetic energy K_max = E - Φ = 4.96 - 2.48 = 2.48 eV.",
-        "expl_bn": "কার্য-অপেক্ষক Φ = ১২৪০/৫০০ = ২.৪৮ eV। আপতিত ফোটন শক্তি E = ১২৪০/২৫০ = ৪.৯৬ eV। সর্বোচ্চ গতিশক্তি K_max = ৪.৯৬ - ২.৪৮ = ২.৪৮ eV।"
+        "expl_en": "Work function Φ = hc / λ₀ = 1240 / 500 = 2.48 eV. Incident photon energy E = hc / λ = 1240 / 250 = 4.96 eV. Maximum kinetic energy K<sub>max</sub> = E - Φ = 4.96 - 2.48 = 2.48 eV.",
+        "expl_bn": "কার্য-অপেক্ষক Φ = ১২৪০/৫০০ = ২.৪৮ eV। আপতিত ফোটন শক্তি E = ১২৪০/২৫০ = ৪.৯৬ eV। সর্বোচ্চ গতিশক্তি K<sub>max</sub> = ৪.৯৬ - ২.৪৮ = ২.৪৮ eV।"
     },
     {
         "id": "PHY-043",
@@ -1123,8 +1123,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "According to Bohr's model, the radius of the nth orbit is r_n = r₀ × n² / Z. For hydrogen Z = 1, so r₃ / r₁ = 3² / 1² = 9/1 = 9 : 1.",
-        "expl_bn": "বোর তত্ত্ব অনুসারে r_n ∝ n²। তাই তৃতীয় ও প্রথম কক্ষপথের ব্যাসার্ধের অনুপাত = ৩² / ১² = ৯ : ১।"
+        "expl_en": "According to Bohr's model, the radius of the nth orbit is r<sub>n</sub> = r₀ × n² / Z. For hydrogen Z = 1, so r₃ / r₁ = 3² / 1² = 9/1 = 9 : 1.",
+        "expl_bn": "বোর তত্ত্ব অনুসারে r<sub>n</sub> ∝ n²। তাই তৃতীয় ও প্রথম কক্ষপথের ব্যাসার্ধের অনুপাত = ৩² / ১² = ৯ : ১।"
     },
     {
         "id": "PHY-044",
@@ -1149,7 +1149,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Number of half-lives n = t / T_half = 60 / 20 = 3. Activity A = A₀ (1/2)^n = 8000 × (1/2)³ = 8000 / 8 = 1000 dps.",
+        "expl_en": "Number of half-lives n = t / T<sub>half</sub> = 60 / 20 = 3. Activity A = A₀ (1/2)<sup>n</sup> = 8000 × (1/2)³ = 8000 / 8 = 1000 dps.",
         "expl_bn": "অর্ধায়ুর সংখ্যা n = ৬০/২০ = ৩। সক্রিয়তা A = A₀ × (১/২)³ = ৮০০০ / ৮ = ১০০০ dps।"
     },
     {
@@ -1227,8 +1227,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "x_cm = (m₁ x₁ + m₂ x₂) / (m₁ + m₂) = (1×2 + 3×6)/(1 + 3) = (2 + 18)/4 = 20/4 = 5. y_cm = (1×4 + 3×8)/4 = (4 + 24)/4 = 28/4 = 7. Center of mass = (5, 7).",
-        "expl_bn": "ভরকেন্দ্রের স্থানাঙ্ক x_cm = (১×২ + ৩×৬) / ৪ = ৫। y_cm = (১×৪ + ৩×৮) / ৪ = ৭। সুতরাং ভরকেন্দ্র = (৫, ৭)।"
+        "expl_en": "x<sub>cm</sub> = (m₁ x₁ + m₂ x₂) / (m₁ + m₂) = (1×2 + 3×6)/(1 + 3) = (2 + 18)/4 = 20/4 = 5. y<sub>cm</sub> = (1×4 + 3×8)/4 = (4 + 24)/4 = 28/4 = 7. Center of mass = (5, 7).",
+        "expl_bn": "ভরকেন্দ্রের স্থানাঙ্ক x<sub>cm</sub> = (১×২ + ৩×৬) / ৪ = ৫। y<sub>cm</sub> = (১×৪ + ৩×৮) / ৪ = ৭। সুতরাং ভরকেন্দ্র = (৫, ৭)।"
     },
     {
         "id": "PHY-048",
@@ -1279,7 +1279,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Work done W = ΔU = U_final - U_initial = -GMm/(R + h) - (-GMm/R). For h = R: W = -GMm/2R + GMm/R = GMm / 2R = 0.5 (GM/R²) m R = 0.5 m g R.",
+        "expl_en": "Work done W = ΔU = U<sub>final</sub> - U<sub>initial</sub> = -GMm/(R + h) - (-GMm/R). For h = R: W = -GMm/2R + GMm/R = GMm / 2R = 0.5 (GM/R²) m R = 0.5 m g R.",
         "expl_bn": "কৃতকার্য W = ΔU = -GMm/2R - (-GMm/R) = GMm/2R = ১/২ mgR।"
     },
     {
@@ -1305,8 +1305,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Terminal velocity by Stokes' law: v_t = (2/9) r² (ρ - σ) g / η => v_t ∝ r². If radius is doubled (r' = 2r), terminal velocity increases by 2² = 4 times (4v).",
-        "expl_bn": "স্টোকসের সূত্রানুসারে প্রান্তিক বেগ v_t ∝ r²। ব্যাসার্ধ দ্বিগুণ হলে প্রান্তিক বেগ ২² = ৪ গুণ (4v) হবে।"
+        "expl_en": "Terminal velocity by Stokes' law: v<sub>t</sub> = (2/9) r² (ρ - σ) g / η => v<sub>t</sub> ∝ r². If radius is doubled (r' = 2r), terminal velocity increases by 2² = 4 times (4v).",
+        "expl_bn": "স্টোকসের সূত্রানুসারে প্রান্তিক বেগ v<sub>t</sub> ∝ r²। ব্যাসার্ধ দ্বিগুণ হলে প্রান্তিক বেগ ২² = ৪ গুণ (4v) হবে।"
     },
     {
         "id": "PHY-051",
@@ -1340,8 +1340,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Thermal Expansion & Bimetallic Strips",
         "difficulty": "Easy",
-        "en": "A bimetallic strip consists of brass (α_brass = 19 × 10⁻⁶ K⁻¹) and iron (α_iron = 12 × 10⁻⁶ K⁻¹) welded together. When the temperature of the strip is increased, it bends such that:",
-        "bn": "পিতল (α_brass = 19 × 10⁻⁶ K⁻¹) এবং লোহা (α_iron = 12 × 10⁻⁶ K⁻¹) দ্বারা নির্মিত একটি দ্বিধাতব পাত উত্তপ্ত করা হলে পাতটি এমনভাবে বাঁকবে যাতে:",
+        "en": "A bimetallic strip consists of brass (α<sub>brass</sub> = 19 × 10⁻⁶ K⁻¹) and iron (α<sub>iron</sub> = 12 × 10⁻⁶ K⁻¹) welded together. When the temperature of the strip is increased, it bends such that:",
+        "bn": "পিতল (α<sub>brass</sub> = 19 × 10⁻⁶ K⁻¹) এবং লোহা (α<sub>iron</sub> = 12 × 10⁻⁶ K⁻¹) দ্বারা নির্মিত একটি দ্বিধাতব পাত উত্তপ্ত করা হলে পাতটি এমনভাবে বাঁকবে যাতে:",
         "opts": {
             "en": [
                 "Brass is on the convex (outer) side and iron is on the concave (inner) side",
@@ -1357,7 +1357,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Since brass has a higher coefficient of linear expansion (α_brass > α_iron), it expands more upon heating. To accommodate greater length, brass forms the outer convex curve, while iron forms the inner concave curve.",
+        "expl_en": "Since brass has a higher coefficient of linear expansion (α<sub>brass</sub> > α<sub>iron</sub>), it expands more upon heating. To accommodate greater length, brass forms the outer convex curve, while iron forms the inner concave curve.",
         "expl_bn": "পিতলের দৈর্ঘ্য প্রসারণ গুণাঙ্ক লোহার চেয়ে বেশি হওয়ায় উত্তাপে পিতল বেশি প্রসারিত হয় এবং বাইরের উত্তল পৃষ্ঠে অবস্থান নেয়।"
     },
     {
@@ -1383,8 +1383,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "T_sink = 27 + 273 = 300 K. η = 1 - T_sink / T_source. For 40%: 0.40 = 1 - 300/T₁ => 300/T₁ = 0.60 => T₁ = 500 K. For 50%: 0.50 = 1 - 300/T₂ => 300/T₂ = 0.50 => T₂ = 600 K. Increase in source temperature ΔT = 600 - 500 = 100 K.",
-        "expl_bn": "গ্রাহকের তাপমাত্রা T_sink = ৩০০ K। η = ১ - T_sink/T_source। ৪০% দক্ষতার জন্য: T₁ = ৩০০/০.৬ = ৫০০ K। ৫০% দক্ষতার জন্য: T₂ = ৩০০/০.৫ = ৬০০ K। তাপমাত্রা বৃদ্ধি = ৬০০ - ৫০০ = ১০০ K।"
+        "expl_en": "T<sub>sink</sub> = 27 + 273 = 300 K. η = 1 - T<sub>sink</sub> / T<sub>source</sub>. For 40%: 0.40 = 1 - 300/T₁ => 300/T₁ = 0.60 => T₁ = 500 K. For 50%: 0.50 = 1 - 300/T₂ => 300/T₂ = 0.50 => T₂ = 600 K. Increase in source temperature ΔT = 600 - 500 = 100 K.",
+        "expl_bn": "গ্রাহকের তাপমাত্রা T<sub>sink</sub> = ৩০০ K। η = ১ - T<sub>sink</sub>/T<sub>source</sub>। ৪০% দক্ষতার জন্য: T₁ = ৩০০/০.৬ = ৫০০ K। ৫০% দক্ষতার জন্য: T₂ = ৩০০/০.৫ = ৬০০ K। তাপমাত্রা বৃদ্ধি = ৬০০ - ৫০০ = ১০০ K।"
     },
     {
         "id": "PHY-054",
@@ -1409,7 +1409,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "In a closed organ pipe, only odd harmonics exist: f_n = (2n + 1) f₁, where n = 0 is fundamental, n = 1 is 1st overtone (3f₁), and n = 2 is 2nd overtone (5f₁). Frequency = 5 × 250 = 1250 Hz.",
+        "expl_en": "In a closed organ pipe, only odd harmonics exist: f<sub>n</sub> = (2n + 1) f₁, where n = 0 is fundamental, n = 1 is 1st overtone (3f₁), and n = 2 is 2nd overtone (5f₁). Frequency = 5 × 250 = 1250 Hz.",
         "expl_bn": "একমুখ বন্ধ নলে কেবল বিজোড় সমমেল উপস্থিত থাকে। দ্বিতীয় উপসূর (পঞ্চম সমমেল) = ৫ × মূল কম্পাঙ্ক = ৫ × ২৫০ = ১২৫০ Hz।"
     },
     {
@@ -1461,8 +1461,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "R_t = R₀ (1 + α ΔT) => α = (R_t - R₀) / (R₀ ΔT) = (6.0 - 5.0) / (5.0 × 50) = 1.0 / 250 = 0.004 °C⁻¹.",
-        "expl_bn": "রোধের উষ্ণতা গুণাঙ্ক α = (R_t - R₀) / (R₀ ΔT) = (৬ - ৫) / (৫ × ৫০) = ১ / ২৫০ = ০.০০৪ °C⁻¹।"
+        "expl_en": "R<sub>t</sub> = R₀ (1 + α ΔT) => α = (R<sub>t</sub> - R₀) / (R₀ ΔT) = (6.0 - 5.0) / (5.0 × 50) = 1.0 / 250 = 0.004 °C⁻¹.",
+        "expl_bn": "রোধের উষ্ণতা গুণাঙ্ক α = (R<sub>t</sub> - R₀) / (R₀ ΔT) = (৬ - ৫) / (৫ × ৫০) = ১ / ২৫০ = ০.০০৪ °C⁻¹।"
     },
     {
         "id": "PHY-057",
@@ -1487,8 +1487,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "V = I_g (G + R_s) => R_s = V / I_g - G = 10 / (2 × 10⁻³) - 50 = 5000 - 50 = 4950 Ω.",
-        "expl_bn": "শ্রেণি রোধ R_s = V / I_g - G = ১০ / (২ × ১০⁻³) - ৫০ = ৫০০০ - ৫০ = ৪৯৫০ Ω।"
+        "expl_en": "V = I<sub>g</sub> (G + R<sub>s</sub>) => R<sub>s</sub> = V / I<sub>g</sub> - G = 10 / (2 × 10⁻³) - 50 = 5000 - 50 = 4950 Ω.",
+        "expl_bn": "শ্রেণি রোধ R<sub>s</sub> = V / I<sub>g</sub> - G = ১০ / (২ × ১০⁻³) - ৫০ = ৫০০০ - ৫০ = ৪৯৫০ Ω।"
     },
     {
         "id": "PHY-058",
@@ -1574,8 +1574,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Alternating Current & Power Factor",
         "difficulty": "Medium",
-        "en": "In a series AC circuit containing resistance R = 30 Ω and inductive reactance X_L = 40 Ω, the power factor (cos φ) of the circuit is:",
-        "bn": "একটি শ্রেণি AC বর্তনীতে রোধ R = ৩০ Ω এবং আবেশীয় প্রতিঘাত X_L = ৪০ Ω হলে বর্তনীটির ক্ষমতা গুণক (Power Factor) কত?",
+        "en": "In a series AC circuit containing resistance R = 30 Ω and inductive reactance X<sub>L</sub> = 40 Ω, the power factor (cos φ) of the circuit is:",
+        "bn": "একটি শ্রেণি AC বর্তনীতে রোধ R = ৩০ Ω এবং আবেশীয় প্রতিঘাত X<sub>L</sub> = ৪০ Ω হলে বর্তনীটির ক্ষমতা গুণক (Power Factor) কত?",
         "opts": {
             "en": [
                 "0.6",
@@ -1591,7 +1591,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Impedance Z = √(R² + X_L²) = √(30² + 40²) = √2500 = 50 Ω. Power factor cos φ = R / Z = 30 / 50 = 0.6.",
+        "expl_en": "Impedance Z = √(R² + X<sub>L</sub>²) = √(30² + 40²) = √2500 = 50 Ω. Power factor cos φ = R / Z = 30 / 50 = 0.6.",
         "expl_bn": "প্রতিবন্ধকতা Z = √(৩০² + ৪০²) = ৫০ Ω। ক্ষমতা গুণক cos φ = R / Z = ৩০ / ৫০ = ০.৬।"
     },
     {
@@ -1600,25 +1600,25 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Electromagnetic Waves & Displacement Current",
         "difficulty": "Easy",
-        "en": "According to Maxwell's correction to Ampere's circuital law, the displacement current I_d between the plates of a charging capacitor is equal to:",
-        "bn": "অ্যাম্পিয়ারের বর্তনী সূত্রে ম্যাক্সওয়েলের সংশোধনের পর, একটি আহিত ধারকের পাতদ্বয়ের মধ্যবর্তী সরণ প্রবাহ (Displacement current) I_d এর মান কত?",
+        "en": "According to Maxwell's correction to Ampere's circuital law, the displacement current I<sub>d</sub> between the plates of a charging capacitor is equal to:",
+        "bn": "অ্যাম্পিয়ারের বর্তনী সূত্রে ম্যাক্সওয়েলের সংশোধনের পর, একটি আহিত ধারকের পাতদ্বয়ের মধ্যবর্তী সরণ প্রবাহ (Displacement current) I<sub>d</sub> এর মান কত?",
         "opts": {
             "en": [
-                "ε₀ (dΦ_E / dt)",
-                "μ₀ (dΦ_E / dt)",
-                "(1/ε₀) (dΦ_E / dt)",
-                "ε₀ μ₀ (dΦ_E / dt)"
+                "ε₀ (dΦ<sub>E</sub> / dt)",
+                "μ₀ (dΦ<sub>E</sub> / dt)",
+                "(1/ε₀) (dΦ<sub>E</sub> / dt)",
+                "ε₀ μ₀ (dΦ<sub>E</sub> / dt)"
             ],
             "bn": [
-                "ε₀ (dΦ_E / dt)",
-                "μ₀ (dΦ_E / dt)",
-                "(1/ε₀) (dΦ_E / dt)",
-                "ε₀ μ₀ (dΦ_E / dt)"
+                "ε₀ (dΦ<sub>E</sub> / dt)",
+                "μ₀ (dΦ<sub>E</sub> / dt)",
+                "(1/ε₀) (dΦ<sub>E</sub> / dt)",
+                "ε₀ μ₀ (dΦ<sub>E</sub> / dt)"
             ]
         },
         "correct": 0,
-        "expl_en": "Maxwell defined displacement current as I_d = ε₀ (dΦ_E / dt), where Φ_E is the electric flux between the plates.",
-        "expl_bn": "ম্যাক্সওয়েলের তত্ত্বানুসারে সরণ প্রবাহ I_d = ε₀ (dΦ_E / dt), যেখানে Φ_E হলো তড়িৎ ফ্লাক্স।"
+        "expl_en": "Maxwell defined displacement current as I<sub>d</sub> = ε₀ (dΦ<sub>E</sub> / dt), where Φ<sub>E</sub> is the electric flux between the plates.",
+        "expl_bn": "ম্যাক্সওয়েলের তত্ত্বানুসারে সরণ প্রবাহ I<sub>d</sub> = ε₀ (dΦ<sub>E</sub> / dt), যেখানে Φ<sub>E</sub> হলো তড়িৎ ফ্লাক্স।"
     },
     {
         "id": "PHY-063",
@@ -1626,8 +1626,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Ray Optics & Total Internal Reflection",
         "difficulty": "Easy",
-        "en": "A ray of light traveling in glass (refractive index μ = 1.5) is incident on a glass-air boundary. The critical angle θ_c for total internal reflection is:",
-        "bn": "কাচের (প্রতিসরাঙ্ক μ = ১.৫) মধ্য দিয়ে চলমান একটি আলোক রশ্মি কাচ-বায়ু তলে আপতিত হয়। অভ্যন্তরীণ পূর্ণ প্রতিফলনের সংকট কোণ θ_c কত?",
+        "en": "A ray of light traveling in glass (refractive index μ = 1.5) is incident on a glass-air boundary. The critical angle θ<sub>c</sub> for total internal reflection is:",
+        "bn": "কাচের (প্রতিসরাঙ্ক μ = ১.৫) মধ্য দিয়ে চলমান একটি আলোক রশ্মি কাচ-বায়ু তলে আপতিত হয়। অভ্যন্তরীণ পূর্ণ প্রতিফলনের সংকট কোণ θ<sub>c</sub> কত?",
         "opts": {
             "en": [
                 "sin⁻¹(2/3) (≈ 41.8°)",
@@ -1643,8 +1643,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Critical angle θ_c = sin⁻¹(1 / μ) = sin⁻¹(1 / 1.5) = sin⁻¹(2/3) ≈ 41.8°.",
-        "expl_bn": "সংকট কোণ θ_c = sin⁻¹(১/μ) = sin⁻¹(১/১.৫) = sin⁻¹(২/৩) ≈ ৪১.৮°।"
+        "expl_en": "Critical angle θ<sub>c</sub> = sin⁻¹(1 / μ) = sin⁻¹(1 / 1.5) = sin⁻¹(2/3) ≈ 41.8°.",
+        "expl_bn": "সংকট কোণ θ<sub>c</sub> = sin⁻¹(১/μ) = sin⁻¹(১/১.৫) = sin⁻¹(২/৩) ≈ ৪১.৮°।"
     },
     {
         "id": "PHY-064",
@@ -1669,8 +1669,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "For objective: 1/v_o - 1/u_o = 1/f_o => 1/v_o - 1/(-1.2) = 1/1.0 => 1/v_o = 1 - 5/6 = 1/6 => v_o = 6 cm. Linear magnification of objective m_o = |v_o / u_o| = 6 / 1.2 = 5. Eyepiece magnification m_e = 1 + D/f_e = 1 + 25/5 = 6. Total magnifying power M = m_o × m_e = 5 × 6 = 30.",
-        "expl_bn": "অভিলক্ষ্যের বিবর্ধন m_o = v_o / u_o = ৬/১.২ = ৫। অভিনেত্রের বিবর্ধন m_e = ১ + D/f_e = ১ + ২৫/৫ = ৬। মোট বিবর্ধন M = ৫ × ৬ = ৩০।"
+        "expl_en": "For objective: 1/v<sub>o</sub> - 1/u<sub>o</sub> = 1/f<sub>o</sub> => 1/v<sub>o</sub> - 1/(-1.2) = 1/1.0 => 1/v<sub>o</sub> = 1 - 5/6 = 1/6 => v<sub>o</sub> = 6 cm. Linear magnification of objective m<sub>o</sub> = |v<sub>o</sub> / u<sub>o</sub>| = 6 / 1.2 = 5. Eyepiece magnification m<sub>e</sub> = 1 + D/f<sub>e</sub> = 1 + 25/5 = 6. Total magnifying power M = m<sub>o</sub> × m<sub>e</sub> = 5 × 6 = 30.",
+        "expl_bn": "অভিলক্ষ্যের বিবর্ধন m<sub>o</sub> = v<sub>o</sub> / u<sub>o</sub> = ৬/১.২ = ৫। অভিনেত্রের বিবর্ধন m<sub>e</sub> = ১ + D/f<sub>e</sub> = ১ + ২৫/৫ = ৬। মোট বিবর্ধন M = ৫ × ৬ = ৩০।"
     },
     {
         "id": "PHY-065",
@@ -1678,8 +1678,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Wave Optics & Brewster's Law",
         "difficulty": "Easy",
-        "en": "When unpolarized light is incident on a transparent plate at Brewster's polarizing angle i_p = 60°, the reflected ray is completely plane-polarized. The refractive index of the plate is:",
-        "bn": "ব্রুস্টারের কোণ i_p = ৬০° তে একটি স্বচ্ছ মাধ্যমে অসমাবর্তিত আলো আপতিত হলে প্রতিফলিত রশ্মি সম্পূর্ণ সমাবর্তিত হয়। মাধ্যমটির প্রতিসরাঙ্ক কত?",
+        "en": "When unpolarized light is incident on a transparent plate at Brewster's polarizing angle i<sub>p</sub> = 60°, the reflected ray is completely plane-polarized. The refractive index of the plate is:",
+        "bn": "ব্রুস্টারের কোণ i<sub>p</sub> = ৬০° তে একটি স্বচ্ছ মাধ্যমে অসমাবর্তিত আলো আপতিত হলে প্রতিফলিত রশ্মি সম্পূর্ণ সমাবর্তিত হয়। মাধ্যমটির প্রতিসরাঙ্ক কত?",
         "opts": {
             "en": [
                 "√3 (≈ 1.732)",
@@ -1695,8 +1695,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Brewster's law: μ = tan(i_p) = tan(60°) = √3 ≈ 1.732.",
-        "expl_bn": "ব্রুস্টারের সূত্রানুসারে প্রতিসরাঙ্ক μ = tan(i_p) = tan(৬০°) = √৩ ≈ ১.৭৩২।"
+        "expl_en": "By Brewster's law: μ = tan(i<sub>p</sub>) = tan(60°) = √3 ≈ 1.732.",
+        "expl_bn": "ব্রুস্টারের সূত্রানুসারে প্রতিসরাঙ্ক μ = tan(i<sub>p</sub>) = tan(৬০°) = √৩ ≈ ১.৭৩২।"
     },
     {
         "id": "PHY-066",
@@ -1773,8 +1773,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "1/λ = R (1/n₁² - 1/n₂²). For Lyman longest: n₁=1, n₂=2 => 1/λ_L = R(1 - 1/4) = 3R/4 => λ_L = 4/(3R). For Balmer longest: n₁=2, n₂=3 => 1/λ_B = R(1/4 - 1/9) = 5R/36 => λ_B = 36/(5R). Ratio λ_L / λ_B = (4/3R) / (36/5R) = (4/3) × (5/36) = 20 / 108 = 5 / 27.",
-        "expl_bn": "লাইম্যানের দীর্ঘতম তরঙ্গদৈর্ঘ্য λ_L = ৪/(৩R)। বামারের দীর্ঘতম তরঙ্গদৈর্ঘ্য λ_B = ৩৬/(৫R)। অনুপাত = (৪/৩) × (৫/৩৬) = ৫/২৭।"
+        "expl_en": "1/λ = R (1/n₁² - 1/n₂²). For Lyman longest: n₁=1, n₂=2 => 1/λ<sub>L</sub> = R(1 - 1/4) = 3R/4 => λ<sub>L</sub> = 4/(3R). For Balmer longest: n₁=2, n₂=3 => 1/λ<sub>B</sub> = R(1/4 - 1/9) = 5R/36 => λ<sub>B</sub> = 36/(5R). Ratio λ<sub>L</sub> / λ<sub>B</sub> = (4/3R) / (36/5R) = (4/3) × (5/36) = 20 / 108 = 5 / 27.",
+        "expl_bn": "লাইম্যানের দীর্ঘতম তরঙ্গদৈর্ঘ্য λ<sub>L</sub> = ৪/(৩R)। বামারের দীর্ঘতম তরঙ্গদৈর্ঘ্য λ<sub>B</sub> = ৩৬/(৫R)। অনুপাত = (৪/৩) × (৫/৩৬) = ৫/২৭।"
     },
     {
         "id": "PHY-069",
@@ -1851,7 +1851,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "In a full-wave rectifier, both half cycles of the AC input are rectified, doubling the output pulse rate. Therefore, ripple frequency = 2 × f_in = 2 × 50 Hz = 100 Hz.",
+        "expl_en": "In a full-wave rectifier, both half cycles of the AC input are rectified, doubling the output pulse rate. Therefore, ripple frequency = 2 × f<sub>in</sub> = 2 × 50 Hz = 100 Hz.",
         "expl_bn": "পূর্ণ তরঙ্গ একমুখীকারী বর্তনীতে ইনপুটের প্রতি চক্রে দুটি আউটপুট স্পন্দন পাওয়া যায়। তাই রিপল কম্পাঙ্ক = ২ × ৫০ = ১০০ Hz।"
     },
     {
@@ -1903,8 +1903,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Horizontal velocity remains constant: v_x = 20 m/s. Vertical velocity upon hitting ground: v_y² = 2 g h = 2 × 10 × 80 = 1600 => v_y = 40 m/s. Net speed v = √(v_x² + v_y²) = √(20² + 40²) = √(400 + 1600) = √2000 = 20√5 m/s ≈ 44.7 m/s.",
-        "expl_bn": "অনুভূমিক বেগ v_x = ২০ m/s স্থির। উলম্ব বেগ v_y = √(২gh) = √(২ × ১০ × ৮০) = ৪০ m/s। লব্ধি দ্রুতি v = √(২০² + ৪০²) = ২০√৫ m/s।"
+        "expl_en": "Horizontal velocity remains constant: v<sub>x</sub> = 20 m/s. Vertical velocity upon hitting ground: v<sub>y</sub>² = 2 g h = 2 × 10 × 80 = 1600 => v<sub>y</sub> = 40 m/s. Net speed v = √(v<sub>x</sub>² + v<sub>y</sub>²) = √(20² + 40²) = √(400 + 1600) = √2000 = 20√5 m/s ≈ 44.7 m/s.",
+        "expl_bn": "অনুভূমিক বেগ v<sub>x</sub> = ২০ m/s স্থির। উলম্ব বেগ v<sub>y</sub> = √(২gh) = √(২ × ১০ × ৮০) = ৪০ m/s। লব্ধি দ্রুতি v = √(২০² + ৪০²) = ২০√৫ m/s।"
     },
     {
         "id": "PHY-074",
@@ -1956,7 +1956,7 @@ window.PHYSICS_QUESTIONS_DATA = [
         },
         "correct": 0,
         "expl_en": "Translational KE = 0.5 M v². Rotational KE = 0.5 I ω² = 0.5 (2/5 M R²) (v/R)² = (1/5) M v². Total KE = 0.5 M v² + 0.2 M v² = (7/10) M v². Fraction rotational = (1/5) / (7/10) = 2/7.",
-        "expl_bn": "ঘূর্ণন গতিশক্তি K_rot = ১/৫ M v²। মোট গতিশক্তি K_total = ৭/১০ M v²। ঘূর্ণন গতিশক্তির ভগ্নাংশ = (১/৫) / (৭/১০) = ২/৭।"
+        "expl_bn": "ঘূর্ণন গতিশক্তি K<sub>rot</sub> = ১/৫ M v²। মোট গতিশক্তি K<sub>total</sub> = ৭/১০ M v²। ঘূর্ণন গতিশক্তির ভগ্নাংশ = (১/৫) / (৭/১০) = ২/৭।"
     },
     {
         "id": "PHY-076",
@@ -2016,25 +2016,25 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Physics",
         "topic": "Magnetism & Tangent Galvanometer",
         "difficulty": "Easy",
-        "en": "At a certain place, the horizontal component of Earth's magnetic field is B_H and the vertical component is B_V. If the angle of dip (magnetic inclination) is 45°, then:",
-        "bn": "কোনো স্থানে পৃথিবীর চৌম্বক ক্ষেত্রের অনুভূমিক উপাংশ B_H এবং উলম্ব উপাংশ B_V। বিনতি কোণ ৪৫° হলে:",
+        "en": "At a certain place, the horizontal component of Earth's magnetic field is B<sub>H</sub> and the vertical component is B<sub>V</sub>. If the angle of dip (magnetic inclination) is 45°, then:",
+        "bn": "কোনো স্থানে পৃথিবীর চৌম্বক ক্ষেত্রের অনুভূমিক উপাংশ B<sub>H</sub> এবং উলম্ব উপাংশ B<sub>V</sub>। বিনতি কোণ ৪৫° হলে:",
         "opts": {
             "en": [
-                "B_V = B_H",
-                "B_V = √3 B_H",
-                "B_V = B_H / √3",
-                "B_V = 0"
+                "B<sub>V</sub> = B<sub>H</sub>",
+                "B<sub>V</sub> = √3 B<sub>H</sub>",
+                "B<sub>V</sub> = B<sub>H</sub> / √3",
+                "B<sub>V</sub> = 0"
             ],
             "bn": [
-                "B_V = B_H",
-                "B_V = √3 B_H",
-                "B_V = B_H / √3",
-                "B_V = 0"
+                "B<sub>V</sub> = B<sub>H</sub>",
+                "B<sub>V</sub> = √3 B<sub>H</sub>",
+                "B<sub>V</sub> = B<sub>H</sub> / √3",
+                "B<sub>V</sub> = 0"
             ]
         },
         "correct": 0,
-        "expl_en": "Angle of dip δ is given by tan δ = B_V / B_H. For δ = 45°: tan(45°) = 1 => B_V / B_H = 1 => B_V = B_H.",
-        "expl_bn": "বিনতি কোণ tan δ = B_V / B_H। δ = ৪৫° হলে tan(৪৫°) = ১ => B_V = B_H।"
+        "expl_en": "Angle of dip δ is given by tan δ = B<sub>V</sub> / B<sub>H</sub>. For δ = 45°: tan(45°) = 1 => B<sub>V</sub> / B<sub>H</sub> = 1 => B<sub>V</sub> = B<sub>H</sub>.",
+        "expl_bn": "বিনতি কোণ tan δ = B<sub>V</sub> / B<sub>H</sub>। δ = ৪৫° হলে tan(৪৫°) = ১ => B<sub>V</sub> = B<sub>H</sub>।"
     },
     {
         "id": "PHY-079",
@@ -2059,8 +2059,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Transformation ratio: V_s / V_p = N_s / N_p => N_s = N_p × (V_s / V_p) = 5000 × (220 / 2200) = 5000 × (1/10) = 500 turns.",
-        "expl_bn": "ট্রান্সফরমারের সূত্রানুসারে N_s = N_p × (V_s / V_p) = ৫০০০ × (২২০ / ২২০০) = ৫০০ পাক।"
+        "expl_en": "Transformation ratio: V<sub>s</sub> / V<sub>p</sub> = N<sub>s</sub> / N<sub>p</sub> => N<sub>s</sub> = N<sub>p</sub> × (V<sub>s</sub> / V<sub>p</sub>) = 5000 × (220 / 2200) = 5000 × (1/10) = 500 turns.",
+        "expl_bn": "ট্রান্সফরমারের সূত্রানুসারে N<sub>s</sub> = N<sub>p</sub> × (V<sub>s</sub> / V<sub>p</sub>) = ৫০০০ × (২২০ / ২২০০) = ৫০০ পাক।"
     },
     {
         "id": "PHY-080",
@@ -2085,7 +2085,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Einstein's photoelectric equation: K_max = 0.5 m v² = hν - hν₀. For ν = 2ν₀: 0.5 m v₁² = 2hν₀ - hν₀ = hν₀. For ν = 5ν₀: 0.5 m v₂² = 5hν₀ - hν₀ = 4hν₀. Dividing the two equations: v₁² / v₂² = hν₀ / 4hν₀ = 1/4 => v₁ / v₂ = 1/2.",
+        "expl_en": "By Einstein's photoelectric equation: K<sub>max</sub> = 0.5 m v² = hν - hν₀. For ν = 2ν₀: 0.5 m v₁² = 2hν₀ - hν₀ = hν₀. For ν = 5ν₀: 0.5 m v₂² = 5hν₀ - hν₀ = 4hν₀. Dividing the two equations: v₁² / v₂² = hν₀ / 4hν₀ = 1/4 => v₁ / v₂ = 1/2.",
         "expl_bn": "আইনস্টাইনের সমীকরণ: ১/২ m v² = h(ν - ν₀)। প্রথম ক্ষেত্রে ১/২ m v₁² = hν₀, দ্বিতীয় ক্ষেত্রে ১/২ m v₂² = ৪hν₀। v₁²/v₂² = ১/৪ => v₁/v₂ = ১/২।"
     },
     {
@@ -2252,25 +2252,25 @@ window.PHYSICS_QUESTIONS_DATA = [
         "topic": "Coordination Compounds & CFT",
         "difficulty": "Hard",
         "diagram": "<svg viewBox=\"0 0 460 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <!-- Free ion d-orbitals -->\n  <rect x=\"30\" y=\"90\" width=\"110\" height=\"30\" rx=\"4\" fill=\"#e2e8f0\" stroke=\"#475569\" stroke-width=\"2\"/>\n  <text x=\"85\" y=\"110\" fill=\"#1e293b\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">Free ion (5 d)</text>\n  <!-- Barycenter line -->\n  <line x1=\"140\" y1=\"105\" x2=\"430\" y2=\"105\" stroke=\"#94a3b8\" stroke-dasharray=\"3 3\" stroke-width=\"1.5\"/>\n  <text x=\"420\" y=\"120\" fill=\"#64748b\" font-size=\"10\" font-family=\"system-ui\">Barycenter</text>\n  <!-- Octahedral splitting -->\n  <!-- eg level (up) -->\n  <line x1=\"200\" y1=\"105\" x2=\"270\" y2=\"45\" stroke=\"#3b82f6\" stroke-width=\"1.5\"/>\n  <rect x=\"270\" y=\"30\" width=\"80\" height=\"30\" rx=\"4\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"310\" y=\"50\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">e<tspan font-size=\"10\">g</tspan> (+0.6 Δₒ)</text>\n  <!-- t2g level (down) -->\n  <line x1=\"200\" y1=\"105\" x2=\"270\" y2=\"155\" stroke=\"#3b82f6\" stroke-width=\"1.5\"/>\n  <rect x=\"270\" y=\"140\" width=\"90\" height=\"30\" rx=\"4\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"2\"/>\n  <text x=\"315\" y=\"160\" fill=\"#1e40af\" font-size=\"13\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">t<tspan font-size=\"10\">2g</tspan> (-0.4 Δₒ)</text>\n  <!-- Arrow delta_o -->\n  <line x1=\"380\" y1=\"45\" x2=\"380\" y2=\"155\" stroke=\"#dc2626\" stroke-width=\"2\"/>\n  <text x=\"395\" y=\"105\" fill=\"#dc2626\" font-size=\"15\" font-family=\"system-ui\" font-weight=\"black\">Δₒ</text>\n</svg>",
-        "en": "In an octahedral crystal field, what is the Crystal Field Stabilization Energy (CFSE) in terms of Δ_o for a high-spin d⁴ transition metal ion?",
-        "bn": "একটি অষ্টতলকীয় কেলাস ক্ষেত্রে (Octahedral Crystal Field), উচ্চ-স্পিন d⁴ অবস্থান্তর ধাতু আয়নের জন্য কেলাস ক্ষেত্র স্থায়িত্বায়ন শক্তি (CFSE) Δ_o-এর এককে কত হবে?",
+        "en": "In an octahedral crystal field, what is the Crystal Field Stabilization Energy (CFSE) in terms of Δ<sub>o</sub> for a high-spin d⁴ transition metal ion?",
+        "bn": "একটি অষ্টতলকীয় কেলাস ক্ষেত্রে (Octahedral Crystal Field), উচ্চ-স্পিন d⁴ অবস্থান্তর ধাতু আয়নের জন্য কেলাস ক্ষেত্র স্থায়িত্বায়ন শক্তি (CFSE) Δ<sub>o</sub>-এর এককে কত হবে?",
         "opts": {
             "en": [
-                "-0.6 Δ_o",
-                "-1.6 Δ_o",
-                "-0.4 Δ_o",
-                "-1.2 Δ_o + P"
+                "-0.6 Δ<sub>o</sub>",
+                "-1.6 Δ<sub>o</sub>",
+                "-0.4 Δ<sub>o</sub>",
+                "-1.2 Δ<sub>o</sub> + P"
             ],
             "bn": [
-                "-0.6 Δ_o",
-                "-1.6 Δ_o",
-                "-0.4 Δ_o",
-                "-1.2 Δ_o + P"
+                "-0.6 Δ<sub>o</sub>",
+                "-1.6 Δ<sub>o</sub>",
+                "-0.4 Δ<sub>o</sub>",
+                "-1.2 Δ<sub>o</sub> + P"
             ]
         },
         "correct": 0,
-        "expl_en": "In an octahedral field, the d-orbitals split into lower t₂g (-0.4 Δ_o) and higher e_g (+0.6 Δ_o). High-spin d⁴ occupies configuration t₂g³ e_g¹. CFSE = [3(-0.4) + 1(+0.6)] Δ_o = (-1.2 + 0.6) Δ_o = -0.6 Δ_o.",
-        "expl_bn": "অষ্টতলকীয় ক্ষেত্রে d-অরবিটাল t₂g (-০.৪ Δ_o) এবং e_g (+০.৬ Δ_o) স্তরে বিভক্ত হয়। উচ্চ-স্পিন d⁴ এর বিন্যাস t₂g³ e_g¹। CFSE = [৩(-০.৪) + ১(+০.৬)] Δ_o = -০.৬ Δ_o।"
+        "expl_en": "In an octahedral field, the d-orbitals split into lower t₂g (-0.4 Δ<sub>o</sub>) and higher e<sub>g</sub> (+0.6 Δ<sub>o</sub>). High-spin d⁴ occupies configuration t₂g³ e<sub>g</sub>¹. CFSE = [3(-0.4) + 1(+0.6)] Δ<sub>o</sub> = (-1.2 + 0.6) Δ<sub>o</sub> = -0.6 Δ<sub>o</sub>.",
+        "expl_bn": "অষ্টতলকীয় ক্ষেত্রে d-অরবিটাল t₂g (-০.৪ Δ<sub>o</sub>) এবং e<sub>g</sub> (+০.৬ Δ<sub>o</sub>) স্তরে বিভক্ত হয়। উচ্চ-স্পিন d⁴ এর বিন্যাস t₂g³ e<sub>g</sub>¹। CFSE = [৩(-০.৪) + ১(+০.৬)] Δ<sub>o</sub> = -০.৬ Δ<sub>o</sub>।"
     },
     {
         "id": "CHEM-008",
@@ -2279,8 +2279,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "topic": "Chemical Kinetics & Arrhenius Theory",
         "difficulty": "Hard",
         "diagram": "<svg viewBox=\"0 0 460 210\" width=\"100%\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\" class=\"select-none\">\n  <line x1=\"60\" y1=\"170\" x2=\"420\" y2=\"170\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n  <line x1=\"60\" y1=\"170\" x2=\"60\" y2=\"20\" stroke=\"#334155\" stroke-width=\"2.5\"/>\n  <text x=\"415\" y=\"160\" fill=\"#334155\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">1 / T (K⁻¹)</text>\n  <text x=\"70\" y=\"30\" fill=\"#334155\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">ln(k)</text>\n  <circle cx=\"60\" cy=\"45\" r=\"4\" fill=\"#2563eb\"/>\n  <text x=\"68\" y=\"45\" fill=\"#2563eb\" font-size=\"11\" font-family=\"system-ui\" font-weight=\"bold\">ln(A) (Intercept)</text>\n  <line x1=\"60\" y1=\"45\" x2=\"380\" y2=\"155\" stroke=\"#dc2626\" stroke-width=\"3\"/>\n  <line x1=\"200\" y1=\"93\" x2=\"280\" y2=\"93\" stroke=\"#64748b\" stroke-dasharray=\"3 2\" stroke-width=\"1.5\"/>\n  <line x1=\"280\" y1=\"93\" x2=\"280\" y2=\"121\" stroke=\"#64748b\" stroke-dasharray=\"3 2\" stroke-width=\"1.5\"/>\n  <text x=\"290\" y=\"112\" fill=\"#dc2626\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\">Slope = −Eₐ / R</text>\n  <rect x=\"180\" y=\"25\" width=\"220\" height=\"35\" rx=\"6\" fill=\"#f8fafc\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n  <text x=\"290\" y=\"47\" fill=\"#0f172a\" font-size=\"12\" font-family=\"system-ui\" font-weight=\"bold\" text-anchor=\"middle\">ln(k) = ln(A) − (Eₐ / R)(1 / T)</text>\n</svg>",
-        "en": "According to the Arrhenius equation, a plot of ln(k) against 1/T for a first-order chemical reaction yields a straight line with a slope of -6000 K. Taking the universal gas constant R = 8.314 J·K⁻¹·mol⁻¹, the activation energy (E_a) of the reaction is approximately:",
-        "bn": "আরহেনিয়াসের সমীকরণ অনুসারে, একটি প্রথম ক্রম বিক্রিয়ার ক্ষেত্রে 1/T এর বিপরীতে ln(k) এর লেখচিত্র অঙ্কন করলে -৬০০০ K নতি (slope) বিশিষ্ট একটি সরলরেখা পাওয়া যায়। সার্বজনীন গ্যাস ধ্রুবক R = ৮.৩১৪ J·K⁻¹·mol⁻¹ হলে বিক্রিয়াটির সক্রিয়করণ শক্তি (E_a) প্রায় কত?",
+        "en": "According to the Arrhenius equation, a plot of ln(k) against 1/T for a first-order chemical reaction yields a straight line with a slope of -6000 K. Taking the universal gas constant R = 8.314 J·K⁻¹·mol⁻¹, the activation energy (E<sub>a</sub>) of the reaction is approximately:",
+        "bn": "আরহেনিয়াসের সমীকরণ অনুসারে, একটি প্রথম ক্রম বিক্রিয়ার ক্ষেত্রে 1/T এর বিপরীতে ln(k) এর লেখচিত্র অঙ্কন করলে -৬০০০ K নতি (slope) বিশিষ্ট একটি সরলরেখা পাওয়া যায়। সার্বজনীন গ্যাস ধ্রুবক R = ৮.৩১৪ J·K⁻¹·mol⁻¹ হলে বিক্রিয়াটির সক্রিয়করণ শক্তি (E<sub>a</sub>) প্রায় কত?",
         "opts": {
             "en": [
                 "49.88 kJ/mol",
@@ -2296,8 +2296,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Arrhenius equation: ln(k) = ln(A) - (E_a / R)(1/T). Comparing with y = mx + c: Slope m = -E_a / R = -6000 K => E_a = 6000 × 8.314 J/mol = 49,884 J/mol ≈ 49.88 kJ/mol.",
-        "expl_bn": "আরহেনিয়াসের সমীকরণ: ln(k) = ln(A) - (E_a / R)(১/T)। লেখচিত্রের নতি m = -E_a / R = -৬০০০ K => E_a = ৬০০০ × ৮.৩১৪ J/mol = ৪৯,৮৮৪ J/mol ≈ ৪৯.৮৮ kJ/mol।"
+        "expl_en": "Arrhenius equation: ln(k) = ln(A) - (E<sub>a</sub> / R)(1/T). Comparing with y = mx + c: Slope m = -E<sub>a</sub> / R = -6000 K => E<sub>a</sub> = 6000 × 8.314 J/mol = 49,884 J/mol ≈ 49.88 kJ/mol.",
+        "expl_bn": "আরহেনিয়াসের সমীকরণ: ln(k) = ln(A) - (E<sub>a</sub> / R)(১/T)। লেখচিত্রের নতি m = -E<sub>a</sub> / R = -৬০০০ K => E<sub>a</sub> = ৬০০০ × ৮.৩১৪ J/mol = ৪৯,৮৮৪ J/mol ≈ ৪৯.৮৮ kJ/mol।"
     },
     {
         "id": "CHEM-009",
@@ -2332,8 +2332,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Electrochemistry & Nernst Equation",
         "difficulty": "Medium",
-        "en": "For the Daniell cell represented as Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) at 298 K, the standard cell potential is E°_cell = 1.10 V. Given (2.303 RT/F) = 0.0591 V, the electromotive force (EMF) of this galvanic cell is:",
-        "bn": "২৯৮ K তাপমাত্রায় Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) ড্যানিয়েল কোষের প্রমাণ বিভব E°_cell = 1.10 V। (2.303 RT/F) = 0.0591 V হলে এই গ্যালভানীয় কোষটির তড়িচ্চালক বল (EMF) কত?",
+        "en": "For the Daniell cell represented as Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) at 298 K, the standard cell potential is E°<sub>cell</sub> = 1.10 V. Given (2.303 RT/F) = 0.0591 V, the electromotive force (EMF) of this galvanic cell is:",
+        "bn": "২৯৮ K তাপমাত্রায় Zn(s) | Zn²⁺(0.01 M) || Cu²⁺(0.1 M) | Cu(s) ড্যানিয়েল কোষের প্রমাণ বিভব E°<sub>cell</sub> = 1.10 V। (2.303 RT/F) = 0.0591 V হলে এই গ্যালভানীয় কোষটির তড়িচ্চালক বল (EMF) কত?",
         "opts": {
             "en": [
                 "1.130 V",
@@ -2349,8 +2349,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Cell reaction: Zn + Cu²⁺ -> Zn²⁺ + Cu (n = 2). Nernst equation: E_cell = E°_cell - (0.0591/2) log([Zn²⁺]/[Cu²⁺]) = 1.10 - 0.02955 log(0.01/0.1) = 1.10 - 0.02955(-1) = 1.10 + 0.02955 ≈ 1.130 V.",
-        "expl_bn": "কোষ বিক্রিয়া: Zn + Cu²⁺ -> Zn²⁺ + Cu (n = ২)। নার্নস্ট সমীকরণ: E_cell = ১.১০ - (০.০৫৯১/২) log(০.০১/০.১) = ১.১০ - ০.০২৯৫৫(-১) ≈ ১.১৩০ V।"
+        "expl_en": "Cell reaction: Zn + Cu²⁺ → Zn²⁺ + Cu (n = 2). Nernst equation: E<sub>cell</sub> = E°<sub>cell</sub> - (0.0591/2) log([Zn²⁺]/[Cu²⁺]) = 1.10 - 0.02955 log(0.01/0.1) = 1.10 - 0.02955(-1) = 1.10 + 0.02955 ≈ 1.130 V.",
+        "expl_bn": "কোষ বিক্রিয়া: Zn + Cu²⁺ → Zn²⁺ + Cu (n = ২)। নার্নস্ট সমীকরণ: E<sub>cell</sub> = ১.১০ - (০.০৫৯১/২) log(০.০১/০.১) = ১.১০ - ০.০২৯৫৫(-১) ≈ ১.১৩০ V।"
     },
     {
         "id": "CHEM-011",
@@ -2358,8 +2358,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Coordination Chemistry & Crystal Field Theory",
         "difficulty": "Hard",
-        "en": "Consider the two octahedral iron(III) complexes [Fe(CN)₆]³⁻ and [Fe(H₂O)₆]³⁺. The hybridization of the central metal ion and the spin-only magnetic moment (μ_s) of [Fe(CN)₆]³⁻ are respectively:",
-        "bn": "দুটি অষ্টতলকীয় আয়রন(III) জটিল যৌগ [Fe(CN)₆]³⁻ এবং [Fe(H₂O)₆]³⁺ বিবেচনা করো। [Fe(CN)₆]³⁻ যৌগে কেন্দ্রীয় ধাতব আয়নের সংকরায়ন (hybridization) এবং কেবল ঘূর্ণনজনিত চৌম্বক ভ্রামক (μ_s) যথাক্রমে কত?",
+        "en": "Consider the two octahedral iron<span class=\"redox-badge\">(III)</span> complexes [Fe(CN)₆]³⁻ and [Fe(H₂O)₆]³⁺. The hybridization of the central metal ion and the spin-only magnetic moment (μ<sub>s</sub>) of [Fe(CN)₆]³⁻ are respectively:",
+        "bn": "দুটি অষ্টতলকীয় আয়রন(III) জটিল যৌগ [Fe(CN)₆]³⁻ এবং [Fe(H₂O)₆]³⁺ বিবেচনা করো। [Fe(CN)₆]³⁻ যৌগে কেন্দ্রীয় ধাতব আয়নের সংকরায়ন (hybridization) এবং কেবল ঘূর্ণনজনিত চৌম্বক ভ্রামক (μ<sub>s</sub>) যথাক্রমে কত?",
         "opts": {
             "en": [
                 "d²sp³ and 1.73 BM",
@@ -2375,8 +2375,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Fe³⁺ has 3d⁵ configuration. Strong-field ligand CN⁻ forces electron pairing (t_2g⁵ e_g⁰), giving 1 unpaired electron (n = 1) and vacant inner 3d orbitals for d²sp³ hybridization. Spin-only magnetic moment: μ_s = √(1(3)) ≈ 1.73 BM (low spin complex).",
-        "expl_bn": "Fe³⁺ এর ইলেকট্রন বিন্যাস 3d⁵। শক্তিশালী লিগ্যান্ড CN⁻ ইলেকট্রন জোড় বাঁধায় (t_2g⁵ e_g⁰), ফলে ১টি অযুগ্ম ইলেকট্রন থাকে এবং অভ্যন্তরীণ d²sp³ সংকরায়ন ঘটে। ঘূর্ণন চৌম্বক ভ্রামক μ_s = √৩ ≈ ১.৭৩ BM।"
+        "expl_en": "Fe³⁺ has 3d⁵ configuration. Strong-field ligand CN⁻ forces electron pairing (t<sub>2g</sub>⁵ e<sub>g</sub>⁰), giving 1 unpaired electron (n = 1) and vacant inner 3d orbitals for d²sp³ hybridization. Spin-only magnetic moment: μ<sub>s</sub> = √(1(3)) ≈ 1.73 BM (low spin complex).",
+        "expl_bn": "Fe³⁺ এর ইলেকট্রন বিন্যাস 3d⁵। শক্তিশালী লিগ্যান্ড CN⁻ ইলেকট্রন জোড় বাঁধায় (t<sub>2g</sub>⁵ e<sub>g</sub>⁰), ফলে ১টি অযুগ্ম ইলেকট্রন থাকে এবং অভ্যন্তরীণ d²sp³ সংকরায়ন ঘটে। ঘূর্ণন চৌম্বক ভ্রামক μ<sub>s</sub> = √৩ ≈ ১.৭৩ BM।"
     },
     {
         "id": "CHEM-012",
@@ -2436,8 +2436,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Stoichiometry & Limiting Reagent",
         "difficulty": "Medium",
-        "en": "When 4 g of hydrogen gas reacts with 32 g of oxygen gas to form water according to 2H₂ + O₂ -> 2H₂O, the limiting reagent and the maximum mass of water produced are:",
-        "bn": "2H₂ + O₂ -> 2H₂O সমীকরণ অনুসারে ৪ গ্রাম হাইড্রোজেন গ্যাস এবং ৩২ গ্রাম অক্সিজেন গ্যাসের বিক্রিয়ায় সীমাস্ত বিকারক (limiting reagent) এবং উৎপন্ন জলের সর্বোচ্চ ভর কত?",
+        "en": "When 4 g of hydrogen gas reacts with 32 g of oxygen gas to form water according to 2H₂ + O₂ → 2H₂O, the limiting reagent and the maximum mass of water produced are:",
+        "bn": "2H₂ + O₂ → 2H₂O সমীকরণ অনুসারে ৪ গ্রাম হাইড্রোজেন গ্যাস এবং ৩২ গ্রাম অক্সিজেন গ্যাসের বিক্রিয়ায় সীমাস্ত বিকারক (limiting reagent) এবং উৎপন্ন জলের সর্বোচ্চ ভর কত?",
         "opts": {
             "en": [
                 "Both react completely (neither is limiting); 36 g H₂O",
@@ -2488,8 +2488,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Structure of Atom & Photoelectric / de Broglie",
         "difficulty": "Medium",
-        "en": "An electron and a proton have the same de Broglie wavelength. Which of the following statements comparing their kinetic energies is correct? (Mass of proton m_p >> mass of electron m_e):",
-        "bn": "একটি ইলেকট্রন এবং একটি প্রোটনের দ্য ব্রয় তরঙ্গদৈর্ঘ্য সমান। তাদের গতিশক্তির তুলনার ক্ষেত্রে নিচের কোন বক্তব্যটি সঠিক? (প্রোটনের ভর m_p >> ইলেকট্রনের ভর m_e):",
+        "en": "An electron and a proton have the same de Broglie wavelength. Which of the following statements comparing their kinetic energies is correct? (Mass of proton m<sub>p</sub> >> mass of electron m<sub>e</sub>):",
+        "bn": "একটি ইলেকট্রন এবং একটি প্রোটনের দ্য ব্রয় তরঙ্গদৈর্ঘ্য সমান। তাদের গতিশক্তির তুলনার ক্ষেত্রে নিচের কোন বক্তব্যটি সঠিক? (প্রোটনের ভর m<sub>p</sub> >> ইলেকট্রনের ভর m<sub>e</sub>):",
         "opts": {
             "en": [
                 "The kinetic energy of the electron is significantly greater than that of the proton",
@@ -2505,7 +2505,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "de Broglie wavelength λ = h / p = h / √(2 m K) => K = h² / (2 m λ²). Since λ is identical for both: K ∝ 1 / m. Because m_e << m_p, K_electron >> K_proton.",
+        "expl_en": "de Broglie wavelength λ = h / p = h / √(2 m K) => K = h² / (2 m λ²). Since λ is identical for both: K ∝ 1 / m. Because m<sub>e</sub> << m<sub>p</sub>, K<sub>electron</sub> >> K<sub>proton</sub>.",
         "expl_bn": "গতিশক্তি K = h² / (২mλ²)। যেহেতু তরঙ্গদৈর্ঘ্য সমান, তাই K ∝ ১/m। ইলেকট্রনের ভর অনেক কম হওয়ায় এর গতিশক্তি অনেক বেশি।"
     },
     {
@@ -2583,7 +2583,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "NO has 15 electrons: (σ1s)² (σ*1s)² (σ2s)² (σ*2s)² (π2p_x)² (π2p_y)² (σ2p_z)² (π*2p_x)¹. Number of bonding electrons N_b = 10, antibonding N_a = 5. Bond order = (10 - 5)/2 = 2.5. It contains 1 unpaired electron in π*2p, so it is paramagnetic.",
+        "expl_en": "NO has 15 electrons: (σ1s)² (σ*1s)² (σ2s)² (σ*2s)² (π2p<sub>x</sub>)² (π2p<sub>y</sub>)² (σ2p<sub>z</sub>)² (π*2p<sub>x</sub>)¹. Number of bonding electrons N<sub>b</sub> = 10, antibonding N<sub>a</sub> = 5. Bond order = (10 - 5)/2 = 2.5. It contains 1 unpaired electron in π*2p, so it is paramagnetic.",
         "expl_bn": "NO অণুতে ১৫টি ইলেকট্রন থাকে। বন্ধন ক্রম = (১০ - ৫) / ২ = ২.৫। π*2p অরবিটালে ১টি অযুগ্ম ইলেকট্রন থাকায় এটি পরাচৌম্বকীয়।"
     },
     {
@@ -2635,7 +2635,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Since the forward reaction involves a decrease in moles of gas (4 moles -> 2 moles), Le Chatelier's principle dictates that high pressure shifts equilibrium forward. Because the forward reaction is exothermic (ΔH < 0), lower temperature favors yield, but a moderate optimum temperature (~700 K) with iron catalyst is used to ensure viable reaction rate.",
+        "expl_en": "Since the forward reaction involves a decrease in moles of gas (4 moles → 2 moles), Le Chatelier's principle dictates that high pressure shifts equilibrium forward. Because the forward reaction is exothermic (ΔH < 0), lower temperature favors yield, but a moderate optimum temperature (~700 K) with iron catalyst is used to ensure viable reaction rate.",
         "expl_bn": "সম্মুখবর্তী বিক্রিয়ায় মোলের সংখ্যা হ্রাস পায় (৪ থেকে ২), তাই লা শাতেলিয়ারের নীতি অনুসারে উচ্চ চাপ সম্মুখ বিক্রিয়াকে উৎসাহিত করে। বিক্রিয়াটি তাপমোচী হওয়ায় পরিমিত তাপমাত্রা ও উচ্চ চাপ সর্বোত্তম উৎপাদ দেয়।"
     },
     {
@@ -2644,8 +2644,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Ionic Equilibrium & pH of Buffer Solutions",
         "difficulty": "Medium",
-        "en": "An acidic buffer solution contains 0.1 M CH₃COOH and 0.1 M CH₃COONa. If the pK_a of acetic acid is 4.74, the pH of the buffer solution is:",
-        "bn": "একটি অম্লীয় বাফার দ্রবণে ০.১ M CH₃COOH এবং ০.১ M CH₃COONa রয়েছে। অ্যাসিটিক অ্যাসিডের pK_a = ৪.৭৪ হলে বাফার দ্রবণটির pH কত?",
+        "en": "An acidic buffer solution contains 0.1 M CH₃COOH and 0.1 M CH₃COONa. If the pK<sub>a</sub> of acetic acid is 4.74, the pH of the buffer solution is:",
+        "bn": "একটি অম্লীয় বাফার দ্রবণে ০.১ M CH₃COOH এবং ০.১ M CH₃COONa রয়েছে। অ্যাসিটিক অ্যাসিডের pK<sub>a</sub> = ৪.৭৪ হলে বাফার দ্রবণটির pH কত?",
         "opts": {
             "en": [
                 "4.74",
@@ -2661,8 +2661,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By Henderson-Hasselbalch equation: pH = pK_a + log([Conjugate Base] / [Acid]) = 4.74 + log(0.1 / 0.1) = 4.74 + log(1) = 4.74 + 0 = 4.74.",
-        "expl_bn": "হেন্ডারসন সমীকরণ অনুসারে: pH = pK_a + log([লবণ]/[অ্যাসিড]) = ৪.৭৪ + log(০.১/০.১) = ৪.৭৪ + ০ = ৪.৭৪।"
+        "expl_en": "By Henderson-Hasselbalch equation: pH = pK<sub>a</sub> + log([Conjugate Base] / [Acid]) = 4.74 + log(0.1 / 0.1) = 4.74 + log(1) = 4.74 + 0 = 4.74.",
+        "expl_bn": "হেন্ডারসন সমীকরণ অনুসারে: pH = pK<sub>a</sub> + log([লবণ]/[অ্যাসিড]) = ৪.৭৪ + log(০.১/০.১) = ৪.৭৪ + ০ = ৪.৭৪।"
     },
     {
         "id": "CHEM-023",
@@ -2670,8 +2670,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Ionic Equilibrium & Solubility Product",
         "difficulty": "Medium",
-        "en": "The solubility product (K_sp) of silver chloride (AgCl) in water at 298 K is 1.0 × 10⁻¹⁰. The solubility (S) of AgCl in pure water is:",
-        "bn": "২৯৮ K তাপমাত্রায় জলে সিলভার ক্লোরাইডের (AgCl) দ্রাব্যতা গুণফল (K_sp) হলো ১.০ × ১০⁻¹⁰। বিশুদ্ধ জলে AgCl এর দ্রাব্যতা (S) কত?",
+        "en": "The solubility product (K<sub>sp</sub>) of silver chloride (AgCl) in water at 298 K is 1.0 × 10⁻¹⁰. The solubility (S) of AgCl in pure water is:",
+        "bn": "২৯৮ K তাপমাত্রায় জলে সিলভার ক্লোরাইডের (AgCl) দ্রাব্যতা গুণফল (K<sub>sp</sub>) হলো ১.০ × ১০⁻¹⁰। বিশুদ্ধ জলে AgCl এর দ্রাব্যতা (S) কত?",
         "opts": {
             "en": [
                 "1.0 × 10⁻⁵ mol/L",
@@ -2687,8 +2687,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq). K_sp = [Ag⁺][Cl⁻] = S × S = S² => S = √(K_sp) = √(1.0 × 10⁻¹⁰) = 1.0 × 10⁻⁵ mol/L.",
-        "expl_bn": "AgCl এর দ্রাব্যতা গুণফল K_sp = S² => দ্রাব্যতা S = √(K_sp) = √(১০⁻¹⁰) = ১.০ × ১০⁻⁵ mol/L।"
+        "expl_en": "AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq). K<sub>sp</sub> = [Ag⁺][Cl⁻] = S × S = S² => S = √(K<sub>sp</sub>) = √(1.0 × 10⁻¹⁰) = 1.0 × 10⁻⁵ mol/L.",
+        "expl_bn": "AgCl এর দ্রাব্যতা গুণফল K<sub>sp</sub> = S² => দ্রাব্যতা S = √(K<sub>sp</sub>) = √(১০⁻¹⁰) = ১.০ × ১০⁻⁵ mol/L।"
     },
     {
         "id": "CHEM-024",
@@ -2713,8 +2713,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Reduction reaction: Al³⁺ + 3e⁻ -> Al. Reduction of 1 mole of Al³⁺ requires 3 moles of electrons. Total charge Q = n F = 3 × 96,500 C = 289,500 C = 3F.",
-        "expl_bn": "Al³⁺ + 3e⁻ -> Al। ১ মোল Al³⁺ বিজারণের জন্য ৩ মোল ইলেকট্রন প্রয়োজন। মোট আধান Q = ৩F = ৩ × ৯৬৫০০ = ২৮৯,৫০০ C।"
+        "expl_en": "Reduction reaction: Al³⁺ + 3e⁻ → Al. Reduction of 1 mole of Al³⁺ requires 3 moles of electrons. Total charge Q = n F = 3 × 96,500 C = 289,500 C = 3F.",
+        "expl_bn": "Al³⁺ + 3e⁻ → Al। ১ মোল Al³⁺ বিজারণের জন্য ৩ মোল ইলেকট্রন প্রয়োজন। মোট আধান Q = ৩F = ৩ × ৯৬৫০০ = ২৮৯,৫০০ C।"
     },
     {
         "id": "CHEM-025",
@@ -2739,8 +2739,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Boiling point elevation ΔT_b = i K_b m. Al₂(SO₄)₃ dissociates into 2 Al³⁺ + 3 SO₄²⁻ (i = 5). For BaCl₂ i = 3, for NaCl i = 2, and for glucose i = 1. Since Al₂(SO₄)₃ has the largest van 't Hoff factor i = 5, it exhibits the highest ΔT_b.",
-        "expl_bn": "স্ফুটনাঙ্ক উন্নয়ন ΔT_b = i K_b m। Al₂(SO₄)₃ বিয়োজিত হয়ে ৫টি আয়ন তৈরি করে (i = ৫), তাই এর স্ফুটনাঙ্ক বৃদ্ধি সর্বাধিক।"
+        "expl_en": "Boiling point elevation ΔT<sub>b</sub> = i K<sub>b</sub> m. Al₂(SO₄)₃ dissociates into 2 Al³⁺ + 3 SO₄²⁻ (i = 5). For BaCl₂ i = 3, for NaCl i = 2, and for glucose i = 1. Since Al₂(SO₄)₃ has the largest van 't Hoff factor i = 5, it exhibits the highest ΔT<sub>b</sub>.",
+        "expl_bn": "স্ফুটনাঙ্ক উন্নয়ন ΔT<sub>b</sub> = i K<sub>b</sub> m। Al₂(SO₄)₃ বিয়োজিত হয়ে ৫টি আয়ন তৈরি করে (i = ৫), তাই এর স্ফুটনাঙ্ক বৃদ্ধি সর্বাধিক।"
     },
     {
         "id": "CHEM-026",
@@ -2765,8 +2765,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Half-life t_1/2 = 0.693 / k = 0.693 / (6.93 × 10⁻³) = 100 s. Reduction to 25% (1/4) requires 2 half-lives: Total time t = 2 × t_1/2 = 2 × 100 = 200 s.",
-        "expl_bn": "অর্ধায়ু t_1/2 = ০.৬৯৩ / k = ০.৬৯৩ / (৬.৯৩ × ১০⁻³) = ১০০ সেকেন্ড। গাড়ত্ব ২৫% হতে ২টি অর্ধায়ু প্রয়োজন, তাই সময় = ২ × ১০০ = ২০০ সেকেন্ড।"
+        "expl_en": "Half-life t<sub>1/2</sub> = 0.693 / k = 0.693 / (6.93 × 10⁻³) = 100 s. Reduction to 25% (1/4) requires 2 half-lives: Total time t = 2 × t<sub>1/2</sub> = 2 × 100 = 200 s.",
+        "expl_bn": "অর্ধায়ু t<sub>1/2</sub> = ০.৬৯৩ / k = ০.৬৯৩ / (৬.৯৩ × ১০⁻³) = ১০০ সেকেন্ড। গাড়ত্ব ২৫% হতে ২টি অর্ধায়ু প্রয়োজন, তাই সময় = ২ × ১০০ = ২০০ সেকেন্ড।"
     },
     {
         "id": "CHEM-027",
@@ -2817,8 +2817,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "During auto-reduction: 2Cu₂O + Cu₂S -> 6Cu + SO₂↑. As the molten copper solidifies, dissolved sulfur dioxide (SO₂) gas bubbles out, forming blister-like eruptions on the metal surface.",
-        "expl_bn": "স্বতঃবিজারণ বিক্রিয়ায় 2Cu₂O + Cu₂S -> 6Cu + SO₂↑। গলিত তামা জমাট বাঁধার সময় SO₂ গ্যাস বুদবুদ আকারে বের হয়ে যাওয়ায় পৃষ্ঠে ফোস্কার মতো দাগ সৃষ্টি হয়।"
+        "expl_en": "During auto-reduction: 2Cu₂O + Cu₂S → 6Cu + SO₂↑. As the molten copper solidifies, dissolved sulfur dioxide (SO₂) gas bubbles out, forming blister-like eruptions on the metal surface.",
+        "expl_bn": "স্বতঃবিজারণ বিক্রিয়ায় 2Cu₂O + Cu₂S → 6Cu + SO₂↑। গলিত তামা জমাট বাঁধার সময় SO₂ গ্যাস বুদবুদ আকারে বের হয়ে যাওয়ায় পৃষ্ঠে ফোস্কার মতো দাগ সৃষ্টি হয়।"
     },
     {
         "id": "CHEM-029",
@@ -2982,8 +2982,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Haloalkanes & Nucleophilic Substitution",
         "difficulty": "Medium",
-        "en": "Which of the following alkyl halides undergoes nucleophilic substitution via S_N1 mechanism most rapidly due to the high stability of the formed carbocation?",
-        "bn": "উৎপন্ন কার্বোক্যাটায়নের উচ্চ স্থায়িত্বের কারণে নিচের কোন অ্যালকাইল হ্যালাইডটি S_N1 বিক্রিয়ায় সর্বাধিক দ্রুত সাড়া দেয়?",
+        "en": "Which of the following alkyl halides undergoes nucleophilic substitution via S<sub>N</sub>1 mechanism most rapidly due to the high stability of the formed carbocation?",
+        "bn": "উৎপন্ন কার্বোক্যাটায়নের উচ্চ স্থায়িত্বের কারণে নিচের কোন অ্যালকাইল হ্যালাইডটি S<sub>N</sub>1 বিক্রিয়ায় সর্বাধিক দ্রুত সাড়া দেয়?",
         "opts": {
             "en": [
                 "tert-Butyl bromide ((CH₃)₃C-Br)",
@@ -2999,8 +2999,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The rate of S_N1 reactions is governed by the stability of the intermediate carbocation. The tertiary carbocation (CH₃)₃C⁺ formed from tert-butyl bromide is strongly stabilized by 9 hyperconjugative α-hydrogens and +I effect, facilitating the fastest S_N1 solvolysis.",
-        "expl_bn": "S_N1 বিক্রিয়ার হার কার্বোক্যাটায়নের স্থায়িত্বের ওপর নির্ভরশীল। টারশিয়ারি বিউটাইল ব্রোমাইড থেকে ৩° কার্বোক্যাটায়ন তৈরি হয় যা সর্বাধিক সুস্থিত, ফলে এটি দ্রুততম S_N1 বিক্রিয়া ঘটায়।"
+        "expl_en": "The rate of S<sub>N</sub>1 reactions is governed by the stability of the intermediate carbocation. The tertiary carbocation (CH₃)₃C⁺ formed from tert-butyl bromide is strongly stabilized by 9 hyperconjugative α-hydrogens and +I effect, facilitating the fastest S<sub>N</sub>1 solvolysis.",
+        "expl_bn": "S<sub>N</sub>1 বিক্রিয়ার হার কার্বোক্যাটায়নের স্থায়িত্বের ওপর নির্ভরশীল। টারশিয়ারি বিউটাইল ব্রোমাইড থেকে ৩° কার্বোক্যাটায়ন তৈরি হয় যা সর্বাধিক সুস্থিত, ফলে এটি দ্রুততম S<sub>N</sub>1 বিক্রিয়া ঘটায়।"
     },
     {
         "id": "CHEM-036",
@@ -3077,8 +3077,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Williamson synthesis follows an S_N2 mechanism. To avoid E2 elimination, the alkyl halide must be unhindered (primary): ethyl bromide (1° halide) is reacted with bulky sodium tert-butoxide (alkoxide). Using tert-butyl bromide with ethoxide results purely in E2 elimination to give isobutylene.",
-        "expl_bn": "উইলিয়ামসন সংশ্লেষণ S_N2 ক্রিয়া কৌশল অনুসরণ করে। ৩° অ্যালকাইল হ্যালাইড ব্যবহার করলে অপনয়ন বিক্রিয়ায় অ্যালকিন তৈরি হয়। তাই ১° হ্যালাইড (ইথাইল ব্রোমাইড) এবং ৩° অ্যালকোক্সাইড ব্যবহার করতে হয়।"
+        "expl_en": "Williamson synthesis follows an S<sub>N</sub>2 mechanism. To avoid E2 elimination, the alkyl halide must be unhindered (primary): ethyl bromide (1° halide) is reacted with bulky sodium tert-butoxide (alkoxide). Using tert-butyl bromide with ethoxide results purely in E2 elimination to give isobutylene.",
+        "expl_bn": "উইলিয়ামসন সংশ্লেষণ S<sub>N</sub>2 ক্রিয়া কৌশল অনুসরণ করে। ৩° অ্যালকাইল হ্যালাইড ব্যবহার করলে অপনয়ন বিক্রিয়ায় অ্যালকিন তৈরি হয়। তাই ১° হ্যালাইড (ইথাইল ব্রোমাইড) এবং ৩° অ্যালকোক্সাইড ব্যবহার করতে হয়।"
     },
     {
         "id": "CHEM-039",
@@ -3242,8 +3242,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Structure of Atom & Heisenberg Uncertainty",
         "difficulty": "Medium",
-        "en": "If the uncertainty in position of an electron is Δx = 1.0 × 10⁻¹⁰ m, the minimum uncertainty in its velocity (Δv) is approximately (h = 6.626 × 10⁻³⁴ J·s, m_e = 9.11 × 10⁻³¹ kg):",
-        "bn": "একটি ইলেকট্রনের অবস্থানের অনিশ্চয়তা Δx = ১.০ × ১০⁻¹⁰ মি হলে এর বেগের ন্যূনতম অনিশ্চয়তা (Δv) প্রায় কত? (h = 6.626 × 10⁻³⁴ J·s, m_e = 9.11 × 10⁻³¹ kg):",
+        "en": "If the uncertainty in position of an electron is Δx = 1.0 × 10⁻¹⁰ m, the minimum uncertainty in its velocity (Δv) is approximately (h = 6.626 × 10⁻³⁴ J·s, m<sub>e</sub> = 9.11 × 10⁻³¹ kg):",
+        "bn": "একটি ইলেকট্রনের অবস্থানের অনিশ্চয়তা Δx = ১.০ × ১০⁻¹⁰ মি হলে এর বেগের ন্যূনতম অনিশ্চয়তা (Δv) প্রায় কত? (h = 6.626 × 10⁻³⁴ J·s, m<sub>e</sub> = 9.11 × 10⁻³¹ kg):",
         "opts": {
             "en": [
                 "5.8 × 10⁵ m/s",
@@ -3285,7 +3285,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "In fluorine, the incoming electron enters a very compact 2p subshell where it experiences strong inter-electronic repulsions. In chlorine, the electron enters the larger 3p subshell with much lower repulsion, releasing more energy (Δ_eg H = -349 kJ/mol for Cl vs -328 kJ/mol for F).",
+        "expl_en": "In fluorine, the incoming electron enters a very compact 2p subshell where it experiences strong inter-electronic repulsions. In chlorine, the electron enters the larger 3p subshell with much lower repulsion, releasing more energy (Δ<sub>eg</sub> H = -349 kJ/mol for Cl vs -328 kJ/mol for F).",
         "expl_bn": "ফ্লোরিনের ক্ষুদ্রাকার 2p স্তরে তীব্র আন্তঃ-ইলেকট্রনীয় বিকর্ষণের কারণে আগত ইলেকট্রন কম আকর্ষণ অনুভব করে। কিন্তু ক্লোরিনের প্রশস্ত 3p স্তরে বিকর্ষণ কম হওয়ায় এর ইলেকট্রন গ্রহণ এনথ্যালপি বেশি ঋণাত্মক হয়।"
     },
     {
@@ -3320,8 +3320,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Chemical Thermodynamics & Hess's Law",
         "difficulty": "Medium",
-        "en": "Given the enthalpies of combustion: C(graphite) = -393.5 kJ/mol, H₂(g) = -285.8 kJ/mol, and CH₄(g) = -890.3 kJ/mol, the standard enthalpy of formation (Δ_f H°) of methane (CH₄) is:",
-        "bn": "দহন এনথ্যালপির মান: C(গ্রাফাইট) = -393.5 kJ/mol, H₂(g) = -285.8 kJ/mol এবং CH₄(g) = -890.3 kJ/mol। মিথেনের (CH₄) প্রমাণ গঠন এনথ্যালপি (Δ_f H°) কত?",
+        "en": "Given the enthalpies of combustion: C(graphite) = -393.5 kJ/mol, H₂(g) = -285.8 kJ/mol, and CH₄(g) = -890.3 kJ/mol, the standard enthalpy of formation (Δ<sub>f</sub> H°) of methane (CH₄) is:",
+        "bn": "দহন এনথ্যালপির মান: C(গ্রাফাইট) = -393.5 kJ/mol, H₂(g) = -285.8 kJ/mol এবং CH₄(g) = -890.3 kJ/mol। মিথেনের (CH₄) প্রমাণ গঠন এনথ্যালপি (Δ<sub>f</sub> H°) কত?",
         "opts": {
             "en": [
                 "-74.8 kJ/mol",
@@ -3337,8 +3337,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Formation reaction: C(s) + 2H₂(g) -> CH₄(g). By Hess's law: Δ_f H°(CH₄) = Δ_c H°(C) + 2 Δ_c H°(H₂) - Δ_c H°(CH₄) = (-393.5) + 2(-285.8) - (-890.3) = -393.5 - 571.6 + 890.3 = -965.1 + 890.3 = -74.8 kJ/mol.",
-        "expl_bn": "হেসের সূত্র অনুসারে: Δ_f H° = Δ_c H°(C) + ২ Δ_c H°(H₂) - Δ_c H°(CH₄) = -৩৯৩.৫ + ২(-২৮৫.৮) - (-৮৯০.৩) = -৭৪.৮ kJ/mol।"
+        "expl_en": "Formation reaction: C(s) + 2H₂(g) → CH₄(g). By Hess's law: Δ<sub>f</sub> H°(CH₄) = Δ<sub>c</sub> H°(C) + 2 Δ<sub>c</sub> H°(H₂) - Δ<sub>c</sub> H°(CH₄) = (-393.5) + 2(-285.8) - (-890.3) = -393.5 - 571.6 + 890.3 = -965.1 + 890.3 = -74.8 kJ/mol.",
+        "expl_bn": "হেসের সূত্র অনুসারে: Δ<sub>f</sub> H° = Δ<sub>c</sub> H°(C) + ২ Δ<sub>c</sub> H°(H₂) - Δ<sub>c</sub> H°(CH₄) = -৩৯৩.৫ + ২(-২৮৫.৮) - (-৮৯০.৩) = -৭৪.৮ kJ/mol।"
     },
     {
         "id": "CHEM-049",
@@ -3346,25 +3346,25 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Chemical Equilibrium & K_p vs K_c",
         "difficulty": "Easy",
-        "en": "For the gaseous dissociation reaction PCl₅(g) ⇌ PCl₃(g) + Cl₂(g), the mathematical relationship between equilibrium constants K_p and K_c is:",
-        "bn": "PCl₅(g) ⇌ PCl₃(g) + Cl₂(g) গ্যাসীয় বিক্রিয়াটির ক্ষেত্রে সাম্যধ্রুবক K_p এবং K_c এর মধ্যকার সঠিক সম্পর্ক কোনটি?",
+        "en": "For the gaseous dissociation reaction PCl₅(g) ⇌ PCl₃(g) + Cl₂(g), the mathematical relationship between equilibrium constants K<sub>p</sub> and K<sub>c</sub> is:",
+        "bn": "PCl₅(g) ⇌ PCl₃(g) + Cl₂(g) গ্যাসীয় বিক্রিয়াটির ক্ষেত্রে সাম্যধ্রুবক K<sub>p</sub> এবং K<sub>c</sub> এর মধ্যকার সঠিক সম্পর্ক কোনটি?",
         "opts": {
             "en": [
-                "K_p = K_c (RT)",
-                "K_p = K_c (RT)⁻¹",
-                "K_p = K_c",
-                "K_p = K_c (RT)²"
+                "K<sub>p</sub> = K<sub>c</sub> (RT)",
+                "K<sub>p</sub> = K<sub>c</sub> (RT)⁻¹",
+                "K<sub>p</sub> = K<sub>c</sub>",
+                "K<sub>p</sub> = K<sub>c</sub> (RT)²"
             ],
             "bn": [
-                "K_p = K_c (RT)",
-                "K_p = K_c (RT)⁻¹",
-                "K_p = K_c",
-                "K_p = K_c (RT)²"
+                "K<sub>p</sub> = K<sub>c</sub> (RT)",
+                "K<sub>p</sub> = K<sub>c</sub> (RT)⁻¹",
+                "K<sub>p</sub> = K<sub>c</sub>",
+                "K<sub>p</sub> = K<sub>c</sub> (RT)²"
             ]
         },
         "correct": 0,
-        "expl_en": "K_p = K_c (RT)^Δn_g. Here Δn_g = moles of gaseous products - moles of gaseous reactants = (1 + 1) - 1 = +1. Therefore, K_p = K_c (RT)¹ = K_c (RT).",
-        "expl_bn": "K_p = K_c (RT)^Δn_g। এখানে গ্যাসীয় মোলের পরিবর্তন Δn_g = (১ + ১) - ১ = ১। সুতরাং K_p = K_c (RT)।"
+        "expl_en": "K<sub>p</sub> = K<sub>c</sub> (RT)<sup>Δn<sub>g</sub></sup>. Here Δn<sub>g</sub> = moles of gaseous products - moles of gaseous reactants = (1 + 1) - 1 = +1. Therefore, K<sub>p</sub> = K<sub>c</sub> (RT)¹ = K<sub>c</sub> (RT).",
+        "expl_bn": "K<sub>p</sub> = K<sub>c</sub> (RT)<sup>Δn<sub>g</sub>।</sup> এখানে গ্যাসীয় মোলের পরিবর্তন Δn<sub>g</sub> = (১ + ১) - ১ = ১। সুতরাং K<sub>p</sub> = K<sub>c</sub> (RT)।"
     },
     {
         "id": "CHEM-050",
@@ -3376,7 +3376,7 @@ window.PHYSICS_QUESTIONS_DATA = [
         "bn": "লেড সঞ্চয়ক ব্যাটারির ক্ষরণকালে (discharging) অ্যানোড এবং ক্যাথোড উভয় তড়িৎদ্বারেই কোন রাসায়নিক পদার্থটি জমা হয়?",
         "opts": {
             "en": [
-                "PbSO₄ (Lead(II) sulfate)",
+                "PbSO₄ (Lead<span class=\"redox-badge\">(II)</span> sulfate)",
                 "PbO₂ (Lead dioxide)",
                 "PbO (Lead oxide)",
                 "H₂SO₄"
@@ -3389,7 +3389,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "At anode: Pb(s) + SO₄²⁻ -> PbSO₄(s) + 2e⁻. At cathode: PbO₂(s) + 4H⁺ + SO₄²⁻ + 2e⁻ -> PbSO₄(s) + 2H₂O. Solid PbSO₄ precipitates on both plates, and sulfuric acid is consumed.",
+        "expl_en": "At anode: Pb(s) + SO₄²⁻ → PbSO₄(s) + 2e⁻. At cathode: PbO₂(s) + 4H⁺ + SO₄²⁻ + 2e⁻ → PbSO₄(s) + 2H₂O. Solid PbSO₄ precipitates on both plates, and sulfuric acid is consumed.",
         "expl_bn": "ক্ষরণ বিক্রিয়ায় অ্যানোডে Pb এবং ক্যাথোডে PbO₂ উভয়ই বিক্রিয়া করে অদ্রবণীয় PbSO₄ গঠন করে উভয় পাতেই জমা হয়।"
     },
     {
@@ -3404,18 +3404,18 @@ window.PHYSICS_QUESTIONS_DATA = [
             "en": [
                 "Intermolecular hydrogen bonding occurs between acetone and chloroform molecules (A-B > A-A and B-B)",
                 "A-B interactions are much weaker than pure component interactions",
-                "The mixing process is endothermic with ΔV_mix > 0",
+                "The mixing process is endothermic with ΔV<sub>mix</sub> > 0",
                 "Chloroform molecules dimerise in acetone"
             ],
             "bn": [
                 "অ্যাসিটোন ও ক্লোরোফর্মের অণুর মধ্যে নতুন আন্তঃআণবিক হাইড্রোজেন বন্ধন সৃষ্টি হয় (A-B > A-A)",
                 "A-B আন্তঃআণবিক আকর্ষণ বিশুদ্ধ উপাদানের চেয়ে দুর্বল",
-                "মিশ্রণ প্রক্রিয়া তাপগ্রাহী এবং ΔV_mix > ০",
+                "মিশ্রণ প্রক্রিয়া তাপগ্রাহী এবং ΔV<sub>mix</sub> > ০",
                 "ক্লোরোফর্মের অণু অ্যাসিটোনে ডাইমার তৈরি করে"
             ]
         },
         "correct": 0,
-        "expl_en": "Acetone (hydrogen bond acceptor) forms a strong intermolecular hydrogen bond with the acidic C-H hydrogen of chloroform (Cl₃C-H···O=C(CH₃)₂). The resulting A-B attractions are stronger than A-A and B-B attractions, lowering vapor pressure (negative deviation, ΔH_mix < 0, ΔV_mix < 0).",
+        "expl_en": "Acetone (hydrogen bond acceptor) forms a strong intermolecular hydrogen bond with the acidic C-H hydrogen of chloroform (Cl₃C-H···O=C(CH₃)₂). The resulting A-B attractions are stronger than A-A and B-B attractions, lowering vapor pressure (negative deviation, ΔH<sub>mix</sub> < 0, ΔV<sub>mix</sub> < 0).",
         "expl_bn": "ক্লোরোফর্মের অ্যাসিডিক হাইড্রোজেন এবং অ্যাসিটোনের অক্সিজেনের মধ্যে আন্তঃআণবিক হাইড্রোজেন বন্ধন গঠিত হওয়ায় বাষ্পচাপ হ্রাস পায় এবং ঋণাত্মক বিচ্যুতি ঘটে।"
     },
     {
@@ -3424,7 +3424,7 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Chemical Kinetics & Pseudo-First-Order Reactions",
         "difficulty": "Medium",
-        "en": "The acid-catalyzed hydrolysis of ethyl acetate: CH₃COOC₂H₅ + H₂O (excess) --[H⁺]--> CH₃COOH + C₂H₅OH is an example of a:",
+        "en": "The acid-catalyzed hydrolysis of ethyl acetate: CH₃COOC₂H₅ + H₂O (excess) --[H⁺] → CH₃COOH + C₂H₅OH is an example of a:",
         "bn": "অ্যাসিড অনুঘটকের উপস্থিতিতে ইথাইল অ্যাসিটেটের আর্দ্রবিশ্লেষণ বিক্রিয়াটি নিচের কোনটির উদাহরণ?",
         "opts": {
             "en": [
@@ -3493,7 +3493,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "At 330-350 K, impure nickel reacts with CO to form volatile nickel tetracarbonyl: Ni + 4CO -> Ni(CO)₄. At 450-470 K, Ni(CO)₄ decomposes into pure nickel and carbon monoxide: Ni(CO)₄ -> Ni + 4CO.",
+        "expl_en": "At 330-350 K, impure nickel reacts with CO to form volatile nickel tetracarbonyl: Ni + 4CO → Ni(CO)₄. At 450-470 K, Ni(CO)₄ decomposes into pure nickel and carbon monoxide: Ni(CO)₄ → Ni + 4CO.",
         "expl_bn": "৩৩০-৩৫০ K তাপমাত্রায় নিকেল CO গ্যাসের সাথে যুক্ত হয়ে উদ্বায়ী নিকেল টেট্রাকার্বনিল Ni(CO)₄ তৈরি করে, যা ৪৫০-৪৭০ K তাপমাত্রায় ভেঙে বিশুদ্ধ নিকেল দেয়।"
     },
     {
@@ -3545,8 +3545,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Half-reaction in acidic medium: MnO₄⁻ + 8H⁺ + 5e⁻ -> Mn²⁺ + 4H₂O. The oxidation state changes from +7 to +2, absorbing 5 electrons (n-factor = 5, equivalent weight = M/5).",
-        "expl_bn": "অম্লীয় দ্রবণে অর্ধ-বিক্রিয়া: MnO₄⁻ + 8H⁺ + 5e⁻ -> Mn²⁺ + 4H₂O। ম্যাঙ্গানিজের জারণ সংখ্যা +৭ থেকে কমে +২ হয় (তুল্যাঙ্ক ভার = মোলার ভর / ৫)।"
+        "expl_en": "Half-reaction in acidic medium: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O. The oxidation state changes from +7 to +2, absorbing 5 electrons (n-factor = 5, equivalent weight = M/5).",
+        "expl_bn": "অম্লীয় দ্রবণে অর্ধ-বিক্রিয়া: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O। ম্যাঙ্গানিজের জারণ সংখ্যা +৭ থেকে কমে +২ হয় (তুল্যাঙ্ক ভার = মোলার ভর / ৫)।"
     },
     {
         "id": "CHEM-057",
@@ -3649,7 +3649,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The Finkelstein reaction involves halogen exchange: R-Cl + NaI --[acetone]--> R-I + NaCl↓. Precipitation of NaCl in dry acetone drives the equilibrium forward by Le Chatelier's principle.",
+        "expl_en": "The Finkelstein reaction involves halogen exchange: R-Cl + NaI --[acetone] → R-I + NaCl↓. Precipitation of NaCl in dry acetone drives the equilibrium forward by Le Chatelier's principle.",
         "expl_bn": "শুষ্ক অ্যাসিটোনে অ্যালকাইল ক্লোরাইডের সাথে NaI এর বিক্রিয়ায় হ্যালাইড বিনিময়ের মাধ্যমে অ্যালকাইল আয়োডাইড প্রস্তুত করার বিক্রিয়াকে ফিঙ্কেলস্টাইন বিক্রিয়া বলে।"
     },
     {
@@ -3740,21 +3740,21 @@ window.PHYSICS_QUESTIONS_DATA = [
         "bn": "গ্যাব্রিয়েল থ্যালিমাইড সংশ্লেষণের মাধ্যমে বিশুদ্ধ প্রাইমারি অ্যালিফ্যাটিক অ্যামিন প্রস্তুত করা যায়, কিন্তু অ্যানিলিন প্রস্তুত করা যায় না। কারণ কী?",
         "opts": {
             "en": [
-                "Aryl halides do not undergo nucleophilic substitution (S_N2) with potassium phthalimide under mild conditions",
+                "Aryl halides do not undergo nucleophilic substitution (S<sub>N</sub>2) with potassium phthalimide under mild conditions",
                 "Aniline is too basic",
                 "Phthalimide does not react with alkali",
                 "Potassium phthalimide is insoluble"
             ],
             "bn": [
-                "অ্যারাইল হ্যালাইডসমূহ পটাশিয়াম থ্যালিমাইড অ্যানায়নের সাথে S_N2 প্রতিস্থাপন বিক্রিয়ায় সাড়া দেয় না",
+                "অ্যারাইল হ্যালাইডসমূহ পটাশিয়াম থ্যালিমাইড অ্যানায়নের সাথে S<sub>N</sub>2 প্রতিস্থাপন বিক্রিয়ায় সাড়া দেয় না",
                 "অ্যানিলিন অতিরিক্ত ক্ষারীয়",
                 "থ্যালিমাইড ক্ষারের সাথে বিক্রিয়া করে না",
                 "পটাশিয়াম থ্যালিমাইড অদ্রবণীয়"
             ]
         },
         "correct": 0,
-        "expl_en": "Gabriel synthesis relies on nucleophilic attack of the phthalimide anion on an alkyl halide via an S_N2 pathway. Aryl halides have partial double-bond character due to resonance and resist nucleophilic displacement by phthalimide anion.",
-        "expl_bn": "গ্যাব্রিয়েল সংশ্লেষণ S_N2 ক্রিয়া কৌশল মেনে চলে। অ্যারাইল হ্যালাইডে রেজোন্যান্সের কারণে C-X বন্ধনে আংশিক দ্বিবন্ধন চরিত্র থাকে, ফলে থ্যালিমাইড অ্যানায়ন দ্বারা এটি প্রতিস্থাপিত হতে পারে না।"
+        "expl_en": "Gabriel synthesis relies on nucleophilic attack of the phthalimide anion on an alkyl halide via an S<sub>N</sub>2 pathway. Aryl halides have partial double-bond character due to resonance and resist nucleophilic displacement by phthalimide anion.",
+        "expl_bn": "গ্যাব্রিয়েল সংশ্লেষণ S<sub>N</sub>2 ক্রিয়া কৌশল মেনে চলে। অ্যারাইল হ্যালাইডে রেজোন্যান্সের কারণে C-X বন্ধনে আংশিক দ্বিবন্ধন চরিত্র থাকে, ফলে থ্যালিমাইড অ্যানায়ন দ্বারা এটি প্রতিস্থাপিত হতে পারে না।"
     },
     {
         "id": "CHEM-065",
@@ -3779,7 +3779,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The replacement of the diazonium group by chlorine or bromine using copper(I) halide catalysts (Cu₂Cl₂ or Cu₂Br₂) is known as the Sandmeyer reaction.",
+        "expl_en": "The replacement of the diazonium group by chlorine or bromine using copper<span class=\"redox-badge\">(I)</span> halide catalysts (Cu₂Cl₂ or Cu₂Br₂) is known as the Sandmeyer reaction.",
         "expl_bn": "কপার(I) হ্যালাইড অনুঘটকের উপস্থিতিতে ডায়াজোনিয়াম মূলক প্রতিস্থাপনের বিক্রিয়াকে স্যান্ডমেয়ার বিক্রিয়া বলে।"
     },
     {
@@ -3840,8 +3840,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Chemistry",
         "topic": "Electrochemistry & Kohlrausch's Law",
         "difficulty": "Medium",
-        "en": "According to Kohlrausch's law of independent migration of ions, the limiting molar conductivity (Λ°_m) of an electrolyte can be expressed as the sum of the individual contributions of the anions and cations. For BaCl₂, Λ°_m is equal to:",
-        "bn": "কোহলরাশের সূত্রানুসারে অসীম লঘুত্বে BaCl₂ এর সীমাস্ত মোলার পরিবাহিতা (Λ°_m) নিচের কোনটির সমান?",
+        "en": "According to Kohlrausch's law of independent migration of ions, the limiting molar conductivity (Λ°<sub>m</sub>) of an electrolyte can be expressed as the sum of the individual contributions of the anions and cations. For BaCl₂, Λ°<sub>m</sub> is equal to:",
+        "bn": "কোহলরাশের সূত্রানুসারে অসীম লঘুত্বে BaCl₂ এর সীমাস্ত মোলার পরিবাহিতা (Λ°<sub>m</sub>) নিচের কোনটির সমান?",
         "opts": {
             "en": [
                 "λ°(Ba²⁺) + 2 λ°(Cl⁻)",
@@ -3857,8 +3857,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "BaCl₂ dissociates into 1 Ba²⁺ and 2 Cl⁻ ions. By Kohlrausch's law: Λ°_m(BaCl₂) = λ°(Ba²⁺) + 2 λ°(Cl⁻).",
-        "expl_bn": "কোহলরাশের সূত্র অনুসারে BaCl₂ বিয়োজিত হয়ে ১টি Ba²⁺ এবং ২টি Cl⁻ দেয়, তাই Λ°_m = λ°(Ba²⁺) + ২ λ°(Cl⁻)।"
+        "expl_en": "BaCl₂ dissociates into 1 Ba²⁺ and 2 Cl⁻ ions. By Kohlrausch's law: Λ°<sub>m</sub>(BaCl₂) = λ°(Ba²⁺) + 2 λ°(Cl⁻).",
+        "expl_bn": "কোহলরাশের সূত্র অনুসারে BaCl₂ বিয়োজিত হয়ে ১টি Ba²⁺ এবং ২টি Cl⁻ দেয়, তাই Λ°<sub>m</sub> = λ°(Ba²⁺) + ২ λ°(Cl⁻)।"
     },
     {
         "id": "CHEM-069",
@@ -3935,7 +3935,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "A single chlorine free radical acts catalytically in a cyclic chain reaction (Cl· + O₃ -> ClO· + O₂ and ClO· + O -> Cl· + O₂), destroying approximately 100,000 ozone molecules before being deactivated.",
+        "expl_en": "A single chlorine free radical acts catalytically in a cyclic chain reaction (Cl· + O₃ → ClO· + O₂ and ClO· + O → Cl· + O₂), destroying approximately 100,000 ozone molecules before being deactivated.",
         "expl_bn": "একটি ক্লোরিন মুক্ত মূলক পুনরুৎপাদিত হয়ে শৃঙ্খল বিক্রিয়ায় অংশ নেয় এবং নিষ্ক্রিয় হওয়ার পূর্বে প্রায় ১ লক্ষ ওজোন অণু ধ্বংস করতে পারে।"
     },
     {
@@ -4227,8 +4227,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Applying Lindeman's 10% law: Producers (T₁) = 20,000 J -> Herbivores (T₂) = 2,000 J -> Primary Carnivores (T₃) = 200 J -> Tertiary Consumers (T₄) = 20 J.",
-        "expl_bn": "লিন্ডেম্যানের ১০% সূত্রানুসারে: উৎপাদক (T₁) = ২০,০০০ J -> প্রাথমিক খাদক (T₂) = ২,০০০ J -> গৌণ খাদক (T₃) = ২০০ J -> তৃতীয় স্তরের খাদক (T₄) = ২০ J।"
+        "expl_en": "Applying Lindeman's 10% law: Producers (T₁) = 20,000 J → Herbivores (T₂) = 2,000 J → Primary Carnivores (T₃) = 200 J → Tertiary Consumers (T₄) = 20 J.",
+        "expl_bn": "লিন্ডেম্যানের ১০% সূত্রানুসারে: উৎপাদক (T₁) = ২০,০০০ J → প্রাথমিক খাদক (T₂) = ২,০০০ J → গৌণ খাদক (T₃) = ২০০ J → তৃতীয় স্তরের খাদক (T₄) = ২০ J।"
     },
     {
         "id": "BIO-011",
@@ -4306,8 +4306,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The ascending order of taxonomic hierarchy is: Species -> Genus -> Family -> Order -> Class -> Phylum/Division -> Kingdom. Thus, 'Order' is higher than Family, Genus, and Species, and includes all of them.",
-        "expl_bn": "ট্যাক্সোনমিক ক্রম হলো: প্রজাতি -> গণ -> গোত্র -> বর্গ -> শ্রেণী -> পর্ব -> রাজ্য। অতএব 'বর্গ' (Order) গোত্র, গণ ও প্রজাতিকে অন্তর্ভুক্ত করে।"
+        "expl_en": "The ascending order of taxonomic hierarchy is: Species → Genus → Family → Order → Class → Phylum/Division → Kingdom. Thus, 'Order' is higher than Family, Genus, and Species, and includes all of them.",
+        "expl_bn": "ট্যাক্সোনমিক ক্রম হলো: প্রজাতি → গণ → গোত্র → বর্গ → শ্রেণী → পর্ব → রাজ্য। অতএব 'বর্গ' (Order) গোত্র, গণ ও প্রজাতিকে অন্তর্ভুক্ত করে।"
     },
     {
         "id": "BIO-014",
@@ -4774,7 +4774,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Manganese (Mn²⁺) and Chlorine (Cl⁻) are essential cofactors of the oxygen-evolving complex (OEC) associated with Photosystem II for the photolytic splitting of water (2H₂O -> 4H⁺ + 4e⁻ + O₂).",
+        "expl_en": "Manganese (Mn²⁺) and Chlorine (Cl⁻) are essential cofactors of the oxygen-evolving complex (OEC) associated with Photosystem II for the photolytic splitting of water (2H₂O → 4H⁺ + 4e⁻ + O₂).",
         "expl_bn": "ফটোসিস্টেম-২ এর সাথে যুক্ত অক্সিজেন নির্গমনকারী কমপ্লেক্সে ম্যাঙ্গানিজ ও ক্লোরাইড আয়ন জলের ফটোলাইসিস ও O₂ মুক্তিকরণে অপরিহার্য।"
     },
     {
@@ -5242,7 +5242,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Double fertilization involves: 1) Syngamy (one male gamete + egg cell -> diploid zygote, 2n); 2) Triple fusion (second male gamete + 2 polar nuclei of central cell -> triploid primary endosperm nucleus, PEN, 3n).",
+        "expl_en": "Double fertilization involves: 1) Syngamy (one male gamete + egg cell → diploid zygote, 2n); 2) Triple fusion (second male gamete + 2 polar nuclei of central cell → triploid primary endosperm nucleus, PEN, 3n).",
         "expl_bn": "দ্বিনিষেকে একটি পুংজননকোষ ডিম্বাণুকে নিষিক্ত করে ডিপ্লয়েড জাইগোট (2n) গঠন করে (সিনগ্যামি), এবং অপর পুংজননকোষটি নির্ণীত নিউক্লিয়াসের সাথে যুক্ত হয়ে ট্রিপ্লয়েড শস্য (3n) তৈরি করে (ত্রিসংযোজন)।"
     },
     {
@@ -5451,7 +5451,7 @@ window.PHYSICS_QUESTIONS_DATA = [
         },
         "correct": 0,
         "expl_en": "Sickle-cell anemia results from a transversion point mutation where the 6th codon of the β-globin gene changes from GAG to GUG, causing substitution of glutamic acid (polar) with valine (non-polar).",
-        "expl_bn": "β-গ্লোবিন জিনের ৬ষ্ঠ কোডনে একটি বেস পরিবর্তনের কারণে (GAG -> GUG) স্বাভাবিক গ্লুটামিক অ্যাসিডের স্থলে হাইড্রোফোবিক ভ্যালিন যুক্ত হয়ে পলিমারাইজেশন ঘটায়।"
+        "expl_bn": "β-গ্লোবিন জিনের ৬ষ্ঠ কোডনে একটি বেস পরিবর্তনের কারণে (GAG → GUG) স্বাভাবিক গ্লুটামিক অ্যাসিডের স্থলে হাইড্রোফোবিক ভ্যালিন যুক্ত হয়ে পলিমারাইজেশন ঘটায়।"
     },
     {
         "id": "BIO-058",
@@ -5996,7 +5996,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "DDT is lipophilic and non-metabolizable. As it moves up trophic levels from water (0.003 ppb) -> zooplankton (0.04 ppm) -> small fish (0.5 ppm) -> large fish (2 ppm), it accumulates to 25 ppm in fish-eating birds, causing thinning of eggshells.",
+        "expl_en": "DDT is lipophilic and non-metabolizable. As it moves up trophic levels from water (0.003 ppb) → zooplankton (0.04 ppm) → small fish (0.5 ppm) → large fish (2 ppm), it accumulates to 25 ppm in fish-eating birds, causing thinning of eggshells.",
         "expl_bn": "DDT খাদ্যশৃঙ্খলের প্রতিটি স্তরে ক্রমাগত ঘনীভূত হয়ে শীর্ষ স্তরে মাছখেকো পাখির দেহে সর্বোচ্চ ২৫ ppm পর্যন্ত পৌঁছায়, যা ডিমের খোলস পাতলা করে প্রজনন ব্যাহত করে।"
     },
     {
@@ -6037,19 +6037,19 @@ window.PHYSICS_QUESTIONS_DATA = [
             "en": [
                 "log S = log C + Z log A",
                 "log S = log A + Z log C",
-                "S = C · A^r",
+                "S = C · A<sup>r</sup>",
                 "dN/dt = rN(1 - N/K)"
             ],
             "bn": [
                 "log S = log C + Z log A",
                 "log S = log A + Z log C",
-                "S = C · A^r",
+                "S = C · A<sup>r</sup>",
                 "dN/dt = rN(1 - N/K)"
             ]
         },
         "correct": 0,
-        "expl_en": "Alexander von Humboldt's species-area relationship is described by S = C A^Z, which on a logarithmic scale gives a straight line equation: log S = log C + Z log A (where S = species richness, A = area, Z = regression coefficient/slope, C = Y-intercept).",
-        "expl_bn": "হামবোল্টের প্রজাতি-এলাকা সম্পর্কের সমীকরণ S = C A^Z। লগ স্কেলে এটি সরলরেখার রূপ নেয়: log S = log C + Z log A।"
+        "expl_en": "Alexander von Humboldt's species-area relationship is described by S = C A<sup>Z</sup>, which on a logarithmic scale gives a straight line equation: log S = log C + Z log A (where S = species richness, A = area, Z = regression coefficient/slope, C = Y-intercept).",
+        "expl_bn": "হামবোল্টের প্রজাতি-এলাকা সম্পর্কের সমীকরণ S = C A<sup>Z</sup>। লগ স্কেলে এটি সরলরেখার রূপ নেয়: log S = log C + Z log A।"
     },
     {
         "id": "MATH-001",
@@ -6083,8 +6083,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Limits & Infinite Products",
         "difficulty": "Hard",
-        "en": "The value of lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) is equal to:",
-        "bn": "lim (n -> ∞) ∏_{r=1}^{n} (1 + 1/(r(r+2))) -এর মান কত?",
+        "en": "The value of lim (n → ∞) ∏<sub>r=1</sub><sup>n</sup> (1 + 1/(r(r+2))) is equal to:",
+        "bn": "lim (n → ∞) ∏<sub>r=1</sub><sup>n</sup> (1 + 1/(r(r+2))) -এর মান কত?",
         "opts": {
             "en": [
                 "2",
@@ -6100,8 +6100,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "1 + 1/(r(r+2)) = (r² + 2r + 1)/(r(r+2)) = (r+1)² / [r(r+2)] = [(r+1)/r] × [(r+1)/(r+2)]. Expanding the telescoping product from r=1 to n: P_n = (2/1 × 3/2 × ... × (n+1)/n) × (2/3 × 3/4 × ... × (n+1)/(n+2)) = (n+1) × [2/(n+2)] = 2(n+1)/(n+2). As n -> ∞, the limit is 2.",
-        "expl_bn": "১ + ১/(r(r+২)) = (r+১)² / [r(r+২)] = [(r+১)/r] × [(r+১)/(r+২)]। টেলিস্কোপিং গুণফল নিলে পাওয়া যায় ২(n+১)/(n+২)। n -> ∞ হলে সীমা = ২।"
+        "expl_en": "1 + 1/(r(r+2)) = (r² + 2r + 1)/(r(r+2)) = (r+1)² / [r(r+2)] = [(r+1)/r] × [(r+1)/(r+2)]. Expanding the telescoping product from r=1 to n: P<sub>n</sub> = (2/1 × 3/2 × ... × (n+1)/n) × (2/3 × 3/4 × ... × (n+1)/(n+2)) = (n+1) × [2/(n+2)] = 2(n+1)/(n+2). As n → ∞, the limit is 2.",
+        "expl_bn": "১ + ১/(r(r+২)) = (r+১)² / [r(r+২)] = [(r+১)/r] × [(r+১)/(r+২)]। টেলিস্কোপিং গুণফল নিলে পাওয়া যায় ২(n+১)/(n+২)। n → ∞ হলে সীমা = ২।"
     },
     {
         "id": "MATH-003",
@@ -6109,8 +6109,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Functional Equations",
         "difficulty": "Hard",
-        "en": "If f(x) is a continuous function satisfying f(x + y) = f(x) + f(y) + 3xy(x + y) for all x, y ∈ ℝ, and lim (x -> 0) f(x)/x = 2, then f(3) is equal to:",
-        "bn": "যদি f(x) একটি অবিচ্ছিন্ন অপেক্ষক হয় যা f(x + y) = f(x) + f(y) + 3xy(x + y) সিদ্ধ করে এবং lim (x -> 0) f(x)/x = 2 হয়, তবে f(3) এর মান:",
+        "en": "If f(x) is a continuous function satisfying f(x + y) = f(x) + f(y) + 3xy(x + y) for all x, y ∈ ℝ, and lim (x → 0) f(x)/x = 2, then f(3) is equal to:",
+        "bn": "যদি f(x) একটি অবিচ্ছিন্ন অপেক্ষক হয় যা f(x + y) = f(x) + f(y) + 3xy(x + y) সিদ্ধ করে এবং lim (x → 0) f(x)/x = 2 হয়, তবে f(3) এর মান:",
         "opts": {
             "en": [
                 "33",
@@ -6126,7 +6126,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Let g(x) = f(x) - x³. Then g(x+y) = f(x+y) - (x+y)³ = [f(x) + f(y) + 3xy(x+y)] - [x³ + y³ + 3xy(x+y)] = (f(x) - x³) + (f(y) - y³) = g(x) + g(y). Thus g(x) = kx. Given lim(x->0) f(x)/x = 2 => lim(x->0) [g(x) + x³]/x = k = 2. Hence f(x) = x³ + 2x. Therefore, f(3) = 3³ + 2(3) = 27 + 6 = 33.",
+        "expl_en": "Let g(x) = f(x) - x³. Then g(x+y) = f(x+y) - (x+y)³ = [f(x) + f(y) + 3xy(x+y)] - [x³ + y³ + 3xy(x+y)] = (f(x) - x³) + (f(y) - y³) = g(x) + g(y). Thus g(x) = kx. Given lim(x → 0) f(x)/x = 2 => lim(x → 0) [g(x) + x³]/x = k = 2. Hence f(x) = x³ + 2x. Therefore, f(3) = 3³ + 2(3) = 27 + 6 = 33.",
         "expl_bn": "g(x) = f(x) - x³ ধরলে g(x+y) = g(x) + g(y) পাওয়া যায়, অর্থাৎ g(x) = 2x। সুতরাং f(x) = x³ + 2x। অতএব f(3) = ৩³ + ২(৩) = ২৭ + ৬ = ৩৩।"
     },
     {
@@ -6241,8 +6241,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Integral Calculus & Definite Integrals",
         "difficulty": "Hard",
-        "en": "The value of the definite integral I = ∫₀^π (x sin(x)) / (1 + cos²(x)) dx is:",
-        "bn": "নির্দিষ্ট সমাকল I = ∫₀^π (x sin(x)) / (1 + cos²(x)) dx এর মান কত?",
+        "en": "The value of the definite integral I = ∫₀<sup>π</sup> (x sin(x)) / (1 + cos²(x)) dx is:",
+        "bn": "নির্দিষ্ট সমাকল I = ∫₀<sup>π</sup> (x sin(x)) / (1 + cos²(x)) dx এর মান কত?",
         "opts": {
             "en": [
                 "π² / 4",
@@ -6258,8 +6258,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "By King's property: 2I = π ∫₀^π sin(x)/(1 + cos²(x)) dx. Substituting u = cos(x), du = -sin(x)dx gives 2I = π ∫₋₁¹ du/(1 + u²) = π [tan⁻¹(1) - tan⁻¹(-1)] = π²/2 => I = π²/4.",
-        "expl_bn": "কিং-এর ধর্ম প্রয়োগ করে: 2I = π ∫₀^π sin(x)/(1 + cos²(x)) dx। u = cos(x) বসালে: 2I = π ∫₋₁¹ du/(1 + u²) = π²/2 => I = π²/4।"
+        "expl_en": "By King's property: 2I = π ∫₀<sup>π</sup> sin(x)/(1 + cos²(x)) dx. Substituting u = cos(x), du = -sin(x)dx gives 2I = π ∫₋₁¹ du/(1 + u²) = π [tan⁻¹(1) - tan⁻¹(-1)] = π²/2 => I = π²/4.",
+        "expl_bn": "কিং-এর ধর্ম প্রয়োগ করে: 2I = π ∫₀<sup>π</sup> sin(x)/(1 + cos²(x)) dx। u = cos(x) বসালে: 2I = π ∫₋₁¹ du/(1 + u²) = π²/2 => I = π²/4।"
     },
     {
         "id": "MATH-009",
@@ -6363,7 +6363,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Integrating Factor IF = e^{∫ cot(x) dx} = sin(x). Solution: y sin(x) = ∫ 2 sin(x) cos(x) dx = -cos(2x)/2 + C. Using y(π/2) = 1: 1 = 1/2 + C => C = 1/2. Thus y sin(x) = (1 - cos(2x))/2 = sin²(x) => y = sin(x).",
+        "expl_en": "Integrating Factor IF = e<sup>∫ cot(x) dx</sup> = sin(x). Solution: y sin(x) = ∫ 2 sin(x) cos(x) dx = -cos(2x)/2 + C. Using y(π/2) = 1: 1 = 1/2 + C => C = 1/2. Thus y sin(x) = (1 - cos(2x))/2 = sin²(x) => y = sin(x).",
         "expl_bn": "সমাকলন গুণক IF = sin(x)। সমাকল করে: y sin(x) = -cos(2x)/২ + C। y(π/২) = ১ বসালে C = ১/২। সুতরাং y sin(x) = sin²(x) => y = sin(x)।"
     },
     {
@@ -6372,8 +6372,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Limits & L'Hopital's Rule",
         "difficulty": "Easy",
-        "en": "Evaluate the limit: L = lim_{x -> 0} (sin(5x) - 5x) / x³.",
-        "bn": "সীমাটির মান নির্ণয় করো: L = lim_{x -> 0} (sin(5x) - 5x) / x³।",
+        "en": "Evaluate the limit: L = lim_{x → 0} (sin(5x) - 5x) / x³.",
+        "bn": "সীমাটির মান নির্ণয় করো: L = lim_{x → 0} (sin(5x) - 5x) / x³।",
         "opts": {
             "en": [
                 "-125/6",
@@ -6389,7 +6389,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Using the Taylor expansion sin(u) = u - u³/6 + O(u⁵) with u = 5x: sin(5x) - 5x = (5x - 125x³/6) - 5x = -125x³/6. Dividing by x³ gives lim_{x -> 0} (-125/6) = -125/6.",
+        "expl_en": "Using the Taylor expansion sin(u) = u - u³/6 + O(u⁵) with u = 5x: sin(5x) - 5x = (5x - 125x³/6) - 5x = -125x³/6. Dividing by x³ gives lim_{x → 0} (-125/6) = -125/6.",
         "expl_bn": "টেলর সম্প্রসারণ sin(u) = u - u³/৬ ব্যবহার করে u = ৫x বসালে পাই: sin(৫x) - ৫x = -১২৫x³/৬। x³ দিয়ে ভাগ করে সীমা নিলে মান দাঁড়ায় -১২৫/৬।"
     },
     {
@@ -6476,8 +6476,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Definite Integrals & King's Property",
         "difficulty": "Medium",
-        "en": "Evaluate the definite integral: I = ∫₀^(π/2) (sin³(x)) / (sin³(x) + cos³(x)) dx.",
-        "bn": "নির্দিষ্ট সমাকলটির মান নির্ণয় করো: I = ∫₀^(π/2) (sin³(x)) / (sin³(x) + cos³(x)) dx।",
+        "en": "Evaluate the definite integral: I = ∫₀<sup>π/2</sup> (sin³(x)) / (sin³(x) + cos³(x)) dx.",
+        "bn": "নির্দিষ্ট সমাকলটির মান নির্ণয় করো: I = ∫₀<sup>π/2</sup> (sin³(x)) / (sin³(x) + cos³(x)) dx।",
         "opts": {
             "en": [
                 "π/4",
@@ -6493,8 +6493,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Using the property ∫₀^a f(x)dx = ∫₀^a f(a - x)dx: I = ∫₀^(π/2) (cos³(x)) / (cos³(x) + sin³(x)) dx. Adding both: 2I = ∫₀^(π/2) 1 dx = π/2 => I = π/4.",
-        "expl_bn": "King's ধর্ম ∫₀^a f(x)dx = ∫₀^a f(a - x)dx প্রয়োগ করে উভয়কে যোগ করলে পাই: ২I = ∫₀^(π/২) ১ dx = π/২ => I = π/৪।"
+        "expl_en": "Using the property ∫₀<sup>a</sup> f(x)dx = ∫₀<sup>a</sup> f(a - x)dx: I = ∫₀<sup>π/2</sup> (cos³(x)) / (cos³(x) + sin³(x)) dx. Adding both: 2I = ∫₀<sup>π/2</sup> 1 dx = π/2 => I = π/4.",
+        "expl_bn": "King's ধর্ম ∫₀<sup>a</sup> f(x)dx = ∫₀<sup>a</sup> f(a - x)dx প্রয়োগ করে উভয়কে যোগ করলে পাই: ২I = ∫₀<sup>π/২</sup> ১ dx = π/২ => I = π/৪।"
     },
     {
         "id": "MATH-018",
@@ -6502,8 +6502,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Definite Integrals & Periodic Functions",
         "difficulty": "Medium",
-        "en": "Evaluate: I = ∫₀^(100π) |sin(x)| dx.",
-        "bn": "মান নির্ণয় করো: I = ∫₀^(100π) |sin(x)| dx।",
+        "en": "Evaluate: I = ∫₀<sup>100π</sup> |sin(x)| dx.",
+        "bn": "মান নির্ণয় করো: I = ∫₀<sup>100π</sup> |sin(x)| dx।",
         "opts": {
             "en": [
                 "200",
@@ -6519,8 +6519,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The function |sin(x)| is periodic with period T = π. Therefore, ∫₀^(nT) f(x) dx = n ∫₀^T f(x) dx = 100 ∫₀^π sin(x) dx = 100 [-cos(x)]₀^π = 100(1 - (-1)) = 100 × 2 = 200.",
-        "expl_bn": "|sin(x)| অপেক্ষকটি π পর্যায়কালযুক্ত পর্যায়বৃত্ত অপেক্ষক। সুতরাং সমাকল = ১০০ ∫₀^π sin(x) dx = ১০০ × ২ = ২০০।"
+        "expl_en": "The function |sin(x)| is periodic with period T = π. Therefore, ∫₀<sup>nT</sup> f(x) dx = n ∫₀<sup>T</sup> f(x) dx = 100 ∫₀<sup>π</sup> sin(x) dx = 100 [-cos(x)]₀<sup>π</sup> = 100(1 - (-1)) = 100 × 2 = 200.",
+        "expl_bn": "|sin(x)| অপেক্ষকটি π পর্যায়কালযুক্ত পর্যায়বৃত্ত অপেক্ষক। সুতরাং সমাকল = ১০০ ∫₀<sup>π</sup> sin(x) dx = ১০০ × ২ = ২০০।"
     },
     {
         "id": "MATH-019",
@@ -6554,8 +6554,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Differential Equations & Degree and Order",
         "difficulty": "Easy",
-        "en": "The order and degree of the differential equation [1 + (dy/dx)²]^(3/2) = d²y/dx² are respectively:",
-        "bn": "[১ + (dy/dx)²]^(৩/২) = d²y/dx² অবকল সমীকরণটির ক্রম (order) এবং মাত্রা (degree) যথাক্রমে কত?",
+        "en": "The order and degree of the differential equation [1 + (dy/dx)²]<sup>3/2</sup> = d²y/dx² are respectively:",
+        "bn": "[১ + (dy/dx)²]<sup>৩/২</sup> = d²y/dx² অবকল সমীকরণটির ক্রম (order) এবং মাত্রা (degree) যথাক্রমে কত?",
         "opts": {
             "en": [
                 "Order 2, Degree 2",
@@ -6597,8 +6597,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "In polar form, z = √2 · e^(iπ/4). Therefore, z⁸ = (√2)⁸ · e^(i · 8π/4) = 16 · e^(i 2π) = 16(cos 2π + i sin 2π) = 16(1 + 0) = 16.",
-        "expl_bn": "পোলার আকারে z = √২ · e^(iπ/৪)। সুতরাং z⁸ = (√২)⁸ · e^(i · ২π) = ১৬(cos ২π + i sin ২π) = ১৬।"
+        "expl_en": "In polar form, z = √2 · e<sup>iπ/4</sup>. Therefore, z⁸ = (√2)⁸ · e<sup>i · 8π/4</sup> = 16 · e<sup>i 2π</sup> = 16(cos 2π + i sin 2π) = 16(1 + 0) = 16.",
+        "expl_bn": "পোলার আকারে z = √২ · e<sup>iπ/৪</sup>। সুতরাং z⁸ = (√২)⁸ · e<sup>i · ২π</sup> = ১৬(cos ২π + i sin ২π) = ১৬।"
     },
     {
         "id": "MATH-022",
@@ -6684,8 +6684,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Sequences and Series & Arithmetic-Geometric Progression",
         "difficulty": "Medium",
-        "en": "Find the sum to infinity of the series: S = 1 + 2/3 + 3/3² + 4/3³ + ... + n/3^(n-1) + ...",
-        "bn": "শ্রেণীটির অসীম পদ পর্যন্ত সমষ্টি নির্ণয় করো: S = ১ + ২/৩ + ৩/৩² + ৪/৩³ + ... + n/৩^(n-১) + ...",
+        "en": "Find the sum to infinity of the series: S = 1 + 2/3 + 3/3² + 4/3³ + ... + n/3<sup>n-1</sup> + ...",
+        "bn": "শ্রেণীটির অসীম পদ পর্যন্ত সমষ্টি নির্ণয় করো: S = ১ + ২/৩ + ৩/৩² + ৪/৩³ + ... + n/৩<sup>n-১</sup> + ...",
         "opts": {
             "en": [
                 "9/4",
@@ -6805,8 +6805,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "General term T_{r+1} = C(9, r) (2x)^(9-r) (1/(3x²))^r = C(9, r) 2^(9-r) 3^(-r) x^(9 - 3r). For term independent of x: 9 - 3r = 0 => r = 3. T₄ = C(9, 3) 2⁶ 3⁻³ = 84 × 64 / 27 = 28 × 64 / 9 = 1792/9.",
-        "expl_bn": "সাধারণ পদ T_{r+১} = C(৯, r) ২^(৯-r) ৩^(-r) x^(৯ - ৩r)। x বর্জিত পদের জন্য ৯ - ৩r = ০ => r = ৩। সুতরাং পদটির মান = C(৯, ৩) × ২⁶ / ৩³ = ৮৪ × ৬৪ / ২৭ = ১৭৯২/৯।"
+        "expl_en": "General term T_{r+1} = C(9, r) (2x)<sup>9-r</sup> (1/(3x²))<sup>r</sup> = C(9, r) 2<sup>9-r</sup> 3<sup>-r</sup> x<sup>9 - 3r</sup>. For term independent of x: 9 - 3r = 0 => r = 3. T₄ = C(9, 3) 2⁶ 3⁻³ = 84 × 64 / 27 = 28 × 64 / 9 = 1792/9.",
+        "expl_bn": "সাধারণ পদ T_{r+১} = C(৯, r) ২<sup>৯-r</sup> ৩<sup>-r</sup> x<sup>৯ - ৩r</sup>। x বর্জিত পদের জন্য ৯ - ৩r = ০ => r = ৩। সুতরাং পদটির মান = C(৯, ৩) × ২⁶ / ৩³ = ৮৪ × ৬৪ / ২৭ = ১৭৯২/৯।"
     },
     {
         "id": "MATH-030",
@@ -6831,8 +6831,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "In (1 + x)^n when n is even, the maximum binomial coefficient is the middle term coefficient C(n, n/2). Here n = 10, so C(10, 5) = 10! / (5! 5!) = 252.",
-        "expl_bn": "n যুগ্ম হলে (১ + x)^n বিস্তারে মধ্যপদের সহগ C(n, n/২) সর্বাধিক হয়। এখানে n = ১০, তাই বৃহত্তম সহগ C(১০, ৫) = ২৫২।"
+        "expl_en": "In (1 + x)<sup>n</sup> when n is even, the maximum binomial coefficient is the middle term coefficient C(n, n/2). Here n = 10, so C(10, 5) = 10! / (5! 5!) = 252.",
+        "expl_bn": "n যুগ্ম হলে (১ + x)<sup>n</sup> বিস্তারে মধ্যপদের সহগ C(n, n/২) সর্বাধিক হয়। এখানে n = ১০, তাই বৃহত্তম সহগ C(১০, ৫) = ২৫২।"
     },
     {
         "id": "MATH-031",
@@ -6857,8 +6857,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "For an n × n matrix A, the determinant of adj(A) is given by |adj(A)| = |A|^(n - 1). Here n = 3 and |A| = 4, so |adj(A)| = 4^(3 - 1) = 4² = 16.",
-        "expl_bn": "n ক্রমের বর্গ ম্যাট্রিক্সের ক্ষেত্রে |adj(A)| = |A|^(n - ১)। এখানে n = ৩ এবং |A| = ৪, সুতরাং |adj(A)| = ৪^(৩ - ১) = ৪² = ১৬।"
+        "expl_en": "For an n × n matrix A, the determinant of adj(A) is given by |adj(A)| = |A|<sup>n - 1</sup>. Here n = 3 and |A| = 4, so |adj(A)| = 4<sup>3 - 1</sup> = 4² = 16.",
+        "expl_bn": "n ক্রমের বর্গ ম্যাট্রিক্সের ক্ষেত্রে |adj(A)| = |A|<sup>n - ১</sup>। এখানে n = ৩ এবং |A| = ৪, সুতরাং |adj(A)| = ৪<sup>৩ - ১</sup> = ৪² = ১৬।"
     },
     {
         "id": "MATH-032",
@@ -7178,8 +7178,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Calculus & Leibniz Integral Rule",
         "difficulty": "Hard",
-        "en": "If f(x) = ∫₀^(x²) sin(√t) dt, then the derivative f'(x) is:",
-        "bn": "যদি f(x) = ∫₀^(x²) sin(√t) dt হয়, তবে এর অন্তরকলজ f'(x) কত?",
+        "en": "If f(x) = ∫₀<sup>x²</sup> sin(√t) dt, then the derivative f'(x) is:",
+        "bn": "যদি f(x) = ∫₀<sup>x²</sup> sin(√t) dt হয়, তবে এর অন্তরকলজ f'(x) কত?",
         "opts": {
             "en": [
                 "2x · sin(x)",
@@ -7195,7 +7195,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Using the Leibniz rule for differentiating an integral: d/dx [∫₀^(u(x)) g(t) dt] = g(u(x)) · u'(x). Here u(x) = x², u'(x) = 2x, and g(u) = sin(√(x²)) = sin(x). Thus f'(x) = sin(x) · (2x) = 2x sin(x).",
+        "expl_en": "Using the Leibniz rule for differentiating an integral: d/dx [∫₀<sup>u(x</sup>) g(t) dt] = g(u(x)) · u'(x). Here u(x) = x², u'(x) = 2x, and g(u) = sin(√(x²)) = sin(x). Thus f'(x) = sin(x) · (2x) = 2x sin(x).",
         "expl_bn": "লাইবনিজ নিয়ম প্রয়োগ করে: f'(x) = sin(√(x²)) · d/dx(x²) = sin(x) · (২x) = ২x sin(x)।"
     },
     {
@@ -7221,8 +7221,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Intersection points: (2x)² = 4x => 4x² = 4x => x = 0 or x = 1. Area = ∫₀¹ (2√x - 2x) dx = [2 · (2/3) x^(3/2) - x²]₀¹ = 4/3 - 1 = 1/3 sq unit.",
-        "expl_bn": "ছেদবিন্দুদ্বয় x = ০ ও x = ১। সীমাবদ্ধ ক্ষেত্রফল = ∫₀¹ (২√x - ২x) dx = [৪/৩ x^(৩/২) - x²]₀¹ = ৪/৩ - ১ = ১/৩ বর্গ একক।"
+        "expl_en": "Intersection points: (2x)² = 4x => 4x² = 4x => x = 0 or x = 1. Area = ∫₀¹ (2√x - 2x) dx = [2 · (2/3) x<sup>3/2</sup> - x²]₀¹ = 4/3 - 1 = 1/3 sq unit.",
+        "expl_bn": "ছেদবিন্দুদ্বয় x = ০ ও x = ১। সীমাবদ্ধ ক্ষেত্রফল = ∫₀¹ (২√x - ২x) dx = [৪/৩ x<sup>৩/২</sup> - x²]₀¹ = ৪/৩ - ১ = ১/৩ বর্গ একক।"
     },
     {
         "id": "MATH-046",
@@ -7282,8 +7282,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Algebra & Mathematical Induction",
         "difficulty": "Easy",
-        "en": "For every positive integer n, the expression 3^(2n) - 1 is always divisible by:",
-        "bn": "যেকোনো ধনাত্মক পূর্ণসংখ্যা n-এর জন্য ৩^(২n) - ১ রাশিটি সর্বদা কোন সংখ্যা দ্বারা বিভাজ্য?",
+        "en": "For every positive integer n, the expression 3<sup>2n</sup> - 1 is always divisible by:",
+        "bn": "যেকোনো ধনাত্মক পূর্ণসংখ্যা n-এর জন্য ৩<sup>২n</sup> - ১ রাশিটি সর্বদা কোন সংখ্যা দ্বারা বিভাজ্য?",
         "opts": {
             "en": [
                 "8",
@@ -7299,8 +7299,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "3^(2n) - 1 = (3²)ⁿ - 1 = 9ⁿ - 1 = (1 + 8)ⁿ - 1. Expanding by binomial theorem: [1 + n(8) + C(n,2)(8)² + ...] - 1 = 8[n + C(n,2)(8) + ...], which is always divisible by 8.",
-        "expl_bn": "৩^(২n) - ১ = ৯ⁿ - ১ = (১ + ৮)ⁿ - ১। দ্বিপদ উপপাদ্যে বিস্তার করলে প্রতিটি পদ ৮ দ্বারা গুণিতক থাকে, সুতরাং রাশিটি সর্বদা ৮ দ্বারা বিভাজ্য।"
+        "expl_en": "3<sup>2n</sup> - 1 = (3²)ⁿ - 1 = 9ⁿ - 1 = (1 + 8)ⁿ - 1. Expanding by binomial theorem: [1 + n(8) + C(n,2)(8)² + ...] - 1 = 8[n + C(n,2)(8) + ...], which is always divisible by 8.",
+        "expl_bn": "৩<sup>২n</sup> - ১ = ৯ⁿ - ১ = (১ + ৮)ⁿ - ১। দ্বিপদ উপপাদ্যে বিস্তার করলে প্রতিটি পদ ৮ দ্বারা গুণিতক থাকে, সুতরাং রাশিটি সর্বদা ৮ দ্বারা বিভাজ্য।"
     },
     {
         "id": "MATH-049",
@@ -7741,8 +7741,8 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "The contrapositive of a conditional statement 'p -> q' is logically equivalent to '~q -> ~p'. Here: 'If not q (areas not equal) -> then not p (not congruent)'.",
-        "expl_bn": "শর্তমূলক উক্তি p -> q এর কনট্রাপজিটিভ হলো ~q -> ~p, অর্থাৎ 'ক্ষেত্রফল সমান না হলে ত্রিভুজ দুটি সর্বসম নয়'।"
+        "expl_en": "The contrapositive of a conditional statement 'p → q' is logically equivalent to '~q → ~p'. Here: 'If not q (areas not equal) → then not p (not congruent)'.",
+        "expl_bn": "শর্তমূলক উক্তি p → q এর কনট্রাপজিটিভ হলো ~q → ~p, অর্থাৎ 'ক্ষেত্রফল সমান না হলে ত্রিভুজ দুটি সর্বসম নয়'।"
     },
     {
         "id": "MATH-066",
@@ -7828,8 +7828,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Sequences and Series & Telescoping Sums",
         "difficulty": "Medium",
-        "en": "Find the sum of the infinite series: S = ∑_{n=1}^∞ 1 / (n(n + 1)(n + 2)).",
-        "bn": "অসীম শ্রেণীটির সমষ্টি নির্ণয় করো: S = ∑_{n=১}^∞ ১ / (n(n + ১)(n + ২))।",
+        "en": "Find the sum of the infinite series: S = ∑<sub>n=1</sub><sup>∞</sup> 1 / (n(n + 1)(n + 2)).",
+        "bn": "অসীম শ্রেণীটির সমষ্টি নির্ণয় করো: S = ∑<sub>n=১</sub><sup>∞</sup> ১ / (n(n + ১)(n + ২))।",
         "opts": {
             "en": [
                 "1/4",
@@ -7845,7 +7845,7 @@ window.PHYSICS_QUESTIONS_DATA = [
             ]
         },
         "correct": 0,
-        "expl_en": "Decomposing: 1 / [n(n + 1)(n + 2)] = (1/2) [1/(n(n + 1)) - 1/((n + 1)(n + 2))]. Telescoping: S = (1/2) [1/(1 · 2) - lim_{N -> ∞} 1/((N + 1)(N + 2))] = (1/2)(1/2 - 0) = 1/4.",
+        "expl_en": "Decomposing: 1 / [n(n + 1)(n + 2)] = (1/2) [1/(n(n + 1)) - 1/((n + 1)(n + 2))]. Telescoping: S = (1/2) [1/(1 · 2) - lim_{N → ∞} 1/((N + 1)(N + 2))] = (1/2)(1/2 - 0) = 1/4.",
         "expl_bn": "আংশিক ভগ্নাংশে ভাঙলে পদটি হয় (১/২)[১/(n(n+১)) - ১/((n+১)(n+২))]। টেলিস্কোপিং ধারায় মধ্যবর্তী সমস্ত পদ কেটে যায়, থাকে শুধু (১/২) × (১/২) = ১/৪।"
     },
     {
@@ -7861,18 +7861,18 @@ window.PHYSICS_QUESTIONS_DATA = [
                 "1/y",
                 "1/y²",
                 "y",
-                "e^(-y)"
+                "e<sup>-y</sup>"
             ],
             "bn": [
                 "১/y",
                 "১/y²",
                 "y",
-                "e^(-y)"
+                "e<sup>-y</sup>"
             ]
         },
         "correct": 0,
-        "expl_en": "Rewrite as dx/dy = (x + 2y³)/y = x/y + 2y² => dx/dy - (1/y)x = 2y². This is linear in x with P(y) = -1/y. IF = e^(∫ -1/y dy) = e^(-ln y) = 1/y.",
-        "expl_bn": "সমীকরণটিকে dx/dy আকারে সাজালে পাই: dx/dy - (১/y)x = ২y²। এটি x-এর রৈখিক সমীকরণ, যার IF = e^(∫ -১/y dy) = ১/y।"
+        "expl_en": "Rewrite as dx/dy = (x + 2y³)/y = x/y + 2y² => dx/dy - (1/y)x = 2y². This is linear in x with P(y) = -1/y. IF = e<sup>∫ -1/y dy</sup> = e<sup>-ln y</sup> = 1/y.",
+        "expl_bn": "সমীকরণটিকে dx/dy আকারে সাজালে পাই: dx/dy - (১/y)x = ২y²। এটি x-এর রৈখিক সমীকরণ, যার IF = e<sup>∫ -১/y dy</sup> = ১/y।"
     },
     {
         "id": "MATH-071",
@@ -7906,8 +7906,8 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "Definite Integrals & Walli's Formula",
         "difficulty": "Medium",
-        "en": "The value of the definite integral I = ∫₀^(π/2) sin⁶(x) dx is:",
-        "bn": "নির্দিষ্ট সমাকলটির মান নির্ণয় করো: I = ∫₀^(π/2) sin⁶(x) dx।",
+        "en": "The value of the definite integral I = ∫₀<sup>π/2</sup> sin⁶(x) dx is:",
+        "bn": "নির্দিষ্ট সমাকলটির মান নির্ণয় করো: I = ∫₀<sup>π/2</sup> sin⁶(x) dx।",
         "opts": {
             "en": [
                 "5π / 32",

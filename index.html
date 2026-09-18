@@ -11,7 +11,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX LaTeX Formula Typesetting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
     
     <!-- Tailwind CSS & Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,6 +39,7 @@
             --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+            --font-stem: 'STIX Two Text', 'Cambria Math', Georgia, serif;
         }
 
         body {
@@ -44,6 +50,63 @@
 
         .font-display { font-family: var(--font-display); }
         .font-mono { font-family: var(--font-mono); }
+        .font-stem { font-family: var(--font-stem); }
+
+        /* Precision Scientific Typography & Superscript/Subscript Calibration (Zero Line-Height Disruption) */
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sup {
+            top: -0.48em;
+            font-family: var(--font-stem), var(--font-sans);
+            font-weight: 600;
+        }
+        sub {
+            bottom: -0.22em;
+            font-family: var(--font-stem), var(--font-sans);
+            font-weight: 500;
+        }
+
+        /* Redox State & Oxidation Badges */
+        .redox-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.05rem 0.35rem;
+            font-size: 0.78em;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            border-radius: 6px;
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+            vertical-align: 0.08em;
+            margin: 0 0.18rem;
+            letter-spacing: 0.03em;
+            box-shadow: 0 1px 2px rgba(99, 102, 241, 0.08);
+        }
+
+        /* Chemical Reaction Arrows & Formulas */
+        .reaction-arrow {
+            display: inline-block;
+            padding: 0 0.28rem;
+            font-weight: 700;
+            color: #2563eb;
+            font-family: var(--font-stem), serif;
+        }
+
+        .stem-formula, .chem-formula {
+            font-family: var(--font-stem), serif;
+            letter-spacing: 0.01em;
+        }
+
+        .math-var {
+            font-family: var(--font-stem), serif;
+            font-style: italic;
+            font-weight: 600;
+        }
 
         /* Custom Scrollbars */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -1156,6 +1219,109 @@
             return rawUrl;
         }
 
+        // 1b. SCIENTIFIC NOTATION & FORMULA FORMATTER (Superscripts, Subscripts, Redox States & Chemical Reactions)
+        function formatScienceAndMath(text) {
+            if (!text || typeof text !== 'string') return text;
+
+            let s = text;
+
+            // 1. Mechanism & Reaction Subscripts
+            s = s.replace(/\bS_N1\b/g, 'S<sub>N</sub>1');
+            s = s.replace(/\bS_N2\b/g, 'S<sub>N</sub>2');
+
+            // 2. Specific Chemical & Thermodynamic Symbols
+            s = s.replace(/([Λ\u039b]°?)_m/g, '$1<sub>m</sub>');
+            s = s.replace(/([dD]?[Φ\u03a6])_E/g, '$1<sub>E</sub>');
+            s = s.replace(/([dD]?[Φ\u03a6])_total/g, '$1<sub>total</sub>');
+            s = s.replace(/([πσ]\*?2p)_([xyz])/g, '$1<sub>$2</sub>');
+            s = s.replace(/\bE°?_cell\b/g, m => m.replace('_cell', '<sub>cell</sub>'));
+            s = s.replace(/\bt_1\/2\b/g, 't<sub>1/2</sub>');
+            s = s.replace(/\bT_half\b/g, 'T<sub>half</sub>');
+            s = s.replace(/\bT_1\/2\b/g, 'T<sub>1/2</sub>');
+            s = s.replace(/\bt_2g\b/g, 't<sub>2g</sub>');
+            s = s.replace(/\be_g\b/g, 'e<sub>g</sub>');
+            s = s.replace(/\bΔ_o\b/g, 'Δ<sub>o</sub>');
+            s = s.replace(/\bΔ_eg\b/g, 'Δ<sub>eg</sub>');
+            s = s.replace(/\bΔ_f\b/g, 'Δ<sub>f</sub>');
+            s = s.replace(/\bΔ_c\b/g, 'Δ<sub>c</sub>');
+            s = s.replace(/\bΔn_g\b/g, 'Δn<sub>g</sub>');
+            s = s.replace(/\bΔV_mix\b/g, 'ΔV<sub>mix</sub>');
+            s = s.replace(/\bΔH_mix\b/g, 'ΔH<sub>mix</sub>');
+            s = s.replace(/\bΔT_b\b/g, 'ΔT<sub>b</sub>');
+            s = s.replace(/\bΔT_f\b/g, 'ΔT<sub>f</sub>');
+            s = s.replace(/\bpK_a\b/g, 'pK<sub>a</sub>');
+            s = s.replace(/\bpK_b\b/g, 'pK<sub>b</sub>');
+            s = s.replace(/\bK_sp\b/g, 'K<sub>sp</sub>');
+            s = s.replace(/\bK_b\b/g, 'K<sub>b</sub>');
+            s = s.replace(/\bK_p\b/g, 'K<sub>p</sub>');
+            s = s.replace(/\bK_c\b/g, 'K<sub>c</sub>');
+            s = s.replace(/\bE_a\b/g, 'E<sub>a</sub>');
+
+            // 3. Known Physics Variable Subscripts
+            const knownVars = [
+                "u_x", "u_y", "v_x", "v_y", "v_net", "v_rms", "v_t", "v_r", "v_s", "v_b",
+                "v_o", "u_o", "f_o", "f_e", "f_air", "f_water", "f_w", "f_a", "f_in",
+                "f_max", "f_n", "f_r", "f_s", "F_applied",
+                "V_L", "V_R", "V_C", "V_P", "V_s", "V_p", "V_0", "V_rms", "V_entire", "V_removed",
+                "V_সম্পূর্ণ", "V_অপসারিত",
+                "X_C", "X_L", "I_rms", "I_0", "I_d", "I_g",
+                "R_eq", "R_s", "R_t", "B_H", "B_V", "m_e", "m_p", "m_o", "r_n",
+                "T_sink", "T_source", "T_geo", "T_horiz", "x_cm", "y_cm", "U_final", "U_initial",
+                "σ_eq", "μ_s", "μ_k", "μ_g", "μ_glass", "μ_water", "μ_rel",
+                "α_iron", "α_brass", "θ_c", "λ_L", "λ_B", "i_p",
+                "K_rot", "K_total", "K_max", "K_electron", "K_proton",
+                "v_He", "v_O2", "M_He", "M_O2", "a_hollow", "a_solid", "a_h", "a_s",
+                "W_A", "N_s", "N_p", "N_a", "N_b", "P_n", "Q_in", "C_c"
+            ];
+
+            for (let i = 0; i < knownVars.length; i++) {
+                const kv = knownVars[i];
+                const parts = kv.split('_');
+                const re = new RegExp(`(?<![A-Za-z0-9])${parts[0]}_${parts[1]}(?![A-Za-z0-9])`, 'g');
+                s = s.replace(re, `${parts[0]}<sub>${parts[1]}</sub>`);
+            }
+
+            // General fallback for scientific letter_subscript
+            s = s.replace(/(?<![A-Za-z0-9<])([A-Za-z\u0370-\u03ff\u0980-\u09ff]{1,4})_([A-Za-z0-9\u0370-\u03ff\u0980-\u09ff\-\/]{1,8})(?![A-Za-z0-9>])/g, '$1<sub>$2</sub>');
+
+            // 4. Carets for powers & calculus limits
+            s = s.replace(/([∫\]])([₀₁₂₃₄₅₆₇₈₉0-9a-zA-Z\u09e6-\u09ef]*)\^(\([^\)]+\)|[^\s\,\;\.\)\]]+)/g, '$1$2<sup>$3</sup>');
+            s = s.replace(/(\])\^(\([^\)]+\)|[^\s\,\;\.\)]+)/g, '$1<sup>$2</sup>');
+            s = s.replace(/(\))\^(\([^\)]+\)|[^\s\,\;\.\)]+)/g, '$1<sup>$2</sup>');
+            s = s.replace(/(\|[A-Za-z0-9]+\|)\^(\([^\)]+\)|[^\s\,\;\.\)]+)/g, '$1<sup>$2</sup>');
+            s = s.replace(/e\^\{([^\x7D]+)\}/g, 'e<sup>$1</sup>');
+            s = s.replace(/∑_\{([^\x7D]+)\}\^\{?([^\x7D\s\,]+)\}?/g, '∑<sub>$1</sub><sup>$2</sup>');
+            s = s.replace(/∏_\{([^\x7D]+)\}\^\{?([^\x7D\s\,]+)\}?/g, '∏<sub>$1</sub><sup>$2</sup>');
+            s = s.replace(/(\([^\)]+\)|[A-Za-z0-9\u0370-\u03ff\u0980-\u09ff]+)\^(\([^\)]+\)|[\+\-]?[A-Za-z0-9\/\u0370-\u03ff\u0980-\u09ff\-]+)/g, '$1<sup>$2</sup>');
+            s = s.replace(/<sup>\((.*?)\)<\/sup>/g, '<sup>$1</sup>');
+            s = s.replace(/(\([^\)]+\)|[০-৯]+)\^(\([^\)]+\)|[০-৯\/]+)/g, '$1<sup>$2</sup>');
+            s = s.replace(/\bm\/s\^2\b/g, 'm/s<sup>2</sup>');
+            s = s.replace(/\brad\/s\^2\b/g, 'rad/s<sup>2</sup>');
+            s = s.replace(/\bcm\^3\b/g, 'cm<sup>3</sup>');
+            s = s.replace(/\b(sp|dsp|d\^?2sp|sp\^?3d)\^?([23])\b/g, '$1<sup>$2</sup>');
+
+            // 5. Reaction arrows
+            s = s.replace(/\s*-->\s*/g, ' <span class="reaction-arrow">→</span> ');
+            s = s.replace(/\s*->\s*/g, ' <span class="reaction-arrow">→</span> ');
+            s = s.replace(/\s*<==>\s*/g, ' <span class="reaction-arrow">⇌</span> ');
+            s = s.replace(/\s*<=>\s*/g, ' <span class="reaction-arrow">⇌</span> ');
+            s = s.replace(/\s*<->\s*/g, ' <span class="reaction-arrow">↔</span> ');
+
+            // 6. Redox state formatting (e.g. iron(III), copper(I), cobalt(III))
+            const redoxMetals = ['iron', 'copper', 'cobalt', 'nickel', 'chromium', 'manganese', 'tin', 'lead', 'platinum', 'gold', 'mercury'];
+            for (let i = 0; i < redoxMetals.length; i++) {
+                const metal = redoxMetals[i];
+                const re = new RegExp(`\\b(${metal})\\s*\\(([IVXLCDMivx]+)\\)`, 'gi');
+                s = s.replace(re, '$1<span class="redox-badge">($2)</span>');
+            }
+
+            // Clean up double <sub> or nested tags if any
+            s = s.replace(/<sub><sub>(.*?)<\/sub><\/sub>/g, '<sub>$1</sub>');
+            s = s.replace(/<sup><sup>(.*?)<\/sup><\/sup>/g, '<sup>$1</sup>');
+
+            return s;
+        }
+
         // 2. DATA NORMALIZER
         function normalizeQuestion(q, i) {
             const examVal = (q.exam || q.Exam || q.Exam_Type || 'ALL').toString().trim();
@@ -1196,14 +1362,17 @@
                 subject: subjectVal,
                 topic: topicVal,
                 difficulty: q.difficulty || q.Difficulty || 'Medium',
-                en: qEn || 'Sample Question',
-                bn: qBn || qEn || 'নমুনা প্রশ্ন',
-                opts: { en: optsEn, bn: optsBn },
+                en: formatScienceAndMath(qEn || 'Sample Question'),
+                bn: formatScienceAndMath(qBn || qEn || 'নমুনা প্রশ্ন'),
+                opts: {
+                    en: optsEn.map(o => formatScienceAndMath(o)),
+                    bn: optsBn.map(o => formatScienceAndMath(o))
+                },
                 image: q.image || q.Image_URL || '',
                 diagram: q.diagram || q.Diagram || q.svg || q.SVG || '',
                 correct: correctVal,
-                expl_en: q.expl_en || q.Expl_EN || q.Explanation || 'Step-by-step logic, derivation, and fundamental concepts provided.',
-                expl_bn: q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।',
+                expl_en: formatScienceAndMath(q.expl_en || q.Expl_EN || q.Explanation || 'Step-by-step logic, derivation, and fundamental concepts provided.'),
+                expl_bn: formatScienceAndMath(q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।'),
                 syllabusUnitId: 'ALL',
                 syllabusUnitName: topicVal,
                 syllabusChapterId: 'ALL',
@@ -2010,8 +2179,8 @@
             } else if (q.image) {
                 diagramHtml = `<div class="my-5 p-3 bg-white rounded-2xl border border-slate-200 shadow-sm max-w-md mx-auto"><img src="${q.image}" class="max-h-64 mx-auto rounded-xl object-contain" alt="Question Diagram"></div>`;
             }
-            const questionTitle = currentLang === 'en' ? (q.en || q.bn) : (q.bn || q.en);
-            const explanationText = currentLang === 'en' ? (q.expl_en || q.expl_bn) : (q.expl_bn || q.expl_en);
+            const questionTitle = formatScienceAndMath(currentLang === 'en' ? (q.en || q.bn) : (q.bn || q.en));
+            const explanationText = formatScienceAndMath(currentLang === 'en' ? (q.expl_en || q.expl_bn) : (q.expl_bn || q.expl_en));
 
             const diffBadgeColor = q.difficulty === 'Easy' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                                    q.difficulty === 'Hard' ? 'bg-purple-50 text-purple-700 border-purple-200' :
@@ -2062,7 +2231,7 @@
                     ${diagramHtml}
 
                     <!-- Question Prompt Text -->
-                    <h2 class="text-base md:text-xl font-semibold mb-8 leading-relaxed text-slate-900 tracking-tight">${questionTitle}</h2>
+                    <h2 class="text-base md:text-xl font-semibold mb-8 leading-relaxed text-slate-900 tracking-tight font-stem">${questionTitle}</h2>
 
                     <!-- Modern Interactive Option Cards -->
                     <div class="grid gap-3.5 mb-8">
@@ -2072,7 +2241,7 @@
                                     ${optionLetters[i]}
                                 </div>
                                 <div class="flex-1 pt-1">
-                                    <p class="font-medium text-slate-800 text-sm md:text-base leading-snug">${opt}</p>
+                                    <p class="font-medium text-slate-800 text-sm md:text-base leading-snug font-stem">${formatScienceAndMath(opt)}</p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="hidden sm:inline-block font-mono text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded font-bold">Key ${i + 1}</span>
@@ -2094,10 +2263,27 @@
                                 ⏱️ Time Spent: ${formatSecondsMMSS(questionTimes[q.orig])}
                             </span>
                         </div>
-                        <p class="text-emerald-950 text-sm md:text-base leading-relaxed font-medium">${explanationText}</p>
+                        <p class="text-emerald-950 text-sm md:text-base leading-relaxed font-medium font-stem">${explanationText}</p>
                     </div>
                 </div>
             `;
+
+            // Typeset LaTeX & Math formulas with KaTeX if available
+            if (window.renderMathInElement) {
+                try {
+                    renderMathInElement(area, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false },
+                            { left: '\\(', right: '\\)', display: false },
+                            { left: '\\[', right: '\\]', display: true }
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    console.warn("KaTeX typeset warning:", e);
+                }
+            }
 
             renderPalette();
             renderChapterNavStrip();

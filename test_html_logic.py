@@ -18,6 +18,11 @@ def test_html():
     assert 'id="drawerSearchInput"' in content, "Missing drawerSearchInput in DOM"
     assert 'id="drawerContentList"' in content, "Missing drawerContentList in DOM"
     
+    assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
+    assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
+    assert '.redox-badge' in content, "Missing .redox-badge CSS in stylesheet"
+    assert '.reaction-arrow' in content, "Missing .reaction-arrow CSS in stylesheet"
+    
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)
     assert len(scripts) >= 1, "No script tag found"
@@ -25,6 +30,7 @@ def test_html():
     
     # 3. Check functions are defined
     required_funcs = [
+        "function formatScienceAndMath(",
         "function filterByExam()",
         "function switchStream(",
         "function switchSubject(",
