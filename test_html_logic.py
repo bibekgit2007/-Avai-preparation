@@ -10,6 +10,13 @@ def test_html():
     assert '<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="subjectTabs">' in content or 'id="subjectTabs"' in content, "Missing subjectTabs"
     assert 'id="mockModal"' in content, "Missing mockModal"
     assert 'id="mockSubjectCheckboxes"' in content, "Missing mockSubjectCheckboxes"
+    assert '<script src="data/syllabus.js' in content, "Missing syllabus.js script inclusion"
+    assert 'id="chapterNavStrip"' in content, "Missing chapterNavStrip in DOM"
+    assert 'id="unitSelector"' in content, "Missing unitSelector in DOM"
+    assert 'id="chapterPillsContainer"' in content, "Missing chapterPillsContainer in DOM"
+    assert 'id="chapterDirectoryDrawer"' in content, "Missing chapterDirectoryDrawer in DOM"
+    assert 'id="drawerSearchInput"' in content, "Missing drawerSearchInput in DOM"
+    assert 'id="drawerContentList"' in content, "Missing drawerContentList in DOM"
     
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)
@@ -29,7 +36,14 @@ def test_html():
         "function closeMockModal()",
         "function setMockPreset(",
         "function startCustomMockTest()",
-        "function showFinalResult()"
+        "function showFinalResult()",
+        "function renderChapterNavStrip()",
+        "function scrollChapterPills(",
+        "function filterByChapter(",
+        "function filterByUnit(",
+        "function toggleChapterDirectoryDrawer(",
+        "function handleDrawerSearch(",
+        "function renderChapterDirectoryDrawer()"
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
@@ -52,7 +66,26 @@ def test_html():
         raw_bal += clean.count('{') - clean.count('}')
     
     assert raw_bal == 0, f"Unbalanced curly braces in script: net balance is {raw_bal}"
-    print("[PASSED] HTML structure, stream selectors, required JS functions, and brace balancing verified!")
+
+    # 6. Check syllabus.js structure and sub-chapters
+    syl_content = open("data/syllabus.js", encoding="utf-8").read()
+    assert "window.AVAI_SYLLABUS = " in syl_content
+    assert "EXAM_SYLLABUS_REGISTRY = {" in syl_content
+    assert "BIO_UNIT_04" in syl_content, "Missing Plant Physiology unit"
+    assert "BIO_CH_11" in syl_content, "Missing Photosynthesis sub-chapter"
+    assert "BIO_CH_12" in syl_content, "Missing Respiration sub-chapter"
+    assert "BIO_CH_13" in syl_content, "Missing Plant Growth sub-chapter"
+    assert "BIO_UNIT_05" in syl_content, "Missing Human Physiology unit"
+    assert "BIO_CH_16" in syl_content, "Missing Breathing sub-chapter"
+    assert "BIO_CH_17" in syl_content, "Missing Circulation sub-chapter"
+    assert "BIO_CH_18" in syl_content, "Missing Excretion sub-chapter"
+    assert "BIO_CH_19" in syl_content, "Missing Locomotion sub-chapter"
+    assert "BIO_CH_20" in syl_content, "Missing Neural sub-chapter"
+    assert "BIO_CH_21" in syl_content, "Missing Chemical Coordination sub-chapter"
+    assert "getExamSyllabus" in syl_content
+    assert "mapQuestionToSyllabus" in syl_content
+    assert "getChapterQuestionStats" in syl_content
+    print("[PASSED] HTML structure, chapter navigation strip, directory drawer, syllabus sub-chapters & JS logic verified!")
 
 if __name__ == "__main__":
     test_html()

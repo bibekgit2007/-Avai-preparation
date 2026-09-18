@@ -17,8 +17,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     
-    <!-- Master Question Bank -->
+    <!-- Master Question Bank & Official Syllabus Hierarchy -->
     <script src="data/physics_questions.js?v=322"></script>
+    <script src="data/syllabus.js?v=1"></script>
     
     <script>
       if ('serviceWorker' in navigator) {
@@ -243,6 +244,54 @@
             border-top: none; border-right: none; border-bottom: none;
         }
 
+        /* Chapter & Sub-Chapter Pill Navigation */
+        .chapter-pill {
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #475569;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+            flex-shrink: 0;
+        }
+
+        .chapter-pill:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        .chapter-pill.active {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            color: #ffffff !important;
+            border-color: #1d4ed8 !important;
+            box-shadow: 0 3px 10px -2px rgba(37, 99, 235, 0.4) !important;
+        }
+
+        .chapter-pill .pill-badge {
+            font-size: 9px;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.06);
+            color: inherit;
+        }
+
+        .chapter-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
         /* Micro-Animations */
         @keyframes fadeInSlide {
             from { opacity: 0; transform: translateY(8px); }
@@ -432,6 +481,43 @@
                         <svg class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                 </div>
+            </div>
+
+            <!-- Interactive Sticky Chapter & Sub-Chapter Navigation Strip (PW / ExamSIDE / Vedantu style) -->
+            <div id="chapterNavStrip" class="flex items-center justify-between border-b border-slate-200 bg-white px-3 md:px-5 py-2 gap-2 select-none shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+                <div class="flex items-center gap-1.5 flex-1 min-w-0">
+                    <!-- Unit / Chapter Dropdown Selector (Compact Quick Picker) -->
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <span class="text-[10px] font-display font-black text-slate-400 uppercase tracking-wider hidden lg:inline">Unit:</span>
+                        <div class="relative">
+                            <select id="unitSelector" onchange="filterByUnit(this.value)" class="bg-indigo-50/80 hover:bg-indigo-100/90 text-indigo-900 border border-indigo-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[170px] sm:max-w-[240px] truncate shadow-sm pr-6 appearance-none font-display">
+                                <option value="ALL">All Units / Chapters</option>
+                            </select>
+                            <span class="absolute right-2 top-2.5 text-[9px] pointer-events-none text-indigo-500">▼</span>
+                        </div>
+                    </div>
+
+                    <!-- Chevron Left Scroll Button -->
+                    <button onclick="scrollChapterPills(-240)" class="w-7 h-7 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 transition text-xs cursor-pointer" title="Scroll Left">
+                        ◀
+                    </button>
+
+                    <!-- Horizontal Scrollable Chapter Pills Container -->
+                    <div id="chapterPillsContainer" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth flex-1 py-0.5">
+                        <!-- Populated dynamically: Chapter & Sub-Chapter Pills with Question Count Badges -->
+                    </div>
+
+                    <!-- Chevron Right Scroll Button -->
+                    <button onclick="scrollChapterPills(240)" class="w-7 h-7 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 transition text-xs cursor-pointer" title="Scroll Right">
+                        ▶
+                    </button>
+                </div>
+
+                <!-- Slide-Over Mega Chapter Directory Drawer Toggle Button -->
+                <button onclick="toggleChapterDirectoryDrawer(true)" class="px-3 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-display font-black shadow-sm transition flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-95" title="Browse Full Syllabus Directory (PW / Vedantu Style)">
+                    <span>📚</span>
+                    <span class="hidden sm:inline">Chapter Directory</span>
+                </button>
             </div>
 
             <!-- Dynamic Question Content Display Container -->
@@ -773,6 +859,51 @@
     </footer>
 
     <!-- ==========================================================================
+         CHAPTER & SYLLABUS DIRECTORY SLIDE-OVER DRAWER (PW / VEDANTU / AAKASH STYLE)
+         ========================================================================== -->
+    <div id="chapterDirectoryDrawerBackdrop" onclick="toggleChapterDirectoryDrawer(false)" class="fixed inset-0 glass-modal z-[96] hidden transition-opacity duration-300"></div>
+    <div id="chapterDirectoryDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] md:w-[560px] bg-white shadow-2xl z-[97] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-slate-200">
+        <!-- Drawer Header -->
+        <div class="p-4 md:p-5 border-b border-slate-200 bg-slate-900 text-white flex items-center justify-between select-none">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-display font-black text-xl shadow-md">
+                    📚
+                </div>
+                <div>
+                    <h3 class="text-base md:text-lg font-display font-black text-white flex items-center gap-2">
+                        <span id="drawerExamSubjectTitle">NEET Biology</span>
+                        <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full border border-blue-400/30">Official Syllabus</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Select any Unit or Sub-Chapter to practice questions</p>
+                </div>
+            </div>
+            <button onclick="toggleChapterDirectoryDrawer(false)" class="w-8 h-8 rounded-full text-slate-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition cursor-pointer">✕</button>
+        </div>
+
+        <!-- Drawer Search & Quick Actions -->
+        <div class="p-3.5 border-b border-slate-200 bg-slate-50 flex items-center gap-2">
+            <div class="relative flex-1">
+                <input type="text" id="drawerSearchInput" oninput="handleDrawerSearch(this.value)" placeholder="Search units, chapters, or keywords (e.g. Photosynthesis, Optics)..." class="w-full pl-9 pr-3 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none focus:border-blue-500 shadow-sm font-medium">
+                <svg class="w-4 h-4 absolute left-3 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <button onclick="filterByChapter('ALL'); toggleChapterDirectoryDrawer(false)" class="px-3 py-2 bg-white hover:bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
+                All Chapters
+            </button>
+        </div>
+
+        <!-- Scrollable Units & Sub-Chapters List -->
+        <div id="drawerContentList" class="flex-1 overflow-y-auto p-4 space-y-3">
+            <!-- Rendered dynamically by renderChapterDirectoryDrawer() -->
+        </div>
+
+        <!-- Drawer Footer Stats -->
+        <div class="p-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 select-none">
+            <span id="drawerFooterStats">50 Units • Full Syllabus Parity</span>
+            <button onclick="toggleChapterDirectoryDrawer(false)" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold transition cursor-pointer">Close</button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
          APPLICATION SCRIPT & TEST ENGINE LOGIC
          ========================================================================== -->
     <script>
@@ -977,6 +1108,9 @@
         let currentStreamId = "ALL_COMBINED";
         let currentSubject = "Physics";
         let currentTopic = "ALL";
+        let currentUnitId = "ALL";
+        let currentChapterId = "ALL";
+        let drawerSearchKeyword = "";
         let searchQuery = "";
         let currentIdx = 0;
         let responses = [];
@@ -1055,7 +1189,7 @@
                 correctVal = rawCorr.toUpperCase().charCodeAt(0) - 65;
             }
 
-            return {
+            const item = {
                 orig: i,
                 id: q.id || `Q-${i+1}`,
                 exam: examVal,
@@ -1069,8 +1203,24 @@
                 diagram: q.diagram || q.Diagram || q.svg || q.SVG || '',
                 correct: correctVal,
                 expl_en: q.expl_en || q.Expl_EN || q.Explanation || 'Step-by-step logic, derivation, and fundamental concepts provided.',
-                expl_bn: q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।'
+                expl_bn: q.expl_bn || q.Expl_BN || q.Explanation_BN || 'ধাপ ভিত্তিক বিস্তারিত সমাধান ও ব্যাখ্যা।',
+                syllabusUnitId: 'ALL',
+                syllabusUnitName: topicVal,
+                syllabusChapterId: 'ALL',
+                syllabusChapterName: topicVal
             };
+
+            if (window.AVAI_SYLLABUS && window.AVAI_SYLLABUS.mapQuestionToSyllabus) {
+                const mapRes = window.AVAI_SYLLABUS.mapQuestionToSyllabus(item, examVal);
+                if (mapRes) {
+                    item.syllabusUnitId = mapRes.unitId;
+                    item.syllabusUnitName = mapRes.unitName;
+                    item.syllabusChapterId = mapRes.chapterId;
+                    item.syllabusChapterName = mapRes.chapterName;
+                }
+            }
+
+            return item;
         }
 
         // Hide full screen loader
@@ -1481,7 +1631,10 @@
 
             currentIdx = 0;
             currentTopic = "ALL";
+            currentUnitId = "ALL";
+            currentChapterId = "ALL";
             populateTopicFilter();
+            renderChapterNavStrip();
             render();
         }
 
@@ -1504,6 +1657,8 @@
             currentSubject = subjectName;
             currentIdx = 0;
             currentTopic = "ALL";
+            currentUnitId = "ALL";
+            currentChapterId = "ALL";
             document.querySelectorAll('.subject-tab').forEach(tab => {
                 if (tab.innerText.trim().toUpperCase() === subjectName.toUpperCase()) {
                     tab.classList.add('active');
@@ -1512,6 +1667,7 @@
                 }
             });
             populateTopicFilter();
+            renderChapterNavStrip();
             render();
         }
 
@@ -1556,21 +1712,262 @@
                 }
                 const topicMatch = (currentTopic === "ALL" || q.topic === currentTopic);
 
+                // Syllabus Unit and Chapter Filtering
+                if (currentUnitId !== "ALL" && q.syllabusUnitId && q.syllabusUnitId !== currentUnitId) {
+                    return false;
+                }
+                if (currentChapterId !== "ALL" && q.syllabusChapterId && q.syllabusChapterId !== currentChapterId) {
+                    return false;
+                }
+
                 let searchMatch = true;
                 if (searchQuery) {
                     searchMatch = q.en.toLowerCase().includes(searchQuery) || 
                                   q.bn.toLowerCase().includes(searchQuery) || 
-                                  q.topic.toLowerCase().includes(searchQuery);
+                                  q.topic.toLowerCase().includes(searchQuery) ||
+                                  (q.syllabusChapterName && q.syllabusChapterName.toLowerCase().includes(searchQuery)) ||
+                                  (q.syllabusUnitName && q.syllabusUnitName.toLowerCase().includes(searchQuery));
                 }
 
                 return examMatch && topicMatch && searchMatch;
             });
 
-            if (filtered.length === 0 && currentTopic === "ALL" && !searchQuery) {
+            if (filtered.length === 0 && currentTopic === "ALL" && currentChapterId === "ALL" && currentUnitId === "ALL" && !searchQuery) {
                 filtered = questionBank.filter(q => q.subject.toUpperCase() === currentSubject.toUpperCase());
             }
 
             return filtered;
+        }
+
+        // 6b. CHAPTER & SYLLABUS DIRECTORY CONTROLLER
+        function renderChapterNavStrip() {
+            const pillsContainer = document.getElementById('chapterPillsContainer');
+            const unitSelect = document.getElementById('unitSelector');
+            if (!pillsContainer || !window.AVAI_SYLLABUS) return;
+
+            const syllabusUnits = window.AVAI_SYLLABUS.getExamSyllabus(currentExam, currentSubject);
+            const stats = window.AVAI_SYLLABUS.getChapterQuestionStats(questionBank, currentExam, currentSubject, responses);
+
+            // 1. Populate Unit selector dropdown
+            if (unitSelect) {
+                let unitOptsHtml = '<option value="ALL">All Units / Chapters</option>';
+                syllabusUnits.forEach(u => {
+                    unitOptsHtml += `<option value="${u.id}" ${currentUnitId === u.id ? 'selected' : ''}>${u.name.en}</option>`;
+                });
+                unitSelect.innerHTML = unitOptsHtml;
+                unitSelect.value = currentUnitId;
+            }
+
+            // 2. Build chapter pills
+            let totalSubjectQs = questionBank.filter(q => q.subject.toUpperCase() === currentSubject.toUpperCase()).length;
+            
+            let pillsHtml = `
+                <button onclick="filterByChapter('ALL')" class="chapter-pill ${currentChapterId === 'ALL' && currentUnitId === 'ALL' ? 'active' : ''}">
+                    <span>🌟 All ${currentSubject}</span>
+                    <span class="pill-badge">${totalSubjectQs}</span>
+                </button>
+            `;
+
+            // Filter units if a specific unit is selected
+            const displayUnits = (currentUnitId === 'ALL')
+                ? syllabusUnits
+                : syllabusUnits.filter(u => u.id === currentUnitId);
+
+            displayUnits.forEach(unit => {
+                if (unit.chapters && unit.chapters.length > 0) {
+                    unit.chapters.forEach(ch => {
+                        const chStats = stats[ch.id] || { total: 0, answered: 0 };
+                        const isSelected = (currentChapterId === ch.id);
+                        const chTitle = currentLang === 'en' ? ch.name.en : (ch.name.bn || ch.name.en);
+                        pillsHtml += `
+                            <button onclick="filterByChapter('${ch.id}')" class="chapter-pill ${isSelected ? 'active' : ''}" title="${ch.name.en} / ${ch.name.bn}">
+                                <span>${chTitle}</span>
+                                <span class="pill-badge">${chStats.total}</span>
+                            </button>
+                        `;
+                    });
+                }
+            });
+
+            pillsContainer.innerHTML = pillsHtml;
+        }
+
+        function scrollChapterPills(offset) {
+            const container = document.getElementById('chapterPillsContainer');
+            if (container) {
+                container.scrollBy({ left: offset, behavior: 'smooth' });
+            }
+        }
+
+        function filterByChapter(chapterId) {
+            currentChapterId = chapterId;
+            if (chapterId !== 'ALL' && window.AVAI_SYLLABUS) {
+                const units = window.AVAI_SYLLABUS.getExamSyllabus(currentExam, currentSubject);
+                for (const u of units) {
+                    if (u.chapters && u.chapters.some(c => c.id === chapterId)) {
+                        currentUnitId = u.id;
+                        const unitSelect = document.getElementById('unitSelector');
+                        if (unitSelect) unitSelect.value = currentUnitId;
+                        break;
+                    }
+                }
+            } else if (chapterId === 'ALL') {
+                currentUnitId = 'ALL';
+                const unitSelect = document.getElementById('unitSelector');
+                if (unitSelect) unitSelect.value = 'ALL';
+            }
+            currentIdx = 0;
+            renderChapterNavStrip();
+            render();
+        }
+
+        function filterByUnit(unitId) {
+            currentUnitId = unitId;
+            currentChapterId = 'ALL';
+            const unitSelect = document.getElementById('unitSelector');
+            if (unitSelect) unitSelect.value = unitId;
+            currentIdx = 0;
+            renderChapterNavStrip();
+            render();
+        }
+
+        function toggleChapterDirectoryDrawer(isOpen) {
+            const drawer = document.getElementById('chapterDirectoryDrawer');
+            const backdrop = document.getElementById('chapterDirectoryDrawerBackdrop');
+            if (!drawer || !backdrop) return;
+
+            if (isOpen) {
+                renderChapterDirectoryDrawer();
+                backdrop.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    drawer.classList.remove('translate-x-full');
+                });
+            } else {
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    backdrop.classList.add('hidden');
+                }, 280);
+            }
+        }
+
+        function handleDrawerSearch(query) {
+            drawerSearchKeyword = (query || '').trim().toLowerCase();
+            renderChapterDirectoryDrawer();
+        }
+
+        function renderChapterDirectoryDrawer() {
+            const titleElem = document.getElementById('drawerExamSubjectTitle');
+            const listElem = document.getElementById('drawerContentList');
+            const footerElem = document.getElementById('drawerFooterStats');
+            if (!listElem || !window.AVAI_SYLLABUS) return;
+
+            if (titleElem) {
+                titleElem.innerText = `${currentExam} • ${currentSubject}`;
+            }
+
+            const syllabusUnits = window.AVAI_SYLLABUS.getExamSyllabus(currentExam, currentSubject);
+            const stats = window.AVAI_SYLLABUS.getChapterQuestionStats(questionBank, currentExam, currentSubject, responses);
+
+            let totalUnits = syllabusUnits.length;
+            let totalChs = 0;
+            syllabusUnits.forEach(u => { totalChs += (u.chapters ? u.chapters.length : 0); });
+
+            if (footerElem) {
+                footerElem.innerText = `${totalUnits} Units • ${totalChs} Sub-Chapters in ${currentSubject}`;
+            }
+
+            let filteredUnits = syllabusUnits;
+            if (drawerSearchKeyword) {
+                filteredUnits = syllabusUnits.map(unit => {
+                    const unitMatches = unit.name.en.toLowerCase().includes(drawerSearchKeyword) ||
+                                        (unit.name.bn && unit.name.bn.toLowerCase().includes(drawerSearchKeyword));
+                    const matchingChapters = (unit.chapters || []).filter(ch => {
+                        return ch.name.en.toLowerCase().includes(drawerSearchKeyword) ||
+                               (ch.name.bn && ch.name.bn.toLowerCase().includes(drawerSearchKeyword)) ||
+                               (ch.keywords && ch.keywords.some(k => k.toLowerCase().includes(drawerSearchKeyword)));
+                    });
+                    if (unitMatches || matchingChapters.length > 0) {
+                        return {
+                            ...unit,
+                            chapters: unitMatches ? unit.chapters : matchingChapters
+                        };
+                    }
+                    return null;
+                }).filter(Boolean);
+            }
+
+            if (filteredUnits.length === 0) {
+                listElem.innerHTML = `
+                    <div class="text-center py-12 text-slate-400 space-y-2">
+                        <span class="text-3xl">🔍</span>
+                        <p class="font-bold text-slate-600 text-sm">No chapters found</p>
+                        <p class="text-xs text-slate-400">No match for "${drawerSearchKeyword}". Try a different keyword.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listElem.innerHTML = filteredUnits.map((unit, uIdx) => {
+                const unitChapters = unit.chapters || [];
+                const isCurrentUnitActive = (currentUnitId === unit.id);
+
+                return `
+                    <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm transition hover:border-slate-300">
+                        <!-- Unit Accordion Header -->
+                        <div class="p-3.5 bg-slate-50/90 border-b border-slate-200 flex items-center justify-between cursor-pointer select-none" onclick="document.getElementById('unitCollapse_${uIdx}').classList.toggle('hidden')">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-display font-black text-xs flex items-center justify-center">
+                                    U${uIdx + 1}
+                                </span>
+                                <div>
+                                    <h4 class="text-xs md:text-sm font-display font-bold text-slate-900 leading-tight">
+                                        ${currentLang === 'en' ? unit.name.en : (unit.name.bn || unit.name.en)}
+                                    </h4>
+                                    <p class="text-[11px] text-slate-400">
+                                        ${unitChapters.length} Sub-Chapters
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="event.stopPropagation(); filterByUnit('${unit.id}'); toggleChapterDirectoryDrawer(false);" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-indigo-200 bg-white text-indigo-600 hover:bg-indigo-50 transition cursor-pointer">
+                                    Practice Unit
+                                </button>
+                                <span class="text-xs text-slate-400">▼</span>
+                            </div>
+                        </div>
+
+                        <!-- Sub-Chapters List -->
+                        <div id="unitCollapse_${uIdx}" class="divide-y divide-slate-100 p-2 space-y-1.5">
+                            ${unitChapters.map(ch => {
+                                const chStat = stats[ch.id] || { total: 0, answered: 0, correct: 0 };
+                                const isChActive = (currentChapterId === ch.id);
+                                const chTitle = currentLang === 'en' ? ch.name.en : (ch.name.bn || ch.name.en);
+                                const progressPct = chStat.total > 0 ? Math.round((chStat.answered / chStat.total) * 100) : 0;
+
+                                return `
+                                    <div class="p-2.5 rounded-xl border ${isChActive ? 'border-blue-500 bg-blue-50/50' : 'border-slate-100 bg-slate-50/40 hover:bg-slate-50'} transition flex items-center justify-between gap-2">
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 flex-wrap">
+                                                <h5 class="text-xs font-bold text-slate-800 truncate">${chTitle}</h5>
+                                                <span class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-white border border-slate-200 text-slate-600">${chStat.total} Qs</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 mt-1 text-[10px] text-slate-400">
+                                                <div class="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${progressPct}%"></div>
+                                                </div>
+                                                <span>${chStat.answered}/${chStat.total} solved</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="filterByChapter('${ch.id}'); toggleChapterDirectoryDrawer(false);" class="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold shadow-sm transition active:scale-95 cursor-pointer whitespace-nowrap">
+                                            Practice →
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         // 7. RENDER QUESTION & OPTIONS (HERO COMPONENT WITH PER-QUESTION TIMER & PYQ BADGE)
@@ -1624,6 +2021,23 @@
 
             area.innerHTML = `
                 <div class="max-w-4xl mx-auto animate-fade-in">
+                    <!-- Syllabus Breadcrumbs Bar (PW / Vedantu / SATHEE style) -->
+                    <div id="questionBreadcrumbsBar" class="mb-3.5 px-3.5 py-2 rounded-2xl bg-slate-50 border border-slate-200/90 text-xs font-semibold flex items-center gap-2 text-slate-500 overflow-x-auto no-scrollbar shadow-sm">
+                        <span class="text-blue-600 font-black cursor-pointer hover:underline" onclick="filterByExam()">${q.exam}</span>
+                        <span class="text-slate-300">›</span>
+                        <span class="font-bold text-slate-700 cursor-pointer hover:underline" onclick="switchSubject('${q.subject}')">${q.subject}</span>
+                        <span class="text-slate-300">›</span>
+                        <span class="text-indigo-600 font-bold cursor-pointer hover:underline" onclick="filterByUnit('${q.syllabusUnitId || 'ALL'}')" title="Practice this entire unit">
+                            ${q.syllabusUnitName || q.topic}
+                        </span>
+                        ${(q.syllabusChapterName && q.syllabusChapterName !== q.syllabusUnitName) ? `
+                            <span class="text-slate-300">›</span>
+                            <span class="text-blue-700 font-bold bg-blue-50/80 px-2.5 py-0.5 rounded-lg border border-blue-200/80 shadow-xs cursor-pointer hover:bg-blue-100 transition" onclick="filterByChapter('${q.syllabusChapterId}')" title="Filter to this chapter">
+                                ${q.syllabusChapterName}
+                            </span>
+                        ` : ''}
+                    </div>
+
                     <!-- Question Header Meta Bar -->
                     <div class="flex flex-wrap justify-between items-center mb-6 gap-2.5 pb-4 border-b border-slate-100">
                         <div class="flex items-center gap-2 md:gap-3 flex-wrap">
@@ -1686,6 +2100,7 @@
             `;
 
             renderPalette();
+            renderChapterNavStrip();
             updateProgress();
         }
 
@@ -1904,6 +2319,7 @@
         // Language Switcher Event
         document.getElementById('langSwitch').addEventListener('change', (e) => {
             currentLang = e.target.value;
+            renderChapterNavStrip();
             render();
         });
 
