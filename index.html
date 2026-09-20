@@ -378,7 +378,7 @@
     <header class="glass-header text-white px-3.5 py-2.5 md:px-6 md:py-3.5 flex justify-between items-center sticky top-0 z-40 gap-2 select-none shadow-lg">
         <div class="flex items-center gap-3 md:gap-5 flex-wrap">
             <!-- Brand Logo -->
-            <div class="flex items-center gap-2 cursor-pointer" onclick="location.reload()">
+            <div class="flex items-center gap-2 cursor-pointer select-none" onclick="handleBrandClick()" title="AVAI Preparation">
                 <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-600 flex items-center justify-center font-display font-black text-white text-base shadow-md shadow-blue-500/30">
                     A
                 </div>
@@ -819,7 +819,8 @@
                         ⚡ Use Coded Bank
                     </button>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="lockAdminMode()" class="px-2.5 py-1.5 text-xs font-bold text-slate-400 hover:text-rose-500 transition cursor-pointer" title="Hide admin button from this device">🔒 Hide Button</button>
                     <button onclick="closeAdminModal()" class="px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition">Cancel</button>
                     <button onclick="saveAndSyncSheet()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-display font-black shadow-md transition flex items-center gap-1.5 active:scale-95 cursor-pointer">
                         Sync Live Bank 🔄
@@ -939,7 +940,7 @@
             <div class="flex items-center gap-4 flex-wrap text-[11px]">
                 <button onclick="openMockModal()" class="text-amber-400 hover:text-amber-300 font-bold transition flex items-center gap-1 cursor-pointer">🎯 Custom Mock</button>
                 <button onclick="toggleCalculator()" class="text-purple-400 hover:text-purple-300 font-bold transition flex items-center gap-1 cursor-pointer">✦ Calculator</button>
-                <button onclick="openAdminModal()" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1 cursor-pointer" title="Admin Question Bank Sync (Ctrl+Shift+A)">⚙️ Admin Sync</button>
+                <button id="adminSyncFooterBtn" onclick="openAdminModal()" class="hidden text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1 cursor-pointer" title="Admin Question Bank Sync (Ctrl+Shift+A)">⚙️ Admin Sync</button>
                 <a href="about.html" class="hover:text-white transition">About</a>
                 <a href="privacy.html" class="hover:text-white transition">Privacy</a>
             </div>
@@ -1928,8 +1929,68 @@
             reader.readAsText(file);
         }
 
+        // --------------------------------------------------------------------------
+        // PRIVILEGED ADMIN ACCESS SYSTEM (Only visible to the Admin)
+        // --------------------------------------------------------------------------
+        let brandClickCount = 0;
+        let brandClickTimeout = null;
+
+        function handleBrandClick() {
+            brandClickCount++;
+            if (brandClickTimeout) clearTimeout(brandClickTimeout);
+
+            if (brandClickCount >= 5) {
+                brandClickCount = 0;
+                unlockAdminMode(true);
+                return;
+            }
+
+            brandClickTimeout = setTimeout(() => {
+                if (brandClickCount === 1) {
+                    location.reload();
+                }
+                brandClickCount = 0;
+            }, 400);
+        }
+
+        function isUserAdmin() {
+            return localStorage.getItem('avai_is_admin') === 'true';
+        }
+
+        function unlockAdminMode(openModal = true) {
+            localStorage.setItem('avai_is_admin', 'true');
+            const footerBtn = document.getElementById('adminSyncFooterBtn');
+            if (footerBtn) footerBtn.classList.remove('hidden');
+            if (openModal) {
+                openAdminModal();
+            }
+        }
+
+        function lockAdminMode() {
+            localStorage.removeItem('avai_is_admin');
+            const footerBtn = document.getElementById('adminSyncFooterBtn');
+            if (footerBtn) footerBtn.classList.add('hidden');
+            closeAdminModal();
+            alert("Admin mode locked. The Admin Sync button is now completely hidden on this device.");
+        }
+
+        function initAdminModeCheck() {
+            // 1. Check for secret URL parameter: ?admin=true or ?admin=bibek or ?admin=1
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('admin')) {
+                unlockAdminMode(false);
+                // Clean secret query parameter from address bar without reload
+                params.delete('admin');
+                const cleanQuery = params.toString() ? '?' + params.toString() : '';
+                window.history.replaceState({}, document.title, window.location.pathname + cleanQuery + window.location.hash);
+            } else if (isUserAdmin()) {
+                unlockAdminMode(false);
+            }
+        }
+
         // 4. ADMIN MODAL CONTROLS
         function openAdminModal() {
+            unlockAdminMode(false);
             const modal = document.getElementById('adminSheetModal');
             if (modal) modal.classList.remove('hidden');
             const urlInput = document.getElementById('adminSheetUrlInput');
@@ -3069,6 +3130,7 @@
         });
 
         // START INITIALIZATION
+        initAdminModeCheck();
         loadData();
     </script>
 </body>
