@@ -793,6 +793,9 @@
                     <p class="text-[11px] text-slate-500 mt-1">Accepts standard share links, browser edit URLs, or published CSV links.</p>
                 </div>
 
+                <!-- Live Sync Diagnostic Box -->
+                <div id="sheetSyncDiagnostic" class="hidden p-3.5 rounded-2xl text-xs font-medium transition-all leading-relaxed"></div>
+
                 <div class="border-t border-slate-200 pt-3">
                     <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-1.5">Or Upload CSV / TSV / JSON Directly:</label>
                     <input type="file" id="localFileInput" accept=".csv,.tsv,.json,.txt" onchange="handleLocalFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer">
@@ -1362,19 +1365,42 @@
 
         // Validate if a parsed row represents a valid question
         function isRowValidQuestion(row) {
-            if (!row) return false;
+            if (!row || typeof row !== 'object') return false;
+            // 1. Direct or fuzzy field name match
             const q = getRowField(row, [
                 'en', 'Question_EN', 'Question EN', 'Question(EN)', 'Question', 'question', 'q_en', 'q',
+                'questions', 'problem', 'problems', 'mcq', 'statement', 'question_text', 'question text', 'questionstatement',
                 'bn', 'Question_BN', 'Question BN', 'Question', 'প্রশ্ন'
             ]);
-            return q.length > 0;
+            if (q && q.trim().length > 0) return true;
+
+            // 2. Content-based detection: If any cell in this row has text >= 15 characters, it is a valid question
+            const vals = Object.values(row);
+            for (let i = 0; i < vals.length; i++) {
+                const val = String(vals[i] || '').trim();
+                if (val.length >= 15 && !val.startsWith('http') && !val.startsWith('<svg') && !val.startsWith('col_')) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         function normalizeQuestion(q, i) {
             const examVal = getRowField(q, ['exam', 'Exam', 'Exam_Type', 'Target_Exam']) || 'ALL';
             const subjectVal = getRowField(q, ['subject', 'Subject', 'Sub']) || 'Physics';
             const topicVal = getRowField(q, ['topic', 'Topic', 'Chapter', 'Unit']) || 'General';
-            const qEn = getRowField(q, ['en', 'Question_EN', 'Question EN', 'Question', 'question', 'q_en', 'q']);
+            let qEn = getRowField(q, ['en', 'Question_EN', 'Question EN', 'Question', 'question', 'q_en', 'q', 'questions', 'problem', 'problems', 'mcq', 'statement', 'question_text', 'question text']);
+            if (!qEn) {
+                let longest = '';
+                const keys = Object.keys(q);
+                for (let j = 0; j < keys.length; j++) {
+                    const val = String(q[keys[j]] || '').trim();
+                    if (val.length > longest.length && !val.startsWith('http') && !val.startsWith('<svg')) {
+                        longest = val;
+                    }
+                }
+                qEn = longest;
+            }
             const qBn = getRowField(q, ['bn', 'Question_BN', 'Question BN', 'প্রশ্ন']) || qEn;
 
             let optsEn = [];
@@ -1384,10 +1410,23 @@
                 optsEn = q.opts.en;
                 optsBn = q.opts.bn || q.opts.en;
             } else {
-                const o1 = getRowField(q, ['Opt1_EN', 'Opt1', 'opt1', 'Option1', 'Option 1', 'Option_A', 'Option A', 'Opt A', 'A', '1']) || 'Option A';
-                const o2 = getRowField(q, ['Opt2_EN', 'Opt2', 'opt2', 'Option2', 'Option 2', 'Option_B', 'Option B', 'Opt B', 'B', '2']) || 'Option B';
-                const o3 = getRowField(q, ['Opt3_EN', 'Opt3', 'opt3', 'Option3', 'Option 3', 'Option_C', 'Option C', 'Opt C', 'C', '3']) || 'Option C';
-                const o4 = getRowField(q, ['Opt4_EN', 'Opt4', 'opt4', 'Option4', 'Option 4', 'Option_D', 'Option D', 'Opt D', 'D', '4']) || 'Option D';
+                let o1 = getRowField(q, ['Opt1_EN', 'Opt1', 'opt1', 'Option1', 'Option 1', 'Option_A', 'Option A', 'Opt A', 'A', '1']);
+                let o2 = getRowField(q, ['Opt2_EN', 'Opt2', 'opt2', 'Option2', 'Option 2', 'Option_B', 'Option B', 'Opt B', 'B', '2']);
+                let o3 = getRowField(q, ['Opt3_EN', 'Opt3', 'opt3', 'Option3', 'Option 3', 'Option_C', 'Option C', 'Opt C', 'C', '3']);
+                let o4 = getRowField(q, ['Opt4_EN', 'Opt4', 'opt4', 'Option4', 'Option 4', 'Option_D', 'Option D', 'Opt D', 'D', '4']);
+
+                // If options were not found by keys, look for non-question values in the row
+                if (!o1 && !o2 && !o3 && !o4) {
+                    const rowVals = Object.values(q).map(v => String(v || '').trim()).filter(v => v.length > 0 && v !== qEn && !v.startsWith('Q-') && !v.startsWith('http') && !v.startsWith('<svg'));
+                    if (rowVals.length >= 4) {
+                        o1 = rowVals[0]; o2 = rowVals[1]; o3 = rowVals[2]; o4 = rowVals[3];
+                    }
+                }
+
+                o1 = o1 || 'Option A';
+                o2 = o2 || 'Option B';
+                o3 = o3 || 'Option C';
+                o4 = o4 || 'Option D';
 
                 const b1 = getRowField(q, ['Opt1_BN', 'Opt1 BN', 'Option1_BN']) || o1;
                 const b2 = getRowField(q, ['Opt2_BN', 'Opt2 BN', 'Option2_BN']) || o2;
@@ -1582,21 +1621,56 @@
             });
         }
 
-        // Fetch & parse Google Sheet (GViz JSONP -> Direct PapaParse -> CORS Proxy)
+        // Global sync diagnostics tracker
+        window.syncDiagnostics = {
+            status: 'idle',
+            message: '',
+            detectedHeaders: [],
+            totalRows: 0,
+            validQuestions: 0
+        };
+
+        function updateSyncStatusUI(msg, type) {
+            console.log(`[Sync ${type || 'info'}]:`, msg);
+            const diagBox = document.getElementById('sheetSyncDiagnostic');
+            if (diagBox) {
+                diagBox.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border-red-200', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200', 'bg-blue-50', 'text-blue-700', 'border-blue-200');
+                if (type === 'error') {
+                    diagBox.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+                } else if (type === 'success') {
+                    diagBox.classList.add('bg-emerald-50', 'text-emerald-700', 'border', 'border-emerald-200');
+                } else {
+                    diagBox.classList.add('bg-blue-50', 'text-blue-700', 'border', 'border-blue-200');
+                }
+                diagBox.innerHTML = msg;
+            }
+        }
+
+        // Fetch & parse Google Sheet (GViz JSONP -> Fast Cloud Proxy -> Direct PapaParse)
         async function fetchGoogleSheetCSV(rawUrl) {
             if (!rawUrl) return false;
+            rawUrl = rawUrl.trim();
 
-            const sheetIdMatch = rawUrl.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+            window.syncDiagnostics = { status: 'starting', message: '', detectedHeaders: [], totalRows: 0, validQuestions: 0 };
+            updateSyncStatusUI("⏳ Connecting to Google Sheet...", 'info');
+
+            // 1. Primary Strategy: Check for standard Google Sheet ID (at least 20 chars, NOT /d/e/)
+            const sheetIdMatch = rawUrl.match(/\/spreadsheets\/d\/(?!e\/)([a-zA-Z0-9-_]{20,})/);
             const gidMatch = rawUrl.match(/gid=([0-9]+)/);
             const gid = gidMatch ? gidMatch[1] : '';
 
-            // 1. Primary Strategy: GViz JSONP (Zero CORS restriction, instant sync)
-            if (sheetIdMatch && sheetIdMatch[1] && !rawUrl.includes('/pub?')) {
+            if (sheetIdMatch && sheetIdMatch[1]) {
                 const sheetId = sheetIdMatch[1];
+                updateSyncStatusUI(`🌐 Syncing via Google Visualization JSONP (ID: ${sheetId.substring(0, 8)}...)...`, 'info');
                 try {
                     const jsonpResult = await fetchGoogleSheetGvizJSONP(sheetId, gid);
                     if (jsonpResult && jsonpResult.success && jsonpResult.rows && jsonpResult.rows.length > 0) {
+                        window.syncDiagnostics.totalRows = jsonpResult.rows.length;
+                        window.syncDiagnostics.detectedHeaders = Object.keys(jsonpResult.rows[0] || {});
+
                         const validRows = jsonpResult.rows.filter(isRowValidQuestion);
+                        window.syncDiagnostics.validQuestions = validRows.length;
+
                         if (validRows.length > 0) {
                             masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
                             questionBank = [...masterDataset];
@@ -1606,63 +1680,50 @@
                             setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
                             hideAppLoader();
                             filterByExam();
+                            updateSyncStatusUI(`✅ Synced ${questionBank.length} questions successfully!`, 'success');
                             return true;
+                        } else {
+                            window.syncDiagnostics.message = `Google Sheet returned ${jsonpResult.rows.length} rows, but no question text was recognized. Detected headers: [${window.syncDiagnostics.detectedHeaders.join(', ')}]`;
+                            updateSyncStatusUI(`⚠️ ${window.syncDiagnostics.message}`, 'error');
                         }
                     } else if (jsonpResult && jsonpResult.reason === 'access_denied') {
-                        console.warn("Google Sheet permission error:", jsonpResult.message);
+                        window.syncDiagnostics.message = `Access Denied by Google: "${jsonpResult.message || 'Permission required'}". Make sure Share -> General Access is set to 'Anyone with the link can view' (Viewer).`;
+                        updateSyncStatusUI(`❌ ${window.syncDiagnostics.message}`, 'error');
+                        return false;
+                    } else if (jsonpResult && jsonpResult.reason === 'timeout') {
+                        window.syncDiagnostics.message = "JSONP request timed out after 12s. Attempting cloud proxy fallback...";
+                        updateSyncStatusUI(`⚠️ ${window.syncDiagnostics.message}`, 'info');
                     }
                 } catch (err) {
                     console.warn("JSONP attempt encountered error:", err);
                 }
             }
 
-            // 2. Secondary Strategy: Direct CSV download (for published URLs or CSV links)
+            // 2. Secondary Strategy: High-speed CORS proxy (for published /d/e/2PACX-... CSV links, or fallback)
             const cleanUrl = sanitizeGoogleSheetUrl(rawUrl);
             const liveUrl = cleanUrl + (cleanUrl.includes('?') ? '&' : '?') + '_ts=' + Date.now();
 
-            const papaSuccess = await new Promise((resolve) => {
-                Papa.parse(liveUrl, {
-                    download: true,
-                    header: true,
-                    skipEmptyLines: true,
-                    complete: function(results) {
-                        if (results.data && results.data.length > 0) {
-                            const validRows = results.data.filter(isRowValidQuestion);
-                            if (validRows.length > 0) {
-                                masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
-                                questionBank = [...masterDataset];
-                                responses = new Array(questionBank.length).fill(null);
-                                statuses = new Array(questionBank.length).fill('not-visited');
-                                questionTimes = new Array(questionBank.length).fill(0);
-                                setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
-                                hideAppLoader();
-                                filterByExam();
-                                return resolve(true);
-                            }
-                        }
-                        resolve(false);
-                    },
-                    error: function(err) {
-                        console.warn("PapaParse direct error:", err);
-                        resolve(false);
-                    }
-                });
-            });
+            updateSyncStatusUI("🌐 Fetching via secure cloud proxy (corsproxy.io)...", 'info');
+            const targetUrls = [
+                `https://corsproxy.io/?${encodeURIComponent(liveUrl)}`,
+                liveUrl
+            ];
 
-            if (papaSuccess) return true;
-
-            // 3. Tertiary Strategy: CORS Proxy for published links (/pub?output=csv)
-            if (rawUrl.includes('/pub') || rawUrl.includes('output=csv')) {
+            for (let target of targetUrls) {
                 try {
-                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(liveUrl)}`;
-                    const proxySuccess = await new Promise((resolve) => {
-                        Papa.parse(proxyUrl, {
+                    const success = await new Promise((resolve) => {
+                        Papa.parse(target, {
                             download: true,
                             header: true,
                             skipEmptyLines: true,
                             complete: function(results) {
                                 if (results.data && results.data.length > 0) {
+                                    window.syncDiagnostics.totalRows = results.data.length;
+                                    window.syncDiagnostics.detectedHeaders = Object.keys(results.data[0] || {});
+
                                     const validRows = results.data.filter(isRowValidQuestion);
+                                    window.syncDiagnostics.validQuestions = validRows.length;
+
                                     if (validRows.length > 0) {
                                         masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
                                         questionBank = [...masterDataset];
@@ -1672,23 +1733,28 @@
                                         setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
                                         hideAppLoader();
                                         filterByExam();
+                                        updateSyncStatusUI(`✅ Synced ${questionBank.length} questions successfully!`, 'success');
                                         return resolve(true);
                                     }
                                 }
                                 resolve(false);
                             },
                             error: function(err) {
-                                console.warn("Proxy fetch error:", err);
+                                console.warn("PapaParse error for", target, err);
                                 resolve(false);
                             }
                         });
                     });
-                    if (proxySuccess) return true;
+                    if (success) return true;
                 } catch (e) {
-                    console.warn("Proxy exception:", e);
+                    console.warn("Proxy attempt exception:", e);
                 }
             }
 
+            if (!window.syncDiagnostics.message) {
+                window.syncDiagnostics.message = "Could not sync questions from Google Sheet. If your sheet is private, set Share -> Anyone with the link can view, or use the direct Upload File button below.";
+            }
+            updateSyncStatusUI(`❌ ${window.syncDiagnostics.message}`, 'error');
             return false;
         }
 
@@ -1765,7 +1831,6 @@
             }
 
             localStorage.setItem('avai_google_sheet_url', url);
-            closeAdminModal();
 
             const loader = document.getElementById('loader');
             if (loader) loader.classList.remove('hidden');
@@ -1775,9 +1840,12 @@
 
             if (ok) {
                 alert(`Successfully synced ${questionBank.length} questions from Google Sheet!`);
+                closeAdminModal();
             } else {
-                alert("Could not load from Google Sheet.\n\nTroubleshooting Guide:\n1. Open your Google Sheet -> Click 'Share' (top right corner).\n2. Under 'General access', change from 'Restricted' to 'Anyone with the link' (Viewer).\n3. Copy the link and paste it in the Admin Center.\n\nTip: You can also click 'Upload CSV / TSV / JSON Directly' in the Admin Center anytime.");
-                loadData();
+                const detail = window.syncDiagnostics && window.syncDiagnostics.message
+                    ? `\n\nDiagnostic Details:\n${window.syncDiagnostics.message}`
+                    : '';
+                alert(`Could not load from Google Sheet.${detail}\n\nTroubleshooting:\n1. If this is a standard Google Sheet, click Share -> General Access -> "Anyone with the link" (Viewer).\n2. If this is a published CSV link (/d/e/...), ensure it was published via File -> Share -> Publish to web.\n3. Or click "Upload CSV / TSV / JSON Directly" in the Admin Center to load your questions immediately without online sync.`);
             }
         }
 
