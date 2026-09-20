@@ -1569,6 +1569,34 @@
 
                     const table = response.table;
                     const cols = table.cols || [];
+
+                    // Auto-detect if user pasted raw CSV/TSV text into a single column (e.g. Column A)
+                    const isSingleColumn = (cols.length <= 1);
+                    const firstCellVal = (table.rows.length > 0 && table.rows[0].c && table.rows[0].c[0] && table.rows[0].c[0].v !== undefined)
+                        ? String(table.rows[0].c[0].v || '')
+                        : '';
+
+                    if (isSingleColumn && (firstCellVal.includes(',') || firstCellVal.includes('\t'))) {
+                        const rawLines = table.rows.map(r => (r && r.c && r.c[0] && r.c[0].v !== undefined) ? String(r.c[0].v) : '').filter(l => l.trim().length > 0);
+                        const csvText = rawLines.join('\n');
+
+                        Papa.parse(csvText, {
+                            header: true,
+                            skipEmptyLines: true,
+                            complete: function(pResults) {
+                                if (pResults.data && pResults.data.length > 0) {
+                                    resolve({ success: true, rows: pResults.data });
+                                } else {
+                                    resolve({ success: true, rows: [] });
+                                }
+                            },
+                            error: function() {
+                                resolve({ success: false, reason: 'csv_parse_error' });
+                            }
+                        });
+                        return;
+                    }
+
                     let headers = [];
 
                     // Check if cols define valid headers
