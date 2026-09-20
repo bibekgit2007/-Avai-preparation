@@ -793,6 +793,13 @@
                     <p class="text-[11px] text-slate-500 mt-1">Accepts standard share links, browser edit URLs, or published CSV links.</p>
                 </div>
 
+                <div class="flex items-center gap-2 bg-emerald-50/70 border border-emerald-200/80 rounded-xl p-2.5">
+                    <input type="checkbox" id="mergeWithBuiltInCheckbox" checked onchange="toggleMergeMode(this.checked)" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300 cursor-pointer">
+                    <label for="mergeWithBuiltInCheckbox" class="text-xs font-bold text-emerald-950 cursor-pointer select-none">
+                        Keep 322 coded questions alongside Google Sheet (Merge Mode)
+                    </label>
+                </div>
+
                 <!-- Live Sync Diagnostic Box -->
                 <div id="sheetSyncDiagnostic" class="hidden p-3.5 rounded-2xl text-xs font-medium transition-all leading-relaxed"></div>
 
@@ -1538,6 +1545,45 @@
             filterByExam();
         }
 
+        // Toggle merge mode between Sheet-only vs Sheet + 322 Coded Questions
+        function toggleMergeMode(checked) {
+            localStorage.setItem('avai_merge_with_builtin', checked ? 'true' : 'false');
+        }
+
+        // Unified question application with automatic Merge Mode support
+        function applySyncedQuestions(validRows, sourceName) {
+            const shouldMerge = localStorage.getItem('avai_merge_with_builtin') !== 'false';
+            const normalizedSheet = validRows.map((q, i) => normalizeQuestion(q, i));
+
+            if (shouldMerge && window.PHYSICS_QUESTIONS_DATA && window.PHYSICS_QUESTIONS_DATA.length > 0) {
+                const map = new Map();
+                // 1. Index built-in 322 questions
+                window.PHYSICS_QUESTIONS_DATA.forEach((q, i) => {
+                    const norm = normalizeQuestion(q, i);
+                    map.set(norm.id || `BUILTIN_${i}`, norm);
+                });
+                // 2. Upsert sheet questions: updates matching IDs or appends new ones
+                let newCount = 0;
+                normalizedSheet.forEach((q, i) => {
+                    const key = q.id || `SHEET_${i}`;
+                    if (!map.has(key)) newCount++;
+                    map.set(key, q);
+                });
+                masterDataset = Array.from(map.values());
+                setSyncStatus(`Master Bank + ${sourceName} (${masterDataset.length} Qs)`);
+            } else {
+                masterDataset = normalizedSheet;
+                setSyncStatus(`${sourceName} (${masterDataset.length} Qs)`);
+            }
+
+            questionBank = [...masterDataset];
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
+            hideAppLoader();
+            filterByExam();
+        }
+
         // Google Visualization API JSONP fetcher (Bypasses Browser CORS completely for any public Viewer sheet)
         function fetchGoogleSheetGvizJSONP(sheetId, gid) {
             return new Promise((resolve) => {
@@ -1705,15 +1751,8 @@
                         window.syncDiagnostics.validQuestions = validRows.length;
 
                         if (validRows.length > 0) {
-                            masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
-                            questionBank = [...masterDataset];
-                            responses = new Array(questionBank.length).fill(null);
-                            statuses = new Array(questionBank.length).fill('not-visited');
-                            questionTimes = new Array(questionBank.length).fill(0);
-                            setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
-                            hideAppLoader();
-                            filterByExam();
-                            updateSyncStatusUI(`✅ Synced ${questionBank.length} questions successfully!`, 'success');
+                            applySyncedQuestions(validRows, 'Google Sheet');
+                            updateSyncStatusUI(`✅ Synced ${validRows.length} questions from Google Sheet! (Total Bank: ${questionBank.length} Qs)`, 'success');
                             return true;
                         } else {
                             window.syncDiagnostics.message = `Google Sheet returned ${jsonpResult.rows.length} rows, but no question text was recognized. Detected headers: [${window.syncDiagnostics.detectedHeaders.join(', ')}]`;
@@ -1758,15 +1797,8 @@
                                     window.syncDiagnostics.validQuestions = validRows.length;
 
                                     if (validRows.length > 0) {
-                                        masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
-                                        questionBank = [...masterDataset];
-                                        responses = new Array(questionBank.length).fill(null);
-                                        statuses = new Array(questionBank.length).fill('not-visited');
-                                        questionTimes = new Array(questionBank.length).fill(0);
-                                        setSyncStatus(`Google Sheet (${questionBank.length} Qs)`);
-                                        hideAppLoader();
-                                        filterByExam();
-                                        updateSyncStatusUI(`✅ Synced ${questionBank.length} questions successfully!`, 'success');
+                                        applySyncedQuestions(validRows, 'Google Sheet');
+                                        updateSyncStatusUI(`✅ Synced ${validRows.length} questions from Google Sheet! (Total Bank: ${questionBank.length} Qs)`, 'success');
                                         return resolve(true);
                                     }
                                 }
@@ -1821,15 +1853,9 @@
                         complete: function(results) {
                             const validRows = results.data.filter(isRowValidQuestion);
                             if (validRows.length > 0) {
-                                masterDataset = validRows.map((q, i) => normalizeQuestion(q, i));
-                                questionBank = [...masterDataset];
-                                responses = new Array(questionBank.length).fill(null);
-                                statuses = new Array(questionBank.length).fill('not-visited');
-                                questionTimes = new Array(questionBank.length).fill(0);
+                                applySyncedQuestions(validRows, file.name);
                                 closeAdminModal();
-                                setSyncStatus(`Uploaded CSV (${questionBank.length} Qs)`);
-                                filterByExam();
-                                alert(`Successfully loaded ${questionBank.length} questions from ${file.name}!`);
+                                alert(`Successfully loaded questions from ${file.name}! Total questions in bank: ${questionBank.length}`);
                             } else {
                                 alert("No valid questions found in uploaded file.");
                             }
@@ -1847,6 +1873,10 @@
             const urlInput = document.getElementById('adminSheetUrlInput');
             if (urlInput) {
                 urlInput.value = localStorage.getItem('avai_google_sheet_url') || '';
+            }
+            const mergeCheck = document.getElementById('mergeWithBuiltInCheckbox');
+            if (mergeCheck) {
+                mergeCheck.checked = localStorage.getItem('avai_merge_with_builtin') !== 'false';
             }
         }
 
