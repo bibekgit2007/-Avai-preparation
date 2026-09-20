@@ -804,9 +804,14 @@
             </div>
 
             <div class="flex flex-wrap gap-2.5 justify-between items-center">
-                <a href="data/physics_for_you_master_questions.csv" download class="px-3.5 py-2 border border-slate-200 hover:bg-slate-100 rounded-xl text-xs font-bold text-slate-700 transition flex items-center gap-1.5">
-                    📥 Download CSV Template
-                </a>
+                <div class="flex flex-wrap gap-2">
+                    <a href="data/physics_for_you_master_questions.csv" download class="px-3.5 py-2 border border-slate-200 hover:bg-slate-100 rounded-xl text-xs font-bold text-slate-700 transition flex items-center gap-1.5">
+                        📥 CSV Template
+                    </a>
+                    <button type="button" onclick="resetToBuiltInBank()" class="px-3.5 py-2 border border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer" title="Switch back to the built-in coded master questions">
+                        ⚡ Use Coded Bank
+                    </button>
+                </div>
                 <div class="flex gap-2">
                     <button onclick="closeAdminModal()" class="px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition">Cancel</button>
                     <button onclick="saveAndSyncSheet()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-display font-black shadow-md transition flex items-center gap-1.5 active:scale-95 cursor-pointer">
@@ -1839,11 +1844,32 @@
         function openAdminModal() {
             const modal = document.getElementById('adminSheetModal');
             if (modal) modal.classList.remove('hidden');
+            const urlInput = document.getElementById('adminSheetUrlInput');
+            if (urlInput) {
+                urlInput.value = localStorage.getItem('avai_google_sheet_url') || '';
+            }
         }
 
         function closeAdminModal() {
             const modal = document.getElementById('adminSheetModal');
             if (modal) modal.classList.add('hidden');
+        }
+
+        function resetToBuiltInBank() {
+            localStorage.removeItem('avai_google_sheet_url');
+            const urlInput = document.getElementById('adminSheetUrlInput');
+            if (urlInput) urlInput.value = '';
+            const diag = document.getElementById('sheetSyncDiagnostic');
+            if (diag) {
+                diag.classList.remove('hidden', 'bg-rose-50', 'text-rose-900', 'border-rose-200');
+                diag.classList.add('bg-purple-50', 'text-purple-900', 'border', 'border-purple-200');
+                const count = window.PHYSICS_QUESTIONS_DATA ? window.PHYSICS_QUESTIONS_DATA.length : 0;
+                diag.innerHTML = `<strong>Switched to Coded Bank:</strong> Restored built-in master dataset (${count} questions across all subjects).`;
+            }
+            loadData();
+            setTimeout(() => {
+                closeAdminModal();
+            }, 800);
         }
 
         async function saveAndSyncSheet() {
