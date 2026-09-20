@@ -167,6 +167,13 @@ def parse_sheet_content(csv_text):
 
     return parsed_questions
 
+def get_signature(text):
+    if not text:
+        return ""
+    cleaned = re.sub(r'<[^>]*>', '', str(text))
+    cleaned = re.sub(r'[^a-zA-Z0-9\u0980-\u09FF]', '', cleaned)
+    return cleaned.lower()[:70]
+
 def merge_and_export(new_questions, mode='append'):
     # Load existing questions from data/physics_questions.json
     existing_path = os.path.join("data", "physics_questions.json")
@@ -179,12 +186,34 @@ def merge_and_export(new_questions, mode='append'):
         final_questions = new_questions
     else:
         existing_ids = {q['id']: idx for idx, q in enumerate(existing_questions)}
+        existing_sigs = {get_signature(q.get('en', '')): idx for idx, q in enumerate(existing_questions) if get_signature(q.get('en', ''))}
+
+        updated_count = 0
+        added_count = 0
+        seen_new_sigs = set()
+
         for nq in new_questions:
+            sig = get_signature(nq.get('en', ''))
+            if sig and sig in seen_new_sigs:
+                continue
+            if sig:
+                seen_new_sigs.add(sig)
+
+            match_idx = None
             if nq['id'] in existing_ids:
-                # Update existing
-                existing_questions[existing_ids[nq['id']]] = nq
+                match_idx = existing_ids[nq['id']]
+            elif sig and sig in existing_sigs:
+                match_idx = existing_sigs[sig]
+
+            if match_idx is not None:
+                # Update existing without creating duplicate
+                existing_questions[match_idx] = nq
+                updated_count += 1
             else:
                 existing_questions.append(nq)
+                added_count += 1
+
+        print(f"[DEDUP] Processed {len(new_questions)} questions: {updated_count} updated, {added_count} newly added, 0 duplicates.")
         final_questions = existing_questions
 
     # Export JS

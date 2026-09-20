@@ -1464,7 +1464,7 @@
 
             const item = {
                 orig: i,
-                id: getRowField(q, ['id', 'ID', 'QID']) || `Q-${i+1}`,
+                id: getRowField(q, ['id', 'ID', 'QID', 'Question_ID', 'Question ID', 'question_id', 'qid']) || `Q-${i+1}`,
                 exam: examVal,
                 subject: subjectVal,
                 topic: topicVal,
@@ -1550,29 +1550,91 @@
             localStorage.setItem('avai_merge_with_builtin', checked ? 'true' : 'false');
         }
 
-        // Unified question application with automatic Merge Mode support
+        // Normalized text signature for duplicate detection across Bengali & English text
+        function getQuestionSignature(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/<[^>]*>/g, '')
+                .replace(/[^a-zA-Z0-9\u0980-\u09FF]/g, '')
+                .toLowerCase()
+                .slice(0, 70);
+        }
+
+        // Unified question application with automatic Merge Mode and Smart Deduplication
         function applySyncedQuestions(validRows, sourceName) {
             const shouldMerge = localStorage.getItem('avai_merge_with_builtin') !== 'false';
             const normalizedSheet = validRows.map((q, i) => normalizeQuestion(q, i));
 
             if (shouldMerge && window.PHYSICS_QUESTIONS_DATA && window.PHYSICS_QUESTIONS_DATA.length > 0) {
-                const map = new Map();
+                const idMap = new Map();
+                const sigMap = new Map();
+                const masterList = [];
+
                 // 1. Index built-in 322 questions
                 window.PHYSICS_QUESTIONS_DATA.forEach((q, i) => {
                     const norm = normalizeQuestion(q, i);
-                    map.set(norm.id || `BUILTIN_${i}`, norm);
+                    const qId = norm.id || `BUILTIN_${i}`;
+                    const sig = getQuestionSignature(norm.en) || getQuestionSignature(norm.bn);
+
+                    idMap.set(qId, norm);
+                    if (sig) sigMap.set(sig, norm);
+                    masterList.push(norm);
                 });
-                // 2. Upsert sheet questions: updates matching IDs or appends new ones
-                let newCount = 0;
-                normalizedSheet.forEach((q, i) => {
-                    const key = q.id || `SHEET_${i}`;
-                    if (!map.has(key)) newCount++;
-                    map.set(key, q);
+
+                // 2. Upsert sheet questions: deduplicate by exact ID and question text signature
+                let updatedCount = 0;
+                let addedCount = 0;
+                const seenSheetSig = new Set();
+
+                normalizedSheet.forEach((sheetQ) => {
+                    const sheetId = sheetQ.id;
+                    const sheetSig = getQuestionSignature(sheetQ.en) || getQuestionSignature(sheetQ.bn);
+
+                    // Skip internal duplicate copies within the sheet itself
+                    if (sheetSig && seenSheetSig.has(sheetSig)) {
+                        return;
+                    }
+                    if (sheetSig) seenSheetSig.add(sheetSig);
+
+                    // Check if question exists in built-in bank (by ID or text signature)
+                    let target = null;
+                    if (sheetId && idMap.has(sheetId)) {
+                        target = idMap.get(sheetId);
+                    } else if (sheetSig && sigMap.has(sheetSig)) {
+                        target = sigMap.get(sheetSig);
+                    }
+
+                    if (target) {
+                        // Matching question found: update fields without creating a duplicate copy
+                        Object.assign(target, sheetQ);
+                        if (sheetId) target.id = sheetId;
+                        updatedCount++;
+                    } else {
+                        // Genuine new question: append to master list
+                        const newId = sheetId || `NEW_${masterList.length + 1}`;
+                        sheetQ.id = newId;
+                        idMap.set(newId, sheetQ);
+                        if (sheetSig) sigMap.set(sheetSig, sheetQ);
+                        masterList.push(sheetQ);
+                        addedCount++;
+                    }
                 });
-                masterDataset = Array.from(map.values());
+
+                masterDataset = masterList;
                 setSyncStatus(`Master Bank + ${sourceName} (${masterDataset.length} Qs)`);
+                window.syncDiagnostics.dedupInfo = { updated: updatedCount, added: addedCount };
             } else {
-                masterDataset = normalizedSheet;
+                // Deduplicate within the sheet rows themselves
+                const seenSig = new Set();
+                const deduped = [];
+                normalizedSheet.forEach((q) => {
+                    const sig = (q.id || '') + '|' + (getQuestionSignature(q.en) || getQuestionSignature(q.bn));
+                    if (!seenSig.has(sig)) {
+                        seenSig.add(sig);
+                        deduped.push(q);
+                    }
+                });
+                masterDataset = deduped;
                 setSyncStatus(`${sourceName} (${masterDataset.length} Qs)`);
             }
 
