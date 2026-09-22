@@ -22,6 +22,8 @@ def test_html():
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
     assert '.redox-badge' in content, "Missing .redox-badge CSS in stylesheet"
     assert '.reaction-arrow' in content, "Missing .reaction-arrow CSS in stylesheet"
+    assert '.math-vec' in content, "Missing .math-vec CSS in stylesheet"
+    assert '.math-hat' in content, "Missing .math-hat CSS in stylesheet"
     
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)

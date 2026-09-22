@@ -7100,25 +7100,25 @@ window.PHYSICS_QUESTIONS_DATA = [
         "subject": "Mathematics",
         "topic": "3D Geometry & Shortest Distance between Skew Lines",
         "difficulty": "Medium",
-        "en": "The shortest distance d between two skew lines r⃗ = a₁⃗ + λ b₁⃗ and r⃗ = a₂⃗ + μ b₂⃗ is given by:",
-        "bn": "দুটি বিষমতলীয় (skew) সরলরেখা r⃗ = a₁⃗ + λ b₁⃗ এবং r⃗ = a₂⃗ + μ b₂⃗ এর মধ্যবর্তী ক্ষুদ্রতম দূরত্ব d কোনটি?",
+        "en": "The shortest distance d between two skew lines r⃗ = a⃗₁ + λ b⃗₁ and r⃗ = a⃗₂ + μ b⃗₂ is given by:",
+        "bn": "দুটি বিষমতলীয় (skew) সরলরেখা r⃗ = a⃗₁ + λ b⃗₁ এবং r⃗ = a⃗₂ + μ b⃗₂ এর মধ্যবর্তী ক্ষুদ্রতম দূরত্ব d কোনটি?",
         "opts": {
             "en": [
-                "d = |(a₂⃗ - a₁⃗) · (b₁⃗ × b₂⃗)| / |b₁⃗ × b₂⃗|",
-                "d = |(a₂⃗ + a₁⃗) · (b₁⃗ × b₂⃗)|",
-                "d = |(b₁⃗ × b₂⃗)| / |a₂⃗ - a₁⃗|",
-                "d = |(a₂⃗ - a₁⃗) × (b₁⃗ × b₂⃗)|"
+                "d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂|",
+                "d = |(a⃗₂ + a⃗₁) · (b⃗₁ × b⃗₂)|",
+                "d = |(b⃗₁ × b⃗₂)| / |a⃗₂ - a⃗₁|",
+                "d = |(a⃗₂ - a⃗₁) × (b⃗₁ × b⃗₂)|"
             ],
             "bn": [
-                "d = |(a₂⃗ - a₁⃗) · (b₁⃗ × b₂⃗)| / |b₁⃗ × b₂⃗|",
-                "d = |(a₂⃗ + a₁⃗) · (b₁⃗ × b₂⃗)|",
-                "d = |(b₁⃗ × b₂⃗)| / |a₂⃗ - a₁⃗|",
-                "d = |(a₂⃗ - a₁⃗) × (b₁⃗ × b₂⃗)|"
+                "d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂|",
+                "d = |(a⃗₂ + a⃗₁) · (b⃗₁ × b⃗₂)|",
+                "d = |(b⃗₁ × b⃗₂)| / |a⃗₂ - a⃗₁|",
+                "d = |(a⃗₂ - a⃗₁) × (b⃗₁ × b⃗₂)|"
             ]
         },
         "correct": 0,
-        "expl_en": "The shortest distance vector between two skew lines lies along the common perpendicular unit vector n̂ = (b₁⃗ × b₂⃗) / |b₁⃗ × b₂⃗|. Projecting the connecting vector (a₂⃗ - a₁⃗) onto n̂ gives d = |(a₂⃗ - a₁⃗) · (b₁⃗ × b₂⃗)| / |b₁⃗ × b₂⃗|.",
-        "expl_bn": "উভয় রেখার ওপর লম্ব একক ভেক্টর বরাবর বিন্দু সংযোগকারী ভেক্টরের অভিক্ষেপ নিলে ক্ষুদ্রতম দূরত্ব d = |(a₂⃗ - a₁⃗) · (b₁⃗ × b₂⃗)| / |b₁⃗ × b₂⃗|।"
+        "expl_en": "The shortest distance vector between two skew lines lies along the common perpendicular unit vector n̂ = (b⃗₁ × b⃗₂) / |b⃗₁ × b⃗₂|. Projecting the connecting vector (a⃗₂ - a⃗₁) onto n̂ gives d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂|.",
+        "expl_bn": "উভয় রেখার ওপর লম্ব একক ভেক্টর বরাবর বিন্দু সংযোগকারী ভেক্টরের অভিক্ষেপ নিলে ক্ষুদ্রতম দূরত্ব d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂|।"
     },
     {
         "id": "MATH-042",
