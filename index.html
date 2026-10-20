@@ -429,6 +429,43 @@
             50% { opacity: 0.7; transform: scale(1.05); }
         }
         .pulse-glow { animation: pulseGlow 2s infinite ease-in-out; }
+
+        /* Smooth Navigation Carets & Searchable Dropdown Animations */
+        .nav-caret {
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .nav-caret.rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .animate-dropdown-fade-in {
+            animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .exam-card-item {
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .exam-card-item:hover {
+            transform: translateX(3px);
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        .exam-card-item.is-selected {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.6) 0%, rgba(30, 64, 175, 0.3) 100%);
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-900 min-h-screen flex flex-col relative selection:bg-blue-600 selection:text-white antialiased">
@@ -447,10 +484,15 @@
                 </h1>
             </div>
             
-            <!-- Overall Live Exam Countdown Timer -->
-            <div id="timer" class="font-mono bg-slate-950/80 px-3 py-1 rounded-xl border border-slate-800 text-amber-400 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner" title="Total Exam Timer">
-                <svg class="w-3.5 h-3.5 text-amber-400 pulse-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2.2"/><path stroke-width="2.2" stroke-linecap="round" d="M12 6v6l4 2"/></svg>
-                <span id="timerText">03:00:00</span>
+            <!-- Overall Live Exam Countdown Timer / Practice Mode Indicator -->
+            <div id="timer" onclick="handleTimerClick()" class="font-mono bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800 text-slate-400 hover:border-amber-500/50 hover:text-amber-300 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer" title="Practice Mode (Untimed). Click to start timed Mock Exam or full exam configuration">
+                <span id="timerPulseDot" class="w-2 h-2 rounded-full bg-slate-600 transition-colors"></span>
+                <span id="timerLabel" class="text-[10px] md:text-xs font-sans font-bold uppercase tracking-wider text-slate-400 hidden sm:inline">Practice:</span>
+                <span id="timerText" class="text-slate-300">Untimed</span>
+                <div id="timerControls" class="hidden items-center gap-1 ml-0.5">
+                    <button onclick="event.stopPropagation(); toggleExamTimerPause()" id="timerPauseBtn" class="w-5 h-5 rounded-md bg-slate-800 hover:bg-slate-700 text-[10px] text-amber-300 flex items-center justify-center transition" title="Pause / Resume Timer">⏸️</button>
+                    <button onclick="event.stopPropagation(); exitExamMode()" id="timerExitBtn" class="w-5 h-5 rounded-md bg-slate-800 hover:bg-red-950 text-[10px] text-red-400 flex items-center justify-center transition" title="Exit Exam Mode">✕</button>
+                </div>
             </div>
 
             <!-- Active Data Source Status -->
@@ -468,78 +510,149 @@
                 <span class="hidden sm:inline">Custom Mock</span>
             </button>
 
-            <!-- Exam Target Selector -->
-            <div class="relative">
-                <select id="examSelector" onchange="filterByExam()" class="bg-slate-800/90 border border-slate-700/80 hover:border-blue-500/80 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-bold text-blue-300 outline-none transition cursor-pointer appearance-none pr-7">
-                    <option value="ALL">🌟 All Exams (Universal Bank)</option>
-                    
-                    <optgroup label="🩺 Medical & Bio-Sciences" class="bg-slate-900 text-slate-200">
-                        <option value="NEET">NEET (UG Medical)</option>
-                        <option value="AIIMS">AIIMS / Nursing / Paramedical</option>
-                        <option value="AFMC">AFMC (Armed Forces Medical)</option>
-                        <option value="ICAR">ICAR AIEEA (Bio & Agriculture)</option>
-                    </optgroup>
-                    
-                    <optgroup label="⚙️ Engineering & Technology" class="bg-slate-900 text-slate-200">
-                        <option value="JEE">JEE Main</option>
-                        <option value="JEE-ADV">JEE Advanced (IITs)</option>
-                        <option value="WBJEE">WBJEE</option>
-                        <option value="BITSAT">BITSAT</option>
-                        <option value="VITEEE">VITEEE</option>
-                        <option value="MHT-CET">MHT-CET</option>
-                        <option value="KCET">KCET</option>
-                        <option value="COMEDK">COMEDK</option>
-                        <option value="KEAM">KEAM / GUJCET</option>
-                    </optgroup>
-                    
-                    <optgroup label="🔬 Research, Pure Sciences & Olympiads" class="bg-slate-900 text-slate-200">
-                        <option value="IAT">IAT (IISER Aptitude Test)</option>
-                        <option value="NEST">NEST (NISER / CEBS)</option>
-                        <option value="OLYMPIAD">Science Olympiad (NSEP/NSEC/NSEB)</option>
-                        <option value="KVPY">KVPY / Science Aptitude</option>
-                        <option value="IIT-JAM">IIT-JAM (M.Sc / Pure Sciences)</option>
-                        <option value="CSIR-NET">CSIR-UGC NET (JRF / LS)</option>
-                        <option value="GATE">GATE (Engineering & Science)</option>
-                    </optgroup>
-                    
-                    <optgroup label="🎓 Central Universities" class="bg-slate-900 text-slate-200">
-                        <option value="CUET">CUET (UG Central Universities)</option>
-                        <option value="CUET-PG">CUET (PG Admissions)</option>
-                    </optgroup>
-                    
-                    <optgroup label="🛡️ Defence & Armed Forces" class="bg-slate-900 text-slate-200">
-                        <option value="NDA">NDA / NA (Defence)</option>
-                        <option value="CDS">CDS (Combined Defence Services)</option>
-                        <option value="AFCAT">AFCAT (Air Force)</option>
-                        <option value="CAPF">CAPF (Assistant Commandant)</option>
-                    </optgroup>
-                    
-                    <optgroup label="🏛️ Civil Services & State PSC" class="bg-slate-900 text-slate-200">
-                        <option value="UPSC">UPSC (CSE / Civil Services Prelims)</option>
-                        <option value="STATE-PSC">State PSC / WBCS / BPSC / UPPSC</option>
-                    </optgroup>
-                    
-                    <optgroup label="🚆 Recruitment & Staff Selection" class="bg-slate-900 text-slate-200">
-                        <option value="SSC">SSC (CGL / CHSL / JE / CPO)</option>
-                        <option value="RRB">RRB (Railways NTPC / JE / ALP)</option>
-                        <option value="BANKING">Banking (IBPS / SBI PO / Clerk)</option>
-                    </optgroup>
+            <!-- Retained Underlying Exam Target Selector (Preserved for tests & state sync) -->
+            <select id="examSelector" onchange="filterByExam()" class="hidden">
+                <option value="ALL">🌟 All Exams (Universal Bank)</option>
+                
+                <optgroup label="🩺 Medical & Bio-Sciences">
+                    <option value="NEET">NEET (UG Medical)</option>
+                    <option value="AIIMS">AIIMS / Nursing / Paramedical</option>
+                    <option value="AFMC">AFMC (Armed Forces Medical)</option>
+                    <option value="ICAR">ICAR AIEEA (Bio & Agriculture)</option>
+                </optgroup>
+                
+                <optgroup label="⚙️ Engineering & Technology">
+                    <option value="JEE">JEE Main</option>
+                    <option value="JEE-ADV">JEE Advanced (IITs)</option>
+                    <option value="WBJEE">WBJEE</option>
+                    <option value="BITSAT">BITSAT</option>
+                    <option value="VITEEE">VITEEE</option>
+                    <option value="MHT-CET">MHT-CET</option>
+                    <option value="KCET">KCET</option>
+                    <option value="COMEDK">COMEDK</option>
+                    <option value="KEAM">KEAM / GUJCET</option>
+                </optgroup>
+                
+                <optgroup label="🔬 Research, Pure Sciences & Olympiads">
+                    <option value="IAT">IAT (IISER Aptitude Test)</option>
+                    <option value="NEST">NEST (NISER / CEBS)</option>
+                    <option value="OLYMPIAD">Science Olympiad (NSEP/NSEC/NSEB)</option>
+                    <option value="KVPY">KVPY / Science Aptitude</option>
+                    <option value="IIT-JAM">IIT-JAM (M.Sc / Pure Sciences)</option>
+                    <option value="CSIR-NET">CSIR-UGC NET (JRF / LS)</option>
+                    <option value="GATE">GATE (Engineering & Science)</option>
+                </optgroup>
+                
+                <optgroup label="🎓 Central Universities">
+                    <option value="CUET">CUET (UG Central Universities)</option>
+                    <option value="CUET-PG">CUET (PG Admissions)</option>
+                </optgroup>
+                
+                <optgroup label="🛡️ Defence & Armed Forces">
+                    <option value="NDA">NDA / NA (Defence)</option>
+                    <option value="CDS">CDS (Combined Defence Services)</option>
+                    <option value="AFCAT">AFCAT (Air Force)</option>
+                    <option value="CAPF">CAPF (Assistant Commandant)</option>
+                </optgroup>
+                
+                <optgroup label="🏛️ Civil Services & State PSC">
+                    <option value="UPSC">UPSC (CSE / Civil Services Prelims)</option>
+                    <option value="STATE-PSC">State PSC / WBCS / BPSC / UPPSC</option>
+                </optgroup>
+                
+                <optgroup label="🚆 Recruitment & Staff Selection">
+                    <option value="SSC">SSC (CGL / CHSL / JE / CPO)</option>
+                    <option value="RRB">RRB (Railways NTPC / JE / ALP)</option>
+                    <option value="BANKING">Banking (IBPS / SBI PO / Clerk)</option>
+                </optgroup>
 
-                    <optgroup label="🏫 School Board & Foundation" class="bg-slate-900 text-slate-200">
-                        <option value="CBSE">CBSE Class 11 & 12 Boards</option>
-                        <option value="FOUNDATION">Foundation / NTSE / Olympiad Prep</option>
-                    </optgroup>
-                </select>
-                <span class="absolute right-2 top-2.5 text-[10px] pointer-events-none text-slate-400">▼</span>
+                <optgroup label="🏫 School Board & Foundation">
+                    <option value="CBSE">CBSE Class 11 & 12 Boards</option>
+                    <option value="FOUNDATION">Foundation / NTSE / Olympiad Prep</option>
+                </optgroup>
+            </select>
+
+            <!-- Compact Animated Searchable Exam Target Dropdown (Space Optimized) -->
+            <div class="relative" id="examDropdownWrapper">
+                <!-- Trigger Button with Animated Caret -->
+                <button type="button" 
+                        id="examDropdownTrigger" 
+                        onclick="toggleExamDropdown()" 
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        title="Click to search and switch between 25+ supported competitive examinations"
+                        class="group bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/80 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-bold text-blue-300 hover:text-blue-200 outline-none transition-all flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer select-none">
+                    <span id="examTriggerIcon" class="text-xs md:text-sm shrink-0">🌟</span>
+                    <span id="examTriggerLabel" class="max-w-[75px] sm:max-w-[120px] md:max-w-[150px] truncate text-left font-display">All Exams</span>
+                    <span id="examTriggerBadge" class="hidden sm:inline-block text-[9px] uppercase font-black px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30 shrink-0">Universal</span>
+                    <svg id="examCaret" class="w-3.5 h-3.5 text-blue-400/80 group-hover:text-blue-300 nav-caret shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+
+                <!-- Floating Searchable Exam Dropdown Panel -->
+                <div id="examDropdownMenu" 
+                     class="hidden absolute right-0 sm:right-auto sm:left-0 top-full mt-2 w-[310px] sm:w-[380px] md:w-[440px] max-h-[82vh] md:max-h-[520px] bg-slate-900/95 backdrop-blur-2xl border border-slate-700/90 rounded-2xl shadow-2xl shadow-slate-950/90 z-50 flex flex-col overflow-hidden animate-dropdown-fade-in"
+                     style="box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(59, 130, 246, 0.2);">
+                    
+                    <!-- Search Header Strip -->
+                    <div class="p-3 border-b border-slate-800 bg-slate-950/60 flex flex-col gap-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-display font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                                <span>🎯</span> Select Target Examination
+                            </span>
+                            <span class="text-[10px] font-mono font-semibold text-slate-500 bg-slate-800/80 px-1.5 py-0.5 rounded border border-slate-700/60">ESC to close</span>
+                        </div>
+                        
+                        <!-- Instant Search Input -->
+                        <div class="relative">
+                            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-blue-400/80 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <input type="text" 
+                                   id="examSearchInput" 
+                                   oninput="handleExamDropdownSearch(this.value)"
+                                   placeholder="Search 25+ exams (e.g. NEET, JEE, WBJEE, NDA, UPSC)..." 
+                                   class="w-full bg-slate-800/90 border border-slate-700 focus:border-blue-500 rounded-xl pl-9 pr-8 py-2 text-xs md:text-sm text-slate-100 placeholder-slate-400 outline-none transition shadow-inner font-sans">
+                            <button id="examSearchClearBtn" onclick="clearExamDropdownSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 text-[10px] items-center justify-center transition" title="Clear search">✕</button>
+                        </div>
+
+                        <!-- Quick Category Filter Chips -->
+                        <div class="flex items-center gap-1 overflow-x-auto no-scrollbar pb-0.5" id="examCategoryChips">
+                            <button onclick="filterExamDropdownCategory('ALL')" data-category="ALL" class="exam-cat-chip active px-2.5 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-blue-600 text-white shadow-sm">All</button>
+                            <button onclick="filterExamDropdownCategory('MED')" data-category="MED" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🩺 Med</button>
+                            <button onclick="filterExamDropdownCategory('ENGG')" data-category="ENGG" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">⚙️ Engg</button>
+                            <button onclick="filterExamDropdownCategory('SCI')" data-category="SCI" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🔬 Science</button>
+                            <button onclick="filterExamDropdownCategory('CUET')" data-category="CUET" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🎓 CUET</button>
+                            <button onclick="filterExamDropdownCategory('DEF')" data-category="DEF" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🛡️ Defence</button>
+                            <button onclick="filterExamDropdownCategory('CIVIL')" data-category="CIVIL" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🏛️ Civil</button>
+                            <button onclick="filterExamDropdownCategory('GOVT')" data-category="GOVT" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🚆 Govt</button>
+                            <button onclick="filterExamDropdownCategory('BOARD')" data-category="BOARD" class="exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700">🏫 Board</button>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Exam List Body -->
+                    <div id="examCardsContainer" class="p-2 overflow-y-auto space-y-1.5 flex-1 max-h-[350px] custom-scrollbar">
+                        <!-- Populated dynamically by renderExamDropdownList() -->
+                    </div>
+
+                    <!-- Footer Status Strip -->
+                    <div class="px-3 py-2 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+                        <span id="examDropdownCount" class="font-mono text-slate-300">Showing 34 exams</span>
+                        <button onclick="selectExamFromDropdown('ALL')" class="text-blue-400 hover:text-blue-300 font-bold hover:underline cursor-pointer">Reset to Universal Bank</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Language Switcher -->
-            <div class="relative">
-                <select id="langSwitch" class="bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 rounded-xl px-2.5 py-1.5 text-xs md:text-sm font-semibold outline-none text-slate-200 transition cursor-pointer appearance-none pr-7">
+            <!-- Language Switcher with Animated Caret -->
+            <div class="relative group">
+                <select id="langSwitch" class="bg-slate-800/90 border border-slate-700/80 hover:border-blue-500/80 rounded-xl pl-2.5 pr-7 py-1.5 text-xs md:text-sm font-semibold outline-none text-slate-200 transition cursor-pointer appearance-none">
                     <option value="en">EN</option>
                     <option value="bn">বাংলা</option>
                 </select>
-                <span class="absolute right-2 top-2.5 text-[10px] pointer-events-none text-slate-400">▼</span>
+                <svg class="w-3.5 h-3.5 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-blue-400 transition-transform duration-200 group-focus-within:rotate-180 nav-caret" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
             </div>
 
             <!-- Virtual Scientific Calculator Toggle Button -->
@@ -573,10 +686,12 @@
                     <!-- Stream Selector Badge & Universal Toggle -->
                     <div class="flex items-center gap-1.5 shrink-0" id="streamContainer">
                         <span class="text-[10px] font-display font-black text-slate-400 uppercase tracking-wider hidden lg:inline">Stream:</span>
-                        <div class="relative">
-                            <select id="streamSelector" onchange="switchStream(this.value)" class="bg-blue-50/90 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[180px] sm:max-w-[260px] truncate shadow-sm pr-6 appearance-none font-display">
+                        <div class="relative group">
+                            <select id="streamSelector" onchange="switchStream(this.value)" class="bg-blue-50/90 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-xl pl-2.5 pr-6 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[180px] sm:max-w-[260px] truncate shadow-sm appearance-none font-display">
                             </select>
-                            <span class="absolute right-2 top-2.5 text-[9px] pointer-events-none text-blue-500">▼</span>
+                            <svg class="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 group-hover:text-blue-700 transition-transform duration-200 group-focus-within:rotate-180 nav-caret" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
                         </div>
                         <button id="universalToggleBtn" onclick="toggleUniversalBank()" class="px-2.5 py-1 text-[11px] font-bold rounded-xl border border-blue-200 bg-white hover:bg-blue-50 text-blue-700 transition shadow-sm flex items-center gap-1 cursor-pointer shrink-0" title="Quickly Toggle Universal Question Bank (All 11 Subjects & Exams)">
                             <span>🌐</span>
@@ -592,10 +707,15 @@
 
                 <!-- Topic & Search Bar -->
                 <div class="flex items-center gap-2 flex-wrap">
-                    <!-- Chapter/Topic Filter Dropdown -->
-                    <select id="topicFilter" onchange="filterByTopic()" class="bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 outline-none hover:border-blue-500 focus:border-blue-500 transition cursor-pointer shadow-sm max-w-[160px] md:max-w-[220px] truncate">
-                        <option value="ALL">All Topics</option>
-                    </select>
+                    <!-- Chapter/Topic Filter Dropdown with Animated Caret -->
+                    <div class="relative group">
+                        <select id="topicFilter" onchange="filterByTopic()" class="bg-white border border-slate-200 rounded-xl pl-3 pr-7 py-1.5 text-xs font-bold text-slate-700 outline-none hover:border-blue-500 focus:border-blue-500 transition cursor-pointer shadow-sm max-w-[160px] md:max-w-[220px] truncate appearance-none">
+                            <option value="ALL">All Topics</option>
+                        </select>
+                        <svg class="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-blue-500 transition-transform duration-200 group-focus-within:rotate-180 nav-caret" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
 
                     <!-- Instant Search Input -->
                     <div class="relative">
@@ -611,11 +731,13 @@
                     <!-- Unit / Chapter Dropdown Selector (Compact Quick Picker) -->
                     <div class="flex items-center gap-1.5 shrink-0">
                         <span class="text-[10px] font-display font-black text-slate-400 uppercase tracking-wider hidden lg:inline">Unit:</span>
-                        <div class="relative">
-                            <select id="unitSelector" onchange="filterByUnit(this.value)" class="bg-indigo-50/80 hover:bg-indigo-100/90 text-indigo-900 border border-indigo-200 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[170px] sm:max-w-[240px] truncate shadow-sm pr-6 appearance-none font-display">
+                        <div class="relative group">
+                            <select id="unitSelector" onchange="filterByUnit(this.value)" class="bg-indigo-50/80 hover:bg-indigo-100/90 text-indigo-900 border border-indigo-200 rounded-xl pl-2.5 pr-6 py-1.5 text-xs font-bold outline-none cursor-pointer transition max-w-[170px] sm:max-w-[240px] truncate shadow-sm appearance-none font-display">
                                 <option value="ALL">All Units / Chapters</option>
                             </select>
-                            <span class="absolute right-2 top-2.5 text-[9px] pointer-events-none text-indigo-500">▼</span>
+                            <svg class="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-indigo-500 group-hover:text-indigo-700 transition-transform duration-200 group-focus-within:rotate-180 nav-caret" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
                         </div>
                     </div>
 
@@ -752,6 +874,22 @@
             </div>
 
             <div class="space-y-4 mb-6">
+                <!-- Quick Start Official Exam Simulation Banner -->
+                <div id="quickExamBanner" class="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border border-blue-200 flex items-center justify-between shadow-sm">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm font-black shadow-sm">
+                            ⚡
+                        </div>
+                        <div>
+                            <p class="text-xs font-display font-black text-blue-950" id="quickExamTitle">Quick Start Official Exam Simulation</p>
+                            <p class="text-[11px] text-blue-700 font-medium" id="quickExamSubtitle">Real exam duration, standard marking & syllabus</p>
+                        </div>
+                    </div>
+                    <button id="quickExamBtn" onclick="startExamSimulation(currentExam !== 'ALL' ? currentExam : 'NEET')" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black font-display shadow-md shadow-blue-600/20 transition transform active:scale-95 cursor-pointer whitespace-nowrap">
+                        Start Exam →
+                    </button>
+                </div>
+
                 <!-- Preset Buttons -->
                 <div>
                     <label class="block text-xs font-display font-bold text-slate-700 uppercase tracking-wider mb-2">Preset Exam Formats:</label>
@@ -1273,6 +1411,45 @@
         let positiveMark = 4;
         let negativeMark = 1;
         let isMockMode = false;
+
+        // Overall Live Exam Timer State
+        let isExamTimerRunning = false;
+        let isExamTimerPaused = false;
+        let timeInSecs = 0;
+        let totalExamDurationSecs = 0;
+        let currentExamTitle = 'Practice Mode';
+
+        // Official Examination Presets Registry
+        const OFFICIAL_EXAM_PRESETS = {
+            'NEET': { name: 'NEET (UG Medical)', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Biology'] },
+            'AIIMS': { name: 'AIIMS Paramedical/Nursing', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Biology', 'General Knowledge', 'Reasoning'] },
+            'AFMC': { name: 'AFMC Medical', durationMin: 180, markScheme: '4,-1', subjects: ['Biology', 'Chemistry', 'Physics', 'English', 'Reasoning'] },
+            'ICAR': { name: 'ICAR AIEEA (Bio & Agri)', durationMin: 150, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Biology'] },
+            'JEE': { name: 'JEE Main', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Mathematics'] },
+            'JEE-ADV': { name: 'JEE Advanced (IITs)', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Mathematics'] },
+            'WBJEE': { name: 'WBJEE', durationMin: 120, markScheme: '2,-0.50', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+            'BITSAT': { name: 'BITSAT', durationMin: 180, markScheme: '3,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'English', 'Reasoning'] },
+            'VITEEE': { name: 'VITEEE', durationMin: 150, markScheme: '1,0', subjects: ['Mathematics', 'Physics', 'Chemistry', 'English', 'Reasoning'] },
+            'MHT-CET': { name: 'MHT-CET', durationMin: 180, markScheme: '1,0', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+            'KCET': { name: 'KCET', durationMin: 180, markScheme: '1,0', subjects: ['Mathematics', 'Physics', 'Chemistry'] },
+            'COMEDK': { name: 'COMEDK', durationMin: 180, markScheme: '1,0', subjects: ['Physics', 'Chemistry', 'Mathematics'] },
+            'IAT': { name: 'IISER Aptitude Test (IAT)', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] },
+            'NEST': { name: 'NEST', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] },
+            'OLYMPIAD': { name: 'Science Olympiad', durationMin: 120, markScheme: '3,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] },
+            'KVPY': { name: 'KVPY', durationMin: 180, markScheme: '4,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'] },
+            'IIT-JAM': { name: 'IIT-JAM', durationMin: 180, markScheme: '2,-0.66', subjects: ['Physics', 'Chemistry', 'Mathematics', 'General Science'] },
+            'CSIR-NET': { name: 'CSIR-UGC NET', durationMin: 180, markScheme: '2,-0.66', subjects: ['General Science', 'Physics', 'Chemistry', 'Biology', 'Mathematics'] },
+            'GATE': { name: 'GATE', durationMin: 180, markScheme: '2,-0.66', subjects: ['General Science', 'Mathematics', 'Physics', 'Chemistry', 'Reasoning'] },
+            'CUET': { name: 'CUET (UG)', durationMin: 45, markScheme: '5,-1', subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'General Knowledge'] },
+            'NDA': { name: 'NDA / NA', durationMin: 150, markScheme: '2.5,-0.83', subjects: ['Mathematics', 'General Science', 'English', 'General Knowledge', 'History', 'Geography'] },
+            'CDS': { name: 'CDS', durationMin: 120, markScheme: '1,-0.33', subjects: ['English', 'General Knowledge', 'General Science', 'Mathematics'] },
+            'UPSC': { name: 'UPSC Civil Services Prelims', durationMin: 120, markScheme: '2,-0.66', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'Reasoning', 'Mathematics', 'English'] },
+            'STATE-PSC': { name: 'State PSC', durationMin: 120, markScheme: '2,-0.66', subjects: ['History', 'Geography', 'Political Science', 'General Science', 'General Knowledge', 'English', 'Reasoning', 'Mathematics'] },
+            'SSC': { name: 'SSC CGL', durationMin: 60, markScheme: '2,-0.50', subjects: ['Reasoning', 'General Knowledge', 'General Science', 'Mathematics', 'English'] },
+            'RRB': { name: 'RRB NTPC / Group D', durationMin: 90, markScheme: '1,-0.33', subjects: ['General Science', 'Mathematics', 'Reasoning', 'General Knowledge'] },
+            'BANKING': { name: 'Banking / IBPS', durationMin: 60, markScheme: '1,-0.25', subjects: ['Reasoning', 'Mathematics', 'English', 'General Knowledge'] },
+            'QUICK': { name: '15-Minute Sprint Test', durationMin: 15, markScheme: '4,-1', subjects: ALL_AVAILABLE_SUBJECTS }
+        };
 
         // Helper: Format seconds to MM:SS or HH:MM:SS
         function formatSecondsMMSS(totalSecs) {
@@ -2149,6 +2326,20 @@
                     `;
                 }).join('');
             }
+
+            // Update Quick Start Banner according to currentExam
+            const targetExamKey = (currentExam && currentExam !== 'ALL' && OFFICIAL_EXAM_PRESETS[currentExam]) ? currentExam : 'NEET';
+            const presetInfo = OFFICIAL_EXAM_PRESETS[targetExamKey] || OFFICIAL_EXAM_PRESETS['NEET'];
+            const qTitle = document.getElementById('quickExamTitle');
+            const qSub = document.getElementById('quickExamSubtitle');
+            const qBtn = document.getElementById('quickExamBtn');
+            if (qTitle) qTitle.innerText = `Quick Start ${presetInfo.name} Simulation`;
+            if (qSub) qSub.innerText = `${presetInfo.durationMin} Mins • ${presetInfo.markScheme.replace(',', ' / ')} Marking • ${presetInfo.subjects.join(', ')}`;
+            if (qBtn) qBtn.onclick = () => startExamSimulation(targetExamKey);
+
+            // Pre-select preset for the active exam
+            setMockPreset(targetExamKey);
+
             const modal = document.getElementById('mockModal');
             if (modal) modal.classList.remove('hidden');
         }
@@ -2163,7 +2354,12 @@
             const mark = document.getElementById('mockMarkingSelect');
             let targetSubjects = [];
 
-            if (preset === 'NEET' || preset === 'AIIMS' || preset === 'AFMC') {
+            const p = OFFICIAL_EXAM_PRESETS[preset];
+            if (p) {
+                if (dur) dur.value = p.durationMin;
+                if (mark) mark.value = p.markScheme;
+                targetSubjects = p.subjects;
+            } else if (preset === 'NEET' || preset === 'AIIMS' || preset === 'AFMC') {
                 if (dur) dur.value = 180;
                 if (mark) mark.value = "4,-1";
                 targetSubjects = ['Physics', 'Chemistry', 'Biology'];
@@ -2252,20 +2448,268 @@
             questionTimes = new Array(questionBank.length).fill(0);
             currentIdx = 0;
             isMockMode = true;
-            timeInSecs = durVal * 60;
+
+            // Start live countdown timer now
+            totalExamDurationSecs = durVal * 60;
+            timeInSecs = totalExamDurationSecs;
+            isExamTimerRunning = true;
+            isExamTimerPaused = false;
+            currentExamTitle = `Custom Mock (${durVal}m)`;
 
             const markingBadge = document.getElementById('markingSchemeBadge');
             if (markingBadge) markingBadge.innerText = `+${positiveMark} / -${negativeMark}`;
 
+            const examBadge = document.getElementById('examBadgeText');
+            if (examBadge) examBadge.innerText = `Timed Mock (${durVal}m)`;
+
             closeMockModal();
+            updateExamTimerDisplay();
             filterByExam();
-            alert(`🎯 Custom Mock Test Started!\nDuration: ${durVal} minutes\nMarking: +${positiveMark} / -${negativeMark}\nTotal Questions: ${questionBank.length}`);
+            alert(`🎯 Custom Mock Test Started!\n\n⏱️ Duration: ${durVal} minutes (Countdown timer is now running)\n📊 Marking: +${positiveMark} / -${negativeMark}\n📚 Subjects: ${checkedSubjects.join(', ')}\n📝 Total Questions: ${questionBank.length}`);
+        }
+
+        function startExamSimulation(presetExam) {
+            const targetExam = presetExam || (currentExam !== 'ALL' ? currentExam : 'NEET');
+            const preset = OFFICIAL_EXAM_PRESETS[targetExam] || OFFICIAL_EXAM_PRESETS['NEET'];
+
+            const markParts = preset.markScheme.split(',');
+            positiveMark = parseFloat(markParts[0]) || 4;
+            negativeMark = Math.abs(parseFloat(markParts[1])) || 1;
+
+            questionBank = masterDataset.filter(q => preset.subjects.includes(q.subject));
+            if (questionBank.length === 0) questionBank = [...masterDataset];
+
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
+            currentIdx = 0;
+            isMockMode = true;
+
+            // Start timer matching official exam configuration
+            totalExamDurationSecs = preset.durationMin * 60;
+            timeInSecs = totalExamDurationSecs;
+            isExamTimerRunning = true;
+            isExamTimerPaused = false;
+            currentExamTitle = preset.name;
+
+            const markingBadge = document.getElementById('markingSchemeBadge');
+            if (markingBadge) markingBadge.innerText = `+${positiveMark} / -${negativeMark}`;
+
+            const examBadge = document.getElementById('examBadgeText');
+            if (examBadge) examBadge.innerText = `${preset.name} Official Simulation`;
+
+            closeMockModal();
+            updateExamTimerDisplay();
+            filterByExam();
+
+            alert(`🎯 ${preset.name} Official Exam Simulation Started!\n\n⏱️ Total Timer: ${preset.durationMin} minutes (Started)\n📊 Marking Scheme: +${positiveMark} / -${negativeMark}\n📚 Subjects: ${preset.subjects.join(', ')}\n📝 Total Questions: ${questionBank.length}\n\nGood luck! The countdown is running in the top bar. Click FINISH when you are done.`);
+        }
+
+        // --- COMPACT SEARCHABLE EXAM DIRECTORY & DROPDOWN ENGINE ---
+        const EXAM_DIRECTORY = [
+            { id: 'ALL', name: 'All Exams (Universal Bank)', short: 'All Exams', category: 'ALL', icon: '🌟', badge: 'Universal', desc: 'Complete 11-subject master repository across all competitive domains' },
+            // Medical & Bio-Sciences
+            { id: 'NEET', name: 'NEET (UG Medical)', short: 'NEET (UG)', category: 'MED', icon: '🩺', badge: 'Medical', desc: 'National Eligibility cum Entrance Test (UG MBBS/BDS/AYUSH)' },
+            { id: 'AIIMS', name: 'AIIMS / Nursing / Paramedical', short: 'AIIMS', category: 'MED', icon: '🏥', badge: 'Medical', desc: 'All India Institute of Medical Sciences & Nursing Entrance' },
+            { id: 'AFMC', name: 'AFMC (Armed Forces Medical)', short: 'AFMC', category: 'MED', icon: '🎖️', badge: 'Medical', desc: 'Armed Forces Medical College Entrance Examination' },
+            { id: 'ICAR', name: 'ICAR AIEEA (Bio & Agriculture)', short: 'ICAR AIEEA', category: 'MED', icon: '🌾', badge: 'Agriculture', desc: 'Indian Council of Agricultural Research All India Entrance' },
+            // Engineering & Technology
+            { id: 'JEE', name: 'JEE Main', short: 'JEE Main', category: 'ENGG', icon: '⚡', badge: 'Engineering', desc: 'Joint Entrance Examination Main (NTA NITs/IIITs/CFTIs)' },
+            { id: 'JEE-ADV', name: 'JEE Advanced (IITs)', short: 'JEE Advanced', category: 'ENGG', icon: '🚀', badge: 'Premier IIT', desc: 'Indian Institutes of Technology Joint Entrance Examination' },
+            { id: 'WBJEE', name: 'WBJEE', short: 'WBJEE', category: 'ENGG', icon: '📐', badge: 'Engineering', desc: 'West Bengal Joint Entrance Examination Engineering' },
+            { id: 'BITSAT', name: 'BITSAT', short: 'BITSAT', category: 'ENGG', icon: '💻', badge: 'Engineering', desc: 'Birla Institute of Technology & Science Admission Test' },
+            { id: 'VITEEE', name: 'VITEEE', short: 'VITEEE', category: 'ENGG', icon: '🏢', badge: 'Engineering', desc: 'Vellore Institute of Technology Engineering Entrance' },
+            { id: 'MHT-CET', name: 'MHT-CET', short: 'MHT-CET', category: 'ENGG', icon: '🎯', badge: 'Engineering', desc: 'Maharashtra State Common Entrance Test (PCM/PCB)' },
+            { id: 'KCET', name: 'KCET', short: 'KCET', category: 'ENGG', icon: '🏛️', badge: 'Engineering', desc: 'Karnataka Common Entrance Test Engineering & Farm' },
+            { id: 'COMEDK', name: 'COMEDK UGET', short: 'COMEDK', category: 'ENGG', icon: '🔧', badge: 'Engineering', desc: 'Consortium of Medical, Engg & Dental Colleges Karnataka' },
+            { id: 'KEAM', name: 'KEAM / GUJCET', short: 'KEAM', category: 'ENGG', icon: '🌴', badge: 'Engineering', desc: 'Kerala & Gujarat State Engineering Entrance Examinations' },
+            // Pure Sciences, Research & Olympiads
+            { id: 'IAT', name: 'IAT (IISER Aptitude Test)', short: 'IISER IAT', category: 'SCI', icon: '🔬', badge: 'Research', desc: 'Indian Institutes of Science Education & Research BS-MS' },
+            { id: 'NEST', name: 'NEST (NISER / CEBS)', short: 'NEST', category: 'SCI', icon: '🌌', badge: 'Research', desc: 'National Entrance Screening Test (NISER Bhubaneswar & DAE)' },
+            { id: 'OLYMPIAD', name: 'Science Olympiad (NSEP/NSEC/NSEB)', short: 'Olympiads', category: 'SCI', icon: '🥇', badge: 'Olympiad', desc: 'National Standard Examination in Physics, Chem & Bio' },
+            { id: 'KVPY', name: 'KVPY / Science Aptitude', short: 'KVPY', category: 'SCI', icon: '🧪', badge: 'Scholarship', desc: 'Kishore Vaigyanik Protsahan Yojana / Science Fellowship' },
+            { id: 'IIT-JAM', name: 'IIT-JAM (M.Sc / Pure Sciences)', short: 'IIT-JAM', category: 'SCI', icon: '🧬', badge: 'Post-Grad', desc: 'Joint Admission Test for Masters at IITs & IISc' },
+            { id: 'CSIR-NET', name: 'CSIR-UGC NET (JRF / LS)', short: 'CSIR-NET', category: 'SCI', icon: '🔬', badge: 'Doctoral', desc: 'Council of Scientific & Industrial Research JRF & Lecturership' },
+            { id: 'GATE', name: 'GATE (Engineering & Science)', short: 'GATE', category: 'SCI', icon: '📊', badge: 'Post-Grad', desc: 'Graduate Aptitude Test in Engineering & Sciences' },
+            // Central Universities
+            { id: 'CUET', name: 'CUET (UG Central Universities)', short: 'CUET (UG)', category: 'CUET', icon: '🎓', badge: 'Central Univ', desc: 'Common University Entrance Test Undergraduate (NTA)' },
+            { id: 'CUET-PG', name: 'CUET (PG Admissions)', short: 'CUET (PG)', category: 'CUET', icon: '📚', badge: 'Central Univ', desc: 'Common University Entrance Test Postgraduate Courses' },
+            // Defence & Armed Forces
+            { id: 'NDA', name: 'NDA / NA (Defence)', short: 'NDA / NA', category: 'DEF', icon: '🛡️', badge: 'Armed Forces', desc: 'National Defence Academy & Naval Academy (UPSC)' },
+            { id: 'CDS', name: 'CDS (Combined Defence Services)', short: 'UPSC CDS', category: 'DEF', icon: '⚔️', badge: 'Officers', desc: 'Combined Defence Services Examination (IMA/INA/AFA/OTA)' },
+            { id: 'AFCAT', name: 'AFCAT (Air Force)', short: 'AFCAT', category: 'DEF', icon: '✈️', badge: 'Air Force', desc: 'Air Force Common Admission Test for Flying & Ground Duty' },
+            { id: 'CAPF', name: 'CAPF (Assistant Commandant)', short: 'CAPF AC', category: 'DEF', icon: '🎖️', badge: 'Paramilitary', desc: 'Central Armed Police Forces (BSF, CRPF, CISF, ITBP, SSB)' },
+            // Civil Services & State PSCs
+            { id: 'UPSC', name: 'UPSC (CSE / Civil Services Prelims)', short: 'UPSC CSE', category: 'CIVIL', icon: '🏛️', badge: 'Civil Services', desc: 'Civil Services Preliminary Examination (IAS / IPS / IFS)' },
+            { id: 'STATE-PSC', name: 'State PSC / WBCS / BPSC / UPPSC', short: 'State PSC', category: 'CIVIL', icon: '📜', badge: 'State Civil', desc: 'State Public Service Commission Examinations' },
+            // Staff Selection, Railways & Banking
+            { id: 'SSC', name: 'SSC (CGL / CHSL / JE / CPO)', short: 'SSC', category: 'GOVT', icon: '📋', badge: 'Govt Staff', desc: 'Staff Selection Commission Combined Graduate & Higher Secondary' },
+            { id: 'RRB', name: 'RRB (Railways NTPC / JE / ALP)', short: 'Railways RRB', category: 'GOVT', icon: '🚆', badge: 'Railways', desc: 'Railway Recruitment Board NTPC, Junior Engineer & ALP' },
+            { id: 'BANKING', name: 'Banking (IBPS / SBI PO / Clerk)', short: 'Banking', category: 'GOVT', icon: '🏦', badge: 'Banking', desc: 'State Bank of India & IBPS PO, Clerk & Specialist Officers' },
+            // School Boards & Foundation
+            { id: 'CBSE', name: 'CBSE Class 11 & 12 Boards', short: 'CBSE Board', category: 'BOARD', icon: '🏫', badge: 'Board Exams', desc: 'Central Board of Secondary Education Senior Secondary' },
+            { id: 'FOUNDATION', name: 'Foundation / NTSE / Olympiad Prep', short: 'Foundation', category: 'BOARD', icon: '🌱', badge: 'Foundation', desc: 'Junior Secondary Foundation, NTSE & Early Olympiad Prep' }
+        ];
+
+        let currentExamDropdownCategory = 'ALL';
+        let currentExamSearchQuery = '';
+
+        function toggleExamDropdown(forceState) {
+            const menu = document.getElementById('examDropdownMenu');
+            const caret = document.getElementById('examCaret');
+            const trigger = document.getElementById('examDropdownTrigger');
+            if (!menu) return;
+
+            const isCurrentlyOpen = !menu.classList.contains('hidden');
+            const shouldOpen = (forceState !== undefined) ? forceState : !isCurrentlyOpen;
+
+            if (shouldOpen) {
+                menu.classList.remove('hidden');
+                if (caret) caret.classList.add('rotate-180');
+                if (trigger) trigger.setAttribute('aria-expanded', 'true');
+                renderExamDropdownList();
+                const searchInput = document.getElementById('examSearchInput');
+                if (searchInput) {
+                    setTimeout(() => searchInput.focus(), 60);
+                }
+            } else {
+                menu.classList.add('hidden');
+                if (caret) caret.classList.remove('rotate-180');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        function handleExamDropdownSearch(query) {
+            currentExamSearchQuery = (query || '').trim().toLowerCase();
+            const clearBtn = document.getElementById('examSearchClearBtn');
+            if (clearBtn) {
+                if (currentExamSearchQuery) {
+                    clearBtn.classList.remove('hidden');
+                    clearBtn.classList.add('flex');
+                } else {
+                    clearBtn.classList.add('hidden');
+                    clearBtn.classList.remove('flex');
+                }
+            }
+            renderExamDropdownList();
+        }
+
+        function clearExamDropdownSearch() {
+            const input = document.getElementById('examSearchInput');
+            if (input) {
+                input.value = '';
+                input.focus();
+            }
+            handleExamDropdownSearch('');
+        }
+
+        function filterExamDropdownCategory(category) {
+            currentExamDropdownCategory = category;
+
+            // Update active category pill UI
+            const chips = document.querySelectorAll('.exam-cat-chip');
+            chips.forEach(chip => {
+                if (chip.getAttribute('data-category') === category) {
+                    chip.className = 'exam-cat-chip active px-2.5 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-blue-600 text-white shadow-sm';
+                } else {
+                    chip.className = 'exam-cat-chip px-2 py-1 rounded-lg text-[10px] font-bold transition whitespace-nowrap bg-slate-800 text-slate-300 hover:bg-slate-700';
+                }
+            });
+
+            renderExamDropdownList();
+        }
+
+        function renderExamDropdownList() {
+            const container = document.getElementById('examCardsContainer');
+            const countLabel = document.getElementById('examDropdownCount');
+            if (!container) return;
+
+            const selector = document.getElementById('examSelector');
+            const activeExamId = selector ? selector.value : currentExam;
+
+            // Filter by Category and Search Query
+            let filtered = EXAM_DIRECTORY.filter(item => {
+                // Category filter
+                if (currentExamDropdownCategory !== 'ALL' && item.category !== currentExamDropdownCategory && item.id !== 'ALL') {
+                    return false;
+                }
+                // Search query filter
+                if (currentExamSearchQuery) {
+                    const haystack = `${item.id} ${item.name} ${item.short} ${item.desc} ${item.badge} ${(SUBJECTS_BY_EXAM[item.id] || []).join(' ')}`.toLowerCase();
+                    return haystack.includes(currentExamSearchQuery);
+                }
+                return true;
+            });
+
+            if (countLabel) {
+                countLabel.textContent = `Showing ${filtered.length} of ${EXAM_DIRECTORY.length} exams`;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="py-8 text-center text-slate-400">
+                        <div class="text-3xl mb-2">🔍</div>
+                        <div class="font-bold text-xs text-slate-200">No exams match "${currentExamSearchQuery}"</div>
+                        <div class="text-[11px] text-slate-400 mt-1">Try searching by exam abbreviation (e.g., NEET, JEE, WBJEE, NDA, UPSC)</div>
+                        <button onclick="clearExamDropdownSearch()" class="mt-3 text-xs px-3 py-1 bg-slate-800 hover:bg-slate-700 text-blue-400 rounded-lg font-bold transition border border-slate-700 cursor-pointer">
+                            Clear Search
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => {
+                const isSelected = (item.id === activeExamId);
+                return `
+                    <div onclick="selectExamFromDropdown('${item.id}')" 
+                         class="exam-card-item ${isSelected ? 'is-selected' : ''} p-2.5 rounded-xl border border-slate-800/90 bg-slate-800/40 hover:bg-slate-800/90 cursor-pointer flex items-center justify-between gap-3 transition group select-none">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700/80 flex items-center justify-center text-base shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                                ${item.icon}
+                            </div>
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-display font-extrabold text-xs text-white group-hover:text-blue-300 transition-colors">${item.name}</span>
+                                    <span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-700/60 text-slate-300 border border-slate-600/50">${item.badge}</span>
+                                </div>
+                                <p class="text-[11px] text-slate-400 truncate mt-0.5 font-sans">${item.desc}</p>
+                            </div>
+                        </div>
+                        <div class="shrink-0 flex items-center gap-1">
+                            ${isSelected ? '<span class="text-emerald-400 text-xs font-bold bg-emerald-950/60 border border-emerald-800 px-1.5 py-0.5 rounded-md flex items-center gap-1 shadow-sm"><span>✓</span> Active</span>' : '<span class="text-slate-500 group-hover:text-blue-400 text-xs transition-colors">➔</span>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectExamFromDropdown(examId) {
+            const selector = document.getElementById('examSelector');
+            if (selector) {
+                selector.value = examId;
+            }
+            filterByExam();
+            updateExamDropdownUI(examId);
+            toggleExamDropdown(false);
+        }
+
+        function updateExamDropdownUI(examId) {
+            const item = EXAM_DIRECTORY.find(e => e.id === examId) || EXAM_DIRECTORY[0];
+            const iconEl = document.getElementById('examTriggerIcon');
+            const labelEl = document.getElementById('examTriggerLabel');
+            const badgeEl = document.getElementById('examTriggerBadge');
+
+            if (iconEl) iconEl.textContent = item.icon;
+            if (labelEl) labelEl.textContent = item.short || item.name;
+            if (badgeEl) badgeEl.textContent = item.badge;
         }
 
         // 6. EXAM & STREAM & SUBJECT NAVIGATION
         function filterByExam() {
             const selector = document.getElementById('examSelector');
             currentExam = selector ? selector.value : 'ALL';
+            updateExamDropdownUI(currentExam);
 
             // 1. Get official streams/combinations for this exam
             let availableCombos = EXAM_SUBJECT_COMBINATIONS[currentExam] ? [...EXAM_SUBJECT_COMBINATIONS[currentExam]] : [
@@ -2649,7 +3093,7 @@
                 return `
                     <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm transition hover:border-slate-300">
                         <!-- Unit Accordion Header -->
-                        <div class="p-3.5 bg-slate-50/90 border-b border-slate-200 flex items-center justify-between cursor-pointer select-none" onclick="document.getElementById('unitCollapse_${uIdx}').classList.toggle('hidden')">
+                        <div class="p-3.5 bg-slate-50/90 border-b border-slate-200 flex items-center justify-between cursor-pointer select-none group" onclick="const coll = document.getElementById('unitCollapse_${uIdx}'); coll.classList.toggle('hidden'); const c = document.getElementById('unitCaret_${uIdx}'); if(c) c.classList.toggle('rotate-180');">
                             <div class="flex items-center gap-2.5">
                                 <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-display font-black text-xs flex items-center justify-center">
                                     U${uIdx + 1}
@@ -2667,7 +3111,9 @@
                                 <button onclick="event.stopPropagation(); filterByUnit('${unit.id}'); toggleChapterDirectoryDrawer(false);" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-indigo-200 bg-white text-indigo-600 hover:bg-indigo-50 transition cursor-pointer">
                                     Practice Unit
                                 </button>
-                                <span class="text-xs text-slate-400">▼</span>
+                                <svg id="unitCaret_${uIdx}" class="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 nav-caret" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
                             </div>
                         </div>
 
@@ -3064,6 +3510,12 @@
                 }).join('');
             }
 
+            if (isExamTimerRunning) {
+                isExamTimerPaused = true;
+                const btn = document.getElementById('timerPauseBtn');
+                if (btn) btn.innerText = '▶️';
+            }
+
             const modal = document.getElementById('resultModal');
             if (modal) modal.classList.remove('hidden');
         }
@@ -3075,25 +3527,120 @@
             render();
         });
 
-        // 10. TIMERS (OVERALL EXAM TIMER + PER-QUESTION LIVE STOPWATCH)
-        let timeInSecs = 10800; // 3 hours
+        // 10. TIMERS (OVERALL EXAM TIMER CONTROLLER + PER-QUESTION LIVE STOPWATCH)
+        function updateExamTimerDisplay() {
+            const timerElem = document.getElementById('timerText');
+            const dot = document.getElementById('timerPulseDot');
+            const label = document.getElementById('timerLabel');
+            const container = document.getElementById('timer');
+            const controls = document.getElementById('timerControls');
+            if (!timerElem) return;
+
+            if (!isExamTimerRunning) {
+                if (label) label.innerText = 'Practice:';
+                timerElem.innerText = 'Untimed';
+                timerElem.className = 'text-slate-300 font-bold';
+                if (dot) dot.className = 'w-2 h-2 rounded-full bg-slate-600 transition-colors';
+                if (container) {
+                    container.className = 'font-mono bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800 text-slate-400 hover:border-amber-500/50 hover:text-amber-300 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer';
+                    container.title = 'Practice Mode (Untimed). Click to start timed Mock Exam or full exam configuration';
+                }
+                if (controls) controls.classList.add('hidden');
+                return;
+            }
+
+            if (isExamTimerPaused) {
+                if (label) label.innerText = 'PAUSED:';
+                timerElem.innerText = 'PAUSED';
+                timerElem.className = 'text-amber-400 font-black animate-pulse';
+                if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400';
+                if (controls) controls.classList.remove('hidden');
+                return;
+            }
+
+            const h = Math.floor(timeInSecs / 3600);
+            const m = Math.floor((timeInSecs % 3600) / 60);
+            const s = timeInSecs % 60;
+            timerElem.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+            if (label) label.innerText = 'EXAM:';
+            if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+            if (controls) controls.classList.remove('hidden');
+
+            if (timeInSecs < 600) {
+                timerElem.className = 'text-red-400 font-black animate-pulse';
+                if (container) container.className = 'font-mono bg-red-950/50 px-3 py-1.5 rounded-xl border border-red-500/80 text-red-400 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer';
+                if (dot) dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+            } else if (timeInSecs < 1800) {
+                timerElem.className = 'text-amber-400 font-bold';
+                if (container) container.className = 'font-mono bg-amber-950/40 px-3 py-1.5 rounded-xl border border-amber-500/70 text-amber-300 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer';
+            } else {
+                timerElem.className = 'text-emerald-300 font-bold';
+                if (container) container.className = 'font-mono bg-slate-950/90 px-3 py-1.5 rounded-xl border border-emerald-500/50 text-emerald-300 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer';
+            }
+        }
+
+        function handleTimerClick() {
+            if (!isExamTimerRunning) {
+                openMockModal();
+            } else {
+                toggleExamTimerPause();
+            }
+        }
+
+        function toggleExamTimerPause() {
+            if (!isExamTimerRunning) return;
+            isExamTimerPaused = !isExamTimerPaused;
+            const btn = document.getElementById('timerPauseBtn');
+            if (btn) btn.innerText = isExamTimerPaused ? '▶️' : '⏸️';
+            updateExamTimerDisplay();
+        }
+
+        function exitExamMode() {
+            if (!confirm("Are you sure you want to exit Exam Mode and return to untimed practice? Your current test attempt will be reset.")) {
+                return;
+            }
+            isExamTimerRunning = false;
+            isExamTimerPaused = false;
+            isMockMode = false;
+            timeInSecs = 0;
+            totalExamDurationSecs = 0;
+            updateExamTimerDisplay();
+
+            const examBadge = document.getElementById('examBadgeText');
+            if (examBadge) examBadge.innerText = 'Online Practice';
+
+            questionBank = [...masterDataset];
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
+            currentIdx = 0;
+            filterByExam();
+        }
+
+        function handleExamTimeExpired() {
+            isExamTimerRunning = false;
+            isExamTimerPaused = false;
+            updateExamTimerDisplay();
+            alert("⏰ Examination Time has Ended!\n\nYour allocated time is complete. Your responses are being recorded and submitted automatically.");
+            showFinalResult();
+        }
+
+        // Timer Interval - only counts down when an Exam / Mock is actively running and not paused
         setInterval(() => {
-            // 1. Overall Countdown Timer
-            if (timeInSecs > 0) {
-                timeInSecs--;
-                const h = Math.floor(timeInSecs / 3600);
-                const m = Math.floor((timeInSecs % 3600) / 60);
-                const s = timeInSecs % 60;
-                const timerElem = document.getElementById('timerText');
-                if (timerElem) {
-                    timerElem.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-                    if (timeInSecs < 600) timerElem.className = 'text-red-400 font-bold animate-pulse';
-                    else if (timeInSecs < 1800) timerElem.className = 'text-amber-400 font-bold';
+            // 1. Overall Countdown Timer (Only ticks down during active, unpaused exam)
+            if (isExamTimerRunning && !isExamTimerPaused) {
+                if (timeInSecs > 0) {
+                    timeInSecs--;
+                    updateExamTimerDisplay();
+                    if (timeInSecs === 0) {
+                        handleExamTimeExpired();
+                    }
                 }
             }
 
             // 2. Active Question Stopwatch
-            if (activeQuestionOrig !== null && questionTimes) {
+            if (activeQuestionOrig !== null && questionTimes && !isExamTimerPaused) {
                 questionTimes[activeQuestionOrig] = (questionTimes[activeQuestionOrig] || 0) + 1;
                 const qTimerElem = document.getElementById('qTimerDisplay');
                 if (qTimerElem) {
@@ -3170,8 +3717,20 @@
             });
         }
 
+        // Close Exam Search Dropdown on Outside Click
+        document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('examDropdownWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                toggleExamDropdown(false);
+            }
+        });
+
         // 12. KEYBOARD SHORTCUTS
         window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                toggleExamDropdown(false);
+            }
+
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
 
             // Admin Shortcut Ctrl+Shift+A
@@ -3206,6 +3765,8 @@
         // START INITIALIZATION
         initAdminModeCheck();
         loadData();
+        updateExamTimerDisplay();
+        updateExamDropdownUI(currentExam);
     </script>
 </body>
 </html>

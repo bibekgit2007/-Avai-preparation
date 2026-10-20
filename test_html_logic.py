@@ -17,6 +17,11 @@ def test_html():
     assert 'id="chapterDirectoryDrawer"' in content, "Missing chapterDirectoryDrawer in DOM"
     assert 'id="drawerSearchInput"' in content, "Missing drawerSearchInput in DOM"
     assert 'id="drawerContentList"' in content, "Missing drawerContentList in DOM"
+    assert 'id="examDropdownTrigger"' in content, "Missing examDropdownTrigger in DOM"
+    assert 'id="examDropdownMenu"' in content, "Missing examDropdownMenu in DOM"
+    assert 'id="examSearchInput"' in content, "Missing examSearchInput in DOM"
+    assert 'id="examCategoryChips"' in content, "Missing examCategoryChips in DOM"
+    assert 'id="examCardsContainer"' in content, "Missing examCardsContainer in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -24,6 +29,8 @@ def test_html():
     assert '.reaction-arrow' in content, "Missing .reaction-arrow CSS in stylesheet"
     assert '.math-vec' in content, "Missing .math-vec CSS in stylesheet"
     assert '.math-hat' in content, "Missing .math-hat CSS in stylesheet"
+    assert '.nav-caret' in content, "Missing .nav-caret in stylesheet"
+    assert '.rotate-180' in content, "Missing .rotate-180 in stylesheet"
     
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)
@@ -51,12 +58,19 @@ def test_html():
         "function filterByUnit(",
         "function toggleChapterDirectoryDrawer(",
         "function handleDrawerSearch(",
-        "function renderChapterDirectoryDrawer()"
+        "function renderChapterDirectoryDrawer()",
+        "function toggleExamDropdown(",
+        "function handleExamDropdownSearch(",
+        "function filterExamDropdownCategory(",
+        "function renderExamDropdownList()",
+        "function selectExamFromDropdown(",
+        "function updateExamDropdownUI("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
         
-    # 4. Check EXAM_SUBJECT_COMBINATIONS exists and is structured
+    # 4. Check EXAM_SUBJECT_COMBINATIONS and EXAM_DIRECTORY
+    assert "const EXAM_DIRECTORY = [" in js_code, "Missing EXAM_DIRECTORY in script"
     assert "const EXAM_SUBJECT_COMBINATIONS = {" in js_code
     assert "'MHT-CET': [" in js_code
     assert "'WBJEE': [" in js_code

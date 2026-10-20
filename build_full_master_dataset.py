@@ -1,6 +1,6 @@
 """
 Master Dataset Builder for AVAI Preparation Platform
-Compiles 322 high-yield, authentic bilingual questions across Physics, Chemistry, Biology, Mathematics, and General Studies.
+Compiles 827 high-yield, authentic bilingual questions across Physics, Chemistry, Biology, Mathematics, and General Studies.
 Synchronizes across:
   - data/physics_questions.js (window.PHYSICS_QUESTIONS_DATA)
   - data/physics_for_you_master_questions.csv
