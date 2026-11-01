@@ -31,6 +31,7 @@ def test_html():
     assert 'id="ntaInstructionsModal"' in content, "Missing ntaInstructionsModal in DOM"
     assert 'id="mockRecoveryModal"' in content, "Missing mockRecoveryModal in DOM"
     assert 'id="recoverProgressText"' in content, "Missing recoverProgressText in DOM"
+    assert 'id="notesOcrProgress"' in content, "Missing notesOcrProgress in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -86,6 +87,9 @@ def test_html():
         "function switchNotesStudioTab(",
         "function loadSampleNotes()",
         "function handleNotesFileUpload(",
+        "function processUploadedNotesFile(",
+        "function ensurePDFJsLoaded()",
+        "function ensureTesseractLoaded()",
         "function extractQuestionsFromNotes(",
         "function generateAndStartNotesTest()",
         "function renderSavedNotesTests()",

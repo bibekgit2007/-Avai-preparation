@@ -1269,15 +1269,32 @@ D) Option 4
 Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:text-sm font-mono outline-none focus:border-indigo-500 bg-slate-50 transition resize-none"></textarea>
                 </div>
 
-                <!-- Tab 2: Upload File Area -->
+                <!-- Tab 2: Upload File Area (PDF, Images OCR, Notes) -->
                 <div id="notesSection_upload" class="hidden space-y-3">
-                    <div id="notesDropzone" onclick="document.getElementById('notesFileInput').click()" class="border-2 border-dashed border-indigo-200 hover:border-indigo-400 bg-indigo-50/40 hover:bg-indigo-50/80 rounded-2xl p-8 text-center cursor-pointer transition flex flex-col items-center justify-center gap-2">
-                        <span class="text-3xl">📥</span>
-                        <p class="text-xs font-display font-bold text-indigo-950">Click or Drag & Drop your study notes here</p>
-                        <p class="text-[11px] text-slate-500">Supports .txt, .md, .json, .csv, .tsv (Parsed 100% in-memory with zero disk storage)</p>
-                        <span id="notesUploadedFileName" class="text-xs font-mono font-bold text-emerald-600 hidden bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200"></span>
+                    <div id="notesDropzone" onclick="document.getElementById('notesFileInput').click()" class="border-2 border-dashed border-indigo-300 hover:border-indigo-500 bg-indigo-50/40 hover:bg-indigo-50/80 rounded-2xl p-7 text-center cursor-pointer transition flex flex-col items-center justify-center gap-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-100 group-hover:bg-indigo-200 border border-indigo-200 flex items-center justify-center text-3xl shadow-xs transition">
+                            📑
+                        </div>
+                        <div>
+                            <p class="text-sm font-display font-black text-indigo-950">Click or Drag & Drop study materials here</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Supports <strong>PDF, JPG, JPEG, PNG, WEBP, TXT, MD, JSON</strong></p>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap justify-center pt-1 text-[11px] text-indigo-800">
+                            <span class="bg-indigo-100/90 font-medium px-2.5 py-0.5 rounded-full border border-indigo-200 flex items-center gap-1">📕 PDF Handouts</span>
+                            <span class="bg-indigo-100/90 font-medium px-2.5 py-0.5 rounded-full border border-indigo-200 flex items-center gap-1">📷 Photo of Notes (OCR)</span>
+                            <span class="bg-indigo-100/90 font-medium px-2.5 py-0.5 rounded-full border border-indigo-200 flex items-center gap-1">📝 Text / Markdown</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1">Processed 100% in-memory with zero disk storage</p>
+                        <span id="notesUploadedFileName" class="text-xs font-mono font-bold text-emerald-700 hidden bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-300 mt-1"></span>
                     </div>
-                    <input type="file" id="notesFileInput" accept=".txt,.md,.json,.csv,.tsv" onchange="handleNotesFileUpload(event)" class="hidden">
+
+                    <!-- Progress Spinner for PDF / OCR scanning -->
+                    <div id="notesOcrProgress" class="hidden p-3 rounded-2xl bg-indigo-50 border border-indigo-200 text-xs text-indigo-950 flex items-center gap-2.5">
+                        <div class="w-4 h-4 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin shrink-0"></div>
+                        <span id="notesOcrProgressText" class="font-medium">Extracting text...</span>
+                    </div>
+
+                    <input type="file" id="notesFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp,.bmp,.txt,.md,.json,.csv,.tsv,image/*,application/pdf" onchange="handleNotesFileUpload(event)" class="hidden">
                 </div>
 
                 <!-- Tab 3: Saved Notes Tests -->
@@ -3189,6 +3206,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
 
             updateSavedNotesCount();
             switchNotesStudioTab('paste');
+            setupNotesDropzone();
             modal.classList.remove('hidden');
         }
 
@@ -3251,8 +3269,73 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             }
         }
 
-        function handleNotesFileUpload(event) {
-            const file = event.target.files && event.target.files[0];
+        function loadScriptAsync(src) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector(`script[src="${src}"]`);
+                if (existing) return resolve();
+                const s = document.createElement('script');
+                s.src = src;
+                s.onload = () => resolve();
+                s.onerror = () => reject(new Error(`Failed to load ${src}`));
+                document.head.appendChild(s);
+            });
+        }
+
+        async function ensurePDFJsLoaded() {
+            if (window.pdfjsLib) return;
+            await loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+            if (window.pdfjsLib) {
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
+        }
+
+        async function ensureTesseractLoaded() {
+            if (window.Tesseract) return;
+            await loadScriptAsync('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js');
+        }
+
+        function setNotesProcessingProgress(isProcessing, message = '') {
+            const box = document.getElementById('notesOcrProgress');
+            const text = document.getElementById('notesOcrProgressText');
+            if (!box) return;
+            if (isProcessing) {
+                box.classList.remove('hidden');
+                if (text) text.textContent = message;
+            } else {
+                box.classList.add('hidden');
+            }
+        }
+
+        function setupNotesDropzone() {
+            const dropzone = document.getElementById('notesDropzone');
+            if (!dropzone || dropzone.dataset.hasDropListeners) return;
+            dropzone.dataset.hasDropListeners = 'true';
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('border-indigo-600', 'bg-indigo-100/90', 'scale-[1.01]');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('border-indigo-600', 'bg-indigo-100/90', 'scale-[1.01]');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                const files = e.dataTransfer && e.dataTransfer.files;
+                if (files && files.length > 0) {
+                    processUploadedNotesFile(files[0]);
+                }
+            });
+        }
+
+        async function processUploadedNotesFile(file) {
             if (!file) return;
 
             const nameBadge = document.getElementById('notesUploadedFileName');
@@ -3261,20 +3344,101 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 nameBadge.classList.remove('hidden');
             }
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const text = e.target.result || '';
-                const textInput = document.getElementById('notesTextInput');
-                if (textInput) {
-                    textInput.value = text;
+            const ext = (file.name.split('.').pop() || '').toLowerCase();
+            const isPDF = file.type === 'application/pdf' || ext === 'pdf';
+            const isImage = file.type.startsWith('image/') || ['jpg', 'jpeg', 'png', 'webp', 'bmp'].includes(ext);
+
+            try {
+                if (isPDF) {
+                    setNotesProcessingProgress(true, 'Initializing in-memory PDF.js parser...');
+                    showNotesStatus('Loading in-memory PDF extractor...', 'blue');
+                    await ensurePDFJsLoaded();
+
+                    setNotesProcessingProgress(true, 'Reading PDF page streams in memory...');
+                    const arrayBuffer = await file.arrayBuffer();
+                    const loadingTask = window.pdfjsLib.getDocument({ data: arrayBuffer });
+                    const pdf = await loadingTask.promise;
+                    let fullText = '';
+                    const totalPages = Math.min(pdf.numPages, 20); // Process up to first 20 pages safely
+
+                    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                        setNotesProcessingProgress(true, `Extracting text from PDF (Page ${pageNum} of ${totalPages})...`);
+                        const page = await pdf.getPage(pageNum);
+                        const textContent = await page.getTextContent();
+                        const pageStr = textContent.items.map(item => item.str).join(' ');
+                        fullText += `\n[--- Page ${pageNum} ---]\n` + pageStr;
+                    }
+
+                    setNotesProcessingProgress(false);
+
+                    if (!fullText.trim()) {
+                        showNotesStatus('PDF contains no selectable text layer. If it is a scanned document, please take a screenshot and upload as PNG/JPG for OCR.', 'rose');
+                        return;
+                    }
+
+                    const textInput = document.getElementById('notesTextInput');
+                    if (textInput) textInput.value = fullText.trim();
+                    switchNotesStudioTab('paste');
+                    showNotesStatus(`✓ Successfully extracted ${fullText.length} characters from ${totalPages} PDF page(s)! Click "Generate Practice Test Now".`, 'emerald');
+
+                } else if (isImage) {
+                    setNotesProcessingProgress(true, 'Loading Tesseract OCR engine in browser memory...');
+                    showNotesStatus('Initializing OCR engine for photo/scan recognition...', 'blue');
+                    await ensureTesseractLoaded();
+
+                    setNotesProcessingProgress(true, 'Scanning image and extracting text via OCR...');
+                    const result = await window.Tesseract.recognize(file, 'eng', {
+                        logger: m => {
+                            if (m.status === 'recognizing text' && m.progress) {
+                                const pct = (m.progress * 100).toFixed(0);
+                                setNotesProcessingProgress(true, `Scanning notes image (OCR): ${pct}% complete...`);
+                            }
+                        }
+                    });
+
+                    setNotesProcessingProgress(false);
+                    const extracted = (result && result.data && result.data.text) ? result.data.text.trim() : '';
+
+                    if (!extracted) {
+                        showNotesStatus('No text recognized in image. Please ensure the image is clear and well-lit.', 'rose');
+                        return;
+                    }
+
+                    const textInput = document.getElementById('notesTextInput');
+                    if (textInput) textInput.value = extracted;
+                    switchNotesStudioTab('paste');
+                    showNotesStatus(`✓ OCR Scan Complete! Extracted ${extracted.length} characters from your photo. Review or click "Generate Practice Test Now".`, 'emerald');
+
+                } else {
+                    // Plain text / markdown / JSON / CSV
+                    setNotesProcessingProgress(true, 'Reading text file...');
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        setNotesProcessingProgress(false);
+                        const text = e.target.result || '';
+                        const textInput = document.getElementById('notesTextInput');
+                        if (textInput) textInput.value = text;
+                        switchNotesStudioTab('paste');
+                        showNotesStatus(`✓ Loaded "${file.name}" (${text.length} chars). Ready to generate questions!`, 'emerald');
+                    };
+                    reader.onerror = function() {
+                        setNotesProcessingProgress(false);
+                        showNotesStatus('Failed to read file. Please verify file integrity.', 'rose');
+                    };
+                    reader.readAsText(file);
                 }
-                switchNotesStudioTab('paste');
-                showNotesStatus(`Loaded "${file.name}" (${text.length} chars). Ready to generate questions!`, 'emerald');
-            };
-            reader.onerror = function() {
-                showNotesStatus('Failed to read file. Please ensure it is a valid text/markdown/json document.', 'rose');
-            };
-            reader.readAsText(file);
+            } catch (err) {
+                console.error("Notes file processing error:", err);
+                setNotesProcessingProgress(false);
+                showNotesStatus(`Error processing ${file.name}: ${err.message || 'Check network connection to load parser.'}`, 'rose');
+            }
+        }
+
+        function handleNotesFileUpload(event) {
+            const file = event.target.files && event.target.files[0];
+            if (file) {
+                processUploadedNotesFile(file);
+            }
         }
 
         function showNotesStatus(msg, color) {
