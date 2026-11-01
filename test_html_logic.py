@@ -73,6 +73,8 @@ def test_html():
     assert 'id="formulaVaultList"' in content, "Missing formulaVaultList in DOM"
     assert 'id="formulaVaultCount"' in content, "Missing formulaVaultCount in DOM"
     
+    assert 'id="compactModeToggleBtn"' in content, "Missing compactModeToggleBtn in DOM"
+    assert '.practice-focus-mode' in content, "Missing .practice-focus-mode in stylesheet"
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
     assert '.redox-badge' in content, "Missing .redox-badge CSS in stylesheet"
@@ -191,7 +193,9 @@ def test_html():
         "function handleFormulaVaultSearch(",
         "function renderFormulaVaultList(",
         "function toggleFormulaCardFlip(",
-        "function practiceFromFormula("
+        "function practiceFromFormula(",
+        "function toggleCompactPracticeMode(",
+        "function dismissNTARadarStrip("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
