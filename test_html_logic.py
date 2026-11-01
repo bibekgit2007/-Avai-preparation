@@ -11,6 +11,7 @@ def test_html():
     assert 'id="mockModal"' in content, "Missing mockModal"
     assert 'id="mockSubjectCheckboxes"' in content, "Missing mockSubjectCheckboxes"
     assert '<script src="data/syllabus.js' in content, "Missing syllabus.js script inclusion"
+    assert '<script src="data/formula_vault.js' in content, "Missing formula_vault.js script inclusion"
     assert 'id="chapterNavStrip"' in content, "Missing chapterNavStrip in DOM"
     assert 'id="unitSelector"' in content, "Missing unitSelector in DOM"
     assert 'id="chapterPillsContainer"' in content, "Missing chapterPillsContainer in DOM"
@@ -64,6 +65,13 @@ def test_html():
     assert 'id="diagDifficultyGrid"' in content, "Missing diagDifficultyGrid in DOM"
     assert 'id="diagChapterHeatmap"' in content, "Missing diagChapterHeatmap in DOM"
     assert 'id="diagAiDirectives"' in content, "Missing diagAiDirectives in DOM"
+    assert 'id="formulaVaultModal"' in content, "Missing formulaVaultModal in DOM"
+    assert 'id="formulaVaultBtn"' in content, "Missing formulaVaultBtn in DOM"
+    assert 'id="questionFormulaBtn"' in content, "Missing questionFormulaBtn in DOM"
+    assert 'id="formulaSearchInput"' in content, "Missing formulaSearchInput in DOM"
+    assert 'id="formulaSubjectChips"' in content, "Missing formulaSubjectChips in DOM"
+    assert 'id="formulaVaultList"' in content, "Missing formulaVaultList in DOM"
+    assert 'id="formulaVaultCount"' in content, "Missing formulaVaultCount in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -175,7 +183,15 @@ def test_html():
         "function closeDiagnosticAnalyticsModal()",
         "function computeDiagnosticMetrics()",
         "function renderDiagnosticAnalytics()",
-        "function practiceChapterFromAnalytics("
+        "function practiceChapterFromAnalytics(",
+        "function openFormulaVaultModal(",
+        "function closeFormulaVaultModal()",
+        "function openFormulaVaultForCurrentQ()",
+        "function filterFormulaVaultSubject(",
+        "function handleFormulaVaultSearch(",
+        "function renderFormulaVaultList(",
+        "function toggleFormulaCardFlip(",
+        "function practiceFromFormula("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
@@ -219,7 +235,17 @@ def test_html():
     assert "getExamSyllabus" in syl_content
     assert "mapQuestionToSyllabus" in syl_content
     assert "getChapterQuestionStats" in syl_content
-    print("[PASSED] HTML structure, chapter navigation strip, directory drawer, syllabus sub-chapters & JS logic verified!")
+    
+    # 7. Check formula_vault.js structure
+    formula_content = open("data/formula_vault.js", encoding="utf-8").read()
+    assert "window.AVAI_FORMULA_VAULT = " in formula_content, "Missing window.AVAI_FORMULA_VAULT in formula_vault.js"
+    assert "PHY_FORM_01" in formula_content, "Missing Kinematics formulas"
+    assert "CHEM_FORM_01" in formula_content, "Missing Thermodynamics chemistry formulas"
+    assert "MATH_FORM_01" in formula_content, "Missing Calculus math formulas"
+    assert "getBySubject" in formula_content, "Missing getBySubject in formula vault"
+    assert "search" in formula_content, "Missing search in formula vault"
+    
+    print("[PASSED] HTML structure, chapter navigation strip, directory drawer, syllabus sub-chapters, formula vault & JS logic verified!")
 
 if __name__ == "__main__":
     test_html()

@@ -32,6 +32,7 @@
     <!-- Master Question Bank & Official Syllabus Hierarchy -->
     <script src="data/physics_questions.js?v=323"></script>
     <script src="data/syllabus.js?v=1"></script>
+    <script src="data/formula_vault.js?v=1"></script>
     
     <script>
       if ('serviceWorker' in navigator) {
@@ -965,6 +966,12 @@
                 <span class="hidden sm:inline">Analytics</span>
             </button>
 
+            <!-- High-Yield Formula & Concept Vault Button -->
+            <button onclick="openFormulaVaultModal()" id="formulaVaultBtn" class="bg-gradient-to-r from-amber-950/80 via-slate-900 to-amber-950/80 hover:bg-amber-900 border border-amber-500/50 hover:border-amber-400 text-amber-200 text-xs md:text-sm font-bold px-2 sm:px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-amber-950/30 transition transform active:scale-95 cursor-pointer" title="Formula & Concept Vault: KaTeX Formulas, Hall Traps & Flashcards">
+                <span>⚡</span>
+                <span class="hidden sm:inline">Formulas</span>
+            </button>
+
             <!-- Compact Scientific Calculator Toggle Button with Competitive Exam Advisory -->
             <button onclick="toggleCalculator()" id="headerCalcBtn" class="bg-purple-950/70 hover:bg-purple-900 border border-purple-500/50 hover:border-purple-400 text-purple-200 text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-xl flex items-center gap-1 shadow-xs transition transform active:scale-95 cursor-pointer" title="Virtual Calculator (⚠️ Attention: Strictly prohibited in NEET, JEE, WBJEE & State exams. Allowed only in GATE/BITSAT)">
                 <span class="text-purple-300">✦</span>
@@ -1148,6 +1155,10 @@
                     <button onclick="toggleMistakeFlagForCurrentQ()" id="flagMistakeBtn" class="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1" title="Save this question into your Mistake Notebook">
                         <span id="flagMistakeIcon">🔖</span>
                         <span id="flagMistakeText" class="hidden sm:inline">Notebook</span>
+                    </button>
+                    <button onclick="openFormulaVaultForCurrentQ()" id="questionFormulaBtn" class="px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1" title="Instant Formula & Concept Cheatsheet for this chapter">
+                        <span>⚡</span>
+                        <span class="hidden sm:inline">Formulas</span>
                     </button>
                     <button onclick="clearCurrentResponse()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer">
                         Clear
@@ -2230,6 +2241,66 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 <div class="flex items-center gap-2">
                     <button onclick="closeDiagnosticAnalyticsModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition cursor-pointer">
                         Back to Exam
+                    </button>
+                </div>
+            </div>
+        </div>
+    <!-- ==========================================================================
+         HIGH-YIELD FORMULA & CONCEPT CHEATSHEET VAULT MODAL (MATHONGO / MARKS STYLE)
+         ========================================================================== -->
+    <div id="formulaVaultModal" class="fixed inset-0 glass-modal z-[98] hidden flex items-center justify-center p-3 sm:p-5">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-scale-in">
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-slate-200 bg-gradient-to-r from-amber-950 via-slate-900 to-slate-950 text-white flex items-center justify-between select-none">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center font-display font-black text-2xl shadow-inner text-amber-400">
+                        ⚡
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-base sm:text-lg font-display font-black text-white">Formula & Concept Flash-Vault</h3>
+                            <span class="text-[10px] font-mono bg-amber-500/30 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded-full font-bold">
+                                KaTeX Cheatsheet
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400">High-yield mathematical laws, dimensional constants, exam traps & interactive derivation flashcards</p>
+                    </div>
+                </div>
+                <button onclick="closeFormulaVaultModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition cursor-pointer text-lg font-bold">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Modal Search & Subject Filter Bar -->
+            <div class="p-3.5 sm:p-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between select-none">
+                <!-- Search Input -->
+                <div class="relative flex-1">
+                    <input type="text" id="formulaSearchInput" oninput="handleFormulaVaultSearch(this.value)" placeholder="Search formulas, laws, or traps (e.g. Carnot, Bernoulli, Nernst, Projectile)..." class="w-full pl-9 pr-3 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none focus:border-amber-500 shadow-sm font-medium">
+                    <svg class="w-4 h-4 absolute left-3 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+
+                <!-- Subject Filter Chips -->
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0" id="formulaSubjectChips">
+                    <button onclick="filterFormulaVaultSubject('ALL')" class="formula-sub-chip active px-3 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow-xs cursor-pointer transition">All</button>
+                    <button onclick="filterFormulaVaultSubject('Physics')" class="formula-sub-chip px-3 py-1 rounded-lg text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer transition">Physics</button>
+                    <button onclick="filterFormulaVaultSubject('Chemistry')" class="formula-sub-chip px-3 py-1 rounded-lg text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer transition">Chemistry</button>
+                    <button onclick="filterFormulaVaultSubject('Mathematics')" class="formula-sub-chip px-3 py-1 rounded-lg text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer transition">Mathematics</button>
+                </div>
+            </div>
+
+            <!-- Modal Content Body: List of Formula Flashcards -->
+            <div id="formulaVaultList" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 text-xs sm:text-sm custom-scrollbar bg-slate-50/50">
+                <!-- Populated dynamically via renderFormulaVaultList() -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3.5 bg-white border-t border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+                <span class="text-xs text-slate-500 font-medium">
+                    Total Formulations: <strong id="formulaVaultCount" class="font-bold text-slate-800">0</strong>
+                </span>
+                <div class="flex items-center gap-2">
+                    <button onclick="closeFormulaVaultModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition cursor-pointer">
+                        Close
                     </button>
                 </div>
             </div>
@@ -5513,6 +5584,227 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             if (topicDropdown) {
                 for (let i = 0; i < topicDropdown.options.length; i++) {
                     if (topicDropdown.options[i].value === chapterName || topicDropdown.options[i].text === chapterName) {
+                        topicDropdown.selectedIndex = i;
+                        filterByTopic();
+                        const qArea = document.getElementById('questionArea');
+                        if (qArea) qArea.scrollIntoView({ behavior: 'smooth' });
+                        showMistakeToast(`🎯 Practicing targeted chapter: ${chapterName}`);
+                        return;
+                    }
+                }
+            }
+            if (typeof filterByChapter === 'function') {
+                filterByChapter(chapterName);
+                const qArea = document.getElementById('questionArea');
+                if (qArea) qArea.scrollIntoView({ behavior: 'smooth' });
+                showMistakeToast(`🎯 Practicing targeted chapter: ${chapterName}`);
+            }
+        }
+
+        // ==========================================================================
+        // 5h. HIGH-YIELD FORMULA & CONCEPT CHEATSHEET VAULT CONTROLLER
+        // ==========================================================================
+        let currentFormulaSubject = 'ALL';
+        let currentFormulaQuery = '';
+
+        function openFormulaVaultModal(filterChapter) {
+            const modal = document.getElementById('formulaVaultModal');
+            if (!modal) return;
+            
+            const searchInput = document.getElementById('formulaSearchInput');
+            if (searchInput) {
+                searchInput.value = filterChapter || '';
+                currentFormulaQuery = filterChapter || '';
+            }
+
+            renderFormulaVaultList(currentFormulaQuery, currentFormulaSubject);
+            modal.classList.remove('hidden');
+        }
+
+        function closeFormulaVaultModal() {
+            const modal = document.getElementById('formulaVaultModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function openFormulaVaultForCurrentQ() {
+            const filtered = getFiltered();
+            const q = filtered[currentIdx];
+            if (!q) {
+                openFormulaVaultModal();
+                return;
+            }
+            const targetTopic = q.topic || q.subject || '';
+            openFormulaVaultModal(targetTopic);
+            showMistakeToast(`⚡ Formula Cheatsheet: ${targetTopic}`);
+        }
+
+        function filterFormulaVaultSubject(subj) {
+            currentFormulaSubject = subj;
+            const chips = document.querySelectorAll('.formula-sub-chip');
+            chips.forEach(btn => {
+                if (btn.innerText.toLowerCase() === subj.toLowerCase()) {
+                    btn.className = 'formula-sub-chip active px-3 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow-xs cursor-pointer transition';
+                } else {
+                    btn.className = 'formula-sub-chip px-3 py-1 rounded-lg text-xs font-bold bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer transition';
+                }
+            });
+            renderFormulaVaultList(currentFormulaQuery, currentFormulaSubject);
+        }
+
+        function handleFormulaVaultSearch(val) {
+            currentFormulaQuery = val;
+            renderFormulaVaultList(currentFormulaQuery, currentFormulaSubject);
+        }
+
+        function renderFormulaVaultList(query, subject) {
+            const container = document.getElementById('formulaVaultList');
+            const countEl = document.getElementById('formulaVaultCount');
+            if (!container) return;
+
+            let list = (window.AVAI_FORMULA_VAULT && typeof window.AVAI_FORMULA_VAULT.getAll === 'function') 
+                ? window.AVAI_FORMULA_VAULT.getAll() 
+                : [];
+
+            if (subject && subject !== 'ALL') {
+                list = list.filter(f => f.subject.toLowerCase() === subject.toLowerCase());
+            }
+
+            if (query && query.trim()) {
+                const q = query.toLowerCase().trim();
+                list = list.filter(f => 
+                    f.title.toLowerCase().includes(q) ||
+                    f.chapter.toLowerCase().includes(q) ||
+                    f.formulaLatex.toLowerCase().includes(q) ||
+                    f.trap.toLowerCase().includes(q)
+                );
+            }
+
+            if (countEl) countEl.innerText = list.length;
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-slate-500 space-y-2">
+                        <span class="text-3xl block">🔍</span>
+                        <p class="font-bold text-sm">No formulas found matching "${query || subject}".</p>
+                        <p class="text-xs text-slate-400">Try searching for terms like "Bernoulli", "Carnot", "Nernst", "Projectile", or switch subjects.</p>
+                        <button onclick="currentFormulaQuery=''; document.getElementById('formulaSearchInput').value=''; filterFormulaVaultSubject('ALL');" class="mt-2 px-3 py-1.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs shadow-xs cursor-pointer">
+                            Reset Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = list.map(f => `
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3 transition-all hover:border-amber-300">
+                    <!-- Card Top Header -->
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${f.subject === 'Physics' ? 'bg-blue-100 text-blue-800' : (f.subject === 'Chemistry' ? 'bg-emerald-100 text-emerald-800' : 'bg-purple-100 text-purple-800')}">
+                                ${f.subject}
+                            </span>
+                            <span class="text-xs font-bold text-slate-500 font-display">${f.chapter}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[10px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded">${f.highYieldExam}</span>
+                            <button onclick="toggleFormulaCardFlip('${f.id}')" class="px-2 py-0.5 rounded bg-amber-50 hover:bg-amber-100 border border-amber-200 text-[10px] font-bold text-amber-800 transition cursor-pointer flex items-center gap-1">
+                                <span>🔄</span>
+                                <span id="flipBtnText_${f.id}">Derivation</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Formula Title -->
+                    <h4 class="font-display font-extrabold text-slate-900 text-sm sm:text-base">${f.title}</h4>
+
+                    <!-- Front: Formula Display Box -->
+                    <div id="formulaFront_${f.id}" class="space-y-2.5">
+                        <div class="p-3 sm:p-4 rounded-xl bg-slate-950 text-amber-300 font-mono text-xs sm:text-sm overflow-x-auto text-center shadow-inner border border-slate-800">
+                            $$${f.formulaLatex}$$
+                        </div>
+
+                        <!-- Variables & Units -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
+                            <div>
+                                <strong class="text-slate-800 block mb-0.5 font-display">Variables &amp; Notation:</strong>
+                                <span>$$${f.variables}$$</span>
+                            </div>
+                            <div>
+                                <strong class="text-slate-800 block mb-0.5 font-display">Standard SI Units:</strong>
+                                <span>$$${f.units}$$</span>
+                            </div>
+                        </div>
+
+                        <!-- Hall Trap Warning Box -->
+                        <div class="p-2.5 rounded-xl bg-rose-50/80 border border-rose-200 text-rose-900 text-[11px] leading-relaxed flex items-start gap-2">
+                            <span class="text-sm shrink-0">⚠️</span>
+                            <div>
+                                <strong>Exam Hall Pitfall:</strong> ${f.trap}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back: Derivation & Shortcut Box (Hidden by default, toggled via Derivation button) -->
+                    <div id="formulaBack_${f.id}" class="hidden p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 text-slate-800 text-xs space-y-2 animate-fade-in">
+                        <div class="flex items-center justify-between text-amber-900 font-bold font-display text-xs border-b border-amber-200/70 pb-1.5">
+                            <span class="flex items-center gap-1.5"><span>⚡</span> Fast Derivation &amp; Physical Meaning</span>
+                            <span class="text-[10px] text-amber-700 font-mono">Memory Hook</span>
+                        </div>
+                        <p class="leading-relaxed font-medium text-slate-800">${f.derivation}</p>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                        <button onclick="practiceFromFormula('${f.chapter}')" class="px-3 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs cursor-pointer">
+                            <span>🎯</span> Practice ${f.chapter} Questions
+                        </button>
+                        <button onclick="navigator.clipboard.writeText('${f.formulaLatex.replace(/\\/g, '\\\\')}'); showMistakeToast('📋 Formula LaTeX copied to clipboard!');" class="text-[11px] text-slate-400 hover:text-slate-700 font-mono transition cursor-pointer flex items-center gap-1">
+                            <span>📋</span> Copy LaTeX
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Math in KaTeX
+            if (window.renderMathInElement) {
+                try {
+                    renderMathInElement(container, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false },
+                            { left: '\\(', right: '\\)', display: false },
+                            { left: '\\[', right: '\\]', display: true }
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) {}
+            }
+        }
+
+        function toggleFormulaCardFlip(cardId) {
+            const front = document.getElementById(`formulaFront_${cardId}`);
+            const back = document.getElementById(`formulaBack_${cardId}`);
+            const btnText = document.getElementById(`flipBtnText_${cardId}`);
+            if (!front || !back) return;
+
+            const isBackVisible = !back.classList.contains('hidden');
+            if (isBackVisible) {
+                back.classList.add('hidden');
+                front.classList.remove('hidden');
+                if (btnText) btnText.innerText = 'Derivation';
+            } else {
+                back.classList.remove('hidden');
+                if (btnText) btnText.innerText = 'Hide Derivation';
+            }
+        }
+
+        function practiceFromFormula(chapterName) {
+            closeFormulaVaultModal();
+            const topicDropdown = document.getElementById('topicFilter');
+            if (topicDropdown) {
+                for (let i = 0; i < topicDropdown.options.length; i++) {
+                    if (topicDropdown.options[i].value.toLowerCase().includes(chapterName.toLowerCase()) || 
+                        topicDropdown.options[i].text.toLowerCase().includes(chapterName.toLowerCase())) {
                         topicDropdown.selectedIndex = i;
                         filterByTopic();
                         const qArea = document.getElementById('questionArea');
