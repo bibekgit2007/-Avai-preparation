@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avai-prep-v7';
+const CACHE_NAME = 'avai-prep-v8';
 const STATIC_ASSETS = [
   './',
   './index.html',
