@@ -1615,6 +1615,41 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
         </div>
     </div>
 
+    <!-- Active Mock Test Session Recovery Modal (Crash & Disconnect Guard) -->
+    <div id="mockRecoveryModal" class="fixed inset-0 glass-modal z-[99] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-amber-500/50 rounded-3xl p-6 md:p-7 max-w-md w-full shadow-2xl text-slate-100 space-y-4 animate-scale-in">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500/20 to-orange-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shrink-0">
+                    🎯
+                </div>
+                <div>
+                    <h3 class="font-display font-black text-lg text-amber-300">Active Mock Test Recovered!</h3>
+                    <p class="text-xs text-slate-400">Your in-progress session was safely preserved on your device.</p>
+                </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-2 text-xs">
+                <div class="flex justify-between items-center"><span class="text-slate-400">Exam Title:</span><span id="recoverExamTitle" class="font-bold text-white">NEET Mock Test</span></div>
+                <div class="flex justify-between items-center"><span class="text-slate-400">Progress:</span><span id="recoverProgressText" class="font-bold text-emerald-400">42 / 180 Attempted</span></div>
+                <div class="flex justify-between items-center"><span class="text-slate-400">Remaining Time:</span><span id="recoverTimeText" class="font-bold text-amber-400">1 hr 18 mins</span></div>
+                <div class="flex justify-between items-center"><span class="text-slate-400">Current Question:</span><span id="recoverQuestionText" class="font-bold text-blue-400">Question 43</span></div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 leading-relaxed">
+                Whether you lost connection, switched apps, or closed the browser, none of your answered questions or timer have been lost. Would you like to resume your test now?
+            </p>
+
+            <div class="flex gap-2.5 pt-1">
+                <button onclick="resumeMockSession()" class="flex-1 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-display font-black rounded-xl text-xs shadow-md transition transform active:scale-95 cursor-pointer">
+                    🔄 Resume My Test
+                </button>
+                <button onclick="discardMockSession()" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-semibold rounded-xl text-xs transition active:scale-95 cursor-pointer">
+                    ❌ Discard
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-400 px-4 md:px-6 py-3 border-t border-slate-800/80 text-xs select-none">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2.5">
@@ -2290,6 +2325,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             setSyncStatus(`Multi-Subject Bank (${questionBank.length} Qs)`);
             hideAppLoader();
             filterByExam();
+            checkForResumableMockSession();
         }
 
         // Toggle merge mode between Sheet-only vs Sheet + 322 Coded Questions
@@ -2391,6 +2427,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             questionTimes = new Array(questionBank.length).fill(0);
             hideAppLoader();
             filterByExam();
+            checkForResumableMockSession();
         }
 
         // Google Visualization API JSONP fetcher (Bypasses Browser CORS completely for any public Viewer sheet)
@@ -2960,6 +2997,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             closeMockModal();
             updateExamTimerDisplay();
             filterByExam();
+            saveActiveMockSession();
             alert(`🎯 Custom Mock Test Started!\n\n⏱️ Duration: ${durVal} minutes (Countdown timer is now running)\n📊 Marking: +${positiveMark} / -${negativeMark}\n📚 Subjects: ${checkedSubjects.join(', ')}\n📝 Total Questions: ${questionBank.length}`);
         }
 
@@ -2996,9 +3034,140 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             closeMockModal();
             updateExamTimerDisplay();
             filterByExam();
+            saveActiveMockSession();
 
             alert(`🎯 ${preset.name} Official Exam Simulation Started!\n\n⏱️ Total Timer: ${preset.durationMin} minutes (Started)\n📊 Marking Scheme: +${positiveMark} / -${negativeMark}\n📚 Subjects: ${preset.subjects.join(', ')}\n📝 Total Questions: ${questionBank.length}\n\nGood luck! The countdown is running in the top bar. Click FINISH when you are done.`);
         }
+
+        // ==========================================================================
+        // 5a-ii. ACTIVE MOCK TEST CRASH & DISCONNECT GUARD (LOCAL RECOVERY ENGINE)
+        // ==========================================================================
+        function saveActiveMockSession() {
+            if (!isMockMode) return;
+            try {
+                const session = {
+                    isMockMode: true,
+                    currentExamTitle: currentExamTitle,
+                    currentExam: currentExam,
+                    currentSubject: currentSubject,
+                    positiveMark: positiveMark,
+                    negativeMark: negativeMark,
+                    currentIdx: currentIdx,
+                    timeInSecs: timeInSecs,
+                    totalExamDurationSecs: totalExamDurationSecs,
+                    responses: responses,
+                    statuses: statuses,
+                    questionTimes: questionTimes,
+                    questionIndices: questionBank.map(q => q.orig),
+                    timestamp: Date.now()
+                };
+                localStorage.setItem('avai_active_mock_session', JSON.stringify(session));
+            } catch (e) {
+                console.warn('Unable to auto-save mock session:', e);
+            }
+        }
+
+        function clearActiveMockSession() {
+            try {
+                localStorage.removeItem('avai_active_mock_session');
+                const modal = document.getElementById('mockRecoveryModal');
+                if (modal) modal.classList.add('hidden');
+                pendingRecoverSession = null;
+            } catch (e) {}
+        }
+
+        let pendingRecoverSession = null;
+
+        function checkForResumableMockSession() {
+            try {
+                const raw = localStorage.getItem('avai_active_mock_session');
+                if (!raw) return;
+                const session = JSON.parse(raw);
+                if (!session || !session.isMockMode || !Array.isArray(session.questionIndices) || session.questionIndices.length === 0) {
+                    clearActiveMockSession();
+                    return;
+                }
+
+                pendingRecoverSession = session;
+                const attempted = (session.responses || []).filter(r => r !== null).length;
+                const totalQs = session.questionIndices.length;
+                const minsLeft = Math.ceil((session.timeInSecs || 0) / 60);
+
+                const modal = document.getElementById('mockRecoveryModal');
+                const titleEl = document.getElementById('recoverExamTitle');
+                const progEl = document.getElementById('recoverProgressText');
+                const timeEl = document.getElementById('recoverTimeText');
+                const qEl = document.getElementById('recoverQuestionText');
+
+                if (titleEl) titleEl.textContent = session.currentExamTitle || 'Mock Examination';
+                if (progEl) progEl.textContent = `${attempted} / ${totalQs} Attempted`;
+                if (timeEl) timeEl.textContent = minsLeft > 0 ? `${minsLeft} mins remaining` : 'Time expired';
+                if (qEl) qEl.textContent = `Question ${(session.currentIdx || 0) + 1}`;
+
+                if (modal) modal.classList.remove('hidden');
+            } catch (e) {
+                console.warn('Error reading active mock session:', e);
+            }
+        }
+
+        function resumeMockSession() {
+            if (!pendingRecoverSession || !masterDataset || masterDataset.length === 0) {
+                clearActiveMockSession();
+                return;
+            }
+
+            const session = pendingRecoverSession;
+            const restoredBank = session.questionIndices
+                .map(orig => masterDataset[orig])
+                .filter(Boolean);
+
+            if (restoredBank.length === 0) {
+                clearActiveMockSession();
+                return;
+            }
+
+            questionBank = restoredBank;
+            responses = Array.isArray(session.responses) ? session.responses : new Array(questionBank.length).fill(null);
+            statuses = Array.isArray(session.statuses) ? session.statuses : new Array(questionBank.length).fill('not-visited');
+            questionTimes = Array.isArray(session.questionTimes) ? session.questionTimes : new Array(questionBank.length).fill(0);
+            currentIdx = (session.currentIdx >= 0 && session.currentIdx < questionBank.length) ? session.currentIdx : 0;
+
+            positiveMark = session.positiveMark || 4;
+            negativeMark = session.negativeMark || 1;
+            totalExamDurationSecs = session.totalExamDurationSecs || (60 * 60);
+            timeInSecs = (session.timeInSecs !== undefined) ? session.timeInSecs : totalExamDurationSecs;
+            currentExamTitle = session.currentExamTitle || 'Custom Mock';
+            isMockMode = true;
+            isExamTimerRunning = timeInSecs > 0;
+            isExamTimerPaused = false;
+
+            const markingBadge = document.getElementById('markingSchemeBadge');
+            if (markingBadge) markingBadge.innerText = `+${positiveMark} / -${negativeMark}`;
+
+            const examBadge = document.getElementById('examBadgeText');
+            if (examBadge) examBadge.innerText = currentExamTitle;
+
+            const modal = document.getElementById('mockRecoveryModal');
+            if (modal) modal.classList.add('hidden');
+
+            updateExamTimerDisplay();
+            filterByExam();
+        }
+
+        function discardMockSession() {
+            clearActiveMockSession();
+            pendingRecoverSession = null;
+        }
+
+        // Accidental tab close / reload protection
+        window.addEventListener('beforeunload', (e) => {
+            if (isMockMode && isExamTimerRunning) {
+                saveActiveMockSession();
+                e.preventDefault();
+                e.returnValue = 'You have an active mock examination in progress. Your progress is auto-saved, but are you sure you want to exit?';
+                return e.returnValue;
+            }
+        });
 
         // ==========================================================================
         // 5b. AI NOTES-TO-QUESTIONS PRACTICE STUDIO CONTROLLER (ZERO-DISK IN-MEMORY)
@@ -5175,6 +5344,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 statuses[origIdx] = 'answered';
             }
             render();
+            saveActiveMockSession();
         }
 
         function clearCurrentResponse() {
@@ -5184,6 +5354,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             responses[q.orig] = null;
             statuses[q.orig] = 'not-answered';
             render();
+            saveActiveMockSession();
         }
 
         function toggleExplanation() {
@@ -5255,6 +5426,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             if (currentIdx < filtered.length - 1) { 
                 currentIdx++; 
                 render(); 
+                saveActiveMockSession();
             } 
         }
 
@@ -5262,12 +5434,14 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             if (currentIdx > 0) { 
                 currentIdx--; 
                 render(); 
+                saveActiveMockSession();
             } 
         }
 
         function jumpTo(i) { 
             currentIdx = i; 
             render(); 
+            saveActiveMockSession();
             if (window.innerWidth < 768) {
                 const sidebar = document.getElementById('paletteSidebar');
                 if (sidebar) sidebar.scrollIntoView({ behavior: 'smooth' });
@@ -5285,6 +5459,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             }
             renderPalette(); 
             nextQ(); 
+            saveActiveMockSession();
         }
 
         function toggleMobilePalette() {
@@ -5380,6 +5555,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 if (btn) btn.innerText = '▶️';
             }
 
+            clearActiveMockSession();
             const modal = document.getElementById('resultModal');
             if (modal) modal.classList.remove('hidden');
         }
@@ -5470,6 +5646,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             timeInSecs = 0;
             totalExamDurationSecs = 0;
             updateExamTimerDisplay();
+            clearActiveMockSession();
 
             const examBadge = document.getElementById('examBadgeText');
             if (examBadge) examBadge.innerText = 'Online Practice';
@@ -5497,6 +5674,9 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 if (timeInSecs > 0) {
                     timeInSecs--;
                     updateExamTimerDisplay();
+                    if (timeInSecs % 5 === 0) {
+                        saveActiveMockSession();
+                    }
                     if (timeInSecs === 0) {
                         handleExamTimeExpired();
                     }
