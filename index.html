@@ -466,6 +466,92 @@
             border-color: #3b82f6;
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
         }
+
+        /* ==========================================================================
+           ExamSIDE Upper Row Category Navigation & Expandable Mega-Menu
+           ========================================================================== */
+        .upper-row-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #cbd5e1;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+        }
+        @media (min-width: 768px) {
+            .upper-row-btn {
+                font-size: 13px;
+                padding: 5px 12px;
+                gap: 5px;
+            }
+        }
+        .upper-row-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .upper-row-btn.is-expanded {
+            background: #fef08a !important; /* Authentic ExamSIDE warm yellow active pill */
+            color: #0f172a !important;
+            border-color: #fde047 !important;
+            box-shadow: 0 4px 14px rgba(254, 240, 138, 0.35);
+        }
+        .upper-row-caret {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .upper-row-btn.is-expanded .upper-row-caret {
+            transform: rotate(180deg);
+        }
+
+        /* Mega Menu Section (Concise by default, Expands when mouse arrow hovers) */
+        #examMegaMenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: #fef9c3; /* Exact warm ExamSIDE cream/yellow palette */
+            color: #1e293b;
+            border-top: 1px solid #fde047;
+            border-bottom: 3px solid #eab308;
+            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.55), 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+            pointer-events: none;
+            z-index: 50;
+        }
+        #examMegaMenu.is-expanded {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .mega-menu-topic-link {
+            display: block;
+            font-size: 11.5px;
+            line-height: 1.45;
+            color: #475569;
+            padding: 2.5px 0;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+        }
+        .mega-menu-topic-link:hover {
+            color: #0f172a;
+            font-weight: 700;
+            transform: translateX(4px);
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-900 min-h-screen flex flex-col relative selection:bg-blue-600 selection:text-white antialiased">
@@ -501,6 +587,42 @@
                 <span id="syncBadgeText">Multi-Subject Live Bank</span>
             </div>
         </div>
+
+        <!-- ExamSIDE Upper Row Category Navigation (Expands on arrow hover, concise otherwise) -->
+        <nav id="upperRowCategoryNav" class="flex items-center gap-1 xl:gap-1.5 px-2 py-1 rounded-full bg-slate-950/40 border border-slate-800/60 backdrop-blur-md overflow-x-auto no-scrollbar max-w-[260px] sm:max-w-[340px] md:max-w-[460px] lg:max-w-none">
+            <button type="button" class="upper-row-btn" data-cat="JEE" onmouseenter="handleCategoryMouseEnter('JEE')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('JEE')" title="Joint Entrance Examination (Main & Advanced)">
+                <span>JEE</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="MEDICAL" onmouseenter="handleCategoryMouseEnter('MEDICAL')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('MEDICAL')" title="Medical Entrance Examinations (NEET / AIIMS)">
+                <span>Medical</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="GATE" onmouseenter="handleCategoryMouseEnter('GATE')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('GATE')" title="Graduate Aptitude Test in Engineering">
+                <span>GATE</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="CIVIL" onmouseenter="handleCategoryMouseEnter('CIVIL')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('CIVIL')" title="Civil Services (UPSC CSE & State PSCs)">
+                <span>Civil Services</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="DEFENCE" onmouseenter="handleCategoryMouseEnter('DEFENCE')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('DEFENCE')" title="Armed Forces & Defence (NDA / CDS / AFCAT)">
+                <span>Defence</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="SSC" onmouseenter="handleCategoryMouseEnter('SSC')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('SSC')" title="Staff Selection, Railways & Banking">
+                <span>SSC</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="CBSE" onmouseenter="handleCategoryMouseEnter('CBSE')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('CBSE')" title="CBSE Class 11 & 12 & Foundation Boards">
+                <span>CBSE</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="upper-row-btn" data-cat="RESEARCH" onmouseenter="handleCategoryMouseEnter('RESEARCH')" onmouseleave="handleCategoryMouseLeave()" onclick="handleCategoryClick('RESEARCH')" title="Pure Sciences & Research Fellowships (IAT / NEST / JAM / NET)">
+                <span>Research</span>
+                <svg class="upper-row-caret w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+        </nav>
 
         <!-- Top Right Control Buttons -->
         <div class="flex items-center gap-2 md:gap-2.5">
@@ -671,6 +793,31 @@
             <button onclick="showFinalResult()" class="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white px-3.5 md:px-4 py-1.5 rounded-xl font-display font-black text-xs md:text-sm transition-all shadow-md shadow-red-600/30 transform active:scale-95 cursor-pointer">
                 FINISH
             </button>
+        </div>
+
+        <!-- Expandable ExamSIDE-Style Mega Menu Section (Concise by default, Expands on hover) -->
+        <div id="examMegaMenu" 
+             onmouseenter="handleMegaMenuMouseEnter()" 
+             onmouseleave="handleMegaMenuMouseLeave()"
+             class="exam-mega-menu py-3.5 px-4 sm:px-6 md:px-10">
+            <div class="max-w-7xl mx-auto flex flex-col gap-2.5">
+                <!-- Top Header Strip: Category Title & Exam Count Badge -->
+                <div class="flex items-center justify-between border-b border-amber-300/60 pb-2">
+                    <div class="flex items-center gap-2">
+                        <span id="megaMenuIcon" class="text-lg">⚙️</span>
+                        <h2 id="megaMenuTitle" class="font-display font-black text-sm sm:text-base md:text-lg text-slate-900 tracking-tight">Graduate Aptitude Test in Engineering</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span id="megaMenuExamCount" class="text-xs font-mono font-bold text-slate-700 bg-amber-200/90 px-2.5 py-0.5 rounded-full border border-amber-300 shadow-sm">8 exams</span>
+                        <button type="button" onclick="closeExamMegaMenu()" class="w-6 h-6 rounded-full bg-amber-200/60 hover:bg-amber-300 text-slate-700 hover:text-slate-900 text-xs flex items-center justify-center transition cursor-pointer" title="Close Mega Menu">✕</button>
+                    </div>
+                </div>
+
+                <!-- 5-Column Responsive Topics Grid -->
+                <div id="megaMenuColumns" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-h-[62vh] overflow-y-auto custom-scrollbar pr-1">
+                    <!-- Populated dynamically by renderExamMegaMenuContent() -->
+                </div>
+            </div>
         </div>
     </header>
 
@@ -2705,6 +2852,763 @@
             if (badgeEl) badgeEl.textContent = item.badge;
         }
 
+        // --- EXAMSIDE UPPER ROW CATEGORY NAVIGATION & EXPANDABLE MEGA MENU ENGINE ---
+        const EXAMSIDE_MEGA_CATEGORIES = {
+            'GATE': {
+                title: 'Graduate Aptitude Test in Engineering',
+                examCount: '8 exams',
+                icon: '⚙️',
+                defaultExamId: 'GATE',
+                columns: [
+                    {
+                        name: 'GATE CSE',
+                        examId: 'GATE',
+                        subject: 'Computer Science',
+                        topics: [
+                            'Theory of Computation',
+                            'Operating Systems',
+                            'Algorithms',
+                            'Digital Logic',
+                            'Database Management System',
+                            'Data Structures',
+                            'Computer Networks',
+                            'Software Engineering',
+                            'Compiler Design',
+                            'Web Technologies',
+                            'General Aptitude',
+                            'Discrete Mathematics',
+                            'Programming Languages',
+                            'Computer Organization'
+                        ]
+                    },
+                    {
+                        name: 'GATE ECE',
+                        examId: 'GATE',
+                        subject: 'Electronics & Communication',
+                        topics: [
+                            'Control Systems',
+                            'Engineering Mathematics',
+                            'Analog Circuits',
+                            'Network Theory',
+                            'Electromagnetics',
+                            'Electronic Devices and VLSI',
+                            'Digital Circuits',
+                            'Microprocessors',
+                            'Signals and Systems',
+                            'Communications',
+                            'General Aptitude'
+                        ]
+                    },
+                    {
+                        name: 'GATE EE',
+                        examId: 'GATE',
+                        subject: 'Electrical Engineering',
+                        topics: [
+                            'Electric Circuits',
+                            'Electrical Machines',
+                            'Engineering Mathematics',
+                            'Signals and Systems',
+                            'Power Electronics',
+                            'Power System Analysis',
+                            'Digital Electronics',
+                            'Analog Electronics',
+                            'Electromagnetic Fields',
+                            'Control Systems',
+                            'Electrical and Electronics Measurement',
+                            'General Aptitude'
+                        ]
+                    },
+                    {
+                        name: 'GATE ME',
+                        examId: 'GATE',
+                        subject: 'Mechanical Engineering',
+                        topics: [
+                            'Theory of Machines',
+                            'Engineering Mechanics',
+                            'Production Engineering',
+                            'Strength of Materials',
+                            'Turbo Machinery',
+                            'Engineering Mathematics',
+                            'Machine Design',
+                            'Heat Transfer',
+                            'Industrial Engineering',
+                            'Thermodynamics',
+                            'General Aptitude',
+                            'Fluid Mechanics'
+                        ]
+                    },
+                    {
+                        name: 'GATE CE',
+                        examId: 'GATE',
+                        subject: 'Civil Engineering',
+                        topics: [
+                            'Structural Analysis',
+                            'Fluid Mechanics and Hydraulic Machines',
+                            'Strength of Materials Or Solid Mechanics',
+                            'Reinforced Cement Concrete',
+                            'Construction Material and Management',
+                            'Geotechnical Engineering',
+                            'General Aptitude',
+                            'Environmental Engineering',
+                            'Steel Structures',
+                            'Hydrology',
+                            'Transportation Engineering',
+                            'Engineering Mathematics'
+                        ]
+                    }
+                ]
+            },
+            'JEE': {
+                title: 'Joint Entrance Examination & Engineering',
+                examCount: '7 exams',
+                icon: '⚡',
+                defaultExamId: 'JEE',
+                columns: [
+                    {
+                        name: 'JEE Main Physics',
+                        examId: 'JEE',
+                        subject: 'Physics',
+                        topics: [
+                            'Kinematics & Laws of Motion',
+                            'Work, Energy & Power',
+                            'Rotational Dynamics',
+                            'Electrostatics & Current',
+                            'Magnetism & Electromagnetic Induction',
+                            'Optics & Wave Optics',
+                            'Thermodynamics & Kinetic Theory',
+                            'Modern Physics & Atoms'
+                        ]
+                    },
+                    {
+                        name: 'JEE Main Chemistry',
+                        examId: 'JEE',
+                        subject: 'Chemistry',
+                        topics: [
+                            'Chemical Bonding & Molecular Structure',
+                            'Thermodynamics & Thermochemistry',
+                            'Chemical & Ionic Equilibrium',
+                            'Organic Reactions & Mechanisms',
+                            'Aldehydes, Ketones & Acids',
+                            'Coordination Compounds',
+                            'Periodic Properties & P-Block',
+                            'Electrochemistry & Kinetics'
+                        ]
+                    },
+                    {
+                        name: 'JEE Main Mathematics',
+                        examId: 'JEE',
+                        subject: 'Mathematics',
+                        topics: [
+                            'Limits, Continuity & Differentiability',
+                            'Definite & Indefinite Integrals',
+                            'Differential Equations',
+                            'Coordinate Geometry & Conic Sections',
+                            'Vectors & 3-Dimensional Geometry',
+                            'Matrices & Determinants',
+                            'Complex Numbers & Quadratic',
+                            'Probability & Statistics'
+                        ]
+                    },
+                    {
+                        name: 'JEE Advanced',
+                        examId: 'JEE-ADV',
+                        subject: 'Physics',
+                        topics: [
+                            'Advanced Rotational Dynamics',
+                            'Electromagnetic Induction & AC',
+                            'Thermal Physics & Phase Transitions',
+                            'Wave Optics & Interference',
+                            'Multi-Step Organic Syntheses',
+                            'Transition Elements & Metallurgy',
+                            'Vector Calculus & Curves'
+                        ]
+                    },
+                    {
+                        name: 'State CETs (WBJEE / BITSAT)',
+                        examId: 'WBJEE',
+                        subject: 'Physics',
+                        topics: [
+                            'WBJEE Mathematics Master Bank',
+                            'WBJEE Physics & Chemistry',
+                            'BITSAT Logic & English Proficiency',
+                            'MHT-CET Class 11 & 12 Syllabus',
+                            'VITEEE & COMEDK PYQs'
+                        ]
+                    }
+                ]
+            },
+            'MEDICAL': {
+                title: 'National Eligibility cum Entrance Test (UG) & Bio-Sciences',
+                examCount: '4 exams',
+                icon: '🩺',
+                defaultExamId: 'NEET',
+                columns: [
+                    {
+                        name: 'NEET Botany',
+                        examId: 'NEET',
+                        subject: 'Biology',
+                        topics: [
+                            'Plant Physiology & Photosynthesis',
+                            'Respiration in Plants',
+                            'Plant Growth & Development',
+                            'Genetics & Mendelian Principles',
+                            'Molecular Basis of Inheritance',
+                            'Ecology & Biodiversity Conservation',
+                            'Morphology & Anatomy of Flowering Plants',
+                            'Cell Biology & Cell Division'
+                        ]
+                    },
+                    {
+                        name: 'NEET Zoology',
+                        examId: 'NEET',
+                        subject: 'Biology',
+                        topics: [
+                            'Human Digestion & Absorption',
+                            'Breathing & Exchange of Gases',
+                            'Body Fluids & Circulation',
+                            'Excretory Products & Elimination',
+                            'Locomotion & Movement',
+                            'Neural Control & Coordination',
+                            'Human Reproduction & Health',
+                            'Biotechnology Principles & Processes'
+                        ]
+                    },
+                    {
+                        name: 'NEET Chemistry',
+                        examId: 'NEET',
+                        subject: 'Chemistry',
+                        topics: [
+                            'Structure of Atom & Periodic Table',
+                            'Chemical Bonding & Molecular Shape',
+                            'Thermodynamics & Equilibrium',
+                            'Organic Chemistry Principles',
+                            'Biomolecules & Polymers',
+                            'Coordination Chemistry',
+                            'Solutions & Electrochemistry',
+                            'Hydrocarbons & Haloalkanes'
+                        ]
+                    },
+                    {
+                        name: 'NEET Physics',
+                        examId: 'NEET',
+                        subject: 'Physics',
+                        topics: [
+                            'Units & Measurements',
+                            'Motion in a Straight Line & Plane',
+                            'Laws of Motion & Friction',
+                            'Gravitation & Satellite Motion',
+                            'Ray & Wave Optics',
+                            'Current Electricity & Circuits',
+                            'Dual Nature of Matter & Radiation',
+                            'Semiconductors & Electronic Devices'
+                        ]
+                    },
+                    {
+                        name: 'AIIMS & Paramedical',
+                        examId: 'AIIMS',
+                        subject: 'Biology',
+                        topics: [
+                            'AIIMS Assertion & Reason Practice',
+                            'General Knowledge & Current Affairs',
+                            'AFMC Armed Forces Medical Aptitude',
+                            'ICAR Bio-Sciences & Agriculture',
+                            'Nursing & Allied Health Sciences'
+                        ]
+                    }
+                ]
+            },
+            'CIVIL': {
+                title: 'Civil Services Examination & State PSCs',
+                examCount: '5 exams',
+                icon: '🏛️',
+                defaultExamId: 'UPSC',
+                columns: [
+                    {
+                        name: 'UPSC General Studies I',
+                        examId: 'UPSC',
+                        subject: 'General Science',
+                        topics: [
+                            'General Science & Emerging Technologies',
+                            'Indian Polity & Constitution',
+                            'Indian Economy & Budgeting',
+                            'Physical & Indian Geography',
+                            'Environmental Ecology & Climate Change',
+                            'Modern Indian History & Culture'
+                        ]
+                    },
+                    {
+                        name: 'UPSC CSAT Paper II',
+                        examId: 'UPSC',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'Reading Comprehension & Passages',
+                            'Logical Reasoning & Analytical Ability',
+                            'Decision Making & Problem Solving',
+                            'General Mental Ability',
+                            'Basic Numeracy & Data Interpretation'
+                        ]
+                    },
+                    {
+                        name: 'State PSC (WBCS / BPSC / UPPSC)',
+                        examId: 'STATE-PSC',
+                        subject: 'General Science',
+                        topics: [
+                            'General Science & Everyday Application',
+                            'History of India & National Movement',
+                            'Geography of India & States',
+                            'Indian Polity & Decentralization',
+                            'General Mental Ability & Current Events'
+                        ]
+                    },
+                    {
+                        name: 'Science & Tech in Governance',
+                        examId: 'UPSC',
+                        subject: 'General Science',
+                        topics: [
+                            'Space Missions & Astronomy (ISRO/NASA)',
+                            'Nuclear & Renewable Energy',
+                            'Information & Cyber Security',
+                            'Biotechnology & Public Health'
+                        ]
+                    },
+                    {
+                        name: 'Ethics & Governance',
+                        examId: 'UPSC',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'Ethics, Integrity & Aptitude',
+                            'Case Studies on Public Administration',
+                            'Public Service Values & Ethical Dilemmas'
+                        ]
+                    }
+                ]
+            },
+            'DEFENCE': {
+                title: 'Armed Forces & Defence Services Examinations',
+                examCount: '4 exams',
+                icon: '🛡️',
+                defaultExamId: 'NDA',
+                columns: [
+                    {
+                        name: 'NDA Mathematics',
+                        examId: 'NDA',
+                        subject: 'Mathematics',
+                        topics: [
+                            'Algebra & Quadratic Equations',
+                            'Trigonometry & Properties of Triangles',
+                            'Calculus (Differential & Integral)',
+                            '2D & 3D Coordinate Geometry',
+                            'Vectors & Vector Algebra',
+                            'Statistics & Probability'
+                        ]
+                    },
+                    {
+                        name: 'NDA General Ability (GAT)',
+                        examId: 'NDA',
+                        subject: 'General Science',
+                        topics: [
+                            'English Grammar & Vocabulary',
+                            'Physics (Mechanics, Optics, Electricity)',
+                            'Chemistry (Matter, Reactions, Acids)',
+                            'General Science & Physiology',
+                            'Indian History & National Movement',
+                            'Geography of India & World'
+                        ]
+                    },
+                    {
+                        name: 'CDS (Combined Defence Services)',
+                        examId: 'CDS',
+                        subject: 'General Science',
+                        topics: [
+                            'Elementary Mathematics & Arithmetic',
+                            'English Comprehension & Ordering',
+                            'General Knowledge & Current Affairs',
+                            'Defence Awareness & National Security'
+                        ]
+                    },
+                    {
+                        name: 'AFCAT (Air Force)',
+                        examId: 'AFCAT',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'Verbal Ability in English',
+                            'Numerical Ability & Speed Arithmetic',
+                            'Reasoning & Military Aptitude',
+                            'Engineering Knowledge Test (EKT)'
+                        ]
+                    },
+                    {
+                        name: 'CAPF (Assistant Commandant)',
+                        examId: 'CAPF',
+                        subject: 'General Science',
+                        topics: [
+                            'General Ability and Intelligence',
+                            'General Studies & History-Polity',
+                            'Essay, Precis & Comprehension'
+                        ]
+                    }
+                ]
+            },
+            'SSC': {
+                title: 'Staff Selection Commission, Railways & Banking',
+                examCount: '6 exams',
+                icon: '🚆',
+                defaultExamId: 'SSC',
+                columns: [
+                    {
+                        name: 'SSC CGL',
+                        examId: 'SSC',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'General Intelligence & Reasoning',
+                            'Quantitative Aptitude & Arithmetic',
+                            'General Awareness & General Science',
+                            'English Comprehension & Grammar'
+                        ]
+                    },
+                    {
+                        name: 'SSC CHSL',
+                        examId: 'SSC',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'Quantitative Aptitude (Basic Arithmetic)',
+                            'General Intelligence & Analytical Logic',
+                            'General Awareness & Current Affairs',
+                            'English Language & Sentence Structure'
+                        ]
+                    },
+                    {
+                        name: 'SSC JE (Engineering)',
+                        examId: 'SSC',
+                        subject: 'Physics',
+                        topics: [
+                            'General Engineering (Civil/Mech/Elec)',
+                            'General Intelligence & Reasoning',
+                            'General Awareness & Science'
+                        ]
+                    },
+                    {
+                        name: 'RRB NTPC & JE',
+                        examId: 'RRB',
+                        subject: 'General Science',
+                        topics: [
+                            'Mathematics & Arithmetic Concepts',
+                            'General Intelligence & Reasoning',
+                            'General Science (Physics, Chem, Biology)',
+                            'General Awareness on Railways & Nation'
+                        ]
+                    },
+                    {
+                        name: 'Banking (IBPS & SBI)',
+                        examId: 'BANKING',
+                        subject: 'General Mental Ability',
+                        topics: [
+                            'Reasoning Ability & Seating Arrangements',
+                            'Quantitative Aptitude & Data Interpretation',
+                            'English Language & Error Detection',
+                            'Banking Awareness & Financial Systems'
+                        ]
+                    }
+                ]
+            },
+            'CBSE': {
+                title: 'Central Board of Secondary Education & Foundation',
+                examCount: '3 exams',
+                icon: '🏫',
+                defaultExamId: 'CBSE',
+                columns: [
+                    {
+                        name: 'CBSE Class 12 Science',
+                        examId: 'CBSE',
+                        subject: 'Physics',
+                        topics: [
+                            'Physics: Electrostatics & Potential',
+                            'Physics: Current Electricity & Magnetism',
+                            'Physics: Optics & Optical Instruments',
+                            'Chemistry: Solutions & Electrochemistry',
+                            'Chemistry: Organic Compounds & Reactions',
+                            'Mathematics: Calculus & 3D Vectors',
+                            'Biology: Reproduction & Molecular Genetics'
+                        ]
+                    },
+                    {
+                        name: 'CBSE Class 11 Science',
+                        examId: 'CBSE',
+                        subject: 'Physics',
+                        topics: [
+                            'Physics: Units, Motion & Laws of Motion',
+                            'Physics: Gravitation & Fluid Mechanics',
+                            'Chemistry: Atomic Structure & Bonding',
+                            'Chemistry: Thermodynamics & Equilibrium',
+                            'Mathematics: Sets, Relations & Functions',
+                            'Biology: Cell Structure & Plant Physiology'
+                        ]
+                    },
+                    {
+                        name: 'Foundation & NTSE',
+                        examId: 'FOUNDATION',
+                        subject: 'General Science',
+                        topics: [
+                            'Mental Ability Test (MAT) Logic',
+                            'Scholastic Aptitude (SAT) Physics',
+                            'Scholastic Aptitude (SAT) Chemistry',
+                            'Scholastic Aptitude (SAT) Biology',
+                            'Scholastic Aptitude (SAT) Mathematics'
+                        ]
+                    },
+                    {
+                        name: 'Junior Olympiads',
+                        examId: 'FOUNDATION',
+                        subject: 'Physics',
+                        topics: [
+                            'NSEJS (Junior Science Olympiad)',
+                            'PRMO / Pre-RMO Mathematics',
+                            'Science Talent Search (NSTSE)'
+                        ]
+                    },
+                    {
+                        name: 'Board Practical & Viva',
+                        examId: 'CBSE',
+                        subject: 'Physics',
+                        topics: [
+                            'Vernier Calipers & Screw Gauge Labs',
+                            'Ohm\'s Law & Resistance Experiments',
+                            'Salt Analysis & Titration Viva',
+                            'Biological Specimen Identification'
+                        ]
+                    }
+                ]
+            },
+            'RESEARCH': {
+                title: 'Pure Sciences, IISERs, NISER & Research Fellowships',
+                examCount: '6 exams',
+                icon: '🔬',
+                defaultExamId: 'IAT',
+                columns: [
+                    {
+                        name: 'IAT (IISER Aptitude Test)',
+                        examId: 'IAT',
+                        subject: 'Physics',
+                        topics: [
+                            'Physics: Core Conceptual & Calculus Problems',
+                            'Chemistry: Physical, Organic & Inorganic',
+                            'Mathematics: Algebra, Calculus & Vectors',
+                            'Biology: Genetics, Physiology & Ecology'
+                        ]
+                    },
+                    {
+                        name: 'NEST (NISER / CEBS)',
+                        examId: 'NEST',
+                        subject: 'Physics',
+                        topics: [
+                            'General Physics & Modern Concepts',
+                            'Chemical Sciences Section',
+                            'Mathematical Sciences Section',
+                            'Life Sciences Section'
+                        ]
+                    },
+                    {
+                        name: 'IIT-JAM (M.Sc)',
+                        examId: 'IIT-JAM',
+                        subject: 'Physics',
+                        topics: [
+                            'JAM Physics (Mechanics & Quantum)',
+                            'JAM Chemistry (Physical & Inorganic)',
+                            'JAM Mathematics (Real Analysis & Algebra)',
+                            'JAM Biotechnology (Cell & Molecular Bio)'
+                        ]
+                    },
+                    {
+                        name: 'CSIR-UGC NET (JRF)',
+                        examId: 'CSIR-NET',
+                        subject: 'Physics',
+                        topics: [
+                            'Physical Sciences (Part A, B & C)',
+                            'Chemical Sciences (Part A, B & C)',
+                            'Life Sciences (Part A, B & C)',
+                            'Mathematical Sciences (Part A, B & C)'
+                        ]
+                    },
+                    {
+                        name: 'Science Olympiads',
+                        examId: 'OLYMPIAD',
+                        subject: 'Physics',
+                        topics: [
+                            'NSEP (National Standard Exam in Physics)',
+                            'NSEC (National Standard Exam in Chemistry)',
+                            'NSEB (National Standard Exam in Biology)',
+                            'INPhO / INChO / INBO Olympiads'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        let megaMenuDebounceTimer = null;
+        let activeMegaMenuCategory = null;
+
+        function handleCategoryMouseEnter(cat) {
+            if (megaMenuDebounceTimer) {
+                clearTimeout(megaMenuDebounceTimer);
+                megaMenuDebounceTimer = null;
+            }
+            openExamMegaMenu(cat);
+        }
+
+        function handleCategoryMouseLeave() {
+            megaMenuDebounceTimer = setTimeout(() => {
+                closeExamMegaMenu();
+            }, 180);
+        }
+
+        function handleMegaMenuMouseEnter() {
+            if (megaMenuDebounceTimer) {
+                clearTimeout(megaMenuDebounceTimer);
+                megaMenuDebounceTimer = null;
+            }
+        }
+
+        function handleMegaMenuMouseLeave() {
+            megaMenuDebounceTimer = setTimeout(() => {
+                closeExamMegaMenu();
+            }, 180);
+        }
+
+        function handleCategoryClick(cat) {
+            if (activeMegaMenuCategory === cat) {
+                closeExamMegaMenu();
+            } else {
+                openExamMegaMenu(cat);
+            }
+        }
+
+        function openExamMegaMenu(cat) {
+            const data = EXAMSIDE_MEGA_CATEGORIES[cat];
+            if (!data) return;
+
+            activeMegaMenuCategory = cat;
+
+            // Highlight corresponding upper-row button and rotate caret
+            const buttons = document.querySelectorAll('.upper-row-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('is-expanded');
+                } else {
+                    btn.classList.remove('is-expanded');
+                }
+            });
+
+            // Render mega-menu content
+            renderExamMegaMenuContent(cat);
+
+            // Expand mega menu
+            const menu = document.getElementById('examMegaMenu');
+            if (menu) {
+                menu.classList.add('is-expanded');
+            }
+        }
+
+        function closeExamMegaMenu() {
+            activeMegaMenuCategory = null;
+
+            // Remove highlighted state from all upper row buttons
+            const buttons = document.querySelectorAll('.upper-row-btn');
+            buttons.forEach(btn => btn.classList.remove('is-expanded'));
+
+            // Concise / collapse mega menu
+            const menu = document.getElementById('examMegaMenu');
+            if (menu) {
+                menu.classList.remove('is-expanded');
+            }
+        }
+
+        function renderExamMegaMenuContent(cat) {
+            const data = EXAMSIDE_MEGA_CATEGORIES[cat];
+            if (!data) return;
+
+            const titleEl = document.getElementById('megaMenuTitle');
+            const countEl = document.getElementById('megaMenuExamCount');
+            const iconEl = document.getElementById('megaMenuIcon');
+            const colsContainer = document.getElementById('megaMenuColumns');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (countEl) countEl.textContent = data.examCount;
+            if (iconEl) iconEl.textContent = data.icon || '🎓';
+
+            if (colsContainer) {
+                colsContainer.innerHTML = data.columns.map(col => `
+                    <div class="flex flex-col gap-1 min-w-0">
+                        <div onclick="selectFromMegaMenu('${col.examId}', '${col.subject}', '')" 
+                             class="font-display font-black text-xs md:text-sm text-slate-900 hover:text-amber-800 flex items-center justify-between pb-1 border-b border-amber-300/80 cursor-pointer transition select-none group"
+                             title="Switch to ${col.name}">
+                            <span class="truncate">${col.name}</span>
+                            <span class="text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rsaquo;</span>
+                        </div>
+                        <div class="flex flex-col space-y-0.5">
+                            ${col.topics.map(topic => `
+                                <a onclick="selectFromMegaMenu('${col.examId}', '${col.subject}', '${topic.replace(/'/g, "\\'")}')" 
+                                   class="mega-menu-topic-link" 
+                                   title="Practice ${topic} under ${col.name}">
+                                    ${topic}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function selectFromMegaMenu(examId, subject, topic) {
+            // 1. Switch exam selector if provided
+            if (examId) {
+                const selector = document.getElementById('examSelector');
+                if (selector) {
+                    selector.value = examId;
+                }
+                filterByExam();
+                updateExamDropdownUI(examId);
+            }
+
+            // 2. Switch subject if provided
+            if (subject && typeof switchSubject === 'function') {
+                const availableSubjects = SUBJECTS_BY_EXAM[currentExam] || ALL_AVAILABLE_SUBJECTS;
+                if (availableSubjects.includes(subject)) {
+                    switchSubject(subject);
+                }
+            }
+
+            // 3. Filter or search topic if provided
+            if (topic) {
+                const topicSelector = document.getElementById('topicSelector');
+                if (topicSelector) {
+                    let matched = false;
+                    for (let opt of topicSelector.options) {
+                        if (opt.value !== 'ALL' && (opt.text.toLowerCase().includes(topic.toLowerCase()) || topic.toLowerCase().includes(opt.text.toLowerCase()))) {
+                            topicSelector.value = opt.value;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    if (matched) {
+                        filterByTopic();
+                    }
+                }
+            }
+
+            // Concise / close the mega-menu immediately
+            closeExamMegaMenu();
+
+            // Provide visual feedback
+            const syncBadge = document.getElementById('syncBadgeText');
+            if (syncBadge && examId) {
+                const oldText = syncBadge.innerText;
+                syncBadge.innerText = `Switched: ${examId} › ${subject || 'All Subjects'}`;
+                setTimeout(() => {
+                    if (syncBadge) syncBadge.innerText = oldText;
+                }, 3000);
+            }
+        }
+
         // 6. EXAM & STREAM & SUBJECT NAVIGATION
         function filterByExam() {
             const selector = document.getElementById('examSelector');
@@ -3717,11 +4621,16 @@
             });
         }
 
-        // Close Exam Search Dropdown on Outside Click
+        // Close Exam Search Dropdown & Mega Menu on Outside Click
         document.addEventListener('click', (e) => {
             const wrapper = document.getElementById('examDropdownWrapper');
             if (wrapper && !wrapper.contains(e.target)) {
                 toggleExamDropdown(false);
+            }
+            const megaMenu = document.getElementById('examMegaMenu');
+            const categoryNav = document.getElementById('upperRowCategoryNav');
+            if (megaMenu && categoryNav && !megaMenu.contains(e.target) && !categoryNav.contains(e.target)) {
+                closeExamMegaMenu();
             }
         });
 
@@ -3729,6 +4638,7 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 toggleExamDropdown(false);
+                closeExamMegaMenu();
             }
 
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;

@@ -22,6 +22,8 @@ def test_html():
     assert 'id="examSearchInput"' in content, "Missing examSearchInput in DOM"
     assert 'id="examCategoryChips"' in content, "Missing examCategoryChips in DOM"
     assert 'id="examCardsContainer"' in content, "Missing examCardsContainer in DOM"
+    assert 'id="upperRowCategoryNav"' in content, "Missing upperRowCategoryNav in DOM"
+    assert 'id="examMegaMenu"' in content, "Missing examMegaMenu in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -31,6 +33,8 @@ def test_html():
     assert '.math-hat' in content, "Missing .math-hat CSS in stylesheet"
     assert '.nav-caret' in content, "Missing .nav-caret in stylesheet"
     assert '.rotate-180' in content, "Missing .rotate-180 in stylesheet"
+    assert '.upper-row-btn' in content, "Missing .upper-row-btn in stylesheet"
+    assert '#examMegaMenu' in content, "Missing #examMegaMenu in stylesheet"
     
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)
@@ -64,13 +68,18 @@ def test_html():
         "function filterExamDropdownCategory(",
         "function renderExamDropdownList()",
         "function selectExamFromDropdown(",
-        "function updateExamDropdownUI("
+        "function updateExamDropdownUI(",
+        "function openExamMegaMenu(",
+        "function closeExamMegaMenu()",
+        "function renderExamMegaMenuContent(",
+        "function selectFromMegaMenu("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
         
     # 4. Check EXAM_SUBJECT_COMBINATIONS and EXAM_DIRECTORY
     assert "const EXAM_DIRECTORY = [" in js_code, "Missing EXAM_DIRECTORY in script"
+    assert "const EXAMSIDE_MEGA_CATEGORIES = {" in js_code, "Missing EXAMSIDE_MEGA_CATEGORIES in script"
     assert "const EXAM_SUBJECT_COMBINATIONS = {" in js_code
     assert "'MHT-CET': [" in js_code
     assert "'WBJEE': [" in js_code
