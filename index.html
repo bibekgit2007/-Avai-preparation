@@ -559,12 +559,161 @@
             font-weight: 700;
             transform: translateX(4px);
         }
+
+        /* ==========================================================================
+           OFFICIAL 1:1 NTA CBT EXAM CENTER SCREEN SIMULATION (TCS iON EXAM HALL)
+           ========================================================================== */
+        body.nta-cbt-mode {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+
+        body.nta-cbt-mode #ntaOfficialHeader {
+            display: flex !important;
+        }
+
+        body.nta-cbt-mode .modern-top-header {
+            display: none !important;
+        }
+
+        body.nta-cbt-mode #chapterNavStrip,
+        body.nta-cbt-mode footer {
+            display: none !important;
+        }
+
+        body.nta-cbt-mode main {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            max-width: 100% !important;
+        }
+
+        body.nta-cbt-mode #questionArea {
+            background-color: #ffffff !important;
+        }
+
+        .nta-answered {
+            background-color: #16a34a !important;
+            color: #ffffff !important;
+            clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%) !important;
+            border-radius: 0 !important;
+            font-weight: 800 !important;
+        }
+
+        .nta-not-answered {
+            background-color: #dc2626 !important;
+            color: #ffffff !important;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%) !important;
+            border-radius: 0 !important;
+            font-weight: 800 !important;
+        }
+
+        .nta-not-visited {
+            background-color: #f8fafc !important;
+            color: #334155 !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 4px !important;
+            font-weight: 700 !important;
+        }
+
+        .nta-marked {
+            background-color: #7c3aed !important;
+            color: #ffffff !important;
+            border-radius: 50% !important;
+            font-weight: 800 !important;
+        }
+
+        .nta-marked-answered {
+            background-color: #7c3aed !important;
+            color: #ffffff !important;
+            border-radius: 50% !important;
+            position: relative !important;
+            font-weight: 800 !important;
+        }
+        .nta-marked-answered::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -1px !important;
+            right: -1px !important;
+            width: 8px !important;
+            height: 8px !important;
+            background-color: #22c55e !important;
+            border-radius: 50% !important;
+            border: 1.5px solid #ffffff !important;
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-900 min-h-screen flex flex-col relative selection:bg-blue-600 selection:text-white antialiased">
 
+    <!-- ==========================================================================
+         OFFICIAL 1:1 NTA CBT EXAM CENTER SCREEN SIMULATION HEADER (TCS iON EXAM HALL)
+         ========================================================================== -->
+    <header id="ntaOfficialHeader" class="nta-official-header hidden bg-[#1e3a8a] text-white select-none border-b-2 border-[#1e40af] flex-col z-50 sticky top-0">
+        <!-- Top Institutional Strip -->
+        <div class="px-4 py-2 flex items-center justify-between border-b border-blue-800/60 bg-[#172554] text-xs">
+            <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-full bg-white flex items-center justify-center font-bold text-blue-900 text-sm shadow-xs">🏛️</span>
+                <div>
+                    <h1 class="font-bold text-xs sm:text-sm tracking-tight text-white uppercase">NATIONAL TESTING AGENCY (NTA)</h1>
+                    <p class="text-[10px] text-blue-300 font-mono">Computer Based Test (CBT) Portal • Ministry of Education, Govt. of India</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <div class="text-right hidden sm:block">
+                    <span class="text-[10px] text-blue-300 block font-mono">System Number:</span>
+                    <strong class="font-mono text-amber-300 text-sm">C028 (Lab-04)</strong>
+                </div>
+                <!-- Toggle back to Modern Dark UI -->
+                <button onclick="toggleNTACBTMode()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-1 cursor-pointer" title="Switch back to Modern Dark UI">
+                    <span>✨</span>
+                    <span>Modern Dark UI</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Candidate Profile & Live Digital Exam Clock Strip -->
+        <div class="px-4 py-2.5 flex items-center justify-between bg-[#1e3a8a] text-xs flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-100 border-2 border-white/80 overflow-hidden shadow-xs flex items-center justify-center text-xl">
+                    👨‍🎓
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-sm text-white">Bibek Nayek</span>
+                        <span class="text-[10px] bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 px-1.5 py-0.2 rounded font-mono font-bold">Candidate Verified</span>
+                    </div>
+                    <div class="text-[11px] text-blue-200 font-mono">
+                        Roll: <strong>2604100892</strong> &nbsp;•&nbsp; Exam: <strong id="ntaHeaderExamName" class="text-amber-300">NEET (UG) 2026</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Official NTA Digital Timer -->
+            <div class="flex items-center gap-3 bg-slate-950/80 px-4 py-2 rounded-xl border border-blue-400/30 shadow-inner">
+                <span class="text-xs uppercase font-extrabold text-slate-400">Time Left:</span>
+                <span id="ntaOfficialTimer" class="font-mono font-black text-lg sm:text-xl text-amber-400 tracking-wider">03:00:00</span>
+            </div>
+        </div>
+
+        <!-- Official Section Tabs Strip -->
+        <div class="px-4 py-1.5 bg-[#172554] border-t border-blue-900 flex items-center justify-between text-xs overflow-x-auto no-scrollbar gap-2">
+            <div class="flex items-center gap-1" id="ntaSectionTabs">
+                <!-- Dynamically rendered NTA section buttons -->
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="openNTAInstructionsModal()" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-blue-200 hover:text-white rounded font-semibold text-xs flex items-center gap-1 cursor-pointer">
+                    <span>ℹ️</span> Instructions
+                </button>
+                <button onclick="openNTAPaperViewModal()" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-blue-200 hover:text-white rounded font-semibold text-xs flex items-center gap-1 cursor-pointer">
+                    <span>📄</span> Question Paper
+                </button>
+            </div>
+        </div>
+    </header>
+
     <!-- Top Navigation Header -->
-    <header class="glass-header text-white px-3.5 py-2.5 md:px-6 md:py-3.5 flex justify-between items-center sticky top-0 z-40 gap-2 select-none shadow-lg">
+    <header class="glass-header modern-top-header text-white px-3.5 py-2.5 md:px-6 md:py-3.5 flex justify-between items-center sticky top-0 z-40 gap-2 select-none shadow-lg">
         <div class="flex items-center gap-3 md:gap-5 flex-wrap">
             <!-- Brand Logo -->
             <div class="flex items-center gap-2 cursor-pointer select-none" onclick="handleBrandClick()" title="AVAI Preparation">
@@ -812,6 +961,13 @@
                 <span class="text-[9px] bg-amber-500/20 text-amber-300 border border-amber-400/40 px-1 py-0.2 rounded font-mono font-bold" title="⚠️ Prohibited in NEET/JEE exams">⚠️</span>
             </button>
 
+            <!-- Official 1:1 NTA CBT Exam Center Screen Simulation Toggle -->
+            <button onclick="toggleNTACBTMode()" id="ntaCBTModeBtn" class="bg-gradient-to-r from-blue-950/80 via-slate-900 to-blue-950/80 hover:bg-blue-900 border border-blue-500/50 hover:border-blue-400 text-blue-200 text-xs md:text-sm font-bold px-2 sm:px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-blue-950/30 transition transform active:scale-95 cursor-pointer" title="Toggle 1:1 Official NTA CBT Exam Center Screen Simulation (TCS iON Examination Hall UI)">
+                <span>🖥️</span>
+                <span id="ntaCBTBtnText" class="hidden sm:inline">NTA CBT</span>
+                <span class="text-[9px] bg-blue-500/30 text-blue-300 border border-blue-400/40 px-1 py-0.2 rounded font-mono font-bold hidden md:inline">1:1</span>
+            </button>
+
             <!-- Mobile Palette Toggle Button (Visible only on mobile) -->
             <button onclick="toggleMobilePalette()" class="md:hidden bg-slate-800 text-slate-200 hover:text-white p-2 rounded-xl border border-slate-700 text-xs font-bold flex items-center gap-1">
                 <span>📊</span>
@@ -1042,6 +1198,10 @@
                 <div class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-mono font-black" id="countNotVisited">0</span>
                     <span>Not Visited</span>
+                </div>
+                <div class="flex items-center gap-2 col-span-2 pt-1 border-t border-slate-200/60">
+                    <span class="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-mono font-black relative" id="countAnsweredMarked"><span class="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full border border-white"></span>0</span>
+                    <span class="text-[10px] text-slate-600">Ans & Marked for Review <span class="text-[9px] text-emerald-600 font-semibold">(Evaluated)</span></span>
                 </div>
             </div>
 
@@ -1804,6 +1964,34 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
         </div>
     </div>
 
+    <!-- ==========================================================================
+         OFFICIAL NTA CBT FULL QUESTION PAPER PREVIEW MODAL
+         ========================================================================== -->
+    <div id="ntaPaperViewModal" class="fixed inset-0 glass-modal z-[98] hidden flex items-center justify-center p-3 sm:p-5">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-scale-in">
+            <div class="p-4 sm:p-5 border-b border-slate-200 bg-[#1e3a8a] text-white flex items-center justify-between select-none">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-2xl">📄</span>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-display font-black text-white">Question Paper Overview</h3>
+                        <p class="text-xs text-blue-200">Complete listing of questions in current test (Official NTA CBT view)</p>
+                    </div>
+                </div>
+                <button onclick="closeNTAPaperViewModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer font-bold text-sm">
+                    ✕
+                </button>
+            </div>
+            <div id="ntaPaperViewContent" class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 text-xs sm:text-sm custom-scrollbar">
+                <!-- Populated dynamically via renderNTAPaperView() -->
+            </div>
+            <div class="p-3.5 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="closeNTAPaperViewModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition cursor-pointer">
+                    Close Paper View
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-400 px-4 md:px-6 py-3 border-t border-slate-800/80 text-xs select-none">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2.5">
@@ -2482,6 +2670,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             filterByExam();
             checkForResumableMockSession();
             updateMistakeBadgeCount();
+            initNTACBTModeOnLoad();
         }
 
         // Toggle merge mode between Sheet-only vs Sheet + 322 Coded Questions
@@ -4621,6 +4810,160 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             }
         }
 
+        // ==========================================================================
+        // 5f. OFFICIAL 1:1 NTA CBT EXAM CENTER SCREEN SIMULATION CONTROLLER (TCS iON)
+        // ==========================================================================
+        const NTA_CBT_STORAGE_KEY = 'avai_ui_theme_mode';
+
+        function isNTACBTModeActive() {
+            return document.body.classList.contains('nta-cbt-mode');
+        }
+
+        function toggleNTACBTMode() {
+            const willBeCBT = !isNTACBTModeActive();
+            document.body.classList.toggle('nta-cbt-mode', willBeCBT);
+            localStorage.setItem(NTA_CBT_STORAGE_KEY, willBeCBT ? 'nta_cbt' : 'modern');
+
+            const btnText = document.getElementById('ntaCBTBtnText');
+            if (btnText) {
+                btnText.innerText = willBeCBT ? 'Modern UI' : 'NTA CBT';
+            }
+
+            if (willBeCBT) {
+                renderNTASectionTabs();
+                updateNTATimerDisplay();
+                const examHeader = document.getElementById('ntaHeaderExamName');
+                if (examHeader) {
+                    examHeader.innerText = `${currentExam === 'ALL' ? 'Multi-Subject Master' : currentExam} CBT Exam Center`;
+                }
+                showMistakeToast('🖥️ Official NTA CBT Exam Center Screen Simulation Activated!');
+            } else {
+                showMistakeToast('✨ Modern Dark UI Restored!');
+            }
+
+            renderPalette();
+            render();
+        }
+
+        function initNTACBTModeOnLoad() {
+            const savedMode = localStorage.getItem(NTA_CBT_STORAGE_KEY);
+            if (savedMode === 'nta_cbt') {
+                document.body.classList.add('nta-cbt-mode');
+                const btnText = document.getElementById('ntaCBTBtnText');
+                if (btnText) btnText.innerText = 'Modern UI';
+                renderNTASectionTabs();
+                updateNTATimerDisplay();
+            }
+        }
+
+        function renderNTASectionTabs() {
+            const container = document.getElementById('ntaSectionTabs');
+            if (!container) return;
+
+            const examCombo = EXAM_SUBJECT_COMBINATIONS[currentExam] || EXAM_SUBJECT_COMBINATIONS['NEET'] || [];
+            let subjects = [];
+            if (examCombo.length > 0) {
+                const primary = examCombo.find(c => c.id === currentStreamId) || examCombo[0];
+                subjects = primary.subjects || [];
+            }
+            if (subjects.length === 0) {
+                subjects = ['Physics', 'Chemistry', 'Biology'];
+            }
+
+            container.innerHTML = subjects.map(sub => {
+                const isActive = (sub === currentSubject);
+                return `
+                    <button onclick="switchSubject('${sub}'); renderNTASectionTabs();" class="px-3 py-1 rounded text-xs font-bold transition cursor-pointer ${isActive ? 'bg-white text-blue-900 shadow-sm' : 'bg-blue-900/60 text-blue-200 hover:bg-blue-800'}">
+                        ${sub}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function updateNTATimerDisplay() {
+            const timerEl = document.getElementById('ntaOfficialTimer');
+            if (!timerEl) return;
+            const curTime = (typeof timeInSecs !== 'undefined' && timeInSecs > 0) ? timeInSecs : (typeof examTimeRemaining !== 'undefined' && examTimeRemaining > 0 ? examTimeRemaining : 0);
+            if (!isExamTimerRunning || curTime <= 0) {
+                timerEl.innerText = '03:00:00';
+                return;
+            }
+            const hours = Math.floor(curTime / 3600);
+            const minutes = Math.floor((curTime % 3600) / 60);
+            const seconds = curTime % 60;
+            const hStr = hours < 10 ? `0${hours}` : hours;
+            const mStr = minutes < 10 ? `0${minutes}` : minutes;
+            const sStr = seconds < 10 ? `0${seconds}` : seconds;
+            timerEl.innerText = `${hStr}:${mStr}:${sStr}`;
+        }
+
+        function openNTAPaperViewModal() {
+            const modal = document.getElementById('ntaPaperViewModal');
+            const content = document.getElementById('ntaPaperViewContent');
+            if (!modal || !content) return;
+
+            const filtered = getFiltered();
+            if (filtered.length === 0) {
+                content.innerHTML = '<p class="text-slate-500 py-8 text-center font-bold">No questions found in this section.</p>';
+            } else {
+                content.innerHTML = filtered.map((q, i) => {
+                    const promptRaw = q[currentLang] || q.en || q.bn || '';
+                    const promptFormatted = (typeof formatScienceAndMath === 'function') ? formatScienceAndMath(promptRaw) : promptRaw;
+                    const st = statuses[q.orig];
+                    let stBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">Not Visited</span>';
+                    if (st === 'answered' || st === 'answered-marked') {
+                        stBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Answered</span>';
+                    } else if (st === 'not-answered') {
+                        stBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800">Not Answered</span>';
+                    } else if (st === 'marked') {
+                        stBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">Marked for Review</span>';
+                    }
+
+                    return `
+                        <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-6 h-6 rounded-md bg-blue-900 text-white flex items-center justify-center font-black font-mono text-xs">${i + 1}</span>
+                                    <span class="font-bold text-slate-700 font-display">${q.topic || q.subject}</span>
+                                    <span class="text-[10px] text-slate-500 font-mono">(${q.difficulty})</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    ${stBadge}
+                                    <button onclick="closeNTAPaperViewModal(); jumpTo(${i});" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded font-bold text-[11px] transition cursor-pointer">
+                                        Go to Q
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-xs sm:text-sm text-slate-800 font-stem font-medium leading-relaxed pl-8">
+                                ${promptFormatted}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                if (window.renderMathInElement) {
+                    try {
+                        renderMathInElement(content, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '\\[', right: '\\]', display: true }
+                            ],
+                            throwOnError: false
+                        });
+                    } catch (e) {}
+                }
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeNTAPaperViewModal() {
+            const modal = document.getElementById('ntaPaperViewModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
         // --- COMPACT SEARCHABLE EXAM DIRECTORY & DROPDOWN ENGINE ---
         const EXAM_DIRECTORY = [
             { id: 'ALL', name: 'All Exams (Universal Bank)', short: 'All Exams', category: 'ALL', icon: '🌟', badge: 'Universal', desc: 'Complete 11-subject master repository across all competitive domains' },
@@ -6361,26 +6704,47 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
 
             if (totalBadge) totalBadge.innerText = filtered.length;
 
-            palette.innerHTML = filtered.map((q, i) => `
-                <button onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${statuses[q.orig]}" title="Question ${i + 1} (${q.topic}) - Time: ${formatSecondsMMSS(questionTimes[q.orig])}">
-                    ${i + 1}
-                </button>
-            `).join('');
+            const isNTA = (typeof isNTACBTModeActive === 'function') && isNTACBTModeActive();
+
+            palette.innerHTML = filtered.map((q, i) => {
+                const st = statuses[q.orig];
+                let ntaClass = '';
+                if (isNTA) {
+                    if (st === 'answered') ntaClass = 'nta-answered';
+                    else if (st === 'not-answered') ntaClass = 'nta-not-answered';
+                    else if (st === 'marked') ntaClass = 'nta-marked';
+                    else if (st === 'answered-marked') ntaClass = 'nta-marked-answered';
+                    else ntaClass = 'nta-not-visited';
+                }
+                return `
+                    <button onclick="jumpTo(${i})" class="status-btn ${i === currentIdx ? 'active-q' : ''} ${st} ${ntaClass}" title="Question ${i + 1} (${q.topic}) - Time: ${formatSecondsMMSS(questionTimes[q.orig])}">
+                        ${i + 1}
+                    </button>
+                `;
+            }).join('');
 
             // Update KPI Counters
-            let countAns = 0, countNotAns = 0, countMark = 0, countNotVis = 0;
+            let countAns = 0, countNotAns = 0, countMark = 0, countAnsMark = 0, countNotVis = 0;
             questionBank.forEach(q => {
                 const st = statuses[q.orig];
-                if (st === 'answered' || st === 'answered-marked') countAns++;
+                if (st === 'answered') countAns++;
+                else if (st === 'answered-marked') countAnsMark++;
                 else if (st === 'not-answered') countNotAns++;
                 else if (st === 'marked') countMark++;
                 else countNotVis++;
             });
 
-            document.getElementById('countAnswered').innerText = countAns;
-            document.getElementById('countNotAnswered').innerText = countNotAns;
-            document.getElementById('countMarked').innerText = countMark;
-            document.getElementById('countNotVisited').innerText = countNotVis;
+            const countAnsEl = document.getElementById('countAnswered');
+            const countNotAnsEl = document.getElementById('countNotAnswered');
+            const countMarkEl = document.getElementById('countMarked');
+            const countAnsMarkEl = document.getElementById('countAnsweredMarked');
+            const countNotVisEl = document.getElementById('countNotVisited');
+
+            if (countAnsEl) countAnsEl.innerText = countAns;
+            if (countNotAnsEl) countNotAnsEl.innerText = countNotAns;
+            if (countMarkEl) countMarkEl.innerText = countMark;
+            if (countAnsMarkEl) countAnsMarkEl.innerHTML = `<span class="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full border border-white"></span>${countAnsMark}`;
+            if (countNotVisEl) countNotVisEl.innerText = countNotVis;
         }
 
         function updateProgress() {
@@ -6578,6 +6942,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                     container.title = 'Practice Mode (Untimed). Click to start timed Mock Exam or full exam configuration';
                 }
                 if (controls) controls.classList.add('hidden');
+                if (typeof updateNTATimerDisplay === 'function') updateNTATimerDisplay();
                 return;
             }
 
@@ -6587,6 +6952,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 timerElem.className = 'text-amber-400 font-black animate-pulse';
                 if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400';
                 if (controls) controls.classList.remove('hidden');
+                if (typeof updateNTATimerDisplay === 'function') updateNTATimerDisplay();
                 return;
             }
 
@@ -6609,6 +6975,10 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             } else {
                 timerElem.className = 'text-emerald-300 font-bold';
                 if (container) container.className = 'font-mono bg-slate-950/90 px-3 py-1.5 rounded-xl border border-emerald-500/50 text-emerald-300 text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 shadow-inner transition select-none cursor-pointer';
+            }
+
+            if (typeof updateNTATimerDisplay === 'function') {
+                updateNTATimerDisplay();
             }
         }
 

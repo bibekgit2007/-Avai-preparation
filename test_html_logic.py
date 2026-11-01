@@ -45,6 +45,13 @@ def test_html():
     assert 'id="ncertModal"' in content, "Missing ncertModal in DOM"
     assert 'id="ncertModalContent"' in content, "Missing ncertModalContent in DOM"
     assert 'id="ncertPracticeChapterBtn"' in content, "Missing ncertPracticeChapterBtn in DOM"
+    assert 'id="ntaOfficialHeader"' in content, "Missing ntaOfficialHeader in DOM"
+    assert 'id="ntaCBTModeBtn"' in content, "Missing ntaCBTModeBtn in DOM"
+    assert 'id="ntaOfficialTimer"' in content, "Missing ntaOfficialTimer in DOM"
+    assert 'id="ntaSectionTabs"' in content, "Missing ntaSectionTabs in DOM"
+    assert 'id="ntaPaperViewModal"' in content, "Missing ntaPaperViewModal in DOM"
+    assert 'id="ntaPaperViewContent"' in content, "Missing ntaPaperViewContent in DOM"
+    assert 'id="countAnsweredMarked"' in content, "Missing countAnsweredMarked in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -56,6 +63,11 @@ def test_html():
     assert '.rotate-180' in content, "Missing .rotate-180 in stylesheet"
     assert '.upper-row-btn' in content, "Missing .upper-row-btn in stylesheet"
     assert '#examMegaMenu' in content, "Missing #examMegaMenu in stylesheet"
+    assert '.nta-answered' in content, "Missing .nta-answered in stylesheet"
+    assert '.nta-not-answered' in content, "Missing .nta-not-answered in stylesheet"
+    assert '.nta-not-visited' in content, "Missing .nta-not-visited in stylesheet"
+    assert '.nta-marked' in content, "Missing .nta-marked in stylesheet"
+    assert '.nta-marked-answered' in content, "Missing .nta-marked-answered in stylesheet"
     
     # 2. Extract main app script block (the largest inline script)
     scripts = re.findall(r'<script[^>]*>(.*?)</script>', content, re.DOTALL)
@@ -139,7 +151,14 @@ def test_html():
         "function getPaceAnalysis(",
         "function openNCERTModalForCurrentQ()",
         "function closeNCERTModal()",
-        "function practiceNCERTChapterFromModal()"
+        "function practiceNCERTChapterFromModal()",
+        "function isNTACBTModeActive()",
+        "function toggleNTACBTMode()",
+        "function initNTACBTModeOnLoad()",
+        "function renderNTASectionTabs()",
+        "function updateNTATimerDisplay()",
+        "function openNTAPaperViewModal()",
+        "function closeNTAPaperViewModal()"
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
