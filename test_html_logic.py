@@ -42,6 +42,9 @@ def test_html():
     assert 'id="mistakeKpiAvgTime"' in content, "Missing mistakeKpiAvgTime in DOM"
     assert 'id="mistakeNotebookList"' in content, "Missing mistakeNotebookList in DOM"
     assert 'id="startMistakeTestBtn"' in content, "Missing startMistakeTestBtn in DOM"
+    assert 'id="ncertModal"' in content, "Missing ncertModal in DOM"
+    assert 'id="ncertModalContent"' in content, "Missing ncertModalContent in DOM"
+    assert 'id="ncertPracticeChapterBtn"' in content, "Missing ncertPracticeChapterBtn in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -130,7 +133,13 @@ def test_html():
         "function deleteMistake(",
         "function clearMasteredMistakes()",
         "function practiceSingleMistake(",
-        "function startMistakeReTest()"
+        "function startMistakeReTest()",
+        "function getQuestionPeerBenchmark(",
+        "function getQuestionNCERTReference(",
+        "function getPaceAnalysis(",
+        "function openNCERTModalForCurrentQ()",
+        "function closeNCERTModal()",
+        "function practiceNCERTChapterFromModal()"
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
