@@ -1,13 +1,14 @@
-const CACHE_NAME = 'avai-prep-v6';
+const CACHE_NAME = 'avai-prep-v7';
 const STATIC_ASSETS = [
   './',
   './index.html',
+  './icon.svg',
+  './manifest.json',
   './calculator.html',
   './about.html',
   './privacy.html',
   './style.css',
   './script.js',
-  './manifest.json',
   './data/physics_questions.js',
   './data/physics_questions.json',
   './data/syllabus.js'
@@ -40,6 +41,9 @@ self.addEventListener('activate', event => {
 // Network first with cache fallback strategy
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  // Ignore chrome-extension or external analytics schemes
+  if (!event.request.url.startsWith('http')) return;
+
   event.respondWith(
     fetch(event.request)
       .then(networkRes => {
@@ -49,6 +53,6 @@ self.addEventListener('fetch', event => {
         }
         return networkRes;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html')))
   );
 });

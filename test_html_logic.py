@@ -24,6 +24,11 @@ def test_html():
     assert 'id="examCardsContainer"' in content, "Missing examCardsContainer in DOM"
     assert 'id="upperRowCategoryNav"' in content, "Missing upperRowCategoryNav in DOM"
     assert 'id="examMegaMenu"' in content, "Missing examMegaMenu in DOM"
+    assert 'id="notesStudioModal"' in content, "Missing notesStudioModal in DOM"
+    assert 'id="notesStudioBtn"' in content, "Missing notesStudioBtn in DOM"
+    assert 'id="notesTextInput"' in content, "Missing notesTextInput in DOM"
+    assert 'id="ntaLiveRadarStrip"' in content, "Missing ntaLiveRadarStrip in DOM"
+    assert 'id="ntaInstructionsModal"' in content, "Missing ntaInstructionsModal in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -62,6 +67,7 @@ def test_html():
         "function filterByUnit(",
         "function toggleChapterDirectoryDrawer(",
         "function handleDrawerSearch(",
+        "function filterDrawerByNTA(",
         "function renderChapterDirectoryDrawer()",
         "function toggleExamDropdown(",
         "function handleExamDropdownSearch(",
@@ -72,7 +78,21 @@ def test_html():
         "function openExamMegaMenu(",
         "function closeExamMegaMenu()",
         "function renderExamMegaMenuContent(",
-        "function selectFromMegaMenu("
+        "function selectFromMegaMenu(",
+        "function openNotesStudioModal()",
+        "function closeNotesStudioModal()",
+        "function switchNotesStudioTab(",
+        "function loadSampleNotes()",
+        "function handleNotesFileUpload(",
+        "function extractQuestionsFromNotes(",
+        "function generateAndStartNotesTest()",
+        "function renderSavedNotesTests()",
+        "function loadSavedNotesTest(",
+        "function deleteSavedNotesTest(",
+        "function exportSavedNotesTest(",
+        "function openNTAInstructionsModal()",
+        "function closeNTAInstructionsModal()",
+        "function switchNTATab("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"

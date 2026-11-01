@@ -18,7 +18,7 @@
                     chapters: [
                         {
                             id: 'BIO_CH_01',
-                            title: 'The Living World',
+                            title: 'The Living World', weightage: 'LOW', frequency: '1 Q', ntaStatus: 'REDUCED', notes: \"Reduced: Taxonomic aids, botanical gardens, herbaria removed\",
                             keywords: ['living world', 'taxonomic', 'binomial nomenclature', 'systematics', 'hierarchy', 'species', 'herbarium', 'botanical garden']
                         },
                         {
@@ -57,7 +57,7 @@
                         },
                         {
                             id: 'BIO_CH_07',
-                            title: 'Structural Organisation in Animals',
+                            title: 'Structural Organisation in Animals', weightage: 'MEDIUM', frequency: '1-2 Qs', ntaStatus: 'REDUCED', notes: \"Earthworm deleted; Frog and Cockroach modified\",
                             keywords: ['structural organisation in animals', 'epithelial', 'connective', 'cockroach', 'frog', 'anal styles', 'ciliated', 'tissue']
                         }
                     ]
@@ -71,7 +71,7 @@
                     chapters: [
                         {
                             id: 'BIO_CH_08',
-                            title: 'Cell: The Unit of Life',
+                            title: 'Cell: The Unit of Life', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Cell Organelles, Membrane Structure\",
                             keywords: ['cell: the unit of life', 'cell biology', 'organelle', 'mitochondria', 'chloroplast', 'ribosome', 'endomembrane', 'golgi', 'lysosome', 'nuclear pore', 'nucleus', 'fluid mosaic']
                         },
                         {
@@ -81,7 +81,7 @@
                         },
                         {
                             id: 'BIO_CH_10',
-                            title: 'Cell Cycle and Cell Division',
+                            title: 'Cell Cycle and Cell Division', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Meiosis, Mitosis, Prophase-I Stages\",
                             keywords: ['cell cycle', 'cell division', 'mitosis', 'meiosis', 'prophase', 'pachytene', 'crossing over', 'recombinase', 's phase', 'interphase', 'metaphase']
                         }
                     ]
@@ -95,12 +95,12 @@
                     chapters: [
                         {
                             id: 'BIO_CH_11',
-                            title: 'Photosynthesis in Higher Plants',
+                            title: 'Photosynthesis in Higher Plants', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: C3, C4 pathways, Light Reactions, Chemiosmosis\",
                             keywords: ['photosynthesis', 'rubisco', 'pep carboxylase', 'c3', 'c4', 'kranz', 'light reaction', 'photolysis', 'photophosphorylation', 'chemiosmosis', 'photorespiration']
                         },
                         {
                             id: 'BIO_CH_12',
-                            title: 'Respiration in Plants',
+                            title: 'Respiration in Plants', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Glycolysis, Krebs Cycle, ETS complex\",
                             keywords: ['respiration in plants', 'glycolysis', 'krebs', 'tca', 'electron transport', 'succinate', 'fumarate', 'atp', 'fermentation', 'respiratory quotient']
                         },
                         {
@@ -110,7 +110,7 @@
                         },
                         {
                             id: 'BIO_CH_14',
-                            title: 'Water & Mineral Nutrition in Plants',
+                            title: 'Water & Mineral Nutrition in Plants', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NMC/NTA for NEET 2024+ (Transport in Plants & Mineral Nutrition)\",
                             keywords: ['water potential', 'mineral nutrition', 'manganese', 'osmosis', 'transpiration', 'nitrogen fixation']
                         }
                     ]
@@ -124,7 +124,7 @@
                     chapters: [
                         {
                             id: 'BIO_CH_15',
-                            title: 'Digestion and Absorption',
+                            title: 'Digestion and Absorption', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NMC/NTA for NEET 2024+ (Digestion & Absorption)\",
                             keywords: ['digestion', 'absorption', 'parietal', 'oxyntic', 'castle', 'intrinsic factor', 'pepsin', 'stomach', 'gastric']
                         },
                         {
@@ -168,12 +168,12 @@
                     chapters: [
                         {
                             id: 'BIO_CH_22',
-                            title: 'Sexual Reproduction in Flowering Plants',
+                            title: 'Sexual Reproduction in Flowering Plants', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Double Fertilization, Pollen, Apomixis\",
                             keywords: ['flowering plants', 'pollen', 'sporopollenin', 'embryo sac', 'double fertilization', 'triple fusion', 'endosperm', 'apomixis']
                         },
                         {
                             id: 'BIO_CH_23',
-                            title: 'Human Reproduction',
+                            title: 'Human Reproduction', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Gametogenesis, Menstrual Cycle, Embryo\",
                             keywords: ['human reproduction', 'leydig', 'spermatogenesis', 'oogenesis', 'menstrual', 'ovulation', 'lh surge', 'fertilization', 'placenta']
                         },
                         {
@@ -192,12 +192,12 @@
                     chapters: [
                         {
                             id: 'BIO_CH_25',
-                            title: 'Principles of Inheritance and Variation',
+                            title: 'Principles of Inheritance and Variation', weightage: 'HIGH', frequency: '5-6 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Mendelian Genetics, Linkage, Pedigree Analysis\",
                             keywords: ['principles of inheritance', 'incomplete dominance', 'klinefelter', 'sickle-cell', 'mendel', 'linkage', 'down syndrome', 'turner', 'morgan']
                         },
                         {
                             id: 'BIO_CH_26',
-                            title: 'Molecular Basis of Inheritance',
+                            title: 'Molecular Basis of Inheritance', weightage: 'HIGH', frequency: '7-9 Qs', ntaStatus: 'ACTIVE', notes: \"Crucial High Yield (~30 marks): Replication, Genetic Code, Lac Operon\",
                             keywords: ['molecular basis of inheritance', 'dna', 'griffith', 'genetic code', 'aug', 'lac operon', 'allolactose', 'transcription', 'translation', 'hgp', 'replication']
                         },
                         {
@@ -216,7 +216,7 @@
                     chapters: [
                         {
                             id: 'BIO_CH_28',
-                            title: 'Human Health and Disease',
+                            title: 'Human Health and Disease', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Immunity, Cancer, AIDS, Malaria Lifecycle\",
                             keywords: ['human health and disease', 'malaria', 'sporozoite', 'plasmodium', 'immunity', 'colostrum', 'iga', 'antibody', 'aids', 'cancer']
                         },
                         {
@@ -235,7 +235,7 @@
                     chapters: [
                         {
                             id: 'BIO_CH_30',
-                            title: 'Biotechnology: Principles and Processes',
+                            title: 'Biotechnology: Principles and Processes', weightage: 'HIGH', frequency: '4-5 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Restriction Enzymes, PCR, Gel Electrophoresis\",
                             keywords: ['biotechnology: principles', 'restriction endonuclease', 'ecori', 'palindromic', 'taq polymerase', 'pcr', 'electrophoresis', 'plasmid', 'gel']
                         },
                         {
@@ -269,7 +269,7 @@
                         },
                         {
                             id: 'BIO_CH_35',
-                            title: 'Environmental Issues',
+                            title: 'Environmental Issues', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NMC/NTA for NEET 2024+ (Environmental Issues)\",
                             keywords: ['environmental issues', 'biomagnification', 'ddt', 'montreal protocol', 'ozone', 'pollution']
                         }
                     ]
@@ -318,7 +318,7 @@
                     unitTitle: 'Rotational Motion',
                     icon: '🎡',
                     chapters: [
-                        { id: 'PHY_CH_05', title: 'Centre of Mass & Rotational Dynamics', keywords: ['rotational', 'centre of mass', 'moment of inertia', 'torque', 'angular momentum', 'rolling'] }
+                        { id: 'PHY_CH_05', title: 'Centre of Mass & Rotational Dynamics', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield (Critical for JEE): Moment of Inertia, Angular Momentum, Rolling\", keywords: ['rotational', 'centre of mass', 'moment of inertia', 'torque', 'angular momentum', 'rolling'] }
                     ]
                 },
                 {
@@ -345,7 +345,7 @@
                     unitTitle: 'Thermodynamics & KTG',
                     icon: '🔥',
                     chapters: [
-                        { id: 'PHY_CH_08', title: 'Thermodynamic Laws & Heat Engines', keywords: ['thermodynamics', 'carnot', 'isothermal', 'adiabatic', 'entropy', 'first law'] },
+                        { id: 'PHY_CH_08', title: 'Thermodynamic Laws & Heat Engines', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: 1st Law, Adiabatic/Isothermal (Carnot Engine deleted by NTA)\", keywords: ['thermodynamics', 'carnot', 'isothermal', 'adiabatic', 'entropy', 'first law'] },
                         { id: 'PHY_CH_09', title: 'Kinetic Theory of Gases', keywords: ['kinetic theory', 'rms speed', 'mean free path', 'degrees of freedom'] }
                     ]
                 },
@@ -365,8 +365,8 @@
                     unitTitle: 'Electrostatics',
                     icon: '⚡',
                     chapters: [
-                        { id: 'PHY_CH_12', title: 'Electric Charges, Field & Gauss Law', keywords: ['electrostatics', 'coulomb', 'gauss', 'electric field', 'dipole', 'flux', 'sphere cavity'] },
-                        { id: 'PHY_CH_13', title: 'Electric Potential & Capacitors', keywords: ['potential', 'capacitor', 'dielectric', 'capacitance', 'stored energy'] }
+                        { id: 'PHY_CH_12', title: 'Electric Charges, Field & Gauss Law', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Gauss Law, Dipoles, Electric Field\", keywords: ['electrostatics', 'coulomb', 'gauss', 'electric field', 'dipole', 'flux', 'sphere cavity'] },
+                        { id: 'PHY_CH_13', title: 'Electric Potential & Capacitors', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Capacitance, Dielectrics, Stored Energy (Van de Graaff deleted)\", keywords: ['potential', 'capacitor', 'dielectric', 'capacitance', 'stored energy'] }
                     ]
                 },
                 {
@@ -375,7 +375,7 @@
                     unitTitle: 'Current Electricity',
                     icon: '💡',
                     chapters: [
-                        { id: 'PHY_CH_14', title: 'Current Electricity & Circuit Laws', keywords: ['current electricity', 'ohm', 'kirchhoff', 'wheatstone', 'potentiometer', 'meter bridge', 'two conductors'] }
+                        { id: 'PHY_CH_14', title: 'Current Electricity & Circuit Laws', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Kirchhoff Laws, Circuits, Resistance (Potentiometer deleted by NTA)\", keywords: ['current electricity', 'ohm', 'kirchhoff', 'wheatstone', 'potentiometer', 'meter bridge', 'two conductors'] }
                     ]
                 },
                 {
@@ -394,8 +394,8 @@
                     unitTitle: 'Electromagnetic Induction & Alternating Currents',
                     icon: '🔌',
                     chapters: [
-                        { id: 'PHY_CH_17', title: 'Electromagnetic Induction (EMI)', keywords: ['electromagnetic induction', 'faraday', 'lenz', 'self induction', 'mutual induction'] },
-                        { id: 'PHY_CH_18', title: 'Alternating Currents & LCR Circuits', keywords: ['alternating currents', 'lcr', 'resonance', 'power factor', 'transformer', 'impedance'] }
+                        { id: 'PHY_CH_17', title: 'Electromagnetic Induction (EMI)', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Faraday & Lenz Laws, Self/Mutual Inductance\", keywords: ['electromagnetic induction', 'faraday', 'lenz', 'self induction', 'mutual induction'] },
+                        { id: 'PHY_CH_18', title: 'Alternating Currents & LCR Circuits', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: LCR Resonance, Phasor, Power Factor\", keywords: ['alternating currents', 'lcr', 'resonance', 'power factor', 'transformer', 'impedance'] }
                     ]
                 },
                 {
@@ -445,13 +445,13 @@
                     unitTitle: 'Physical Chemistry',
                     icon: '⚗️',
                     chapters: [
-                        { id: 'CHEM_CH_01', title: 'Some Basic Concepts of Chemistry (Mole Concept)', keywords: ['basic concepts', 'mole concept', 'molarity', 'stoichiometry', 'empirical formula', 'avogadro'] },
+                        { id: 'CHEM_CH_01', title: 'Some Basic Concepts of Chemistry (Mole Concept)', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (Solid State)\", keywords: ['basic concepts', 'mole concept', 'molarity', 'stoichiometry', 'empirical formula', 'avogadro'] },
                         { id: 'CHEM_CH_02', title: 'Structure of Atom', keywords: ['structure of atom', 'bohr', 'quantum numbers', 'heisenberg', 'de broglie', 'electronic configuration'] },
                         { id: 'CHEM_CH_03', title: 'Chemical Bonding and Molecular Structure', keywords: ['chemical bonding', 'vsepr', 'hybridization', 'dipole moment', 'molecular orbital', 'hydrogen bond'] },
-                        { id: 'CHEM_CH_04', title: 'Chemical Thermodynamics', keywords: ['chemical thermodynamics', 'enthalpy', 'entropy', 'gibbs', 'first law', 'hess law', 'spontaneity'] },
-                        { id: 'CHEM_CH_05', title: 'Solutions', keywords: ['solutions', 'colligative', 'raoult', 'van t hoff', 'osmotic pressure', 'depression in freezing'] },
-                        { id: 'CHEM_CH_06', title: 'Equilibrium (Chemical & Ionic)', keywords: ['equilibrium', 'le chatelier', 'ph', 'buffer', 'solubility product', 'hydrolysis', 'kp', 'kc'] },
-                        { id: 'CHEM_CH_07', title: 'Redox Reactions and Electrochemistry', keywords: ['redox', 'electrochemistry', 'nernst', 'galvanic', 'kohlrausch', 'electrolysis', 'faraday', 'emf'] },
+                        { id: 'CHEM_CH_04', title: 'Chemical Thermodynamics', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: VSEPR, Hybridization, Molecular Orbital Theory\", keywords: ['chemical thermodynamics', 'enthalpy', 'entropy', 'gibbs', 'first law', 'hess law', 'spontaneity'] },
+                        { id: 'CHEM_CH_05', title: 'Solutions', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (States of Matter: Gas & Liquid)\", keywords: ['solutions', 'colligative', 'raoult', 'van t hoff', 'osmotic pressure', 'depression in freezing'] },
+                        { id: 'CHEM_CH_06', title: 'Equilibrium (Chemical & Ionic)', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Hess Law, Entropy, Gibbs Free Energy\", keywords: ['equilibrium', 'le chatelier', 'ph', 'buffer', 'solubility product', 'hydrolysis', 'kp', 'kc'] },
+                        { id: 'CHEM_CH_07', title: 'Redox Reactions and Electrochemistry', weightage: 'HIGH', frequency: '3-4 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Le Chatelier, pH, Buffer, Solubility Product\", keywords: ['redox', 'electrochemistry', 'nernst', 'galvanic', 'kohlrausch', 'electrolysis', 'faraday', 'emf'] },
                         { id: 'CHEM_CH_08', title: 'Chemical Kinetics', keywords: ['chemical kinetics', 'rate law', 'arrhenius', 'order of reaction', 'activation energy', 'half life'] }
                     ]
                 },
@@ -461,8 +461,8 @@
                     unitTitle: 'Inorganic Chemistry',
                     icon: '🧱',
                     chapters: [
-                        { id: 'CHEM_CH_09', title: 'Classification of Elements & Periodicity', keywords: ['classification of elements', 'periodicity', 'electron gain enthalpy', 'ionization enthalpy', 'atomic radii'] },
-                        { id: 'CHEM_CH_10', title: 'p-Block Elements', keywords: ['p-block', 'group 13', 'group 14', 'group 15', 'group 16', 'group 17', 'group 18', 'noble gases'] },
+                        { id: 'CHEM_CH_09', title: 'Classification of Elements & Periodicity', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (Hydrogen)\", keywords: ['classification of elements', 'periodicity', 'electron gain enthalpy', 'ionization enthalpy', 'atomic radii'] },
+                        { id: 'CHEM_CH_10', title: 'p-Block Elements', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (s-Block Elements)\", keywords: ['p-block', 'group 13', 'group 14', 'group 15', 'group 16', 'group 17', 'group 18', 'noble gases'] },
                         { id: 'CHEM_CH_11', title: 'd- and f-Block Elements', keywords: ['d- and f-block', 'transition elements', 'lanthanoid', 'actinoid', 'oxidation states', 'magnetic properties'] },
                         { id: 'CHEM_CH_12', title: 'Coordination Compounds', keywords: ['coordination compounds', 'cft', 'crystal field', 'splitting', 'werner', 'isomerism', 'iupac', 'spectrochemical'] }
                     ]
@@ -474,13 +474,13 @@
                     icon: '🧪',
                     chapters: [
                         { id: 'CHEM_CH_13', title: 'Purification & Basic Principles (GOC)', keywords: ['basic principles of organic', 'goc', 'inductive', 'resonance', 'hyperconjugation', 'iupac', 'electrophile'] },
-                        { id: 'CHEM_CH_14', title: 'Hydrocarbons', keywords: ['hydrocarbons', 'alkane', 'alkene', 'alkyne', 'aromatic', 'benzene', 'markovnikov', 'ozonolysis'] },
+                        { id: 'CHEM_CH_14', title: 'Hydrocarbons', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (Environmental Chemistry)\", keywords: ['hydrocarbons', 'alkane', 'alkene', 'alkyne', 'aromatic', 'benzene', 'markovnikov', 'ozonolysis'] },
                         { id: 'CHEM_CH_15', title: 'Haloalkanes and Haloarenes', keywords: ['halogens', 'haloalkanes', 'haloarenes', 'sn1', 'sn2', 'grignard'] },
-                        { id: 'CHEM_CH_16', title: 'Alcohols, Phenols and Ethers', keywords: ['alcohols', 'phenols', 'ethers', 'reimer-tiemann', 'kolbe', 'lucas', 'williamson'] },
-                        { id: 'CHEM_CH_17', title: 'Aldehydes, Ketones and Carboxylic Acids', keywords: ['aldehydes', 'ketones', 'carboxylic', 'cannizzaro', 'aldol', 'clemmensen', 'tollens', 'fehling'] },
-                        { id: 'CHEM_CH_18', title: 'Organic Compounds Containing Nitrogen (Amines)', keywords: ['nitrogen', 'amines', 'diazonium', 'hoffmann', 'carbylamine', 'gabriel'] },
-                        { id: 'CHEM_CH_19', title: 'Biomolecules & Polymers', keywords: ['biomolecules', 'sucrose', 'glucose', 'uracil', 'proteins', 'amino acids', 'bakelite', 'polymers'] },
-                        { id: 'CHEM_CH_20', title: 'Principles of Practical Chemistry & Environmental', keywords: ['practical chemistry', 'environmental chemistry', 'salt analysis', 'titration', 'functional groups'] }
+                        { id: 'CHEM_CH_16', title: 'Alcohols, Phenols and Ethers', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Colligative Properties, Van't Hoff Factor\", keywords: ['alcohols', 'phenols', 'ethers', 'reimer-tiemann', 'kolbe', 'lucas', 'williamson'] },
+                        { id: 'CHEM_CH_17', title: 'Aldehydes, Ketones and Carboxylic Acids', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Nernst Equation, Kohlrausch Law\", keywords: ['aldehydes', 'ketones', 'carboxylic', 'cannizzaro', 'aldol', 'clemmensen', 'tollens', 'fehling'] },
+                        { id: 'CHEM_CH_18', title: 'Organic Compounds Containing Nitrogen (Amines)', weightage: 'HIGH', frequency: '2-3 Qs', ntaStatus: 'ACTIVE', notes: \"High Yield: Integrated Rate Law, Arrhenius Equation\", keywords: ['nitrogen', 'amines', 'diazonium', 'hoffmann', 'carbylamine', 'gabriel'] },
+                        { id: 'CHEM_CH_19', title: 'Biomolecules & Polymers', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (Surface Chemistry)\", keywords: ['biomolecules', 'sucrose', 'glucose', 'uracil', 'proteins', 'amino acids', 'bakelite', 'polymers'] },
+                        { id: 'CHEM_CH_20', title: 'Principles of Practical Chemistry & Environmental', weightage: 'LOW', frequency: '0 Qs', ntaStatus: 'REMOVED', notes: \"Removed by NTA for NEET & JEE 2024+ (General Principles of Metallurgy)\", keywords: ['practical chemistry', 'environmental chemistry', 'salt analysis', 'titration', 'functional groups'] }
                     ]
                 }
             ]
@@ -627,9 +627,14 @@
                 title: ch.title,
                 name: {
                     en: ch.title || (ch.name && ch.name.en) || 'Chapter',
-                    bn: ch.titleBn || (ch.name && ch.name.bn) || ch.title || 'অনুচ্ছেদ'
+                    bn: ch.titleBn || (ch.name && ch.name.bn) || ch.title || 'অনুচ্ছেদ',
+                    hi: ch.titleHi || (ch.name && ch.name.hi) || ch.title || 'अध्याय'
                 },
-                keywords: ch.keywords || []
+                keywords: ch.keywords || [],
+                weightage: ch.weightage || 'MEDIUM',
+                frequency: ch.frequency || '',
+                ntaStatus: ch.ntaStatus || 'ACTIVE',
+                notes: ch.notes || ''
             }))
         }));
     }

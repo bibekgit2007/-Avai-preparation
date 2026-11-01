@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="50%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Dark Base -->
+  <rect width="512" height="512" rx="115" fill="#0f172a" />
+  
+  <!-- Gradient App Icon Squircle with Glow -->
+  <rect x="36" y="36" width="440" height="440" rx="98" fill="url(#bgGrad)" filter="url(#glow)" />
+  <rect x="36" y="36" width="440" height="440" rx="98" fill="url(#bgGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
+  
+  <!-- Decorative Scientific / Academic Orbits -->
+  <ellipse cx="256" cy="256" rx="170" ry="60" fill="none" stroke="url(#orbitGrad)" stroke-width="6" transform="rotate(-28 256 256)" />
+  <ellipse cx="256" cy="256" rx="170" ry="60" fill="none" stroke="url(#orbitGrad)" stroke-width="6" transform="rotate(32 256 256)" />
+  
+  <!-- Orbiting Quantum Electron Dots -->
+  <circle cx="130" cy="190" r="10" fill="#38bdf8" filter="url(#glow)" />
+  <circle cx="380" cy="320" r="9" fill="#facc15" filter="url(#glow)" />
+  <circle cx="340" cy="150" r="8" fill="#ec4899" filter="url(#glow)" />
+  
+  <!-- Central Emblem: Monogram 'A' -->
+  <text x="256" y="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="250" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-6">A</text>
+  
+  <!-- Top Sparkle Star -->
+  <path d="M 256 80 L 262 100 L 282 106 L 262 112 L 256 132 L 250 112 L 230 106 L 250 100 Z" fill="#fde047" />
+</svg>

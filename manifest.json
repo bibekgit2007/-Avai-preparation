@@ -1,16 +1,24 @@
- {
-  "name": "Avai Preparation",
-  "short_name": "AvaiPrep",
-  "start_url": "index.html",
+{
+  "name": "AVAI PREP - AI Competitive Exam Portal",
+  "short_name": "AVAI PREP",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
-  "theme_color": "#2563eb",
-  "description": "Premium JEE/NEET Practice Portal",
+  "theme_color": "#0f172a",
+  "orientation": "any",
+  "description": "Universal Competitive Examination Preparation Portal with Timed Mocks, Chapter Directory, Multi-Subject Syllabus and Multilingual Question Bank",
+  "categories": ["education", "books", "productivity"],
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/5606/5606131.png",
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml"
     }
   ]
 }
