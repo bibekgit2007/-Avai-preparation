@@ -664,6 +664,11 @@
                     <span class="text-[10px] text-blue-300 block font-mono">System Number:</span>
                     <strong class="font-mono text-amber-300 text-sm">C028 (Lab-04)</strong>
                 </div>
+                <!-- NTA CBT Analytics Shortcut -->
+                <button onclick="openDiagnosticAnalyticsModal()" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-1 cursor-pointer" title="View Exam Hall Analytics & Time-Trap Audit">
+                    <span>📈</span>
+                    <span class="hidden sm:inline">Analytics</span>
+                </button>
                 <!-- Toggle back to Modern Dark UI -->
                 <button onclick="toggleNTACBTMode()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-1 cursor-pointer" title="Switch back to Modern Dark UI">
                     <span>✨</span>
@@ -952,6 +957,12 @@
                 <span>📓</span>
                 <span class="hidden sm:inline">Mistakes</span>
                 <span id="mistakeCountBadge" class="text-[10px] bg-rose-500 text-white font-extrabold px-1.5 py-0.2 rounded-full font-mono">0</span>
+            </button>
+
+            <!-- Exam Hall Diagnostic Analytics Hub Button -->
+            <button onclick="openDiagnosticAnalyticsModal()" id="diagnosticAnalyticsBtn" class="bg-gradient-to-r from-emerald-950/80 via-slate-900 to-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/50 hover:border-emerald-400 text-emerald-200 text-xs md:text-sm font-bold px-2 sm:px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-emerald-950/30 transition transform active:scale-95 cursor-pointer" title="Diagnostic Analytics: Exam Readiness Index, Silly Mistake Loss Audit & Pacing Matrix">
+                <span>📈</span>
+                <span class="hidden sm:inline">Analytics</span>
             </button>
 
             <!-- Compact Scientific Calculator Toggle Button with Competitive Exam Advisory -->
@@ -1792,6 +1803,12 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 <div id="subjectBreakdownTable" class="space-y-2 text-xs"></div>
             </div>
 
+            <!-- Actionable Diagnostic Analytics Hub Shortcut -->
+            <button onclick="openDiagnosticAnalyticsModal()" class="w-full mb-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-slate-950 py-3 rounded-xl font-display font-black text-xs md:text-sm transition shadow-lg shadow-emerald-500/25 active:scale-95 cursor-pointer flex items-center justify-center gap-2">
+                <span>📈</span>
+                <span>VIEW EXAM HALL DIAGNOSTICS & TIME-TRAP AUDIT</span>
+            </button>
+
             <div class="flex gap-3">
                 <button onclick="location.reload()" class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white py-3 rounded-xl font-display font-black text-xs md:text-sm transition shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer">
                     RESTART PRACTICE
@@ -1992,12 +2009,240 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
         </div>
     </div>
 
+    <!-- ==========================================================================
+         EXAM HALL DIAGNOSTIC ANALYTICS & TIME-TRAP AUDIT MODAL (MARKS / EMBIBE STYLE)
+         ========================================================================== -->
+    <div id="diagnosticAnalyticsModal" class="fixed inset-0 glass-modal z-[98] hidden flex items-center justify-center p-3 sm:p-5">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-scale-in">
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-slate-200 bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-950 text-white flex items-center justify-between select-none">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-display font-black text-2xl shadow-inner text-emerald-400">
+                        📈
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-base sm:text-lg font-display font-black text-white">Exam Hall Diagnostic Analytics</h3>
+                            <span class="text-[10px] font-mono bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full font-bold">
+                                Real-Time Telemetry
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400">Exam Readiness Index (ERI), Silly Mistake Trap Audit, and Pacing Heatmap</p>
+                    </div>
+                </div>
+                <button onclick="closeDiagnosticAnalyticsModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition cursor-pointer text-lg font-bold">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 text-xs sm:text-sm custom-scrollbar bg-slate-50/60">
+                <!-- 1. Hero KPI Cards: ERI Gauge, Negative Trap Bleed & Velocity -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                    <!-- ERI Gauge Card -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-4">
+                        <div class="relative w-20 h-20 shrink-0 flex items-center justify-center">
+                            <svg class="w-20 h-20 -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-slate-100" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path id="diagEriRing" class="text-emerald-500 transition-all duration-1000 ease-out" stroke-dasharray="0, 100" stroke-linecap="round" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                <span id="diagEriValue" class="text-lg font-black font-display text-slate-900 leading-none">0</span>
+                                <span class="text-[9px] text-slate-400 font-mono">ERI</span>
+                            </div>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Exam Readiness Index</span>
+                            <span id="diagEriTierBadge" class="inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                Calculating...
+                            </span>
+                            <p class="text-[10px] text-slate-500 mt-1 leading-tight">Weighted composite of Accuracy (40%), Pacing (30%) & Negative Control (30%)</p>
+                        </div>
+                    </div>
+
+                    <!-- Negative Marking Trap Loss Card -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Negative Marking Trap</span>
+                                <span class="text-xs">⚠️</span>
+                            </div>
+                            <div class="text-lg font-display font-black text-rose-600" id="diagMarksBleed">-0 Marks</div>
+                            <p class="text-[11px] text-slate-600 mt-0.5" id="diagPotentialScoreText">Potential Score: <strong class="text-slate-800">0 pts</strong></p>
+                        </div>
+                        <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                            <span>Guesswork Risk:</span>
+                            <strong id="diagGuessworkRisk" class="font-mono text-slate-700 font-bold">0%</strong>
+                        </div>
+                    </div>
+
+                    <!-- Speed & Pacing Velocity Card -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Exam Velocity & Pacing</span>
+                                <span class="text-xs">⏱️</span>
+                            </div>
+                            <div class="text-lg font-display font-black font-mono text-amber-600" id="diagAvgSpeed">00:00 / Q</div>
+                            <p class="text-[11px] text-slate-600 mt-0.5">Target: <span id="diagTargetPace" class="font-bold text-slate-800">60s</span> (Optimal Hall Pace)</p>
+                        </div>
+                        <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                            <span>Pacing Health:</span>
+                            <strong id="diagPacingHealth" class="text-emerald-700 font-bold">Optimal</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Pacing & Time-Trap Quadrant Grid -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm">Exam Hall Time-Trap & Pacing Quadrants</h4>
+                            <p class="text-[11px] text-slate-500">Breakdown of questions by speed vs correctness (Identifies silly mistakes vs time sinkholes)</p>
+                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded-full font-mono">TCS iON Telemetry</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="diagQuadrantGrid">
+                        <!-- Quadrant 1: Lightning Fast (<45s correct) -->
+                        <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-slate-800 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-base">⚡</span>
+                                <span id="diagCountLightning" class="font-display font-black text-emerald-700 text-sm">0 Qs</span>
+                            </div>
+                            <div class="text-[11px] font-bold text-emerald-900">Lightning Recall</div>
+                            <div class="text-[9px] text-emerald-700 leading-tight">&lt;45s &amp; Correct (Effortless Mastery)</div>
+                        </div>
+
+                        <!-- Quadrant 2: Optimal Pace (45-90s correct) -->
+                        <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-slate-800 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-base">🎯</span>
+                                <span id="diagCountOptimal" class="font-display font-black text-blue-700 text-sm">0 Qs</span>
+                            </div>
+                            <div class="text-[11px] font-bold text-blue-900">Optimal Pace</div>
+                            <div class="text-[9px] text-blue-700 leading-tight">45-90s &amp; Correct (Rock Solid Solving)</div>
+                        </div>
+
+                        <!-- Quadrant 3: Rushed Mistake (<30s incorrect) -->
+                        <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200 text-slate-800 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-base">⚠️</span>
+                                <span id="diagCountRushed" class="font-display font-black text-rose-700 text-sm">0 Qs</span>
+                            </div>
+                            <div class="text-[11px] font-bold text-rose-900">Rushed Guesswork</div>
+                            <div class="text-[9px] text-rose-700 leading-tight">&lt;30s &amp; Wrong (Silly Mistake Trap)</div>
+                        </div>
+
+                        <!-- Quadrant 4: Time Sinkhole (>120s incorrect) -->
+                        <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200 text-slate-800 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-base">⏳</span>
+                                <span id="diagCountSinkhole" class="font-display font-black text-amber-700 text-sm">0 Qs</span>
+                            </div>
+                            <div class="text-[11px] font-bold text-amber-900">Time Sinkhole</div>
+                            <div class="text-[9px] text-amber-700 leading-tight">&gt;120s &amp; Wrong (Over-invested Trap)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Difficulty Conversion Matrix -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm">Difficulty Level Conversion Matrix</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="diagDifficultyGrid">
+                        <!-- Easy -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-800">🟢 Easy</span>
+                                <span id="diagEasyAcc" class="text-xs font-mono font-bold text-emerald-600">0% Acc</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                                <div id="diagEasyBar" class="bg-emerald-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+                                <span id="diagEasyRatio">0 / 0 Solved</span>
+                                <span id="diagEasyTime">Avg: 0s</span>
+                            </div>
+                        </div>
+
+                        <!-- Medium -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-800">🟡 Medium</span>
+                                <span id="diagMedAcc" class="text-xs font-mono font-bold text-amber-600">0% Acc</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                                <div id="diagMedBar" class="bg-amber-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+                                <span id="diagMedRatio">0 / 0 Solved</span>
+                                <span id="diagMedTime">Avg: 0s</span>
+                            </div>
+                        </div>
+
+                        <!-- Hard -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-800">🔴 Hard / Advanced</span>
+                                <span id="diagHardAcc" class="text-xs font-mono font-bold text-rose-600">0% Acc</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                                <div id="diagHardBar" class="bg-rose-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+                                <span id="diagHardRatio">0 / 0 Solved</span>
+                                <span id="diagHardTime">Avg: 0s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Syllabus & Chapter Mastery Heatmap -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm">Syllabus & Chapter Mastery Heatmap</h4>
+                            <p class="text-[11px] text-slate-500">Live chapter status based on today's session with 1-click targeted practice</p>
+                        </div>
+                    </div>
+                    <div id="diagChapterHeatmap" class="flex flex-wrap gap-2 text-xs">
+                        <!-- Populated dynamically via renderDiagnosticAnalytics() -->
+                    </div>
+                </div>
+
+                <!-- 5. Actionable AI Strategic Directives -->
+                <div class="bg-slate-900 text-white p-4 sm:p-5 rounded-2xl shadow-xs space-y-2.5">
+                    <div class="flex items-center gap-2 text-xs font-display font-bold text-amber-400">
+                        <span>🤖</span>
+                        <span>AI COACH STRATEGY & EXAM HALL DIRECTIVES</span>
+                    </div>
+                    <ul id="diagAiDirectives" class="space-y-1.5 text-xs text-slate-300 list-disc list-inside">
+                        <!-- Populated dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+                <button onclick="openMistakeNotebookModal(); closeDiagnosticAnalyticsModal();" class="text-xs text-rose-600 hover:text-rose-800 font-bold flex items-center gap-1.5 cursor-pointer">
+                    <span>📓</span> Open Mistake Notebook
+                </button>
+                <div class="flex items-center gap-2">
+                    <button onclick="closeDiagnosticAnalyticsModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition cursor-pointer">
+                        Back to Exam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-400 px-4 md:px-6 py-3 border-t border-slate-800/80 text-xs select-none">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2.5">
             <p class="text-[11px]">© 2026 AVAI Preparation. Premier Multi-Subject Examination & Mock Test Portal.</p>
             <div class="flex items-center gap-4 flex-wrap text-[11px]">
                 <button onclick="openMockModal()" class="text-amber-400 hover:text-amber-300 font-bold transition flex items-center gap-1 cursor-pointer">🎯 Custom Mock</button>
+                <button onclick="openDiagnosticAnalyticsModal()" class="text-emerald-400 hover:text-emerald-300 font-bold transition flex items-center gap-1 cursor-pointer" title="View Diagnostic Analytics & Time-Trap Heatmap">📈 Analytics</button>
                 <button onclick="openMistakeNotebookModal()" class="text-rose-400 hover:text-rose-300 font-bold transition flex items-center gap-1 cursor-pointer" title="View Saved Mistakes & Weak Areas">📓 Mistake Notebook</button>
                 <button onclick="openNTAInstructionsModal()" class="text-blue-400 hover:text-blue-300 font-bold transition flex items-center gap-1 cursor-pointer" title="View Official NTA & NMC Guidelines">📋 Exam Guidelines</button>
                 <button id="adminSyncFooterBtn" onclick="openAdminModal()" class="hidden text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1 cursor-pointer" title="Admin Question Bank Sync (Ctrl+Shift+A)">⚙️ Admin Sync</button>
@@ -4964,6 +5209,327 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             if (modal) modal.classList.add('hidden');
         }
 
+        // ==========================================================================
+        // 5g. EXAM HALL DIAGNOSTIC ANALYTICS & TIME-TRAP HEATMAP CONTROLLER
+        // ==========================================================================
+        function openDiagnosticAnalyticsModal() {
+            renderDiagnosticAnalytics();
+            const modal = document.getElementById('diagnosticAnalyticsModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeDiagnosticAnalyticsModal() {
+            const modal = document.getElementById('diagnosticAnalyticsModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function computeDiagnosticMetrics() {
+            let attempted = 0;
+            let correct = 0;
+            let incorrect = 0;
+            let totalActiveSecs = 0;
+            let score = 0;
+
+            const diffStats = {
+                'Easy': { total: 0, attempted: 0, correct: 0, timeSecs: 0 },
+                'Medium': { total: 0, attempted: 0, correct: 0, timeSecs: 0 },
+                'Hard': { total: 0, attempted: 0, correct: 0, timeSecs: 0 }
+            };
+
+            const quadrantCounts = {
+                lightning: 0, // <45s & correct
+                optimal: 0,   // 45-90s & correct
+                rushed: 0,    // <30s & incorrect
+                sinkhole: 0   // >120s & incorrect
+            };
+
+            const chapterStats = {};
+
+            questionBank.forEach((q, i) => {
+                const diff = (q.difficulty && diffStats[q.difficulty]) ? q.difficulty : 'Medium';
+                diffStats[diff].total++;
+
+                const chKey = q.topic || q.subject || 'General';
+                if (!chapterStats[chKey]) {
+                    chapterStats[chKey] = { topic: chKey, subject: q.subject, total: 0, attempted: 0, correct: 0 };
+                }
+                chapterStats[chKey].total++;
+
+                const resp = responses[i];
+                const timeSpent = questionTimes[i] || 0;
+                totalActiveSecs += timeSpent;
+
+                if (resp !== null) {
+                    attempted++;
+                    diffStats[diff].attempted++;
+                    diffStats[diff].timeSecs += timeSpent;
+                    chapterStats[chKey].attempted++;
+
+                    if (resp === q.correct) {
+                        correct++;
+                        diffStats[diff].correct++;
+                        chapterStats[chKey].correct++;
+                        score += positiveMark;
+
+                        if (timeSpent < 45) quadrantCounts.lightning++;
+                        else if (timeSpent <= 90) quadrantCounts.optimal++;
+                    } else {
+                        incorrect++;
+                        score -= negativeMark;
+
+                        if (timeSpent < 30) quadrantCounts.rushed++;
+                        else if (timeSpent > 120) quadrantCounts.sinkhole++;
+                    }
+                }
+            });
+
+            const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+            const avgSpeedSecs = attempted > 0 ? Math.round(totalActiveSecs / attempted) : 0;
+            const potentialScore = correct * positiveMark;
+            const marksBleed = (incorrect * negativeMark) + (incorrect * positiveMark);
+            const guessworkRatio = attempted > 0 ? Math.round((incorrect / attempted) * 100) : 0;
+
+            // Compute Exam Readiness Index (0 - 100)
+            let eri = 0;
+            if (attempted > 0) {
+                const accComp = (accuracy / 100) * 40;
+                const covComp = Math.min(25, (attempted / Math.max(1, questionBank.length)) * 25);
+                
+                let paceComp = 15;
+                if (avgSpeedSecs >= 30 && avgSpeedSecs <= 90) paceComp = 20;
+                else if (avgSpeedSecs > 90 && avgSpeedSecs <= 150) paceComp = 14;
+                else if (avgSpeedSecs < 30) paceComp = 10;
+                else paceComp = 8;
+
+                let discComp = 5;
+                if (guessworkRatio < 15) discComp = 15;
+                else if (guessworkRatio < 25) discComp = 10;
+                else if (guessworkRatio < 40) discComp = 6;
+                else discComp = 2;
+
+                eri = Math.min(100, Math.max(1, Math.round(accComp + covComp + paceComp + discComp)));
+            }
+
+            return {
+                totalQuestions: questionBank.length,
+                attempted,
+                correct,
+                incorrect,
+                accuracy,
+                score,
+                potentialScore,
+                marksBleed,
+                guessworkRatio,
+                avgSpeedSecs,
+                eri,
+                diffStats,
+                quadrantCounts,
+                chapterStats
+            };
+        }
+
+        function renderDiagnosticAnalytics() {
+            const m = computeDiagnosticMetrics();
+
+            // 1. ERI Gauge & Tier
+            const eriValEl = document.getElementById('diagEriValue');
+            const eriRingEl = document.getElementById('diagEriRing');
+            const eriTierEl = document.getElementById('diagEriTierBadge');
+
+            if (eriValEl) eriValEl.innerText = m.eri;
+            if (eriRingEl) {
+                eriRingEl.setAttribute('stroke-dasharray', `${m.eri}, 100`);
+                if (m.eri >= 75) {
+                    eriRingEl.setAttribute('class', 'text-emerald-500 transition-all duration-1000 ease-out');
+                } else if (m.eri >= 50) {
+                    eriRingEl.setAttribute('class', 'text-amber-500 transition-all duration-1000 ease-out');
+                } else {
+                    eriRingEl.setAttribute('class', 'text-rose-500 transition-all duration-1000 ease-out');
+                }
+            }
+
+            if (eriTierEl) {
+                if (m.eri >= 85) {
+                    eriTierEl.innerText = '🌟 Top 1% National Rank Potential';
+                    eriTierEl.className = 'inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
+                } else if (m.eri >= 70) {
+                    eriTierEl.innerText = '🎯 Strong Selection Zone';
+                    eriTierEl.className = 'inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
+                } else if (m.eri >= 50) {
+                    eriTierEl.innerText = '🟡 Borderline / High Potential';
+                    eriTierEl.className = 'inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800';
+                } else {
+                    eriTierEl.innerText = '🔴 Core Foundation Building';
+                    eriTierEl.className = 'inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800';
+                }
+            }
+
+            // 2. Negative Marking Trap Loss
+            const bleedEl = document.getElementById('diagMarksBleed');
+            const potTextEl = document.getElementById('diagPotentialScoreText');
+            const riskEl = document.getElementById('diagGuessworkRisk');
+
+            if (bleedEl) {
+                const negativeMarksDeducted = m.incorrect * negativeMark;
+                bleedEl.innerText = `-${negativeMarksDeducted} Marks (Ded)`;
+            }
+            if (potTextEl) {
+                potTextEl.innerHTML = `Potential Score: <strong class="text-slate-800">${m.potentialScore} pts</strong> (if unattempted)`;
+            }
+            if (riskEl) {
+                riskEl.innerText = `${m.guessworkRatio}% (${m.incorrect}/${m.attempted || 1} wrong)`;
+            }
+
+            // 3. Velocity & Pacing
+            const avgSpeedEl = document.getElementById('diagAvgSpeed');
+            const pacingHealthEl = document.getElementById('diagPacingHealth');
+            const targetPaceEl = document.getElementById('diagTargetPace');
+
+            if (avgSpeedEl) {
+                avgSpeedEl.innerText = `${formatSecondsMMSS(m.avgSpeedSecs)} / Q`;
+            }
+            if (targetPaceEl) {
+                const isJEE = currentExam.includes('JEE');
+                targetPaceEl.innerText = isJEE ? '120s' : '60s';
+            }
+            if (pacingHealthEl) {
+                if (m.avgSpeedSecs <= 0) {
+                    pacingHealthEl.innerText = 'Untimed';
+                    pacingHealthEl.className = 'text-slate-500 font-bold';
+                } else if (m.avgSpeedSecs < 30) {
+                    pacingHealthEl.innerText = '⚠️ Rushed / Hurried';
+                    pacingHealthEl.className = 'text-rose-600 font-bold';
+                } else if (m.avgSpeedSecs <= 90) {
+                    pacingHealthEl.innerText = '✓ Optimal Pace';
+                    pacingHealthEl.className = 'text-emerald-700 font-bold';
+                } else {
+                    pacingHealthEl.innerText = '⏳ Pacing Drag (>90s)';
+                    pacingHealthEl.className = 'text-amber-700 font-bold';
+                }
+            }
+
+            // 4. Quadrants
+            const qLightEl = document.getElementById('diagCountLightning');
+            const qOptEl = document.getElementById('diagCountOptimal');
+            const qRushEl = document.getElementById('diagCountRushed');
+            const qSinkEl = document.getElementById('diagCountSinkhole');
+
+            if (qLightEl) qLightEl.innerText = `${m.quadrantCounts.lightning} Qs`;
+            if (qOptEl) qOptEl.innerText = `${m.quadrantCounts.optimal} Qs`;
+            if (qRushEl) qRushEl.innerText = `${m.quadrantCounts.rushed} Qs`;
+            if (qSinkEl) qSinkEl.innerText = `${m.quadrantCounts.sinkhole} Qs`;
+
+            // 5. Difficulty Conversion Matrix
+            ['Easy', 'Medium', 'Hard'].forEach(lvl => {
+                const st = m.diffStats[lvl];
+                const acc = st.attempted > 0 ? Math.round((st.correct / st.attempted) * 100) : 0;
+                const avgT = st.attempted > 0 ? Math.round(st.timeSecs / st.attempted) : 0;
+
+                const accId = lvl === 'Easy' ? 'diagEasyAcc' : (lvl === 'Medium' ? 'diagMedAcc' : 'diagHardAcc');
+                const barId = lvl === 'Easy' ? 'diagEasyBar' : (lvl === 'Medium' ? 'diagMedBar' : 'diagHardBar');
+                const ratioId = lvl === 'Easy' ? 'diagEasyRatio' : (lvl === 'Medium' ? 'diagMedRatio' : 'diagHardRatio');
+                const timeId = lvl === 'Easy' ? 'diagEasyTime' : (lvl === 'Medium' ? 'diagMedTime' : 'diagHardTime');
+
+                const accEl = document.getElementById(accId);
+                const barEl = document.getElementById(barId);
+                const ratioEl = document.getElementById(ratioId);
+                const timeEl = document.getElementById(timeId);
+
+                if (accEl) accEl.innerText = `${acc}% Acc`;
+                if (barEl) barEl.style.width = `${acc}%`;
+                if (ratioEl) ratioEl.innerText = `${st.correct}/${st.attempted} of ${st.total}`;
+                if (timeEl) timeEl.innerText = `Avg: ${avgT}s`;
+            });
+
+            // 6. Chapter Mastery Heatmap
+            const heatmapContainer = document.getElementById('diagChapterHeatmap');
+            if (heatmapContainer) {
+                const chapters = Object.values(m.chapterStats);
+                if (chapters.length === 0) {
+                    heatmapContainer.innerHTML = '<span class="text-slate-400 font-bold">No chapter telemetry yet.</span>';
+                } else {
+                    heatmapContainer.innerHTML = chapters.map(ch => {
+                        const acc = ch.attempted > 0 ? Math.round((ch.correct / ch.attempted) * 100) : 0;
+                        let bgClass = 'bg-slate-100 border-slate-200 text-slate-700';
+                        let dot = '⚪';
+                        if (ch.attempted > 0) {
+                            if (acc >= 75) {
+                                bgClass = 'bg-emerald-50 border-emerald-300 text-emerald-900';
+                                dot = '🟢';
+                            } else if (acc >= 50) {
+                                bgClass = 'bg-amber-50 border-amber-300 text-amber-900';
+                                dot = '🟡';
+                            } else {
+                                bgClass = 'bg-rose-50 border-rose-300 text-rose-900';
+                                dot = '🔴';
+                            }
+                        }
+
+                        return `
+                            <div class="px-3 py-1.5 rounded-xl border ${bgClass} flex items-center gap-2 shadow-2xs">
+                                <span>${dot}</span>
+                                <div>
+                                    <span class="font-bold font-display">${ch.topic}</span>
+                                    <span class="text-[10px] opacity-75 font-mono ml-1">(${ch.attempted > 0 ? acc + '%' : '0 att'})</span>
+                                </div>
+                                <button onclick="practiceChapterFromAnalytics('${ch.topic}')" class="ml-1 px-1.5 py-0.5 rounded bg-white hover:bg-slate-100 border border-slate-300 text-[10px] font-bold text-slate-700 transition cursor-pointer shadow-2xs" title="Practice questions from ${ch.topic}">
+                                    Practice
+                                </button>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+
+            // 7. Actionable AI Coach Directives
+            const directivesContainer = document.getElementById('diagAiDirectives');
+            if (directivesContainer) {
+                const tips = [];
+                if (m.attempted === 0) {
+                    tips.push('Begin solving questions to generate real-time pacing, accuracy, and negative marking diagnostics.');
+                } else {
+                    if (m.quadrantCounts.rushed > 0) {
+                        tips.push(`⚠️ Silly Mistake Alert: ${m.quadrantCounts.rushed} question(s) were answered incorrectly in under 30 seconds. Read question stems with care before committing an answer.`);
+                    }
+                    if (m.quadrantCounts.sinkhole > 0) {
+                        tips.push(`⏳ Time Sink Warning: ${m.quadrantCounts.sinkhole} question(s) took over 2 minutes and were marked wrong. In CBT mode, identify difficult questions within 30 seconds and Mark for Review instead of getting stuck.`);
+                    }
+                    if (m.accuracy >= 80) {
+                        tips.push(`🎯 High Accuracy Precision: Your ${m.accuracy}% accuracy is in the national top percentile zone. Focus on maintaining velocity across longer mock runs.`);
+                    } else if (m.accuracy < 60) {
+                        tips.push(`📚 Accuracy Guardrail: Your accuracy is ${m.accuracy}%. Review incorrect questions in the Mistake Notebook and prioritize conceptual clarity over speed.`);
+                    }
+                    if (m.quadrantCounts.lightning > 0) {
+                        tips.push(`⚡ Core Strength: You solved ${m.quadrantCounts.lightning} question(s) in under 45 seconds accurately. These are your exam-winning point banks.`);
+                    }
+                }
+                directivesContainer.innerHTML = tips.map(t => `<li>${t}</li>`).join('');
+            }
+        }
+
+        function practiceChapterFromAnalytics(chapterName) {
+            closeDiagnosticAnalyticsModal();
+            const topicDropdown = document.getElementById('topicFilter');
+            if (topicDropdown) {
+                for (let i = 0; i < topicDropdown.options.length; i++) {
+                    if (topicDropdown.options[i].value === chapterName || topicDropdown.options[i].text === chapterName) {
+                        topicDropdown.selectedIndex = i;
+                        filterByTopic();
+                        const qArea = document.getElementById('questionArea');
+                        if (qArea) qArea.scrollIntoView({ behavior: 'smooth' });
+                        showMistakeToast(`🎯 Practicing targeted chapter: ${chapterName}`);
+                        return;
+                    }
+                }
+            }
+            if (typeof filterByChapter === 'function') {
+                filterByChapter(chapterName);
+                const qArea = document.getElementById('questionArea');
+                if (qArea) qArea.scrollIntoView({ behavior: 'smooth' });
+                showMistakeToast(`🎯 Practicing targeted chapter: ${chapterName}`);
+            }
+        }
+
         // --- COMPACT SEARCHABLE EXAM DIRECTORY & DROPDOWN ENGINE ---
         const EXAM_DIRECTORY = [
             { id: 'ALL', name: 'All Exams (Universal Bank)', short: 'All Exams', category: 'ALL', icon: '🌟', badge: 'Universal', desc: 'Complete 11-subject master repository across all competitive domains' },
@@ -6912,6 +7478,9 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             }
 
             clearActiveMockSession();
+            if (typeof renderDiagnosticAnalytics === 'function') {
+                renderDiagnosticAnalytics();
+            }
             const modal = document.getElementById('resultModal');
             if (modal) modal.classList.remove('hidden');
         }

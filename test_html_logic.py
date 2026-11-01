@@ -52,6 +52,18 @@ def test_html():
     assert 'id="ntaPaperViewModal"' in content, "Missing ntaPaperViewModal in DOM"
     assert 'id="ntaPaperViewContent"' in content, "Missing ntaPaperViewContent in DOM"
     assert 'id="countAnsweredMarked"' in content, "Missing countAnsweredMarked in DOM"
+    assert 'id="diagnosticAnalyticsModal"' in content, "Missing diagnosticAnalyticsModal in DOM"
+    assert 'id="diagnosticAnalyticsBtn"' in content, "Missing diagnosticAnalyticsBtn in DOM"
+    assert 'id="diagEriValue"' in content, "Missing diagEriValue in DOM"
+    assert 'id="diagEriRing"' in content, "Missing diagEriRing in DOM"
+    assert 'id="diagEriTierBadge"' in content, "Missing diagEriTierBadge in DOM"
+    assert 'id="diagMarksBleed"' in content, "Missing diagMarksBleed in DOM"
+    assert 'id="diagPotentialScoreText"' in content, "Missing diagPotentialScoreText in DOM"
+    assert 'id="diagAvgSpeed"' in content, "Missing diagAvgSpeed in DOM"
+    assert 'id="diagQuadrantGrid"' in content, "Missing diagQuadrantGrid in DOM"
+    assert 'id="diagDifficultyGrid"' in content, "Missing diagDifficultyGrid in DOM"
+    assert 'id="diagChapterHeatmap"' in content, "Missing diagChapterHeatmap in DOM"
+    assert 'id="diagAiDirectives"' in content, "Missing diagAiDirectives in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -158,7 +170,12 @@ def test_html():
         "function renderNTASectionTabs()",
         "function updateNTATimerDisplay()",
         "function openNTAPaperViewModal()",
-        "function closeNTAPaperViewModal()"
+        "function closeNTAPaperViewModal()",
+        "function openDiagnosticAnalyticsModal()",
+        "function closeDiagnosticAnalyticsModal()",
+        "function computeDiagnosticMetrics()",
+        "function renderDiagnosticAnalytics()",
+        "function practiceChapterFromAnalytics("
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
