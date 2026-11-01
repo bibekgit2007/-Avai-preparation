@@ -798,6 +798,13 @@
                 <span class="text-[9px] bg-amber-400 text-slate-900 font-extrabold px-1 rounded uppercase tracking-wider hidden md:inline">Studio</span>
             </button>
 
+            <!-- Automated Mistake Notebook & Spaced Revision Vault Button -->
+            <button onclick="openMistakeNotebookModal()" id="mistakeNotebookBtn" class="bg-gradient-to-r from-rose-950/80 via-red-950/70 to-rose-950/80 hover:bg-rose-900 border border-rose-500/50 hover:border-rose-400 text-rose-200 text-xs md:text-sm font-bold px-2 sm:px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-rose-950/30 transition transform active:scale-95 cursor-pointer" title="Mistake Notebook: Automatic Error Log & Spaced Repetition Practice">
+                <span>📓</span>
+                <span class="hidden sm:inline">Mistakes</span>
+                <span id="mistakeCountBadge" class="text-[10px] bg-rose-500 text-white font-extrabold px-1.5 py-0.2 rounded-full font-mono">0</span>
+            </button>
+
             <!-- Compact Scientific Calculator Toggle Button with Competitive Exam Advisory -->
             <button onclick="toggleCalculator()" id="headerCalcBtn" class="bg-purple-950/70 hover:bg-purple-900 border border-purple-500/50 hover:border-purple-400 text-purple-200 text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-xl flex items-center gap-1 shadow-xs transition transform active:scale-95 cursor-pointer" title="Virtual Calculator (⚠️ Attention: Strictly prohibited in NEET, JEE, WBJEE & State exams. Allowed only in GATE/BITSAT)">
                 <span class="text-purple-300">✦</span>
@@ -970,6 +977,10 @@
                     <button onclick="markForReview()" class="px-3.5 py-2 bg-purple-100 hover:bg-purple-200 text-purple-800 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1">
                         <span>🏷️</span>
                         <span>Mark for Review</span>
+                    </button>
+                    <button onclick="toggleMistakeFlagForCurrentQ()" id="flagMistakeBtn" class="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1" title="Save this question into your Mistake Notebook">
+                        <span id="flagMistakeIcon">🔖</span>
+                        <span id="flagMistakeText" class="hidden sm:inline">Notebook</span>
                     </button>
                     <button onclick="clearCurrentResponse()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer">
                         Clear
@@ -1667,12 +1678,91 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
         </div>
     </div>
 
+    <!-- ==========================================================================
+         AUTOMATED MISTAKE NOTEBOOK & SPACED REVISION VAULT MODAL (EMBIBE / MARKS STYLE)
+         ========================================================================== -->
+    <div id="mistakeNotebookModal" class="fixed inset-0 glass-modal z-[98] hidden flex items-center justify-center p-3 sm:p-5">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-scale-in">
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-slate-200 bg-gradient-to-r from-rose-900 via-slate-900 to-slate-950 text-white flex items-center justify-between select-none">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center font-display font-black text-2xl shadow-inner">
+                        📓
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-base sm:text-lg font-display font-black text-white">Mistake Notebook</h3>
+                            <span class="text-[10px] font-mono bg-rose-500/30 text-rose-300 border border-rose-500/40 px-2 py-0.5 rounded-full font-bold">
+                                Spaced Repetition Vault
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400">Auto-captured wrong answers, time-traps, and flagged questions for targeted re-testing</p>
+                    </div>
+                </div>
+                <button onclick="closeMistakeNotebookModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition cursor-pointer text-lg font-bold">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Analytics & Filter Toolbar -->
+            <div class="p-4 bg-slate-50 border-b border-slate-200 space-y-3">
+                <!-- KPI Counter Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+                    <div class="bg-white p-2.5 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 block">Total In Notebook</span>
+                        <span id="mistakeKpiTotal" class="text-lg font-display font-black text-rose-600">0</span>
+                    </div>
+                    <div class="bg-white p-2.5 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 block">Pending Revision</span>
+                        <span id="mistakeKpiPending" class="text-lg font-display font-black text-amber-600">0</span>
+                    </div>
+                    <div class="bg-white p-2.5 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 block">Mastered (Solved)</span>
+                        <span id="mistakeKpiMastered" class="text-lg font-display font-black text-emerald-600">0</span>
+                    </div>
+                    <div class="bg-white p-2.5 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 block">Avg Time on Error</span>
+                        <span id="mistakeKpiAvgTime" class="text-lg font-display font-black text-blue-600 font-mono">0s</span>
+                    </div>
+                </div>
+
+                <!-- Subject & Error Filter Chips + Primary Action -->
+                <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
+                    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                        <span class="text-[11px] font-bold text-slate-500 mr-1 hidden sm:inline">Subject:</span>
+                        <button onclick="filterMistakeSubject('ALL')" id="mistakeSubChip_ALL" class="mistake-sub-chip active px-2.5 py-1 rounded-xl text-xs font-bold transition bg-slate-900 text-white cursor-pointer">All</button>
+                        <button onclick="filterMistakeSubject('Physics')" id="mistakeSubChip_Physics" class="mistake-sub-chip px-2.5 py-1 rounded-xl text-xs font-bold transition bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 cursor-pointer">Physics</button>
+                        <button onclick="filterMistakeSubject('Chemistry')" id="mistakeSubChip_Chemistry" class="mistake-sub-chip px-2.5 py-1 rounded-xl text-xs font-bold transition bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 cursor-pointer">Chemistry</button>
+                        <button onclick="filterMistakeSubject('Biology')" id="mistakeSubChip_Biology" class="mistake-sub-chip px-2.5 py-1 rounded-xl text-xs font-bold transition bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 cursor-pointer">Biology</button>
+                        <button onclick="filterMistakeSubject('Mathematics')" id="mistakeSubChip_Mathematics" class="mistake-sub-chip px-2.5 py-1 rounded-xl text-xs font-bold transition bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 cursor-pointer">Maths</button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="startMistakeReTest()" id="startMistakeTestBtn" class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-display font-black text-xs px-3.5 py-1.5 rounded-xl shadow-md shadow-rose-600/30 transition transform active:scale-95 flex items-center gap-1.5 cursor-pointer" title="Launch a custom mock test with these mistake questions">
+                            <span>🎯</span>
+                            <span>Re-Test My Mistakes</span>
+                        </button>
+                        <button onclick="clearMasteredMistakes()" class="text-xs text-slate-500 hover:text-slate-800 font-semibold px-2 py-1 rounded-lg hover:bg-slate-200/60 transition cursor-pointer" title="Remove all mastered questions">
+                            Clear Mastered
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistakes List Container -->
+            <div id="mistakeNotebookList" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3.5 custom-scrollbar">
+                <!-- Populated dynamically via renderMistakeNotebook() -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-400 px-4 md:px-6 py-3 border-t border-slate-800/80 text-xs select-none">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2.5">
             <p class="text-[11px]">© 2026 AVAI Preparation. Premier Multi-Subject Examination & Mock Test Portal.</p>
             <div class="flex items-center gap-4 flex-wrap text-[11px]">
                 <button onclick="openMockModal()" class="text-amber-400 hover:text-amber-300 font-bold transition flex items-center gap-1 cursor-pointer">🎯 Custom Mock</button>
+                <button onclick="openMistakeNotebookModal()" class="text-rose-400 hover:text-rose-300 font-bold transition flex items-center gap-1 cursor-pointer" title="View Saved Mistakes & Weak Areas">📓 Mistake Notebook</button>
                 <button onclick="openNTAInstructionsModal()" class="text-blue-400 hover:text-blue-300 font-bold transition flex items-center gap-1 cursor-pointer" title="View Official NTA & NMC Guidelines">📋 Exam Guidelines</button>
                 <button id="adminSyncFooterBtn" onclick="openAdminModal()" class="hidden text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1 cursor-pointer" title="Admin Question Bank Sync (Ctrl+Shift+A)">⚙️ Admin Sync</button>
                 <a href="about.html" class="hover:text-white transition">About</a>
@@ -2343,6 +2433,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             hideAppLoader();
             filterByExam();
             checkForResumableMockSession();
+            updateMistakeBadgeCount();
         }
 
         // Toggle merge mode between Sheet-only vs Sheet + 322 Coded Questions
@@ -3862,6 +3953,416 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             });
         }
 
+        // ==========================================================================
+        // 5d. AUTOMATED MISTAKE NOTEBOOK & SPACED REVISION VAULT CONTROLLER
+        // ==========================================================================
+        const MISTAKE_NOTEBOOK_KEY = 'avai_mistake_notebook_v1';
+        let activeMistakeSubject = 'ALL';
+
+        function getMistakeNotebook() {
+            try {
+                const raw = localStorage.getItem(MISTAKE_NOTEBOOK_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch (e) {
+                console.warn('Failed to parse mistake notebook:', e);
+                return [];
+            }
+        }
+
+        function saveMistakeNotebook(list) {
+            try {
+                localStorage.setItem(MISTAKE_NOTEBOOK_KEY, JSON.stringify(list));
+                updateMistakeBadgeCount();
+            } catch (e) {
+                console.warn('Failed to save mistake notebook:', e);
+            }
+        }
+
+        function updateMistakeBadgeCount() {
+            const badge = document.getElementById('mistakeCountBadge');
+            if (!badge) return;
+            const list = getMistakeNotebook();
+            const pending = list.filter(m => !m.mastered).length;
+            badge.innerText = pending;
+            if (pending > 0) {
+                badge.className = "text-[10px] bg-rose-500 text-white font-extrabold px-1.5 py-0.2 rounded-full font-mono animate-pulse shadow-sm";
+            } else {
+                badge.className = "text-[10px] bg-slate-700 text-slate-300 font-extrabold px-1.5 py-0.2 rounded-full font-mono";
+            }
+        }
+
+        function isQuestionInMistakeNotebook(qId) {
+            if (!qId) return false;
+            const list = getMistakeNotebook();
+            return list.some(m => String(m.id) === String(qId));
+        }
+
+        function recordMistake(q, studentAnswer, reasonTag, timeSpent, isManual = false) {
+            if (!q || !q.id) return;
+            const list = getMistakeNotebook();
+            const idx = list.findIndex(m => String(m.id) === String(q.id));
+            const now = Date.now();
+            if (idx >= 0) {
+                list[idx].attemptCount = (list[idx].attemptCount || 1) + 1;
+                list[idx].lastSeen = now;
+                list[idx].studentAnswer = (studentAnswer !== undefined && studentAnswer !== null) ? studentAnswer : list[idx].studentAnswer;
+                if (reasonTag) list[idx].reason = reasonTag;
+                if (timeSpent) list[idx].timeSpent = timeSpent;
+                list[idx].mastered = false;
+            } else {
+                list.unshift({
+                    id: q.id,
+                    subject: q.subject || 'General',
+                    chapter: q.chapter || 'General',
+                    exam: q.exam || 'NEET/JEE',
+                    en: q.en || '',
+                    bn: q.bn || '',
+                    hi: q.hi || '',
+                    correct: q.correct,
+                    opts: q.opts || null,
+                    studentAnswer: (studentAnswer !== undefined && studentAnswer !== null) ? studentAnswer : -1,
+                    reason: reasonTag || (isManual ? 'manual-flag' : 'conceptual'),
+                    timeSpent: timeSpent || 0,
+                    timestamp: now,
+                    lastSeen: now,
+                    attemptCount: 1,
+                    mastered: false,
+                    isManual: !!isManual
+                });
+            }
+            saveMistakeNotebook(list);
+        }
+
+        function markMistakeMastered(qId) {
+            if (!qId) return;
+            const list = getMistakeNotebook();
+            const item = list.find(m => String(m.id) === String(qId));
+            if (item && !item.mastered) {
+                item.mastered = true;
+                item.masteredAt = Date.now();
+                saveMistakeNotebook(list);
+            }
+        }
+
+        function showMistakeToast(msg) {
+            let toast = document.getElementById('avaiMistakeToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'avaiMistakeToast';
+                toast.className = 'fixed bottom-6 right-6 z-[120] bg-slate-900/95 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-2xl shadow-2xl border border-slate-700/80 backdrop-blur-md transition-all duration-300 transform translate-y-8 opacity-0 flex items-center gap-2 pointer-events-none select-none';
+                document.body.appendChild(toast);
+            }
+            toast.innerText = msg;
+            toast.classList.remove('translate-y-8', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            clearTimeout(window._mistakeToastTimer);
+            window._mistakeToastTimer = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-8', 'opacity-0');
+            }, 2400);
+        }
+
+        function toggleMistakeFlagForCurrentQ() {
+            const filtered = getFiltered();
+            if (!filtered || filtered.length === 0 || currentIdx < 0 || currentIdx >= filtered.length) return;
+            const q = filtered[currentIdx];
+            if (!q || !q.id) return;
+
+            const list = getMistakeNotebook();
+            const idx = list.findIndex(m => String(m.id) === String(q.id));
+
+            if (idx >= 0) {
+                list.splice(idx, 1);
+                saveMistakeNotebook(list);
+                showMistakeToast('Removed from Mistake Notebook 🗑️');
+            } else {
+                const studentAns = responses[q.orig];
+                const timeSpent = questionTimes[q.orig] || 0;
+                recordMistake(q, studentAns, 'manual-flag', timeSpent, true);
+                showMistakeToast('Saved to Mistake Notebook 📓');
+            }
+            updateCurrentQMistakeFlagUI();
+        }
+
+        function updateCurrentQMistakeFlagUI() {
+            const btn = document.getElementById('flagMistakeBtn');
+            const icon = document.getElementById('flagMistakeIcon');
+            const text = document.getElementById('flagMistakeText');
+            if (!btn) return;
+
+            const filtered = getFiltered();
+            if (!filtered || filtered.length === 0 || currentIdx < 0 || currentIdx >= filtered.length) {
+                btn.classList.add('opacity-50', 'pointer-events-none');
+                return;
+            }
+            btn.classList.remove('opacity-50', 'pointer-events-none');
+
+            const q = filtered[currentIdx];
+            const inNotebook = q && isQuestionInMistakeNotebook(q.id);
+
+            if (inNotebook) {
+                btn.className = "px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white border border-rose-500 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1 shadow-sm shadow-rose-600/30";
+                if (icon) icon.innerText = '📕';
+                if (text) text.innerText = 'In Notebook';
+                btn.title = "Question is currently in your Mistake Notebook. Click to remove.";
+            } else {
+                btn.className = "px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl font-bold transition text-xs md:text-sm active:scale-95 cursor-pointer flex items-center gap-1";
+                if (icon) icon.innerText = '🔖';
+                if (text) text.innerText = 'Notebook';
+                btn.title = "Save this question into your Mistake Notebook for revision";
+            }
+        }
+
+        function openMistakeNotebookModal() {
+            const modal = document.getElementById('mistakeNotebookModal');
+            if (!modal) return;
+            activeMistakeSubject = 'ALL';
+            filterMistakeSubject('ALL');
+            modal.classList.remove('hidden');
+        }
+
+        function closeMistakeNotebookModal() {
+            const modal = document.getElementById('mistakeNotebookModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function filterMistakeSubject(sub) {
+            activeMistakeSubject = sub;
+            ['ALL', 'Physics', 'Chemistry', 'Biology', 'Mathematics'].forEach(s => {
+                const chip = document.getElementById('mistakeSubChip_' + s);
+                if (chip) {
+                    if (s === sub) {
+                        chip.className = "mistake-sub-chip active px-2.5 py-1 rounded-xl text-xs font-bold transition bg-slate-900 text-white cursor-pointer";
+                    } else {
+                        chip.className = "mistake-sub-chip px-2.5 py-1 rounded-xl text-xs font-bold transition bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 cursor-pointer";
+                    }
+                }
+            });
+            renderMistakeNotebook();
+        }
+
+        function renderMistakeNotebook() {
+            const container = document.getElementById('mistakeNotebookList');
+            if (!container) return;
+
+            const list = getMistakeNotebook();
+            const total = list.length;
+            const pending = list.filter(m => !m.mastered).length;
+            const mastered = list.filter(m => m.mastered).length;
+            const sumTime = list.reduce((acc, m) => acc + (m.timeSpent || 0), 0);
+            const avgTime = total > 0 ? Math.round(sumTime / total) : 0;
+
+            const totalEl = document.getElementById('mistakeKpiTotal');
+            const pendingEl = document.getElementById('mistakeKpiPending');
+            const masteredEl = document.getElementById('mistakeKpiMastered');
+            const avgTimeEl = document.getElementById('mistakeKpiAvgTime');
+            if (totalEl) totalEl.innerText = total;
+            if (pendingEl) pendingEl.innerText = pending;
+            if (masteredEl) masteredEl.innerText = mastered;
+            if (avgTimeEl) avgTimeEl.innerText = `${avgTime}s`;
+
+            const filteredList = (activeMistakeSubject === 'ALL')
+                ? list
+                : list.filter(m => (m.subject || '').toLowerCase() === activeMistakeSubject.toLowerCase());
+
+            if (filteredList.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-16 text-center space-y-3">
+                        <div class="w-16 h-16 rounded-3xl bg-rose-50 border border-rose-200 flex items-center justify-center text-3xl shadow-inner">
+                            🎉
+                        </div>
+                        <h4 class="font-display font-black text-slate-800 text-base">No Mistakes in this View!</h4>
+                        <p class="text-xs text-slate-500 max-w-sm">
+                            ${list.length === 0 
+                                ? 'As you practice tests, any questions you get wrong or flag with "Notebook" will automatically appear here for spaced repetition.' 
+                                : `You have mastered all recorded errors in ${activeMistakeSubject}. Switch subject above or re-test all.`}
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            const reasonLabels = {
+                'conceptual': { label: 'Conceptual Error', color: 'bg-rose-50 text-rose-700 border-rose-200' },
+                'time-trap': { label: '⏱️ Time Trap (>3 min)', color: 'bg-amber-50 text-amber-700 border-amber-200' },
+                'rushed': { label: '⚡ Rushed (<15 sec)', color: 'bg-purple-50 text-purple-700 border-purple-200' },
+                'calculation': { label: 'Calculation Slip', color: 'bg-blue-50 text-blue-700 border-blue-200' },
+                'manual-flag': { label: '📌 Bookmarked for Review', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' }
+            };
+
+            const optionLetters = ['A', 'B', 'C', 'D'];
+
+            container.innerHTML = filteredList.map(item => {
+                const reasonMeta = reasonLabels[item.reason] || reasonLabels['conceptual'];
+                const promptRaw = item[currentLang] || item.en || item.bn || '';
+                const promptFormatted = (typeof formatScienceAndMath === 'function') ? formatScienceAndMath(promptRaw) : promptRaw;
+                const correctLetter = (item.correct !== undefined && item.correct >= 0) ? optionLetters[item.correct] : '?';
+                const studentLetter = (item.studentAnswer !== undefined && item.studentAnswer >= 0) ? optionLetters[item.studentAnswer] : 'None';
+
+                return `
+                    <div class="p-4 rounded-2xl border transition-all ${item.mastered ? 'bg-slate-50/70 border-slate-200 opacity-75' : 'bg-white border-slate-200/90 shadow-xs hover:border-rose-300'} flex flex-col gap-3">
+                        <div class="flex items-center justify-between gap-2 flex-wrap text-xs">
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="font-extrabold text-[11px] px-2 py-0.5 rounded-lg bg-slate-900 text-white font-mono">${item.subject || 'General'}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded-lg border font-bold ${reasonMeta.color}">${reasonMeta.label}</span>
+                                ${item.timeSpent ? `<span class="text-[10px] text-slate-500 font-mono">⏱️ ${item.timeSpent}s</span>` : ''}
+                                ${item.attemptCount > 1 ? `<span class="text-[10px] bg-red-100 text-red-700 font-extrabold px-1.5 py-0.2 rounded font-mono">Failed ${item.attemptCount}x</span>` : ''}
+                            </div>
+                            <div class="flex items-center gap-2">
+                                ${item.mastered 
+                                    ? `<span class="text-[11px] font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">✓ Mastered</span>` 
+                                    : `<span class="text-[11px] font-extrabold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full flex items-center gap-1">● Needs Revision</span>`
+                                }
+                            </div>
+                        </div>
+
+                        <div class="text-xs sm:text-sm text-slate-800 font-medium font-stem leading-relaxed line-clamp-3">
+                            ${promptFormatted}
+                        </div>
+
+                        <div class="flex items-center justify-between gap-2 pt-1 border-t border-slate-100 text-xs flex-wrap">
+                            <div class="flex items-center gap-3 text-[11px]">
+                                <span class="text-slate-500 font-medium">Your Pick: <strong class="text-rose-600 font-mono">(${studentLetter})</strong></span>
+                                <span class="text-slate-500 font-medium">Correct: <strong class="text-emerald-600 font-mono">(${correctLetter})</strong></span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="toggleMasteredMistake('${item.id}')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition border ${item.mastered ? 'border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100' : 'border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100'} cursor-pointer">
+                                    ${item.mastered ? 'Mark Unsolved' : '✓ Mark Mastered'}
+                                </button>
+                                <button onclick="practiceSingleMistake('${item.id}')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800 hover:bg-slate-900 text-white cursor-pointer" title="Jump to this question in practice view">
+                                    Practice Now
+                                </button>
+                                <button onclick="deleteMistake('${item.id}')" class="text-slate-400 hover:text-red-600 p-1 transition cursor-pointer text-sm" title="Remove question permanently from Mistake Notebook">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // KaTeX rendering for math symbols if available
+            if (window.renderMathInElement) {
+                try {
+                    renderMathInElement(container, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false },
+                            { left: '\\(', right: '\\)', display: false },
+                            { left: '\\[', right: '\\]', display: true }
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    console.warn('KaTeX rendering in mistake notebook:', e);
+                }
+            }
+        }
+
+        function toggleMasteredMistake(qId) {
+            const list = getMistakeNotebook();
+            const item = list.find(m => String(m.id) === String(qId));
+            if (!item) return;
+            item.mastered = !item.mastered;
+            if (item.mastered) item.masteredAt = Date.now();
+            saveMistakeNotebook(list);
+            renderMistakeNotebook();
+        }
+
+        function deleteMistake(qId) {
+            const list = getMistakeNotebook();
+            const filtered = list.filter(m => String(m.id) !== String(qId));
+            saveMistakeNotebook(filtered);
+            renderMistakeNotebook();
+            updateCurrentQMistakeFlagUI();
+        }
+
+        function clearMasteredMistakes() {
+            const list = getMistakeNotebook();
+            const masteredCount = list.filter(m => m.mastered).length;
+            if (masteredCount === 0) {
+                alert('No mastered mistakes to clear.');
+                return;
+            }
+            if (confirm(`Remove all ${masteredCount} mastered questions from your notebook?`)) {
+                const pendingOnly = list.filter(m => !m.mastered);
+                saveMistakeNotebook(pendingOnly);
+                renderMistakeNotebook();
+                updateCurrentQMistakeFlagUI();
+            }
+        }
+
+        function practiceSingleMistake(qId) {
+            closeMistakeNotebookModal();
+            const targetIdx = questionBank.findIndex(q => String(q.id) === String(qId));
+            if (targetIdx >= 0) {
+                const targetQ = questionBank[targetIdx];
+                if (targetQ.subject && targetQ.subject !== currentSubject) {
+                    currentSubject = targetQ.subject;
+                    renderSubjectTabs();
+                }
+                const filtered = getFiltered();
+                const filteredIdx = filtered.findIndex(q => String(q.id) === String(qId));
+                if (filteredIdx >= 0) {
+                    currentIdx = filteredIdx;
+                }
+                render();
+                const qArea = document.getElementById('questionArea');
+                if (qArea) qArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                alert('Question is not in the currently active exam selection. Switching to Universal Bank...');
+                selectExamFromDropdown('ALL');
+                setTimeout(() => {
+                    practiceSingleMistake(qId);
+                }, 100);
+            }
+        }
+
+        function startMistakeReTest() {
+            const list = getMistakeNotebook();
+            const pendingList = (activeMistakeSubject === 'ALL')
+                ? list.filter(m => !m.mastered)
+                : list.filter(m => !m.mastered && (m.subject || '').toLowerCase() === activeMistakeSubject.toLowerCase());
+
+            if (pendingList.length === 0) {
+                alert(`No pending mistakes to re-test in ${activeMistakeSubject}! Great job mastering your errors.`);
+                return;
+            }
+
+            const mistakeIds = new Set(pendingList.map(m => String(m.id)));
+            const reTestBank = masterDataset.filter(q => mistakeIds.has(String(q.id)));
+
+            if (reTestBank.length === 0) {
+                alert('Could not find questions in the active dataset.');
+                return;
+            }
+
+            closeMistakeNotebookModal();
+            questionBank = reTestBank.map((q, i) => normalizeQuestion(q, i));
+            responses = new Array(questionBank.length).fill(null);
+            statuses = new Array(questionBank.length).fill('not-visited');
+            questionTimes = new Array(questionBank.length).fill(0);
+            currentIdx = 0;
+
+            // Setup timer: 90 seconds per question for focused mistake drill
+            examTimeRemaining = questionBank.length * 90;
+            examTimeTotal = examTimeRemaining;
+            isExamTimerRunning = true;
+            isExamTimerPaused = false;
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            examTimerInterval = setInterval(examTimerTick, 1000);
+
+            const timerControls = document.getElementById('timerControls');
+            if (timerControls) timerControls.classList.remove('hidden');
+
+            renderSubjectTabs();
+            renderPalette();
+            render();
+            showMistakeToast(`🎯 Re-Test Launched: ${questionBank.length} Mistake Questions!`);
+            const qArea = document.getElementById('questionArea');
+            if (qArea) qArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
         // --- COMPACT SEARCHABLE EXAM DIRECTORY & DROPDOWN ENGINE ---
         const EXAM_DIRECTORY = [
             { id: 'ALL', name: 'All Exams (Universal Bank)', short: 'All Exams', category: 'ALL', icon: '🌟', badge: 'Universal', desc: 'Complete 11-subject master repository across all competitive domains' },
@@ -5346,6 +5847,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                 `;
                 renderPalette();
                 updateProgress();
+                updateCurrentQMistakeFlagUI();
                 return;
             }
 
@@ -5497,6 +5999,7 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
             renderPalette();
             renderChapterNavStrip();
             updateProgress();
+            updateCurrentQMistakeFlagUI();
         }
 
         // 8. USER ACTIONS & INTERACTION HANDLERS
@@ -5662,14 +6165,23 @@ Answer: B" class="w-full p-3.5 border border-slate-200 rounded-2xl text-xs md:te
                         correctCount++;
                         subjectStats[sub].correct++;
                         subjectStats[sub].score += positiveMark;
+                        // Spaced repetition: if question was in notebook, mark it as mastered
+                        markMistakeMastered(q.id);
                     } else {
                         score -= negativeMark;
                         incorrectCount++;
                         subjectStats[sub].incorrect++;
                         subjectStats[sub].score -= negativeMark;
+                        // Auto-record wrong question to Mistake Notebook
+                        const timeSpent = questionTimes[i] || 0;
+                        let autoReason = 'conceptual';
+                        if (timeSpent > 180) autoReason = 'time-trap';
+                        else if (timeSpent < 15) autoReason = 'rushed';
+                        recordMistake(q, resp, autoReason, timeSpent, false);
                     }
                 }
             });
+            updateMistakeBadgeCount();
 
             const unattempted = questionBank.length - attempted;
             const accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;

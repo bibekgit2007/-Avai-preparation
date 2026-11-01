@@ -32,6 +32,16 @@ def test_html():
     assert 'id="mockRecoveryModal"' in content, "Missing mockRecoveryModal in DOM"
     assert 'id="recoverProgressText"' in content, "Missing recoverProgressText in DOM"
     assert 'id="notesOcrProgress"' in content, "Missing notesOcrProgress in DOM"
+    assert 'id="mistakeNotebookModal"' in content, "Missing mistakeNotebookModal in DOM"
+    assert 'id="mistakeNotebookBtn"' in content, "Missing mistakeNotebookBtn in DOM"
+    assert 'id="mistakeCountBadge"' in content, "Missing mistakeCountBadge in DOM"
+    assert 'id="flagMistakeBtn"' in content, "Missing flagMistakeBtn in DOM"
+    assert 'id="mistakeKpiTotal"' in content, "Missing mistakeKpiTotal in DOM"
+    assert 'id="mistakeKpiPending"' in content, "Missing mistakeKpiPending in DOM"
+    assert 'id="mistakeKpiMastered"' in content, "Missing mistakeKpiMastered in DOM"
+    assert 'id="mistakeKpiAvgTime"' in content, "Missing mistakeKpiAvgTime in DOM"
+    assert 'id="mistakeNotebookList"' in content, "Missing mistakeNotebookList in DOM"
+    assert 'id="startMistakeTestBtn"' in content, "Missing startMistakeTestBtn in DOM"
     
     assert 'STIX+Two+Text' in content, "Missing STIX Two Text Google Font"
     assert 'katex.min.css' in content, "Missing KaTeX stylesheet inclusion"
@@ -103,7 +113,24 @@ def test_html():
         "function clearActiveMockSession()",
         "function checkForResumableMockSession()",
         "function resumeMockSession()",
-        "function discardMockSession()"
+        "function discardMockSession()",
+        "function getMistakeNotebook()",
+        "function saveMistakeNotebook(",
+        "function updateMistakeBadgeCount()",
+        "function isQuestionInMistakeNotebook(",
+        "function recordMistake(",
+        "function markMistakeMastered(",
+        "function toggleMistakeFlagForCurrentQ()",
+        "function updateCurrentQMistakeFlagUI()",
+        "function openMistakeNotebookModal()",
+        "function closeMistakeNotebookModal()",
+        "function filterMistakeSubject(",
+        "function renderMistakeNotebook()",
+        "function toggleMasteredMistake(",
+        "function deleteMistake(",
+        "function clearMasteredMistakes()",
+        "function practiceSingleMistake(",
+        "function startMistakeReTest()"
     ]
     for fn in required_funcs:
         assert fn in js_code, f"Missing function {fn} in index.html"
