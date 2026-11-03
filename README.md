@@ -57,8 +57,8 @@ Equipped with real-time **Google Sheet live sync**, intelligent **PYQ year recog
 
 ---
 
-### 5. 🌐 Instant Bilingual Toggle (English & বাংলা)
-- Seamless one-click toggle between **English** and **বাংলা** for:
+### 5. 🌐 Instant Trilingual Toggle (English & বাংলা & हिन्दी)
+- Seamless one-click toggle between **English**,**বাংলা** and **हिन्दी** for:
   - Question Prompts
   - Multiple-Choice Options
   - Step-by-step Solution Derivations & Explanations
